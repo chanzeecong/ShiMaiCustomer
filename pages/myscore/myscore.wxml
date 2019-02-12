@@ -1,0 +1,25 @@
+<!--pages/myscore/myscore.wxml-->
+<view class='wrapper'>
+  <view class='bg-white p-h-10pt p-v-10pt flex flex-row justify-center'>
+    <view class='myscore-card' style='background-image:url(../../assets/icon/icon_cardbg@2x.png)'>
+      <view class='card-content flex flex-column justify-center align-center'>
+        <text>识买商城积分卡</text>
+        <view class='card_info'>当前积分：{{score}}</view>
+      </view>
+    </view>
+  </view>
+
+  <view class='bg-white myscore_list'>
+    <view class='score_item' wx:for='{{myscore}}' wx:key='{{index}}'>
+      <view class='flex flex-row justify-between'>
+        <view class='flex flex-column justify-center'>
+          <view class='font-14pt m-b-15pt'>{{item.title}}</view>
+          <view class='font-10pt sub_text_color2'>{{item.time}}</view>
+        </view>
+        <view class='flex flex-column justify-center font-18pt'>
+          {{(item.type==="up")? "+": "-"}}{{item.score}}
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

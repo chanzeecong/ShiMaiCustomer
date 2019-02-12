@@ -1,0 +1,102 @@
+<!--pages/buyer_detail/buyer_detail.wxml-->
+<view class='wrapper'>
+
+  <view class='buyer_info_box bg-white'>
+
+    <view class='flex flex-row'>
+      <view class='buyer_img' style='background-image:url(../../assets/img/4.png);'></view>
+
+      <view class='flex flex-column flex-item'>
+        <view class='buyer_title_info'>
+          <view class='buyer_name'>
+            <text>Jioneshiop</text> 
+            <view><text class='font-12pt primary_bg focus_btn'>+关注</text></view>
+          </view>
+          <view class='title_location'>
+            <image class='icon icon_location' src='../../assets/icon/icon_position1@2x.png'></image>
+            韩国Suwon
+          </view>
+        </view>
+        <view class='buyer_focus'>
+          <view class='flex flex-row' style='text-align:center;'>
+            <view class='flex-item'>
+              <view class='font-16pt m-b-10pt'>42</view>
+              <view class='font-12pt'>关注</view>
+            </view>
+            <view class='flex-item'>
+              <view class='font-16pt m-b-10pt'>5</view>
+              <view class='font-12pt'>粉丝</view>
+            </view>
+            <view class='flex-item'>
+              <view class='font-16pt m-b-10pt'>15</view>
+              <view class='font-12pt'>获赞与收藏</view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <view class='flex flex-row'>
+      <text class='font-12pt font-bold' style='padding: 28rpx 0;line-height:2'>代购商品</text>
+      <view class='buyer-badges flex-item'>
+        <view class='badges-item' wx:for='{{badge}}' wx:for-index="cidx" wx:key="{{cidx}}" wx:for-item="child">
+          {{child}}
+        </view>
+      </view>
+    </view>
+
+    <view style='padding: 20rpx 0;'>
+      <text class='font-12pt' style='opacity: .6'>
+      自从腾讯把酷我、酷狗收购以后， 音乐正式迎来收费时代。现在随便下载一首普通的歌曲都要钱了。而且随着音乐人与唱片公司的版权意识越来越强
+      </text>
+    </view>
+
+    <view class='flex flex-row justify-around p-v-10pt'>
+      <view style='padding: 10rpx 0;'>
+        <image class='icon_btn' src='../../assets/icon/icon_awesome@2x.png'></image>
+      </view>
+      <view>
+        <view class='flex-item primary_bg btn contact_btn'>立即联系</view>
+      </view>
+      <view style='padding: 10rpx 0;'>
+      <image class='icon_btn' src='../../assets/icon/icon_share@2x.png'></image>
+      </view>
+    </view>
+
+  </view>
+
+  <view class='buyer_article bg-white'>
+    <view class='flex flex-row justify-center' bindtap='changeTab'>
+      <view class='article_tab {{active[0]}}' data-idx='0' data-type='article'>文章</view>
+      <view class='article_tab {{active[1]}}' data-idx='1' data-type='product'>商品</view>
+    </view>
+    <view class='tab-content'>
+
+      <block wx:if='{{showList.type==="article"}}'>
+        <view class='list-item' wx:for="{{showList.list}}" wx:for-index="showidx" wx:key="{{showidx}}" wx:for-item="showitem">
+          <view class='flex flex-row item-group'>
+            <image class='list-img' src='{{showitem.img}}'></image>
+            <view class='list-info flex-item flex flex-column'>
+              <text class='info-title'>{{showitem.title}}</text>
+              <view class='info-content'>共{{showitem.number}}张 {{showitem.time}} </view>
+            </view>
+          </view>
+        </view>
+      </block>
+      <block wx:elif='{{showList.type==="product"}}'>
+        <view class='list-item product' wx:for="{{showList.list}}" wx:for-index="showidx" wx:key="{{showidx}}" wx:for-item="showitem">
+          <view class='flex flex-row item-group'>
+            <image class='list-img' src='{{showitem.img}}'></image>
+            <view class='list-info flex-item flex flex-column justify-between'>
+              <text class='info-title'>{{showitem.title}}</text>
+              <text class='info-price'>抢购价{{showitem.price}}元</text>
+              <view class='info-content'>{{showitem.tag}} | {{showitem.time}} <view class='right_comments'><image src='../../assets/icon/icon_reply@2x.png'></image>{{showitem.comments}}</view></view>
+            </view>
+          </view>
+        </view>
+      </block>
+      
+    </view>
+  </view>
+
+</view>

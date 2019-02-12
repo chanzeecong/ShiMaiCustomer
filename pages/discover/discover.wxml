@@ -1,0 +1,41 @@
+<!--pages/discover/discover.wxml-->
+<view class='wrapper'>
+  <view class='top_banner p-h-10pt bg-white'>
+    <view class='banner_img' style='background-image:url(../../assets/icon/bannar_01@2x.png)'></view>
+    <view class='flex flex-row p-v-10pt'>
+      <view class='text_img' style='background-image:url(../../assets/icon/icon_xiaoxi@2x.png)'></view>
+      <text class='color_primary font-12pt' style='margin-right: 20rpx;'>貌美实力派</text>
+      <text class='sub_text_color font-12pt hidetext flex-item'>松霖泉水面盆龙头，洗脸也成为一种高级享受松霖泉水面盆龙头，洗脸也成为一种高级享受松霖泉水面盆龙头，洗脸也成为一种高级享受</text>
+    </view>
+  </view>
+
+  <view class='flex flex-row category-scroll-box bg-white'>
+    <scroll-view bindtap='chooseCategory' scroll-into-view='{{scrollID}}' scroll-x scroll-with-animation scroll-left='{{scrollLeft}}'>
+      <view class='category-scroll'>
+        <view id='item_{{index}}' wx:for='{{cate}}' wx:key='{{index}}' class='scroll-item {{item.active}}' data-index='{{index}}'>{{item.name}}</view>
+      </view>
+    </scroll-view>
+    
+    <view class='arrow-bottom' bindtap='showAllSelections' style='background-image:url(../../assets/icon/icon_drop_down@2x.png)'></view>
+
+    <view class='all_selections {{selectionActive}}'>
+      <view class='flex flex-row'>
+        <view class='flex-item font-14pt' style='padding: 30rpx'>请选择</view>
+        <view class='flex flex-column justify-center align-center' style='padding: 30rpx'>
+          <view class='icon-down'>
+            <image src='../../assets/icon/icon_drop_down@2x.png'></image>
+          </view>
+        </view>
+      </view>
+      <view class='selection_list_box'>
+        <view class='selection_list'>
+          <view class='selection_item' bindtap='chooseItem' wx:for='{{cate}}' wx:key='{{index}}' data-index='{{index}}'>
+            <view class='icon'><image src='{{item.icon}}'></image></view>
+            <view>{{item.name}}</view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  
+</view>

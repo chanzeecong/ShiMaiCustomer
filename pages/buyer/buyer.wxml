@@ -1,0 +1,44 @@
+<!--pages/buyer/buyer.wxml-->
+<view class='wrapper'>
+
+  <navigator open-type='navigate' url='../search_buyer/search_buyer' class='search-wrapper bg-white'>
+    <view class='search-box'>
+      <view class='icon icon-search'>
+        <image src='../../assets/icon/icon_search@2x.png'></image>
+      </view>
+      <text class='search-place-text'>搜索买手、标签、地区</text>
+    </view>
+    <text class='search_btn'>搜索</text>
+  </navigator>
+
+  <scroll-view class='bg-white' scroll-into-view="{{toView}}" scroll-x scroll-with-animation="true" bindscroll="scroll"  bindscrolltoupper='toUpper' bindscrolltolower='toLower' upper-threshold='50' lower-threshold='50' style='white-space:nowrap;'>
+
+    <view id='{{list.id}}' class='buyer-item' wx:for="{{hotList}}" wx:for-item="list" wx:for-index="listidx"  wx:key="{{listidx}}">
+      <view class='item-sign'>HOT</view>
+      <view class='item-content'>
+        <view class='flex flex-row'>
+          <image class='buyer_img' mode='aspectFill' src='{{list.img}}'></image>
+          <view class='buyer_info'>
+            <text class='buyer_title'>{{list.name}}</text>
+            <text>地区：{{list.area}}</text>
+          </view>
+        </view>
+        <view class='flex flex-row buyer-badges'>
+          <view class='badges-item' wx:for='{{list.badge}}' wx:for-index="cidx" wx:key="{{cidx}}" wx:for-item="child">
+            {{child}}
+          </view>
+        </view>
+        <view class='buyer-action'>
+          <button class='buyer-focus'>关注Ta</button>
+        </view>
+      </view>
+    </view>
+
+  </scroll-view>
+
+  <view class='buyer-area-list' wx:for="{{areaList}}"  wx:for-index="aidx"  wx:key="{{aidx}}">
+    <navigator class='area-item' open-type='navigate' url='../buyer_list/buyer_list' style='background-image:url({{item.img}});'>
+      {{item.area}}
+    </navigator>
+  </view>
+</view>

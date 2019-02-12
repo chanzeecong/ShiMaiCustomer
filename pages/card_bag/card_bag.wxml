@@ -1,0 +1,35 @@
+<!--pages/card_bag/card_bag.wxml-->
+<view class='wrapper'>
+  <view class='card_tab bg-white' bindtap='chooseTab'>
+    <view class='tab_item font-14pt {{tabActive[0]}}' data-status='0'>全部 ({{allData.length}})</view>
+    <view class='tab_item font-14pt {{tabActive[1]}}' data-status='1'>未使用 ({{useful.length}})</view>
+    <view class='tab_item font-14pt {{tabActive[2]}}' data-status='2'>已使用 ({{used.length}})</view>
+    <view class='tab_item font-14pt {{tabActive[3]}}' data-status='3'>已过期 ({{disabled.length}})</view>
+  </view>
+  <view class='bg-white section-padding' style='padding-top: 20rpx;padding-bottom:20rpx;'>
+    
+    
+    <block wx:if='{{showData.length===0}}'>
+      <view class='flex flex-column justify-center align-center nodata'>
+        <image src='../../assets/icon/img_No order@2x.png'></image>
+        <view class='font-16pt sub_text_color' style='margin: 40rpx 0;'>暂无任何卡券可用</view>
+        <navigator class='history_back_btn' open-type='switchTab' url='../buyer/buyer'>返回首页</navigator>
+      </view>
+    </block>
+    <block wx:else>
+      <view class='card-box flex flex-row {{allitem.status}}' wx:for='{{showData}}' wx:for-item='allitem' wx:for-index='allidx' wx:key='{{allidx}}'>
+        <view class='flex-item card-status-box'>
+            <view class='font-14pt'>{{allitem.title}}</view>
+            <view><text class='font-12pt'>¥</text>{{allitem.value}} <text class='font-12pt'>{{allitem.tag}}</text></view>
+        </view>
+
+        <view class='card-time-box sub_text_color font-12pt flex flex-column justify-center align-center'>
+          <view class='card-side' style='background-image:url(../../assets/icon/circle_side.png)'></view>
+          <view>使用期限</view>
+          <view>{{allitem.starttime}}</view>
+          <view>{{allitem.endtime}}</view>
+        </view>
+      </view>
+    </block>
+  </view>
+</view>

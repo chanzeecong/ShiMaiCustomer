@@ -1,0 +1,7 @@
+<!--pages/sale/sale.wxml-->
+<view class='wrapper'>
+  <view class='sale-notice group-padding'>
+    <view><image src=''></image>本轮特卖剩余时间：05天 12小时 28分 19秒</view>
+    <view>查看规则</view>
+  </view>
+</view>

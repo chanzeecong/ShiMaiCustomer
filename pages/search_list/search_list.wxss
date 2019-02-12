@@ -1,0 +1,419 @@
+/* pages/search_list/search_list.wxss */
+.wrapper.active{
+  overflow:hidden;
+}
+.search_info{
+  font-size: 28rpx;
+  color: rgba(0, 0, 0, .6);
+  padding: 16rpx 32rpx;
+}
+.filter{
+  border-left: 1px solid rgba(0, 0, 0, .2);
+  padding: 16rpx 32rpx;
+  font-size: 28rpx;
+  color: rgba(0, 0, 0, .6);
+}
+.icon_arrow{
+  width: 20rpx;
+  height: 20rpx;
+  overflow: hidden;
+  position: absolute;
+  right: 55px;
+  top: 0;
+  transform: rotateZ(-45deg);
+}
+.icon_arrow::after{
+  display: block;
+  content: "";
+  background-color: #000;
+  width: 100%;
+  height: 100%;
+  transform: rotateZ(45deg) translateY(12rpx);
+}
+
+.filter-box{
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 10;
+}
+.filter-mask{
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, .4);
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 1;
+  opacity: 0;
+}
+.filter-content{
+  -webkit-transform: translateX(110%);
+  transform: translateX(110%);
+  background-color: #fff;
+  width: 640rpx;
+  height: 100%;
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: 3;
+}
+.filter-btns{
+  box-shadow: 0 2rpx 6rpx rgba(0, 0, 0, .2);
+}
+.filter-btns .btn-confirm{
+  background-color: rgba(245, 57, 110, 1);
+  color: #fff;
+  border-radius: 0;
+  padding: 6rpx 0;
+  font-size: 32rpx;
+}
+.btn{
+  height: 50px;
+}
+.filter-btns .btn-reset{
+  background-color: rgba(255, 255, 255, 1);
+  border-radius: 0;
+  color: #000;
+  font-size: 32rpx;
+  padding: 3px 0;
+}
+.filter-view{
+  padding: 15px;
+}
+.filter-item{
+  margin-bottom: 40rpx;
+}
+.item-title{
+  font-size: 28rpx;
+  color: rgba(0, 0, 0, .4);
+  margin-bottom: 40rpx;
+}
+.item-content{
+  font-size: 28rpx;
+  font-weight: bold;
+  margin-left: -10rpx;
+  margin-right: -10rpx;
+}
+.checkbox_label{
+  display: inline-block;
+  position: relative;
+  margin-bottom: 20rpx;
+  padding-right: 10rpx;
+  padding-left: 10rpx;
+  overflow: hidden;
+}
+checkbox .wx-checkbox-input.wx-checkbox-input-checked::before{
+  display: none;
+}
+checkbox .wx-checkbox-input{
+  border: 0;
+  background-color: #F7F7F7;
+  border-radius: 12rpx;
+  width: 170rpx;
+  padding: 14rpx 0;
+}
+checkbox .wx-checkbox-input.wx-checkbox-input-checked {
+  background: rgba(245, 57, 110, 1);
+  color: #fff;
+}
+.check_name{
+  display: inline-block;
+  position: absolute;
+  z-index: 2;
+  left: 50%;
+  top: 50%;
+  color: rgba(0, 0, 0, .6);
+  font-size: 28rpx;
+  transform: translateY(-50%) translateX(-50%);
+  width:100%;
+  text-align:center;
+}
+.range_price{
+  background-color: #F7F7F7;
+  padding: 14rpx;
+  border-radius: 12rpx;
+  margin-right: 100rpx;
+}
+.placeholder_text{
+  color: rgba(0, 0, 0, .2);
+}
+.range_price:last-child{
+  margin-right: 0;
+}
+.filter-box.active{
+  display: block;
+}
+.filter-box.active.in .filter-mask{
+  -webkit-animation: showMask .2s ease-in forwards;
+  animation: showMask .2s ease-in forwards;
+}
+@-webkit-keyframes showMask{
+  from{
+    opacity: 0;
+  }
+  to{
+    opacity: 1;
+  }
+}
+@keyframes showMask{
+  from{
+    opacity: 0;
+  }
+  to{
+    opacity: 1;
+  }
+}
+.filter-box.active.in .filter-content{
+  -webkit-transform: translateX(110%);
+  transform: translateX(110%);
+  -webkit-animation: showContent .2s ease-in forwards;
+  animation: showContent .2s ease-in forwards;
+}
+@-webkit-keyframes showContent{
+  from{
+    transform: translateX(110%);
+  }
+  to{
+    transform: translateX(0);
+  }
+}
+@keyframes showContent{
+  from{
+    transform: translateX(110%);
+  }
+  to{
+    transform: translateX(0);
+  }
+}
+
+.filter-box.active.out .filter-content{
+  -webkit-transform: translateX(0);
+  transform: translateX(0);
+  -webkit-animation: hideContent .2s ease-out forwards;
+  animation: hideContent .2s ease-out forwards;
+}
+
+@-webkit-keyframes hideContent{
+  from{
+    -webkit-transform: translateX(0);
+  }
+  to{
+    transform: translateX(110%);
+  }
+}
+@keyframes hideContent{
+  from{
+    transform: translateX(0);
+  }
+  to{
+    transform: translateX(110%);
+  }
+}
+
+.filter-box.active.out .filter-mask{
+  opacity: 1;
+  -webkit-animation: hideMask .2s .2s ease-out forwards;
+  animation: hideMask .2s .2s ease-out forwards;
+}
+
+@-webkit-keyframes hideMask{
+  from{
+    opacity: 1;
+  }
+  to{
+    opacity: 0;
+  }
+}
+@keyframes hideMask{
+  from{
+    opacity: 1;
+  }
+  to{
+    opacity: 0;
+  }
+}
+
+.search-tools{
+  position: relative;
+  padding: 14rpx 0;
+  border-top: 2rpx solid #F7F7F7;
+}
+.pull-down-sort{
+  display: none;
+  position: absolute;
+  top: 50px;
+  left: 0;
+  width: 100%;
+  background-color: #fff;
+  z-index: 5;
+  -webkit-transform-origin: 0 0;
+  transform-origin: 0 0;
+}
+
+.pull-down-sort .sort-box{
+  padding: 0 32rpx 32rpx 32rpx;
+}
+
+.pull-down-sort.active{
+  display: block;
+}
+.pull-down-sort.in{
+  display: block;
+}
+.pull-down-sort.out{
+  display: block;
+}
+.pull-down-sort.in{
+  -webkit-transform: scaleY(0);
+  transform: scaleY(0);
+  -webkit-animation: showSortContent .2s ease-out forwards;
+  animation: showSortContent .2s ease-out forwards;
+}
+
+@-webkit-keyframes showSortContent{
+  from{
+    -webkit-transform: scaleY(0);
+  }
+  to{
+    transform: scaleY(1);
+  }
+}
+@keyframes showSortContent{
+  from{
+    transform: scaleY(0);
+  }
+  to{
+    transform: scaleY(1);
+  }
+}
+
+.pull-down-sort.out{
+  -webkit-transform: scaleY(1);
+  transform: scaleY(1);
+  -webkit-animation: hideSortContent .2s ease-out forwards;
+  animation: hideSortContent .2s ease-out forwards;
+}
+
+@-webkit-keyframes hideSortContent{
+  from{
+    -webkit-transform: scaleY(1);
+  }
+  to{
+    transform: scaleY(0);
+  }
+}
+@keyframes hideSortContent{
+  from{
+    transform: scaleY(1);
+  }
+  to{
+    transform: scaleY(0);
+  }
+}
+
+.sort-mask{
+  display: none;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 3;
+  background-color: rgba(0, 0, 0, .4);
+  opacity: 0;
+}
+.sort-mask.active{
+  display: block;
+}
+
+.sort-mask.in{
+  opacity: 0;
+  -webkit-animation: showSortMask .2s ease-in forwards;
+  animation: showSortMask .2s ease-in forwards;
+}
+
+@-webkit-keyframes showSortMask{
+  from{
+    opacity: 0;
+  }
+  to{
+    opacity: 1;
+  }
+}
+@keyframes showSortMask{
+  from{
+    opacity: 0;
+  }
+  to{
+    opacity: 1;
+  }
+}
+
+.sort-mask.out{
+  opacity: 1;
+  -webkit-animation: hideSortMask .2s .2s ease-out forwards;
+  animation: hideSortMask .2s .2s ease-out forwards;
+}
+
+@-webkit-keyframes hideSortMask{
+  from{
+    opacity: 1;
+  }
+  to{
+    opacity: 0;
+  }
+}
+@keyframes hideSortMask{
+  from{
+    opacity: 1;
+  }
+  to{
+    opacity: 0;
+  }
+}
+
+.pull-down-sort .sort-box .radio{
+  display: block;
+  font-size: 28rpx;
+  padding: 20rpx 0;
+  background-color: transparent;
+  position: relative;
+}
+
+.radio .wx-radio-input{
+  height: 40rpx; 
+  width: 40rpx;
+  border: none;
+  background-color: #fff;
+}
+
+radio .wx-radio-input.wx-radio-input-checked{
+  border: none;
+  background-color: #fff;
+}
+
+radio .wx-radio-input.wx-radio-input-checked::before{
+  width: 40rpx;
+  height: 40rpx;
+  line-height: 40rpx;
+  text-align: center;
+  font-size:30rpx;
+  color: rgba(245, 57, 110, 1);
+  background-color: #fff;
+  transform:translate(-50%, -50%) scale(1);
+  -webkit-transform:translate(-50%, -50%) scale(1);
+}
+.radio-input{
+  position: absolute;
+  right: 0;
+  background-color: transparent;
+}
+.sort_btn{
+  display: block;
+  text-align:center;
+  position:relative;
+}

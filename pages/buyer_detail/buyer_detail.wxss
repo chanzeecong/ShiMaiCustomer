@@ -1,0 +1,112 @@
+/* pages/buyer_detail/buyer_detail.wxss */
+.buyer_info_box{
+  padding: 40rpx 32rpx;
+}
+.buyer_img{
+  width: 160rpx;
+  height:160rpx;
+  border-radius:50%;
+  margin-right: 30rpx;
+  background-size:cover;
+  background-position:center;
+}
+.buyer_name{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 20rpx;
+}
+.buyer_title_info{
+  padding-left: 30rpx;
+  margin-bottom: 20rpx;
+}
+.buyer_focus{
+  width: 100%;
+}
+.focus_btn{
+  border-radius: 50rpx;
+  padding: 10rpx 20rpx;
+}
+.buyer-badges{
+  padding: 20rpx 0;
+  margin-left: 20rpx;
+}
+.contact_btn{
+  width: 400rpx;
+  padding: 16rpx 0;
+  text-align: center;
+  vertical-align: middle;
+  font-size: 28rpx;
+  border-radius: 6rpx;
+  box-shadow: 0 2rpx 6rpx rgba(245, 57, 110, .4);
+}
+.icon_btn{
+  width: 48rpx;
+  height: 48rpx;
+}
+.article_tab{
+  display: block;
+  position: relative;
+  font-weight: bold;
+  font-size: 28rpx;
+  padding: 20rpx 70rpx;
+}
+
+.article_tab.active::after{
+  display: block;
+  content:"";
+  height: 4rpx;
+  width: 30px;
+  background-color: #F5396E;
+  position: absolute;
+  bottom: 12rpx;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  transform: translateX(-50%);
+}
+.list-item{
+  padding: 0 40rpx;
+}
+.list-item .list-img{
+  width: 120rpx;
+  height: 120rpx;
+  margin-right: 32rpx;
+}
+.list-item .item-group{
+  padding: 40rpx 0;
+  border-bottom: 2rpx solid #DEDEDE;
+}
+.list-info{
+  font-size:28rpx; 
+}
+.list-info .info-title{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display:-webkit-box; 
+  -webkit-box-orient:vertical;
+  -webkit-line-clamp:2; 
+}
+.list-info .info-content{
+  display: block;
+  color: rgba(0, 0, 0, .6);
+  margin-top: 10rpx;
+  font-size: 20rpx;
+}
+.product .list-img{
+  width: 224rpx;
+  height: 224rpx;
+}
+.product .info-price{
+  font-size: 32rpx;
+  color: #F5396E;
+}
+.product .right_comments{
+  float: right;
+}
+.product .right_comments image{
+  position: relative;
+  width: 30rpx;
+  height: 30rpx;
+  top: 6rpx;
+  margin-right: 6rpx;
+}

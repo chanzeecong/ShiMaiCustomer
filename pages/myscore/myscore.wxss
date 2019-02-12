@@ -1,0 +1,53 @@
+/* pages/myscore/myscore.wxss */
+.myscore-card{
+  width: 686rpx;
+  height: 240rpx;
+  border-radius: 12rpx;
+  background-position: center;
+  background-size: 102%;
+  background-repeat: no-repeat;
+  box-shadow: 0 4rpx 12rpx rgba(221, 0, 235, .34);
+  margin-bottom: 80rpx;
+  background-color: transparent;
+  position: relative;
+}
+.myscore-card::after{
+  display: block;
+  content: "";
+  width: 70%;
+  height: 100%;
+  border-radius: 50rpx;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 0;
+  background-color: transparent;
+  box-shadow: 0 30rpx 40rpx rgba(221, 0, 235, .15);
+}
+.myscore-card image{
+  width: 100%;
+  height: 100%;
+}
+.card-content{
+  width: 100%;
+  height: 100%;
+  color: #fff;
+}
+.card_info{
+  margin-top: 20rpx;
+  background-color: #fff;
+  color: #CF0063;
+  border-radius: 50rpx;
+  min-width: 320rpx;
+  text-align: center;
+  font-size: 28rpx;
+  padding: 16rpx 0;
+  box-shadow: 0 6rpx 12rpx rgba(207, 0, 99, 1);
+}
+.score_item{
+  padding: 32rpx;
+  border-top: 1px solid #f4f4f4;
+}
+.clip{
+  
+}

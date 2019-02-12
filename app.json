@@ -1,0 +1,54 @@
+{
+  "pages": [
+    "pages/discover/discover",
+    "pages/buyer/buyer",
+    "pages/index/index",
+    "pages/myhistory/myhistory",
+    "pages/buyer_detail/buyer_detail",
+    "pages/myreply_list/myreply_list",
+    "pages/mynotice/mynotice",
+    "pages/card_bag/card_bag",
+    "pages/myscore/myscore",
+    "pages/usercenter/usercenter",
+    "pages/sale/sale",
+    "pages/search_list/search_list",
+    "pages/buyer_list/buyer_list",
+    "pages/search_buyer/search_buyer"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "color": "#666",
+    "selectedColor": "#F44168",
+    "list": [
+      {
+        "iconPath": "assets/icon/Tab_icon_Sale_Default@2x.png",
+        "selectedIconPath": "assets/icon/Tab_icon_Sale_Selected@2x.png",
+        "pagePath": "pages/sale/sale",
+        "text": "特卖"
+      },
+      {
+        "iconPath": "assets/icon/Tab_icon_buyer_Default@2x.png",
+        "selectedIconPath": "assets/icon/Tab_icon_buyer_Selected@2x.png",
+        "pagePath": "pages/buyer/buyer",
+        "text": "买手"
+      },
+      {
+        "iconPath": "assets/icon/Tab_icon_Find_Default@2x.png",
+        "selectedIconPath": "assets/icon/Tab_icon_Find_Selected@2x.png",
+        "pagePath": "pages/discover/discover",
+        "text": "发现"
+      },
+      {
+        "iconPath": "assets/icon/Tab_icon_my_Default@2x.png",
+        "selectedIconPath": "assets/icon/Tab_icon_my_Selected@2x.png",
+        "pagePath": "pages/usercenter/usercenter",
+        "text": "我的"
+      }
+    ]
+  }
+}

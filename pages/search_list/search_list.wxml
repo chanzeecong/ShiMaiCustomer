@@ -1,0 +1,113 @@
+<view class='wrapper {{filterClass}}' style='height:{{wrapperHeight}}'>
+  <view style='margin-bottom: 10rpx;'>
+    <view style='position: relative;z-index: 4;'>
+      <navigator open-type='navigate' url='../search_buyer/search_buyer' class='search-wrapper bg-white'>
+        <view class='search-box'>
+          <view class='icon icon-search'>
+            <image src='../../assets/icon/icon_search@2x.png'></image>
+          </view>
+          <text class='search-place-text'>香水</text>
+        </view>
+        <text class='search_btn'>搜索</text>
+      </navigator>
+      <view class='flex flex-row bg-white search-tools'>
+        <view class='search_info flex-item flex -flex-row'>
+          <text>9085个结果</text>
+          <view bindtap='showSort' class='flex-item sort_btn'>
+            综合排序
+            <view class='icon_arrow'></view>
+          </view>
+        </view>
+        <view class='filter' bindtap='getFilter'>筛选</view>
+
+        <view class='pull-down-sort {{sortActive}} {{sortActiveState}}'>
+          <view class='sort-box'>
+            <radio-group class="radio-group" bindchange="sortChange">
+              <label class="radio" wx:for="{{sortItems}}">
+                <radio class='radio-input' value="{{item.name}}" checked="{{item.checked}}" />
+                {{item.value}}
+              </label>
+            </radio-group>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class='sort-mask {{sortActive}} {{sortActiveState}}' bindtap='hideSort'></view>
+  </view>
+  
+
+  <view class='filter-box {{filterClass}} {{filterInOut}}'>
+    <view class='filter-mask' bindtap='closeFilter'></view>
+
+    <form bindsubmit="formSubmit" bindreset="formReset">
+      <view class='filter-content'>
+        <scroll-view class='filter-view' style='height:{{innerHeight}};width: auto;'>
+          <checkbox-group bindchange="checkboxChange" name="filter">
+            <view class='filter-item' wx:for='{{filterArray}}' wx:for-index='fidx' wx:key="{{fidx}}" wx:for-item='fitem'>
+              <view class='item-title'>{{fitem.title}}</view>
+              <view class='item-content'>
+                <block wx:if="{{fitem.type==='multiple'}}">
+                  <label class="checkbox_label" wx:for="{{fitem.child}}" wx:for-index='cidx' wx:key="{{cidx}}" wx:for-item='citem'>
+                    <checkbox class='check_box' value="{{citem.name}}" />
+                    <view class='check_name'>{{citem.value}}</view>
+                  </label>
+                </block>
+                <block wx:elif="{{fitem.type==='range'}}">
+                  <view class='flex flex-row justify-between'>
+                    <input class='range_price flex-item' name="{{citem.value}}" wx:for="{{fitem.child}}" wx:for-index='cidx' wx:key="{{cidx}}" wx:for-item='citem' placeholder='{{citem.name}}' type='number' placeholder-class='placeholder_text'></input>
+                  </view>
+                </block>
+              </view>
+            </view>
+          </checkbox-group>
+        </scroll-view>
+        <view class='filter-btns flex flex-row'>
+          <button plain style='border:none;' form-type="reset" class='btn btn-reset flex-item'>重置</button>
+          <button style='border:none;' form-type="submit" class='btn btn-confirm flex-item'>确定</button>
+        </view>
+      
+      </view>
+    </form>
+  </view>
+
+  <view class='buyer_box_list'>
+
+    <view class='buyer_box' wx:for="{{buyerList}}" wx:for-item="list" wx:for-index="listidx" wx:key="{{idex}}">
+      <view class='flex flex-row buyer_head'>
+          <image class='buyer_img' mode='aspectFill' src='../../assets/img/4.png'></image>
+          <view class='flex-item'>
+            <view class='buyer_title'>
+              <text>The storyor（美国）</text>
+              <view class='title_location'>
+                <image class='icon icon_location' src='../../assets/icon/icon_position1@2x.png'></image>
+                韩国Suwon
+              </view>
+            </view>
+            <view class='flex flex-row buyer-badges'>
+              <view class='badges-item' wx:for='{{list.badge}}' wx:for-index="cidx" wx:key="{{cidx}}" wx:for-item="child">
+                {{child}}
+              </view>
+            </view>
+          </view>
+      </view>
+
+      <view class='buyer_middle_info'>
+        <text class='info_title'>优惠最大 业内高手 亲身购买</text>
+        <text class='info_sub_title'>职业代购，会定期去日本采购</text>
+      </view>
+
+      <scroll-view style='white-space:nowrap;' scroll-x scroll-with-animation>
+        <view class='product_item' style='background-image: url(../../assets/img/text-img.png)'></view>
+        <view class='product_item' style='background-image: url(../../assets/img/text-img.png)'></view>
+        <view class='product_item' style='background-image: url(../../assets/img/text-img.png)'></view>
+        <view class='product_item' style='background-image: url(../../assets/img/text-img.png)'></view>
+      </scroll-view>
+
+      <view class='buyer-action'>
+        <button class='buyer-focus'>立即联系</button>
+      </view>
+
+    </view>
+    
+  </view>
+</view>

@@ -1,0 +1,53 @@
+<!--pages/myhistory/myhistory.wxml-->
+<block wx:if='{{showList.list.length!==0}}'>
+  <view class='wrapper bg-white'>
+    <view class='p-h-20pt font-14pt sub_text_color2 p-v-10pt' wx:if='{{!manageActive}}' bindtap='toggleManage' style='text-align:right'>管理</view>
+    <view class='p-h-20pt font-14pt sub_text_color2 p-v-10pt' wx:else bindtap='toggleManage' style='text-align:right'>完成</view>
+
+    <view class='myhistory_list'>
+      <checkbox-group class="check-group {{activeCheckBox}}" bindchange="listSelection">
+        <view class='list-item product' wx:for="{{showList}}" wx:for-index="showidx" wx:key="{{showidx}}" wx:for-item="showitem">
+          <label class="radio">
+            <view class='flex flex-row item-group'>
+              <view class='flex flex-column justify-center align-center'>
+                <checkbox class='check_selection' name="{{showitem.id}}" value="{{showidx}}" checked="{{showitem.checked}}" />
+              </view>
+              <navigator open-type='navigate'><image class='list-img' src='{{showitem.img}}'></image></navigator>
+              <view class='list-info flex-item flex flex-column justify-between'>
+                <text class='info-title'>{{showitem.title}}</text>
+                <text class='info-price'>抢购价{{showitem.price}}元</text>
+                <view class='info-content'>{{showitem.tag}} | {{showitem.time}} <view class='right_comments'><image src='../../assets/icon/icon_browse@2x.png'></image>{{showitem.comments}}</view></view>
+              </view>
+            </view>
+          </label>
+        </view>
+      </checkbox-group>
+    </view>
+
+    <view class='manage_box bg-white flex-row justify-between {{activeCheckBox}}'>
+      <view class='flex-item flex flex-column justify-center'>
+        <checkbox-group bindchange="selectAll">
+          <label class='font-12pt' style='padding-left: 32rpx;'>
+            <checkbox value="all" checked="{{selectAll}}" />
+            全选
+          </label>
+        </checkbox-group>
+      </view>
+      <view class='flex flex-column justify-center align-center delete_item font-14pt'>删除</view>
+    </view>
+
+  </view>
+</block>
+
+<block wx:else>
+  <view class='wrapper bg-white' style='height: 100vh'>
+    <view class='flex flex-column justify-center align-center' style='height: 100%;'>
+      <view class='center-text m-b-10pt'>
+        <image src='../../assets/icon/img_No-data@2x.png'></image>
+        <view class='font-16pt sub_text_color empty_text center_text m-b-10pt'>您还没有浏览的记录哦！</view>
+        <view class='font-12pt sub_text_color empty_text center_text'>主人快去给我挑点宝贝吧</view>
+      </view>
+      <navigator class='history_back_btn' open-type='switchTab' url='../buyer/buyer'>去逛逛</navigator>
+    </view>
+  </view>
+</block>

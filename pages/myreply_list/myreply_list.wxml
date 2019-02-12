@@ -1,0 +1,41 @@
+<!--pages/myreply_list/myreply_list.wxml-->
+<view class='wrapper bg-white' style='margin-top: 20rpx;'>
+  <view class='mybuyer_list'>
+    <view class='mybuyer_item flex flex-row p-v-10pt section-padding'>
+      <view class='buyer_avatar' style='background-image:url(../../assets/img/4.png)'></view>
+      <view class='flex flex-column justify-between flex-item'>
+        <text class='font-14pt font-bold'>少女心</text>
+        <text class='font-14pt sub_text_color2'>在吗？</text>
+      </view>
+      <view class='flex flex-column justify-around'>
+        <view class='mybuyer_status active align-self-end'></view>
+        <view class='font-10pt sub_text_color2'>昨天</view>
+      </view>
+    </view>
+
+    <view class='mybuyer_item flex flex-row p-v-10pt section-padding'>
+      <view class='buyer_avatar' style='background-image:url(../../assets/img/4.png)'></view>
+      <view class='flex flex-column justify-between flex-item'>
+        <text class='font-14pt font-bold'>少女心</text>
+        <text class='font-14pt sub_text_color2'>在吗？</text>
+      </view>
+      <view class='flex flex-column justify-around'>
+        <view class='mybuyer_status active align-self-end'></view>
+        <view class='font-10pt sub_text_color2'>12-13</view>
+      </view>
+    </view>
+
+    <view class='mybuyer_item flex flex-row p-v-10pt section-padding'>
+      <view class='buyer_avatar' style='background-image:url(../../assets/img/4.png)'></view>
+      <view class='flex flex-column justify-between flex-item'>
+        <text class='font-14pt font-bold'>少女心</text>
+        <text class='font-14pt sub_text_color2'>在吗？</text>
+      </view>
+      <view class='flex flex-column justify-around'>
+        <view class='mybuyer_status active align-self-end'></view>
+        <view class='font-10pt sub_text_color2'>2017-12-13</view>
+      </view>
+    </view>
+
+  </view>
+</view>
