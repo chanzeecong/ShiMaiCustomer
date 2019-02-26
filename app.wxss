@@ -1,13 +1,17 @@
 /**app.wxss**/
-page{
+
+page {
   background-color: #f4f4f4;
 }
-.bg-white{
-  background-color: #ffffff;
+
+.bg-white {
+  background-color: #fff;
 }
-.color_primary{
-  color: #F5396E;
+
+.color_primary {
+  color: #f5396e;
 }
+
 .container {
   height: 100%;
   display: flex;
@@ -16,135 +20,531 @@ page{
   justify-content: space-between;
   padding: 200rpx 0;
   box-sizing: border-box;
-} 
-.search-wrapper{
-  display: flex;
-  padding:32rpx;
 }
-.search-box{
+
+.search-wrapper {
+  display: flex;
+  padding: 32rpx;
+}
+
+.search-box {
   flex: 1;
   display: flex;
   flex-direction: row;
-  background-color: rgba(0, 0, 0, .05);
+  background-color: rgba(0, 0, 0, 0.05);
 }
-.search_btn{
+
+.search_btn {
   font-size: 28rpx;
   font-weight: bold;
   padding-left: 28rpx;
   padding-top: 14rpx;
   padding-bottom: 14rpx;
 }
-.search-place-text{
+
+.search-place-text {
   margin-left: 30rpx;
   font-size: 28rpx;
-  color: rgba(0, 0, 0, .4);
+  color: rgba(0, 0, 0, 0.4);
   flex: 1;
   padding: 16rpx 0;
 }
-.icon > image{
+
+.icon > image {
   width: 100%;
   height: 100%;
 }
-.icon-search{
+
+.icon-search {
   width: 40rpx;
   height: 40rpx;
-  padding:16rpx 0 16rpx 16rpx;
+  padding: 16rpx 0 16rpx 16rpx;
 }
-.section-padding{
+
+.section-padding {
   padding: 0 32rpx;
 }
-.flex{
+
+.flex {
   display: flex;
 }
-.flex-row{
-  flex-direction: row
+
+.flex-row {
+  flex-direction: row;
 }
-.flex-column{
-  flex-direction: column
+
+.flex-column {
+  flex-direction: column;
 }
-.flex-wrapper{
+
+.flex-wrapper {
   flex-wrap: wrap;
 }
-.justify-center{
+
+.justify-center {
   justify-content: center;
 }
-.justify-between{
+
+.justify-between {
   justify-content: space-between;
 }
-.justify-around{
+
+.justify-around {
   justify-content: space-around;
 }
-.align-center{
+
+.align-center {
   align-items: center;
 }
-.bold-text{
+
+.bold-text {
   font-weight: bold;
 }
-.flex-item{
+
+.flex-item {
   flex: 1;
 }
-.font-10pt{
+
+.font-10pt {
   font-size: 20rpx;
 }
-.font-12pt{
+
+.font-12pt {
   font-size: 24rpx;
 }
-.font-14pt{
+
+.font-14pt {
   font-size: 28rpx;
 }
-.font-16pt{
+
+.font-16pt {
   font-size: 32rpx;
 }
-.font-18pt{
+
+.font-18pt {
   font-size: 36rpx;
 }
-.font-bold{
+
+.font-bold {
   font-weight: bold;
 }
-.m-b-10pt{
+
+.m-b-10pt {
   margin-bottom: 20rpx;
 }
-.m-b-15pt{
+
+.m-b-15pt {
   margin-bottom: 30rpx;
 }
-.m-t-10pt{
+
+.m-t-10pt {
   margin-top: 20rpx;
 }
-.m-t-15pt{
+
+.m-t-15pt {
   margin-top: 30rpx;
 }
-.p-v-10pt{
+
+.p-v-10pt {
   padding-top: 20rpx;
   padding-bottom: 20rpx;
 }
-.p-h-10pt{
+
+.p-h-10pt {
   padding-left: 20rpx;
   padding-right: 20rpx;
 }
 
-.p-h-20pt{
+.p-h-20pt {
   padding-left: 40rpx;
   padding-right: 40rpx;
 }
 
-.center_text{
+.center_text {
   text-align: center;
 }
 
-.sub_text_color{
-  color: rgba(0,0,0,.4);
+
+.sub_text_color2 {
+  color: rgba(0, 0, 0, 0.6);
 }
-.sub_text_color2{
-  color: rgba(0,0,0,.6);
-}
-.align-self-end{
+
+.align-self-end {
   align-self: flex-end;
 }
-.primary_bg{
-  background-color: #F5396E;
+
+.padTop-8 {
+  padding-top: 16rpx;
+}
+.padTop-10 {
+  padding-top: 20rpx;
+}
+.padTop-12 {
+  padding-top: 24rpx;
+}
+.padTop-13 {
+  padding-top: 26rpx;
+}
+.padTop-15 {
+  padding-top: 30rpx;
+}
+.padTop-17 {
+  padding-top: 34rpx;
+}
+.padTop-18 {
+  padding-top: 36rpx;
+}
+.padTop-20 {
+  padding-top: 40rpx;
+}
+.padTop-25 {
+  padding-top: 50rpx;
+}
+.padTop-28 {
+  padding-top: 56rpx;
+}
+.padTop-30 {
+  padding-top: 60rpx;
+}
+.padTop-40 {
+  padding-top: 80rpx;
+}
+.padTop-50 {
+  padding-top: 100rpx;
+}
+.padTop-61 {
+  padding-top: 122rpx;
+}
+.padTop-130 {
+  padding-top: 260rpx;
+}
+.padBot-3 {
+  padding-bottom: 6rpx;
+}
+.padBot-5 {
+  padding-bottom: 10rpx;
+}
+.padBot-6 {
+  padding-bottom: 12rpx;
+}
+.padBot-10 {
+  padding-bottom: 20rpx;
+}
+.padBot-11 {
+  padding-bottom: 22rpx;
+}
+.padBot-15 {
+  padding-bottom: 30rpx;
+}
+.padBot-18 {
+  padding-bottom: 36rpx;
+}
+.padBot-20 {
+  padding-bottom: 40rpx;
+}
+.padBot-30 {
+  padding-bottom: 60rpx;
+}
+.padBot-40 {
+  padding-bottom: 80rpx;
+}
+.padBot-80 {
+  padding-bottom: 160rpx;
+}
+.padBot-130 {
+  padding-bottom: 260rpx;
+}
+.padBot-155 {
+  padding-bottom: 310rpx;
+}
+.padBot-380 {
+  padding-bottom: 720rpx;
+}
+.padRig-1 {
+  padding-right: 2rpx;
+}
+.padRig-3 {
+  padding-right: 6rpx;
+}
+.padRig-4 {
+  padding-right: 8rpx;
+}
+.padRig-5 {
+  padding-right: 10rpx;
+}
+.padRig-6 {
+  padding-right: 12rpx;
+}
+.padRig-10 {
+  padding-right: 20rpx;
+}
+.padRig-12 {
+  padding-right: 24rpx;
+}
+.padRig-16 {
+  padding-right: 32rpx;
+}
+.padRig-18 {
+  padding-right: 36rpx;
+}
+.padRig-20 {
+  padding-right: 40rpx;
+}
+.padRig-25 {
+  padding-right: 50rpx;
+}
+.padRig-30 {
+  padding-right: 60rpx;
+}
+.padRig-40 {
+  padding-right: 80rpx;
+}
+.padRig-81 {
+  padding-right: 162rpx;
+}
+.padLef-5 {
+  padding-left: 10rpx;
+}
+.padLef-6 {
+  padding-left: 12rpx;
+}
+.padLef-10 {
+  padding-left: 20rpx;
+}
+.padLef-12 {
+  padding-left: 24rpx;
+}
+.padLef-16 {
+  padding-left: 32rpx;
+}
+.padLef-19 {
+  padding-left: 38rpx;
+}
+.padLef-20 {
+  padding-left: 40rpx;
+}
+.padLef-22 {
+  padding-left: 44rpx;
+}
+.padLef-25 {
+  padding-left: 50rpx;
+}
+.padLef-28 {
+  padding-left: 56rpx;
+}
+.padLef-30 {
+  padding-left: 60rpx;
+}
+.padLef-36 {
+  padding-left: 72rpx;
+}
+.padLef-40 {
+  padding-left: 80rpx;
+}
+.padLef-42 {
+  padding-left: 84rpx;
+}
+.padLef-50 {
+  padding-left: 100rpx;
+}
+.padLef-70 {
+  padding-left: 140rpx;
+}
+.padLef-81 {
+  padding-left: 162rpx;
+}
+.padLef-123 {
+  padding-left: 220rpx;
+
+}
+.magTop-1 {
+  margin-top: 2rpx;
+}
+.magTop-5 {
+  margin-top: 10rpx;
+}
+.magTop-10 {
+  margin-top: 20rpx;
+}
+.magTop-15 {
+  margin-top: 30rpx;
+}
+.magTop-20 {
+  margin-top: 40rpx;
+}
+.magTop-28 {
+  margin-top: 56rpx;
+}
+.magTop-30 {
+  margin-top: 60rpx;
+}
+.magTop-40 {
+  margin-top: 80rpx;
+}
+.magTop-70 {
+  margin-top: 140rpx;
+}
+.magBot-3 {
+  margin-bottom: 6rpx;
+}
+.magBot-10 {
+  margin-bottom: 20rpx;
+}
+.magBot-20 {
+  margin-bottom: 40rpx;
+}
+.magBot-50 {
+  margin-bottom: 100rpx;
+}
+.magBot-80 {
+  margin-bottom: 160rpx;
+}
+.magBot-120 {
+  margin-bottom: 240rpx;
+}
+.magBot-155 {
+  margin-bottom: 310rpx;
+}
+.magRig-2 {
+  margin-right: 4rpx;
+}
+.magRig-3 {
+  margin-right: 9rpx;
+}
+.magRig-5 {
+  margin-right: 10rpx;
+}
+.magRig-10 {
+  margin-right: 20rpx;
+}
+.magRig-15 {
+  margin-right: 30rpx;
+}
+.magRig-16 {
+  margin-right: 32rpx;
+}
+.magRig-70 {
+  margin-right: 140rpx;
+}
+.magLef-5 {
+  margin-left: 10rpx;
+}
+.magLef-10 {
+  margin-left: 20rpx;
+}
+.magLef-16 {
+  margin-left: 32rpx;
+}
+.magLef-20 {
+  margin-left: 40rpx;
+}
+.magLef-36 {
+  margin-left: 72rpx;
+}
+.magLef-70 {
+  margin-left: 140rpx;
+}
+.magLef-110 {
+  margin-left: 220rpx;
+}
+.magLef-280 {
+  margin-left: 560rpx;
+}
+
+.font-8 {
+  font-family: San Francisco Display;
+	font-size: 16rpx;
+	font-weight: normal;
+	font-stretch: normal;
+	letter-spacing: 0rpx;
+	color: transparent;
+}
+.font-10 {
+  font-family: San Francisco Display;
+	font-size: 20rpx;
+	font-weight: normal;
+	font-stretch: normal;
+	letter-spacing: 0rpx;
+	color: transparent;
+}
+.font-11 {
+	font-family: Noto Sans S Chinese;
+	font-size: 22rpx;
+	font-weight: normal;
+	font-stretch: normal;
+	letter-spacing: 0rpx;
+	color: transparent;
+}
+.font-12 {
+  font-size:24rpx;
+  font-family:Noto Sans S Chinese;
+  font-weight:normal;
+  color:transparent;
+}
+.font-14 {
+  font-family: Noto Sans S Chinese;
+	font-size: 28rpx;
+	font-weight: normal;
+	font-stretch: normal;
+	letter-spacing: 0rpx;
+	color: transparent;
+}
+.font-16 {
+  font-family: Noto Sans S Chinese;
+	font-size: 32rpx;
+	font-weight: normal;
+	font-stretch: normal;
+	letter-spacing: 0rpx;
+	color: transparent;
+}
+.font-18 {
+  font-family: Noto Sans S Chinese;
+	font-size: 36rpx;
+	font-weight: normal;
+	font-stretch: normal;
+	letter-spacing: 0rpx;
+	color: transparent;
+}
+.font-20 {
+  font-family: San Francisco Display;
+	font-size: 40rpx;
+	font-weight: normal;
+	font-stretch: normal;
+	letter-spacing: 0rpx;
+	color: transparent;
+}
+.font-22 {
+  font-family: San Francisco Display;
+	font-size: 44rpx;
+	font-weight: normal;
+	font-stretch: normal;
+	letter-spacing: 0rpx;
+	color: transparent;
+}
+.font-28 {
+  font-family: Noto Sans S Chinese;
+	font-size: 56rpx;
+	font-weight: normal;
+	font-stretch: normal;
+	color: transparent;
+}
+.font-30 {
+  font-family: San Francisco Display;
+	font-size: 60rpx;
+	font-weight: normal;
+	font-stretch: normal;
+	letter-spacing: 0;
+	color: transparent;
+}
+.font-bold {
+  font-weight: bold;
+}
+.primary_bg {
+  background-color: #f5396e;
   color: #fff;
 }
-.icon-arrow{
+
+.icon-arrow {
   display: inline-block;
   background-size: cover;
   background-position: center;
@@ -152,35 +552,41 @@ page{
   height: 40rpx;
   margin-bottom: -10rpx;
 }
-.buyer_area_bg{
+
+.buyer_area_bg {
   background-position: center;
   background-size: cover;
   height: 400rpx;
   width: 100%;
 }
-.buyer_box_list{
+
+.buyer_box_list {
   padding: 10rpx 32rpx;
 }
-.buyer_box{
+
+.buyer_box {
   width: 100%;
   height: 560rpx;
   background-color: #fff;
   border-radius: 12rpx;
   margin-top: 10rpx;
   margin-bottom: 20rpx;
-  box-shadow: 0 6rpx 12rpx rgba(245, 57, 110, .15);
+  box-shadow: 0 6rpx 12rpx rgba(245, 57, 110, 0.15);
 }
-.buyer_img{
+
+.buyer_img {
   width: 100rpx;
   height: 100rpx;
   border-radius: 50%;
   overflow: hidden;
   margin-right: 20rpx;
 }
-.buyer_head{
+
+.buyer_head {
   padding: 20rpx;
 }
-.buyer_title{
+
+.buyer_title {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -188,10 +594,11 @@ page{
   font-weight: bold;
   margin-bottom: 14rpx;
 }
-.buyer-badges .badges-item{
+
+.buyer-badges .badges-item {
   display: inline-block;
-  color: #F5396E;
-  border: 2rpx solid #F5396E;
+  color: #f5396e;
+  border: 2rpx solid #f5396e;
   border-radius: 4rpx;
   font-size: 20rpx;
   padding: 4rpx 0;
@@ -199,41 +606,47 @@ page{
   width: 100rpx;
   margin: 10rpx;
 }
-.title_location{
+
+.title_location {
   position: relative;
-  color: rgba(0, 0, 0, .4);
+  color: rgba(0, 0, 0, 0.4);
   font-weight: normal;
   line-height: 1.4;
   font-size: 20rpx;
-  padding-left:35rpx;
-
+  padding-left: 35rpx;
 }
-.icon_location{
+
+.icon_location {
   position: absolute;
   left: -8rpx;
   top: -4rpx;
   width: 40rpx;
   height: 40rpx;
 }
-.buyer_middle_info{
+
+.buyer_middle_info {
   text-align: center;
   margin-bottom: 40rpx;
 }
-.info_title{
+
+.info_title {
   display: block;
   font-size: 28rpx;
   font-weight: bold;
   margin-bottom: 20rpx;
 }
-.info_sub_title{
+
+.info_sub_title {
   display: block;
   font-size: 24rpx;
 }
-.buyer-action{
+
+.buyer-action {
   margin-top: 30rpx;
   text-align: center;
 }
-.buyer-focus{
+
+.buyer-focus {
   border-radius: 50rpx;
   background-color: rgba(245, 57, 110, 1);
   color: #fff;
@@ -241,9 +654,10 @@ page{
   display: inline-block;
   width: 160rpx;
   line-height: 2;
-  box-shadow: 0 2rpx 6rpx rgba(245, 57, 110, .72);
+  box-shadow: 0 2rpx 6rpx rgba(245, 57, 110, 0.72);
 }
-.product_item{
+
+.product_item {
   display: inline-block;
   width: 180rpx;
   height: 160rpx;
@@ -251,34 +665,39 @@ page{
   background-size: cover;
   margin-right: 20rpx;
 }
-.product_item:last-child{
+
+.product_item:last-child {
   margin-right: 0;
 }
 
-
-.icon-arrow{
+.icon-arrow {
   margin-bottom: 0;
 }
-.navigate-icon{
-   width: 80rpx;
-   height: 80rpx;
+
+.navigate-icon {
+  width: 80rpx;
+  height: 80rpx;
 }
-.navigate-icon image{
+
+.navigate-icon image {
   width: 100%;
   height: 100%;
 }
-.notice_navigation > .navigate_item{
-  border-top: 1px solid #F4F4F4;
+
+.notice_navigation > .navigate_item {
+  border-top: 1px solid #f4f4f4;
 }
-.navigate_text{
+
+.navigate_text {
   position: relative;
 }
-.circle_badge_red{
+
+.circle_badge_red {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: #F12C20;
+  background-color: #f12c20;
   border-radius: 50%;
   color: #fff;
   font-size: 24rpx;
@@ -286,7 +705,8 @@ page{
   height: 40rpx;
   font-weight: 300;
 }
-.buyer_avatar{
+
+.buyer_avatar {
   width: 80rpx;
   height: 80rpx;
   border-radius: 50%;
@@ -294,15 +714,47 @@ page{
   background-position: center;
   margin-right: 20rpx;
 }
-.mybuyer_item{
-  border-top: 1px solid #F4F4F4;
+
+.mybuyer_item {
+  border-top: 1px solid #f4f4f4;
 }
-.mybuyer_status{
+
+.mybuyer_status {
   border-radius: 50%;
   width: 10rpx;
   height: 10rpx;
   background-color: transparent;
 }
-.mybuyer_status.active{
-  background-color: #F12C20;
+
+.mybuyer_status.active {
+  background-color: #f12c20;
+}
+
+/* 新增 */
+
+.padLef-5 {
+  padding-left: 10rpx;
+}
+
+.font-10 {
+  font-size: 20rpx;
+  font-family: Noto Sans S Chinese;
+  font-weight: normal;
+	font-stretch: normal;
+	letter-spacing: 0rpx;
+  color: transparent;
+}
+.font-12 {
+  font-size:12px;
+  font-family:San Francisco Display;
+  font-weight: normal;
+	font-stretch: normal;
+	letter-spacing: 0rpx;
+  color: transparent;
+}
+.deep {
+  color:rgba(102,102,102,1);
+}
+.gray {
+  color:rgba(153,153,153,1);
 }
