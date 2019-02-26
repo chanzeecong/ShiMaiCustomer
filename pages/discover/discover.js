@@ -10,9 +10,9 @@ Page({
     cate: [
       { id: '0', name: '关注', icon: '../../assets/icon/icon_aircraft@2x.png', active: 'active' },
       { id: '1', name: '推荐', icon: '../../assets/icon/icon_aircraft@2x.png', active: '' },
-      { id: '2', name: '美妆', icon: '../../assets/icon/icon_aircraft@2x.png', active: '' },
+      { id: '2', name: '美妆美妆', icon: '../../assets/icon/icon_aircraft@2x.png', active: '' },
       { id: '3', name: '母婴', icon: '../../assets/icon/icon_aircraft@2x.png', active: '' },
-      { id: '4', name: '家电', icon: '../../assets/icon/icon_aircraft@2x.png', active: '' },
+      { id: '4', name: '家电家电', icon: '../../assets/icon/icon_aircraft@2x.png', active: '' },
       { id: '5', name: '家居', icon: '../../assets/icon/icon_aircraft@2x.png', active: '' },
       { id: '6', name: '家居', icon: '../../assets/icon/icon_aircraft@2x.png', active: '' },
       { id: '7', name: '家居', icon: '../../assets/icon/icon_aircraft@2x.png', active: '' },
