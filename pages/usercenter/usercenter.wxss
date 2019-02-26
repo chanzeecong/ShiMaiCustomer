@@ -1,12 +1,15 @@
 /* pages/usercenter/usercenter.wxss */
-.user_header{
-  padding: 0 32rpx;
+
+.user_header {
   position: relative;
+  height: 410rpx;
 }
-.user_info{
+
+.user_info {
   padding: 20rpx 0;
 }
-.user_avartor{
+
+.user_avartor {
   width: 120rpx;
   height: 120rpx;
   background-size: cover;
@@ -14,24 +17,34 @@
   border-radius: 50%;
   margin-bottom: 20rpx;
 }
-.user_nickname{
+
+.user_nickname {
   position: relative;
 }
-.icon_edit{
+
+.icon_yin {
+  width: 28rpx;
+  height: 28rpx;
+  padding-right: 10rpx;
+}
+
+.icon_edit {
   position: absolute;
   display: block;
   right: -30rpx;
   top: 10rpx;
-  width: 20rpx;
-  height: 20rpx;
+  width: 24rpx;
+  height: 24rpx;
   background-position: center;
   background-size: cover;
 }
-.user_like_group{
+
+.user_footer {
   margin: 0 50rpx;
   margin-top: 40rpx;
 }
-.user_like_group .img_group{
+
+/* .user_like_group .img_group{
   position: relative;
   width: 110rpx;
   height: 40rpx;
@@ -67,55 +80,85 @@
   font-size: 32rpx;
   letter-spacing: 1px;
   transform: scale(.4);
+} */
+
+/* 新增签到icon */
+
+.dail_icon {
+  width: 40rpx;
+  height: 40rpx;
+  padding-top: 10rpx;
 }
-.daily_btn{
+
+.daily_btn {
   position: absolute;
-  right: 0;
-  bottom: 30%;
+  left: 0;
+  bottom: 45%;
   font-size: 20rpx;
-  width: 100rpx;
-  background-color: rgba(0, 0, 0, 0.5);
-  padding: 20rpx 0;
+  width: 180rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  /* padding: 10rpx; */
+  background: rgba(153, 153, 153, 1);
   color: #fff;
   text-align: center;
-  border-top-left-radius: 50rpx;
-  border-bottom-left-radius: 50rpx;
+  border-top-right-radius: 50rpx;
+  border-bottom-right-radius: 50rpx;
 }
-.section-box{
+
+.daily_text {
+  padding-bottom: 10rpx;
+}
+
+.section-box {
   margin-top: 20rpx;
 }
-.section-title{
+
+.section-title {
   padding: 26rpx 32rpx;
   vertical-align: middle;
   font-size: 28rpx;
   font-weight: bold;
-  line-height: 2;
-}
-.navigate_text{
-  display: block;
-  text-align: right;
-  line-height:2.2;
+  /* line-height: 2; */
 }
 
-.icon-btn-box{
+.navigate_text {
+  display: block;
+  text-align: right;
+  line-height: 2.2;
+}
+
+.icon-btn-box {
   text-align: center;
 }
-.icon-btn{
+
+.icon-order-btn {
   display: inline-block;
-  width: 80rpx;
-  height: 80rpx;
+  width: 60rpx;
+  height: 60rpx;
   background-size: cover;
   background-position: center;
 }
-.section-body{
+
+.icon-btn {
+  display: inline-block;
+  width: 40rpx;
+  height: 40rpx;
+  background-size: cover;
+  background-position: center;
+}
+
+.section-body {
   padding: 20rpx 0;
 }
-.tools-item{
+
+.tools-item {
   padding: 20rpx 0;
-  width: 33.33333%;
+  width: 25%;
   text-align: center;
 }
-.daily_wrapper{
+
+.daily_wrapper {
   display: none;
   position: fixed;
   width: 100%;
@@ -125,80 +168,89 @@
   left: 0;
 }
 
-.daily_wrapper.show{
+.daily_wrapper.show {
   display: block;
 }
-  
-.daily_wrapper .daily_mask{
+
+.daily_wrapper .daily_mask {
   opacity: 0;
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.28);
 }
 
-.daily_wrapper.in .daily_mask{
-  -webkit-animation: showDailyMask .2s ease-in forwards;
-  animation: showDailyMask .2s ease-in forwards;
+.daily_wrapper.in .daily_mask {
+  -webkit-animation: showDailyMask 0.2s ease-in forwards;
+  animation: showDailyMask 0.2s ease-in forwards;
 }
-@-webkit-keyframes showDailyMask{
-  from{
+
+@-webkit-keyframes showDailyMask {
+  from {
     opacity: 0;
   }
-  to{
-    opacity: 1;
-  }
-}
-@keyframes showDailyMask{
-  from{
-    opacity: 0;
-  }
-  to{
+
+  to {
     opacity: 1;
   }
 }
 
-.daily_mask > .daily_img{
-  width:100%;
+@keyframes showDailyMask {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.daily_mask > .daily_img {
+  width: 100%;
   height: 100%;
 }
 
-.daily_mask > .daily_img > .daily_img_box{
+.daily_mask > .daily_img > .daily_img_box {
   width: 320px;
   height: 240px;
 }
-.daily_wrapper.in > .daily_mask > .daily_img > .daily_img_box{
+
+.daily_wrapper.in > .daily_mask > .daily_img > .daily_img_box {
   -webkit-transform: scale(0);
   transform: scale(0);
-  -webkit-animation: showDailyImg .2s .2s ease-in forwards;
-  animation: showDailyImg .2s .2s ease-in forwards;
+  -webkit-animation: showDailyImg 0.2s 0.2s ease-in forwards;
+  animation: showDailyImg 0.2s 0.2s ease-in forwards;
 }
 
-@-webkit-keyframes showDailyImg{
-  from{
+@-webkit-keyframes showDailyImg {
+  from {
     transform: scale(0);
   }
-  to{
-    transform: scale(1);
-  }
-}
-@keyframes showDailyImg{
-  from{
-    transform: scale(0);
-  }
-  to{
+
+  to {
     transform: scale(1);
   }
 }
 
-.daily_img > .close_btn{
+@keyframes showDailyImg {
+  from {
+    transform: scale(0);
+  }
+
+  to {
+    transform: scale(1);
+  }
+}
+
+.daily_img > .close_btn {
   display: block;
-  background-color:transparent;
-  position:relative;
+  background-color: transparent;
+  position: relative;
   margin-top: 100rpx;
   width: 50rpx;
   height: 50rpx;
 }
-.daily_img > .close_btn::before{
+
+.daily_img > .close_btn::before {
   height: 4rpx;
   width: 40rpx;
   background-color: #fff;
@@ -207,9 +259,10 @@
   position: absolute;
   left: 5px;
   top: 10px;
-  transform:rotateZ(45deg);
+  transform: rotateZ(45deg);
 }
-.daily_img > .close_btn::after{
+
+.daily_img > .close_btn::after {
   height: 4rpx;
   width: 40rpx;
   background-color: #fff;
@@ -218,5 +271,5 @@
   content: "";
   top: 10px;
   left: 5px;
-  transform:rotateZ(-45deg);
+  transform: rotateZ(-45deg);
 }
