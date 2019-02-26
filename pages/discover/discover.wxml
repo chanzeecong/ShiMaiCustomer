@@ -9,7 +9,17 @@
     </view>
   </view>
 
+  <navigator open-type='navigate' url='../search_buyer/search_buyer' class='search-wrapper bg-white' style='margin-bottom: 10rpx;'>
+    <view class='search-box'>
+      <view class='icon icon-search'>
+        <image src='../../assets/icon/icon_search@2x.png'></image>
+      </view>
+      <text class='search-place-text'>搜索买手、标签、地区</text>
+    </view>
+  </navigator>
+
   <view class='flex flex-row category-scroll-box bg-white'>
+
     <scroll-view bindtap='chooseCategory' scroll-into-view='{{scrollID}}' scroll-x scroll-with-animation scroll-left='{{scrollLeft}}'>
       <view class='category-scroll'>
         <view id='item_{{index}}' wx:for='{{cate}}' wx:key='{{index}}' class='scroll-item {{item.active}}' data-index='{{index}}'>{{item.name}}</view>
@@ -21,7 +31,7 @@
     <view class='all_selections {{selectionActive}}'>
       <view class='flex flex-row'>
         <view class='flex-item font-14pt' style='padding: 30rpx'>请选择</view>
-        <view class='flex flex-column justify-center align-center' style='padding: 30rpx'>
+        <view class='flex flex-column justify-center align-center' style='padding: 30rpx' bindtap='hideSelectionClass'>
           <view class='icon-down'>
             <image src='../../assets/icon/icon_drop_down@2x.png'></image>
           </view>
@@ -29,9 +39,8 @@
       </view>
       <view class='selection_list_box'>
         <view class='selection_list'>
-          <view class='selection_item' bindtap='chooseItem' wx:for='{{cate}}' wx:key='{{index}}' data-index='{{index}}'>
-            <view class='icon'><image src='{{item.icon}}'></image></view>
-            <view>{{item.name}}</view>
+          <view class='selection_item font-12 magLef-20 magBot-10 padTop-8' bindtap='chooseItem' wx:for='{{cate}}' wx:key='{{index}}' data-index='{{index}}'>
+            <text>{{item.name}}</text>
           </view>
         </view>
       </view>
@@ -39,3 +48,5 @@
   </view>
   
 </view>
+
+

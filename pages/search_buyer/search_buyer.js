@@ -1,11 +1,11 @@
-// pages/search_buyer/search_buyer.js
+const app = getApp();
+const regeneratorRuntime = require('../../lib/runtime.js');
+
+var WxSearch = require('../wxSearchView/wxSearchView.js');
+
 Page({
 
-  /**
-   * 页面的初始数据
-   */
   data: {
-    flag: false,
     show: '',
     array: [
       { name: 'buyer', value: '买手', icon: '../../assets/icon/icon_buyer_white@2x.png', checked: 'true' },
@@ -15,48 +15,67 @@ Page({
     checkedValue: '买手'
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
+  onLoad: function () {
+
+    // 2 搜索栏初始化
+    var that = this;
+    WxSearch.init(
+      that,  // 本页面一个引用
+      ['母婴', '服饰', "鞋包", "健康", '美妆', '配饰'], // 热点搜索推荐，[]表示不使用
+      ['家居', '数码', '户外'],// 搜索匹配，[]表示不使用
+      that.mySearchFunction, // 提供一个搜索回调函数
+      that.myGobackFunction //提供一个返回回调函数
+    );
 
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-    this.dialog = this.selectComponent("#dialog");
+  // 3 转发函数，固定部分，直接拷贝即可
+  wxSearchInput: WxSearch.wxSearchInput,  // 输入变化时的操作
+  wxSearchKeyTap: WxSearch.wxSearchKeyTap,  // 点击提示或者关键字、历史记录时的操作
+  wxSearchDeleteAll: WxSearch.wxSearchDeleteAll, // 删除所有的历史记录
+  wxSearchConfirm: WxSearch.wxSearchConfirm,  // 搜索函数
+  wxSearchClear: WxSearch.wxSearchClear,  // 清空函数
+
+  // 4 搜索回调函数  
+  mySearchFunction: function (value) {
+    // do your job here
+    // 示例：跳转
+    wx.redirectTo({
+      url: '../search_list/search_list?searchValue=' + value
+    })
   },
 
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
+  // 5 返回回调函数
+  myGobackFunction: function () {
+    // do your job here
+    // 示例：返回
+    wx.navigateBack({
+      delta:1
+    })
   },
-  showSelection(e){
-    let showClass = 'show'; 
+
+  showSelection(e) {
+    let showClass = 'show';
     let flag = this.data.flag;
-    
-    if (!flag){
+
+    if (!flag) {
       this.setData({
         show: showClass,
         flag: true
       })
-    }else{
+    } else {
       this.setData({
         show: '',
         flag: false
       })
     }
   },
-  radioChange(e){
+  radioChange(e) {
     let value = e.detail.value;
     let name = '';
     switch (value) {
       case 'buyer':
-        name='买手';
+        name = '买手';
         break;
       case 'tag':
         name = '标签';
@@ -70,19 +89,20 @@ Page({
     })
   },
 
-  showDialog() {
-    this.dialog.showDialog();
+  /**
+   * 生命周期函数--监听页面初次渲染完成
+   */
+  onReady: function () {
+
   },
-  //取消事件
-  _cancelEvent() {
-    console.log('你点击了取消');
-    this.dialog.hideDialog();
+
+  /**
+   * 生命周期函数--监听页面显示
+   */
+  onShow: function () {
+
   },
-  //确认事件
-  _confirmEvent() {
-    console.log('你点击了确定');
-    this.dialog.hideDialog();
-  },
+
   /**
    * 生命周期函数--监听页面隐藏
    */

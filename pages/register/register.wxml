@@ -1,0 +1,67 @@
+<block wx:if="{{!isWaiting}}">
+  <view class="row row-center padTop-40">
+    <image class="shield-icon" src='../../image/icon_Shield@2x.png'></image>
+    <view class='col-left padLef-10'>
+      <text class='font-18 black'>为了您的账号安全</text>
+      <text class='font-18 black'>请及时绑定手机</text>
+    </view>
+  </view>
+
+  <view class='row row-center padBot-40'>
+
+    <view class='wrapper'>
+      <!-- <picker bindchange='onCountryChanged' range='{{countryList}}' range-key='cn'>
+        <view class="row row-center list-item underline padTop-20" style='justify-content:space-between;'>
+          <text class='font-14 grey'>国家和地区</text>
+          <view class="row">
+            <text class='font-14 padRig-10 black'>{{currentCountry.cn}}</text>
+            <image class="arrow-icon" src='../../image/icon_arrow_right@2x.png'></image>
+          </view>
+        </view>
+      </picker> -->
+
+      <view class="row row-center list-item underline padTop-20" style='justify-content:space-between;'>
+        <!-- <text wx:if="{{currentCountry.code}}" class='font-14 black padRig-20'>{{currentCountry.code}}</text>
+        <text wx:else class='font-14 grey padRig-20'>区号</text> -->
+        <input bindinput='onPhoneNumInput' value='{{phoneNum}}' type='number' maxlength='11' class="input-font" placeholder="手机号" placeholder-class="font-14 grey"></input>
+        <image wx:if="{{phoneNum}}" bindtap='onDeletePhoneBtnClick' class="arrow-icon" src='../../image/icon_delete@2x.png'></image>
+      </view>
+
+      <view class="row row-center" style='justify-content:space-between;height:20rpx'>
+        <text class='font-12 red padTop-10 padLef-5'>{{phoneTip}}</text>
+      </view>
+
+      <view class="row row-center list-item underline padTop-10" style='justify-content:space-between;'>
+        <input bindinput='onMsgInput' type='number' maxlength='6' class="input-font" placeholder="输入短信验证码" placeholder-class="font-14 grey"></input>
+        <text wx:if="{{isSendMsg}}" class='font-14 red'>{{countDown}} 秒后请重试</text>
+        <button plain disabled='{{getCode}}' wx:else bindtap='onGetCodeBtnClick' class='get_code_btn font-14' style='border:none;min-width: 200rpx;background-color:transparent'>获取验证码</button>
+      </view>
+
+      <view class="row row-center" style='justify-content:space-between;height:20rpx'>
+        <text class='font-12 red padTop-10 padLef-5'>{{msgTip}}</text>
+      </view>
+
+    </view>
+  </view>
+
+  <view class='row row-center padBot-11'>
+    <view class='wrapper'>
+      <!-- <button bindtap="onRegisterBtnClick" class='button'>注册</button> -->
+      <button disabled='{{canSignIn}}' bindgetuserinfo="onRegisterBtnClick" open-type="getUserInfo" class='button resigner_btn' plain='true' style='border:none;color:#fff;'>注册</button>
+    </view>
+  </view>
+  <view class='row row-center'>
+    <view class='wrapper'>
+      <view class='row row-center'>
+        <checkbox-group bindchange='confirm_agreement'>
+          <label class='font-14 black'>
+            <checkbox value='1' />
+            同意绑定
+          </label>
+        </checkbox-group>
+        
+        <text class='font-14' style='color:#FE5968;'>《名品邦商城服务协议》</text>
+      </view>
+    </view>
+  </view>
+</block>

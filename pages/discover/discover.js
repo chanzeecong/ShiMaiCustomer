@@ -44,10 +44,6 @@ Page({
   },
 
   showAllSelections(){
-    this.showSelectionClass();
-  },
-
-  showSelectionClass() {
     let activeClass = 'active';
     this.setData({
       selectionActive: activeClass

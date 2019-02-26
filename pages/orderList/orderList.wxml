@@ -1,0 +1,130 @@
+<!--pages/orderList/orderList.wxml-->
+<scroll-view scroll-x="true" scroll-left="{{scrollToLeft}}rpx" scroll-with-animation="true">
+  <view class="row row-center underline bgWhite" style='width:150%;justify-content:center;'>
+    <view bindtap="onTapClick" data-index='{{index}}' wx:for="{{tabList}}" wx:key="{{index}}" style='width:220rpx;' class='row row-center'>
+      <view class='tab-wrapper row row-center {{index === currentTab? "active red" : "black"}}'>
+        <text class='{{index === currentTab? "red font-16" : "black font-14"}}'>{{item.label}}</text>
+      </view>
+    </view>
+  </view>
+</scroll-view>
+
+<block wx:if="{{orderList.length}}">
+  <block wx:for="{{orderList}}" wx:key="{{index}}">
+
+    <view class='row row-between wrapper underline bgWhite'>
+      <view class='row'>
+        <text class='font-12 grey'>订单编号：</text>
+        <text class='font-12 black'>{{item.order_no}}</text>
+      </view>
+      <text class='font-12 grey'>下单时间：{{item.created_at}}</text>
+    </view>
+
+    <view class='row row-between wrapper underline bgWhite'>
+      <navigator url='../myShop/myShop?id={{item.buyer_id}}' class='row'>
+        <image class='shop-icon' src='../../image/icon_store@2x.png'></image>
+        <text class='font-16 black font-bold padLef-10'>{{item.buyer_name}}</text>
+        <image class='shop-icon' src='../../image/icon_arrow_right@2x.png'></image>
+      </navigator>
+
+      <view class='row'>
+        <block wx:if="{{-1 === item.status}}">
+          <text class='font-14 grey padRig-10'>已取消</text>
+        </block>
+        <block wx:elif="{{0 === item.status}}">
+          <text class='font-14 red padRig-10'>待付款</text>
+        </block>
+        <block wx:elif="{{1 === item.status}}">
+          <text class='font-14 red padRig-10'>待发货</text>
+        </block>
+        <block wx:elif="{{2 === item.status}}">
+          <text class='font-14 red padRig-10'>待收货</text>
+        </block>
+        <block wx:elif="{{3 === item.status}}">
+          <text class='font-14 grey padRig-10'>待评价</text>
+        </block>
+
+        <view class='line'></view>
+        <image bindtap='onDeleteOrderBtnClick' data-id="{{item.id}}" data-index="{{index}}" class='icon magLef-10' src='../../image/icon_ashcan-gray@2x.png'></image>
+      </view>
+    </view>
+
+    <navigator url="../orderDetail/orderDetail?id={{item.id}}" class='row row-between wrapper underline bgWhite'>
+      <view class='row' style='align-items:flex-start;'>
+        <view class='row'>
+          <image class='production-img' src='{{item.good_cover_img ? item.good_cover_img: "../../image/nonimg@2x.png"}}' mode='aspectFill'></image>
+        </view>
+        <view class='row padLef-10'>
+          <view class='col-left'>
+            <text class='font-12 black text-ellipses' style='white-space:normal;'>{{item.good_name}}</text>
+            <text class='font-12 grey padTop-10'>{{item.good_attr_name}}</text>
+          </view>
+        </view>
+      </view>
+      <view class='row padLef-20'>
+        <view class='col-left'>
+          <text class='font-14 black text-ellipses' style='white-space:normal;'>￥{{item.good_price}}</text>
+          <view class='row' style='width:100%;justify-content:space-between;'>
+            <view></view>
+            <text class='font-12 grey padTop-10' style='text-align:left'>X{{item.amount}}</text>
+          </view>
+        </view>
+      </view>
+    </navigator>
+
+    <view class='row row-between wrapper underline bgWhite'>
+      <view></view>
+      <view class='row'>
+        <text class='font-14 black'>共{{item.amount}}件商品</text>
+        <text class='font-16 red padLef-10'>付款金额：￥{{item.real_pay}}</text>
+      </view>
+    </view>
+
+    <view class='row row-between wrapper underline bgWhite magBot-10'>
+      <view class='row'>
+      
+        <block wx:if="{{-1 === item.status}}">
+          <text class='font-12 grey'>订单状态：</text>
+          <text class='font-12 red'>订单已关闭(24小时未付款关闭)</text>
+        </block>
+    
+      </view>
+
+      <view class='row'>
+
+        <block wx:if="{{-1 === item.status}}">
+          <button plain bindtap='onBuyAgainBtnClick' data-attrId="{{item.buyer_good_attr_id}}" class='btn font-14 white magLef-10 btn-shadow primary_btn'>再次购买</button>
+        </block>
+        <block wx:elif="{{ 1 === item.status || 3 === item.status}}">
+          <button open-type='contact' class='btn font-14 black' plain='true' style='border:2rpx solid #CCCCCC;'>联系客服</button>
+        </block>
+
+         <block wx:elif="{{0 === item.status}}">
+          <button open-type='contact' class='btn font-14 black' plain='true' style='border:2rpx solid #CCCCCC;'>联系客服</button>
+          <button bindtap='onPayBtnClick' data-id='{{item.id}}' class='btn font-14 white magLef-10 btn-shadow primary_btn' plain>去支付</button>
+        </block>
+
+        <block wx:elif="{{2 === item.status}}">
+          <button open-type='contact' class='btn font-14 black' plain='true' style='border:2rpx solid #CCCCCC;'>联系客服</button>
+          <button bindtap='onExpressBtnClick' data-id="{{item.id}}" class='btn font-14 black magLef-10' plain='true' style='border:2rpx solid #CCCCCC;'>查看物流</button>
+          <button plain bindtap='onConfirmOrderBtnClick' data-id="{{item.id}}" class='btn primary_btn font-14 white magLef-10 btn-shadow'>确认收货</button>
+        </block>
+      </view>
+    </view>
+
+  </block>
+</block>
+<block wx:else>
+  <view class='row row-center magTop-30'>
+    <image src='../../image/img_No_data@2x.png' style='width:340rpx;height:340rpx;'></image>
+  </view>
+  <view class='row row-center padTop-20'>
+    <text class='font-16 grey'>您还没有相关的订单哦！</text>
+  </view>
+  <view class='row row-center padTop-10'>
+    <text class='font-12 grey'>快去看看有哪些想买的吧</text>
+  </view>
+  <view class='row row-center magTop-30'>
+    <button bindtap='onBackBtnClick' class='back-btn' plain='true' style='border:1px solid rgba(0,0,0,0.2);'>去逛逛</button>
+  </view>
+</block>

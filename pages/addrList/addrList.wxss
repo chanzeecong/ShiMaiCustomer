@@ -1,0 +1,27 @@
+/* pages/addrList/addrList.wxss */
+page {
+  background-color: #f4f4f4;
+}
+.bgWhite {
+  background-color: #fff;
+}
+.pen-icon {
+  width: 48rpx;
+  height: 48rpx;
+}
+.icon {
+  width: 28rpx;
+  height: 28rpx;
+}
+button.btn {
+  width: 91%;
+  height:92rpx;
+  line-height:92rpx;
+  background:rgba(244,65,104,1);
+  box-shadow:0 2rpx 16rpx rgba(245,57,110,0.5);
+  font-size:32rpx;
+  font-family:Noto Sans S Chinese;
+  color:rgba(255,255,255,1);
+  border-radius: 6rpx;
+  border: none;
+}

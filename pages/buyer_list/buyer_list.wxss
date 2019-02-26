@@ -1,1 +1,11 @@
 /* pages/buyer_list/buyer_list.wxss */
+.buyer-focus{
+  border-radius: 50rpx;
+  background-color: rgba(245, 57, 110, 1);
+  color: #fff;
+  font-size: 24rpx;
+  display: inline-block;
+  width: 160rpx;
+  line-height: 2;
+  box-shadow: 0 2rpx 6rpx rgba(245, 57, 110, .72);
+}

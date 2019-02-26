@@ -13,7 +13,10 @@
     "pages/sale/sale",
     "pages/search_list/search_list",
     "pages/buyer_list/buyer_list",
-    "pages/search_buyer/search_buyer"
+    "pages/search_buyer/search_buyer",
+    "pages/orderList/orderList",
+    "pages/addrList/addrList",
+    "pages/editAddr/editAddr"
   ],
   "window": {
     "backgroundTextStyle": "light",

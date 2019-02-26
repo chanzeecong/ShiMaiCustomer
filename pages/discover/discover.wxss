@@ -81,21 +81,12 @@
   align-items: center;
 }
 .selection_list > .selection_item{
-  width: 25%;
-  font-size: 28rpx;
+  width: 140rpx;
+  height: 50rpx;
   text-align: center;
   color: #788188;
-  padding: 32rpx 0;
-}
-.selection_item > .icon{
-  width: 48rpx;
-  height: 48rpx;
-  margin: 0 auto;
-  margin-bottom: 20rpx;
-}
-.icon image{
-   width: 100%;
-   height: 100%;
+  border:2rpx solid rgba(112,112,112,0.25);
+  border-radius: 40rpx;
 }
 .all_selections{
   display: none;

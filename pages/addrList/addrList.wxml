@@ -1,0 +1,67 @@
+<block wx:if="{{defaultAddr.id}}">
+  <view class="row row-between padTop-20 padBot-20 padLef-16 padRig-16 underline bgWhite">
+    <view bindtap='onChooseOrderAddrBtnClick' data-id="{{defaultAddr.id}}" class='row padLef-10' style='width:100%;'>
+      <block wx:if='{{currentAddr!==0}}'>
+        <view class='row' wx:if='{{currentAddr===defaultAddr.id}}'>
+          <image class='icon' src='../../image/icon_Selected@2x.png'></image>
+        </view>
+      </block>
+      <!-- <block wx:else>
+        <view class='row'>
+          <image class='icon' src='../../image/icon_Selected@2x.png'></image>
+        </view>
+      </block> -->
+      <!-- <view class='row' wx:if='{{currentAddr===defaultAddr.id}}'>
+        <image class='icon' src='../../image/icon_Selected@2x.png'></image>
+      </view> -->
+      <view class='padLef-16'>
+        <view class='row'>
+          <text class='font-16 black font-bold'>{{defaultAddr.receiver_name}} {{defaultAddr.phone}}</text>
+          <view class='row row-center magLef-20' style='height:24rpx;padding:0 10rpx;background:#F44168;border-radius:20rpx;'>
+            <text class='font-10 white'>默认</text>
+          </view>
+          <view class='row row-center magLef-10' style='height:24rpx;padding:0 10rpx;background:#3587E5;border-radius:20rpx;'>
+            <text class='font-10 white'>{{defaultAddr.tag}}</text>
+          </view>
+        </view>
+        <view class='row padTop-10'>
+          <text class='font-12 black'>收货地址：{{defaultAddr.region}} {{defaultAddr.address}}</text>
+        </view>
+      </view>
+    </view>
+    <navigator url='../editAddr/editAddr?id={{defaultAddr.id}}' class='row'>
+      <image class='pen-icon' src='../../image/icon_edit@2x.png'></image>
+    </navigator>
+  </view>
+</block>
+
+<block wx:for="{{addrList}}" wx:key="{{index}}">
+
+  <block wx:if="{{!item.is_default}}">
+    <view class="row row-between padTop-20 padBot-20 padLef-16 padRig-16 underline bgWhite">
+      <view class='row' wx:if='{{currentAddr===item.id}}'>
+        <image class='icon' src='../../image/icon_Selected@2x.png'></image>
+      </view>
+      <view bindtap='onChooseOrderAddrBtnClick' data-id="{{item.id}}" class='padLef-10' style='width:100%;'>
+        <view class='row'>
+          <text class='font-16 black font-bold'>{{item.receiver_name}} {{item.phone}}</text>
+          <view class='row row-center magLef-10' style='height:24rpx;padding:0 10rpx;background:#3587E5;border-radius:20rpx;'>
+            <text class='font-10 white'>{{item.tag}}</text>
+          </view>
+        </view>
+        <view class='row padTop-10'>
+          <text class='font-12 black'>收货地址：{{item.region}} {{item.address}}</text>
+        </view>
+      </view>
+      <navigator url='../editAddr/editAddr?id={{item.id}}' class='row'>
+        <image class='pen-icon' src='../../image/icon_edit@2x.png'></image>
+      </navigator>
+      
+    </view>
+  </block>
+
+</block>
+
+<view class='row padTop-40'>
+  <button bindtap='onAddAddrBtnClick' class='btn' plain>新增地址</button>
+</view>

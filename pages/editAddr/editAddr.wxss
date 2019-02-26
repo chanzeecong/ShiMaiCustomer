@@ -1,0 +1,94 @@
+@import "../../wxParse/wxParse.wxss";
+page {
+  background-color: #f4f4f4;
+}
+text {
+  white-space: nowrap;
+}
+.bgWhite {
+  background-color: #fff;
+}
+.icon {
+  width: 40rpx;
+  height: 40rpx;
+}
+.warn-icon {
+  width: 20rpx;
+  height: 20rpx;
+}
+.position-icon {
+  width: 28rpx;
+  height: 28rpx;
+}
+.idCard-wrapper {
+  width: 300rpx;
+  height: 200rpx;
+}
+.idCard-img {
+  width:192rpx;
+  height:128rpx;
+  border-radius: 8rpx;
+  overflow: hidden;
+}
+.demo-img {
+  width:100rpx;
+  height:66rpx;
+}
+.card-bot-wrapper {
+  width:300rpx;
+  height:72rpx;
+  background:rgba(37,140,241,1);
+  border-radius:0 0 8rpx 8rpx;
+}
+.textarea {
+  width: 100%;
+  height:100rpx;
+  padding: 4rpx 10rpx 0;
+}
+.label-wrapper {
+  width:80rpx;
+  height:40rpx;
+  border:2rpx solid rgba(0,0,0,.2);
+  border-radius:20rpx;
+  padding: 0 10rpx;
+}
+.label-wrapper-active {
+  width:80rpx;
+  height:40rpx;
+  border:2rpx solid #F5396E;
+  border-radius:20rpx;
+  padding: 0 10rpx;
+}
+.label-input {
+  width: 70%;
+  height: 50rpx;
+  background: #f4f4f4;
+  border-radius: 20rpx 0 0 20rpx;
+  border: none;
+}
+.labet-btn {
+  width: 80rpx;
+  height: 50rpx;
+  border-radius:0 20rpx 20rpx 0;
+  background-color: #F44168;
+}
+.label-text {
+  width: auto;
+  height: 50rpx;
+  background: rgb(37,140,241);
+  border-radius: 20rpx 0 0 20rpx;
+  border: none;
+  padding: 0 10rpx 0 20rpx;
+}
+.btn {
+  width:91%;
+  height:92rpx;
+  line-height:92rpx;
+  background:rgba(244,65,104,1);
+  font-size:32rpx;
+  font-family:Noto Sans S Chinese;
+  color:rgba(255,255,255,1);
+}
+.btn-shadow {
+  box-shadow:0 2rpx 16rpx rgba(245,57,110,0.5);
+}

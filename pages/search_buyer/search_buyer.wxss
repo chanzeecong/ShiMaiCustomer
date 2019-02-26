@@ -1,14 +1,17 @@
 /* pages/search_buyer/search_buyer.wxss */
+@import "../wxSearchView/wxSearchView.wxss";
+
+page{
+  background: white;
+}
+
 .search_options{
   position: relative;
   font-size: 28rpx;
   line-height:1.8;
   padding:16rpx 40rpx 16rpx 16rpx;
 }
-.search-input{
-  flex: 1;
-  padding:16rpx;
-}
+
 .icon_arrow{
   width: 20rpx;
   height: 20rpx;
@@ -80,30 +83,4 @@
   width: 20rpx;
   height: 20rpx;
   margin-right: 16rpx;
-}
-.icon-trash{
-  position: absolute;
-  right: 20px;
-  background-position: center;
-  background-size: cover;
-  width: 28rpx;
-  height: 28rpx;
-}
-.search_group{
-  margin-bottom: 40rpx;
-}
-.search_title{
-  font-size: 28rpx;
-  color: rgba(0, 0, 0, .4);
-  margin-bottom: 40rpx;
-}
-.search_item{
-  text-align: center;
-  display: inline-block;
-  min-width: 100rpx;
-  background-color: rgba(0, 0, 0, .05);
-  color: #000;
-  font-size: 20rpx;
-  margin-right: 40rpx;
-  padding: 10rpx 0;
 }

@@ -1,0 +1,232 @@
+<import src="../../wxParse/wxParse.wxml"/> 
+
+<view class="row padLef-16 padRig-16 padTop-10 padBot-10 underline bgWhite" style='border-top:2rpx solid #f4f4f4;'>
+  <view class='row flex1'>
+    <text class='font-14 black'>收货人</text>
+  </view>
+  <view class='row flex3'>
+    <input bindinput='onNameInput' value='{{addrDetail.receiver_name}}' class='font-14 black padLef-5 padRig-5' maxlength='20' placeholder='请使用真实姓名' placeholder-class='font-12 grey' style='width:100%;'></input>
+  </view>
+  <view class='flex1'>
+  </view>
+</view>
+
+
+  <view class="row padLef-16 padRig-16 padTop-10 padBot-10 underline bgWhite">
+    <view class='row flex1'>
+      <text class='font-14 black'>手机号码</text>
+    </view>
+    <view class='row flex4'>
+      <input bindinput='onPhoneInput' value='{{addrDetail.phone}}' class='font-14 black padLef-5 padRig-5' type='number' maxlength='20' placeholder='请填写' placeholder-class='font-12 grey' style='width:100%;'></input>
+    </view>
+
+    <!-- <picker bindchange='onCountryChanged' range='{{countryList}}' range-key='cn'>
+      <view class='row row-between flex1'>
+        <view></view>
+        <view class='row'>
+          <text wx:if="{{currentCountry.code}}" class='font-14 grey padRig-5'>{{currentCountry.code}}</text>
+          <text wx:else class='font-14 grey padRig-5'>区号</text>
+          <image class='icon' src='../../image/icon_arrow_right@2x.png'></image>
+        </view>
+      </view>
+    </picker> -->
+  </view>
+
+
+<view class="row padLef-16 padRig-16 padTop-10 padBot-10 underline bgWhite">
+  <view class='row flex1'>
+    <text class='font-14 black'>所在地区</text>
+  </view>
+  <view class='row flex3'>
+    <input bindinput='onRegionInput' value='{{addrDetail.region}}' class='font-14 red padLef-5 padRig-5' maxlength='20' placeholder='请填写' placeholder-class='font-12 grey' style='width:100%;'></input>
+  </view>
+  <view class='row row-between flex1'>
+    <view></view>
+    <view bindtap='onLocalBtnClick' class='row'>
+      <image class='position-icon' src='../../image/icon_position@2x(1).png'></image>
+      <text class='font-14 blue'>定位</text>
+    </view>
+  </view>
+</view>
+
+<view class="row padLef-16 padRig-16 padTop-10 padBot-10 underline bgWhite">
+  <view class='row flex1'>
+    <text class='font-14 black'>身份证号</text>
+  </view>
+  <view class='row flex4'>
+    <input bindinput='onIDNumInput' value='{{addrDetail.id_card_no}}' class='font-14 black padLef-5 padRig-5' maxlength='20' type='number' placeholder='请填写身份证号' placeholder-class='font-12 grey' style='width:100%;'></input>
+  </view>
+</view>
+
+<view class='row padLef-16 padTop-20 padBot-20 bgWhite'>
+  <text class='font-14' style='color:rgba(0,0,0,.6)'>请上传身份证照片：</text>
+</view>
+
+<view class='row row-center padBot-20 bgWhite'>
+  <view class='col-center'>
+    <view bindtap='onFrontImgClick' class='idCard-wrapper' style='position:relative;'>
+      <image class='idCard-wrapper' src='../../image/img_05@2x.png' style='position:absolute;top:0;'></image>
+      <view class='row row-center idCard-wrapper'>
+        <image class='idCard-img' mode='aspectFill' src='{{addrDetail.id_card_front_img}}' style='z-index:2;'></image>
+      </view>
+    </view>
+    <view class='row row-center card-bot-wrapper'>
+      <text class='font-12 white'>正面</text>
+    </view>
+  </view>
+
+  <view class='col-center magLef-20'>
+    <view bindtap='onBackImgClick' class='idCard-wrapper' style='position:relative;'>
+      <image class='idCard-wrapper' src='../../image/img_06@2x.png' style='position:absolute;top:0;'></image>
+      <view class='row row-center idCard-wrapper'>
+        <image class='idCard-img' mode='aspectFill' src='{{addrDetail.id_card_back_img}}' style='z-index:2;'></image>
+      </view>
+    </view>
+    <view class='row row-center card-bot-wrapper'>
+      <text class='font-12 white'>反面</text>
+    </view>
+  </view>
+</view>
+
+<view class='row padTop-5 padBot-5 padLef-16 padRig-16 bgWhite'>
+  <image src='../../image/icon_sigh@2x.png' class='warn-icon'></image>
+  <text class='font-12 red padLef-5'>注意事项</text>
+</view>
+
+<view class='row padTop-10 padBot-10 padLef-16 padRig-16 bgWhite'>
+
+  <view class='col-center flex1'>
+    <image class='demo-img' src='../../image/img_01@2x.png'></image>
+    <view class='row padTop-20'>
+      <image class='warn-icon' src='../../image/icon_right_blue@2x.png'></image>
+      <text class='font-10 black padLef-5'>标准</text>
+    </view>
+  </view>
+
+  <view class='col-center flex1'>
+    <image class='demo-img' src='../../image/img_02@2x.png'></image>
+    <view class='row padTop-20'>
+      <image class='warn-icon' src='../../image/icon_wrong@2x.png'></image>
+      <text class='font-10 black padLef-5'>边框缺失</text>
+    </view>
+  </view>
+
+  <view class='col-center flex1'>
+    <image class='demo-img' src='../../image/img_03@2x.png'></image>
+    <view class='row padTop-20'>
+      <image class='warn-icon' src='../../image/icon_wrong@2x.png'></image>
+      <text class='font-10 black padLef-5'>照片模糊</text>
+    </view>
+  </view>
+
+  <view class='col-center flex1'>
+    <image class='demo-img' src='../../image/img_04@2x.png'></image>
+    <view class='row padTop-20'>
+      <image class='warn-icon' src='../../image/icon_wrong@2x.png'></image>
+      <text class='font-10 black padLef-5'>闪光强烈</text>
+    </view>
+  </view>
+
+</view>
+
+<view class='row magTop-10 padTop-10 padBot-10 padLef-16 padRig-16 underline bgWhite' style='align-items:flex-start;'>
+  <text class='font-14 black'>详细地址：</text>
+  <textarea value='{{addrDetail.address}}' bindinput='onAddrTextArea' class='textarea font-14 black' placeholder='请填写详细地址（如道路、门牌号、小区、楼栋号、 单元室等）' placeholder-class='font-12 grey'></textarea>
+</view>
+
+<view class='row padTop-10 padBot-10 padLef-16 padRig-16 bgWhite'>
+  <view class='row flex1'>
+    <text class='font-14 black'>地址标签</text>
+  </view>
+  <view class='row flex3 padLef-20 padRig-20' style='flex-wrap:wrap'>
+
+    <block wx:for="{{tagList}}" wx:key="{{index}}">
+      <view class='row flex1'>
+        <view bindtap='onSysAddrLabelBtnClick' data-index="{{index}}" class='row row-center {{currentTagIndex === index? "label-wrapper-active" : "label-wrapper"}}'>
+          <text class='font-12 {{currentTagIndex === index? "red" : "black"}}'>{{item}}</text>
+        </view>
+      </view>
+    </block>
+
+  </view>
+</view>
+
+<block wx:if="{{0 === customStep}}">
+
+  <view class='row padTop-5 padBot-10 padLef-16 padRig-16 bgWhite' style='align-items:flex-start;'>
+    <view class='row flex1'></view>
+    <view class='row flex3 padLef-20 padRig-20'>
+      <view class='row flex1'>
+        <view bindtap='addAddrLabelBtnClick' class='row row-center label-wrapper'>
+          <image class='position-icon' src='../../image/icon_delete@2x.png' style='transform:rotate(45deg);'></image>
+        </view>
+      </view>
+      <view class='flex1'></view>
+      <view class='flex1'></view>
+    </view>
+  </view>
+
+</block>
+
+<block wx:elif="{{1 === customStep}}">
+
+  <view class='row padTop-5 padBot-10 padLef-16 padRig-16 bgWhite' style='align-items:flex-start;'>
+    <view class='row flex1'></view>
+    <view class='row flex3 padLef-20 padRig-20'>
+      <view class='row row-center label-input'>
+        <input bindinput='onCustomLabelInput' value='{{customTag}}' class='font-12 black padLef-10 padRig-5' maxlength='10' style='width:100%;'></input>
+      </view>
+      <view bindtap='onConfirmAddrLabelBtnClick' class='row row-center labet-btn'>
+        <text class='font-12 white'>确定</text>
+      </view>
+    </view>
+  </view>
+
+</block>
+
+<block wx:elif="{{2 === customStep}}">
+
+  <view class='row padTop-5 padBot-10 padLef-16 padRig-16 bgWhite' style='align-items:flex-start;'>
+    <view class='row flex1'></view>
+    <view class='row flex3 padLef-20 padRig-20'>
+      <view class='row row-center label-text'>
+        <text class='font-12 white'>{{customTag}}</text>
+      </view>
+      <view bindtap='onEditAddrLabelBtnClick' class='row row-center labet-btn' style='background: rgb(37,140,241);border-left:2rpx solid #fff;'>
+        <text class='font-12 white'>编辑</text>
+      </view>
+    </view>
+  </view>
+
+</block>
+
+<view class='row magTop-10 row-between padTop-10 padBot-10 padLef-16 bgWhite'>
+  <text class='font-14 font-bold black'>设为默认地址</text>
+  <switch bindchange="onSetDefaultBtnClick" disabled="{{isDefaultAddrDisabled}}" checked="{{addrDetail.is_default? true: ''}}" color="#F44168" style='transform:scale(.5);'/>
+</view>
+
+<view class='row padBot-20 padLef-16 padRig-16 bgWhite'>
+  <view class='col-left'>
+    <text class='font-12 grey padBot-5'>为什么要填写身份证号码？</text>
+    <!-- <text class='font-12 grey' style='white-space:normal;'>由于货物在海关清关的时候有可能需要提供购买方的身份证号码，所以我们需要用户提供收货人的身份证号码，以对应货物在清关时需要查验身份证号的情况。</text> -->
+    <template is="wxParse" data="{{wxParseData:checkContent.nodes}}"/>
+  </view>
+</view>
+
+<block wx:if="{{addrId}}">
+  <view class='row row-center magTop-40 magBot-20'>
+    <button bindtap='onSaveBtnClick' class='btn btn-shadow'>确认</button>
+  </view>
+  <view class='row row-center magBot-50'>
+    <button bindtap='onDeleteBtnClick' class='btn' plain='true' style='border: 2rpx solid rgba(0,0,0,.4);'>删除收货地址</button>
+  </view>
+</block>
+<block wx:else>
+  <view class='row row-center magTop-40 magBot-50'>
+    <button bindtap='onAddBtnClick' class='btn btn-shadow'>保存收货地址</button>
+  </view>
+</block>
+
+
+
+

@@ -2,23 +2,28 @@
 .wrapper.active{
   overflow:hidden;
 }
+
+.buyer-focus{
+  border-radius: 50rpx;
+  background-color: rgba(245, 57, 110, 1);
+  color: #fff;
+  font-size: 24rpx;
+  display: inline-block;
+  width: 160rpx;
+  line-height: 2;
+  box-shadow: 0 2rpx 6rpx rgba(245, 57, 110, .72);
+}
 .search_info{
   font-size: 28rpx;
   color: rgba(0, 0, 0, .6);
   padding: 16rpx 32rpx;
-}
-.filter{
-  border-left: 1px solid rgba(0, 0, 0, .2);
-  padding: 16rpx 32rpx;
-  font-size: 28rpx;
-  color: rgba(0, 0, 0, .6);
 }
 .icon_arrow{
   width: 20rpx;
   height: 20rpx;
   overflow: hidden;
   position: absolute;
-  right: 55px;
+  right: 55rpx;
   top: 0;
   transform: rotateZ(-45deg);
 }
@@ -31,62 +36,6 @@
   transform: rotateZ(45deg) translateY(12rpx);
 }
 
-.filter-box{
-  display: none;
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
-  z-index: 10;
-}
-.filter-mask{
-  height: 100%;
-  width: 100%;
-  background-color: rgba(0, 0, 0, .4);
-  position: absolute;
-  left: 0;
-  top: 0;
-  z-index: 1;
-  opacity: 0;
-}
-.filter-content{
-  -webkit-transform: translateX(110%);
-  transform: translateX(110%);
-  background-color: #fff;
-  width: 640rpx;
-  height: 100%;
-  position: absolute;
-  right: 0;
-  top: 0;
-  z-index: 3;
-}
-.filter-btns{
-  box-shadow: 0 2rpx 6rpx rgba(0, 0, 0, .2);
-}
-.filter-btns .btn-confirm{
-  background-color: rgba(245, 57, 110, 1);
-  color: #fff;
-  border-radius: 0;
-  padding: 6rpx 0;
-  font-size: 32rpx;
-}
-.btn{
-  height: 50px;
-}
-.filter-btns .btn-reset{
-  background-color: rgba(255, 255, 255, 1);
-  border-radius: 0;
-  color: #000;
-  font-size: 32rpx;
-  padding: 3px 0;
-}
-.filter-view{
-  padding: 15px;
-}
-.filter-item{
-  margin-bottom: 40rpx;
-}
 .item-title{
   font-size: 28rpx;
   color: rgba(0, 0, 0, .4);
@@ -98,59 +47,7 @@
   margin-left: -10rpx;
   margin-right: -10rpx;
 }
-.checkbox_label{
-  display: inline-block;
-  position: relative;
-  margin-bottom: 20rpx;
-  padding-right: 10rpx;
-  padding-left: 10rpx;
-  overflow: hidden;
-}
-checkbox .wx-checkbox-input.wx-checkbox-input-checked::before{
-  display: none;
-}
-checkbox .wx-checkbox-input{
-  border: 0;
-  background-color: #F7F7F7;
-  border-radius: 12rpx;
-  width: 170rpx;
-  padding: 14rpx 0;
-}
-checkbox .wx-checkbox-input.wx-checkbox-input-checked {
-  background: rgba(245, 57, 110, 1);
-  color: #fff;
-}
-.check_name{
-  display: inline-block;
-  position: absolute;
-  z-index: 2;
-  left: 50%;
-  top: 50%;
-  color: rgba(0, 0, 0, .6);
-  font-size: 28rpx;
-  transform: translateY(-50%) translateX(-50%);
-  width:100%;
-  text-align:center;
-}
-.range_price{
-  background-color: #F7F7F7;
-  padding: 14rpx;
-  border-radius: 12rpx;
-  margin-right: 100rpx;
-}
-.placeholder_text{
-  color: rgba(0, 0, 0, .2);
-}
-.range_price:last-child{
-  margin-right: 0;
-}
-.filter-box.active{
-  display: block;
-}
-.filter-box.active.in .filter-mask{
-  -webkit-animation: showMask .2s ease-in forwards;
-  animation: showMask .2s ease-in forwards;
-}
+
 @-webkit-keyframes showMask{
   from{
     opacity: 0;
@@ -167,12 +64,7 @@ checkbox .wx-checkbox-input.wx-checkbox-input-checked {
     opacity: 1;
   }
 }
-.filter-box.active.in .filter-content{
-  -webkit-transform: translateX(110%);
-  transform: translateX(110%);
-  -webkit-animation: showContent .2s ease-in forwards;
-  animation: showContent .2s ease-in forwards;
-}
+
 @-webkit-keyframes showContent{
   from{
     transform: translateX(110%);
@@ -190,13 +82,6 @@ checkbox .wx-checkbox-input.wx-checkbox-input-checked {
   }
 }
 
-.filter-box.active.out .filter-content{
-  -webkit-transform: translateX(0);
-  transform: translateX(0);
-  -webkit-animation: hideContent .2s ease-out forwards;
-  animation: hideContent .2s ease-out forwards;
-}
-
 @-webkit-keyframes hideContent{
   from{
     -webkit-transform: translateX(0);
@@ -212,12 +97,6 @@ checkbox .wx-checkbox-input.wx-checkbox-input-checked {
   to{
     transform: translateX(110%);
   }
-}
-
-.filter-box.active.out .filter-mask{
-  opacity: 1;
-  -webkit-animation: hideMask .2s .2s ease-out forwards;
-  animation: hideMask .2s .2s ease-out forwards;
 }
 
 @-webkit-keyframes hideMask{

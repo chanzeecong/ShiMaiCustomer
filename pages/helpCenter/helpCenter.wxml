@@ -1,0 +1,50 @@
+<view class='row row-center'>
+  <view class='warpper'>
+    <view class='row row-center' style='height: 60rpx;'>
+      <icon type="search" size="20" class='padLef-10 padRig-5'/>
+      <input bindinput='onHelpInput' class='input flex1' placeholder='搜索问题' placeholder-class='font-14' placeholder-style='color:#8E8E93;'></input>
+    </view>
+  </view>
+</view>
+
+<view class='row padTop-40 padLef-16 padBot-11'>
+  <text class='font-16 black'>问题分类</text>
+</view>
+<view class='row bgWhite' style='height:240rpx;'>
+  <swiper style='height:100%;width:100%;' indicator-dots="true" indicator-color="rgba(0,0,0,.4)" indicator-active-color="#FE5968">
+    
+    <swiper-item wx:for="{{typeList}}" wx:key="{{index}}">
+      <view class='row row-center padTop-20 padBot-20' style='justify-content:space-around'>
+        <view wx:for="{{item.topList}}" wx:key="{{index}}" wx:for-item="topItem" class='row row-center flex1'>
+          <text bindtap='onTypeBtnClick' data-type="{{topItem}}" class=' font-14 black text-ellipse'>{{topItem}}</text>
+        </view>
+      </view>
+      <view class='row row-center padBot-21' style='justify-content:space-around'>
+        <view wx:for="{{item.bottomList}}" wx:key="{{index}}" wx:for-item="bottomItem" class='row row-center flex1'>
+          <text bindtap='onTypeBtnClick' data-type="{{bottomItem}}" class='font-14 black text-ellipse'>{{bottomItem}}</text>
+        </view>
+      </view>
+    </swiper-item>
+    
+  </swiper>
+</view>
+
+<view class='row padTop-20 padLef-16 padBot-11'>
+  <text class='font-16 black'>{{type}}</text>
+</view>
+<block wx:for="{{helpList}}" wx:key="{{index}}">
+  <navigator url="../helpDetail/helpDetail?id={{item.id}}" class='row bgWhite padLef-16 padRig-16 underline' style='height:80rpx;'>
+    <text class='font-14 text-ellipse' style='color:#000;'>{{index + 1}}、{{item.title}}</text>
+  </navigator>
+</block>
+<view style='height:100rpx;'></view>
+<view class='row fix-bottom bgWhite bottom-wrapper'>
+  <button class='row row-center flex1' plain="true" open-type="contact" style='border:none;'>
+    <image class='icon padRig-5' src='../../image/icon_chat@2x.png'></image>
+    <text class='font-14' style='color:#F5396E'>在线客服</text>
+  </button>
+  <navigator url='../advice/advice' class='row row-center flex1' style='border-left: 2rpx solid rgba(0,0,0,.1)'>
+    <image class='icon padRig-5' src='../../image/icon_Complaint@2x.png'></image>
+    <text class='font-14' style='color:#F5396E'>投诉建议</text>
+  </navigator>
+</view>

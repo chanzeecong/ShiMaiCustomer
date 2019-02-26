@@ -45,7 +45,7 @@
       </scroll-view>
 
       <view class='buyer-action'>
-        <button class='buyer-focus'>立即联系</button>
+          <button class='buyer-focus'>进店逛逛</button>
       </view>
 
     </view>

@@ -2,30 +2,33 @@
 <view class='wrapper'>
 
   <view class='user_header bg-white'>
-    <view class='daily_btn' bindtap='getDailySign'>    
-      <image class="dail_icon" src='../../assets/icon/icon_sign@2x.png'></image>
-      <text class='daily_text'>签到赚积分</text>        
-    </view>
+    <view class='daily_btn' bindtap='getDailySign'>+签到</view>
     <view class='user_info flex flex-column justify-center align-center'>
       <view class='user_avartor' style='background-image:url(../../assets/img/4.png);'></view>
       <view>
-        <view class='user_nickname' style='text-align:center;font-size: 32rpx; font-weight: bold;'>Joiandib
-          <view class='icon_edit' style='background-image:url(../../assets/icon/icon_Female@2x.png);'></view>
-        </view>
-        <view class="user_text" style='text-align:center;'>
-          <image class="icon_yin" src='../../assets/icon/icon_yin@2x.png'></image>
-          <text class='font-10 gray'>这家伙很懒，但是还是留下了什么</text>
-        </view>
+        <view class='user_nickname' style='text-align:center;font-size: 32rpx; font-weight: bold;'>Joiandib<view class='icon_edit' style='background-image:url(../../assets/icon/icon_edit@2x.png);'></view></view>
+        <view style='text-align:center;font-size: 24rpx;color: rgba(0,0,0,.6);'>积分: 2156</view>
       </view>
       <view class='user_footer'>
-        <view class='flex justify-between'>
-          <view class='padRig-40'>
-            <view class='font-12 deep flex justify-center'>10</view>
-            <view class='font-12 padTop-10 deep'>我的关注</view>
+        
+        <view class='flex flex-row justify-center'>
+          <view class='user_like_group'>
+            <view class='img_group'>
+              <view class='tiny-img' style='background-image:url(../../assets/img/text-img.png);z-index: 1;left: 0;'></view>
+              <view class='tiny-img' style='background-image:url(../../assets/img/text-img.png);z-index: 2;left: 26rpx;'></view>
+              <view class='tiny-img' style='background-image:url(../../assets/img/text-img.png);z-index: 3;left: 46rpx;'></view>
+              <view class='tiny-circle' style='left: 66rpx;'><text class='circle_text'>+12</text></view>
+            </view>
+            <view class='center_text font-10pt sub_text_color'>我的关注</view>
           </view>
-          <view>
-            <view class='font-12 deep flex justify-center'>10</view>
-            <view class='font-12 padTop-10 deep'>我的收藏</view>
+          <view class='user_like_group'>
+            <view class='img_group'>
+              <view class='tiny-img' style='background-image:url(../../assets/img/text-img.png);z-index: 1;left: 0;'></view>
+              <view class='tiny-img' style='background-image:url(../../assets/img/text-img.png);z-index: 2;left: 26rpx;'></view>
+              <view class='tiny-img' style='background-image:url(../../assets/img/text-img.png);z-index: 3;left: 46rpx;'></view>
+              <view class='tiny-circle' style='left: 66rpx;'><text class='circle_text'>+12</text></view>
+            </view>
+            <view class='center_text font-10pt sub_text_color'>我的喜欢</view>
           </view>
         </view>
       </view>
@@ -33,39 +36,32 @@
   </view>
 
   <view class='section-box bg-white'>
-    <navigator open-type='navigate' class='section-title flex flex-row'>
+    <navigator url='../orderList/orderList' open-type='navigate' class='section-title flex flex-row'>
       我的订单
-      <!-- <view class='sub_text_color2 font-12pt flex-item navigate_text'>
-        查看全部订单
+      <view class='sub_text_color2 font-12pt flex-item navigate_text'>
+      查看全部订单
         <view class='icon-arrow' style='background-image:url(../../assets/icon/icon_arrow@2x.png);'></view>
-      </view> -->
+      </view>
     </navigator>
 
     <view class='section-body flex flex-row'>
       <navigator open-type='navigate' class='flex-item'>
         <view class='icon-btn-box'>
-          <view class='icon-order-btn' style='background-image:url(../../assets/icon/icon_payment@2x.png);'></view>
+          <view class='icon-btn' style='background-image:url(../../assets/icon/icon_payment@2x.png);'></view>
         </view>
         <view class='center_text font-14pt sub_text_color2'>待付款</view>
       </navigator>
       <navigator open-type='navigate' class='flex-item'>
         <view class='icon-btn-box'>
-          <view class='icon-order-btn' style='background-image:url(../../assets/icon/icon_receipt@2x.png);'></view>
+          <view class='icon-btn' style='background-image:url(../../assets/icon/icon_Ship@2x.png);'></view>
+        </view>
+        <view class='center_text font-14pt sub_text_color2'>待发货</view>
+      </navigator>
+      <navigator open-type='navigate' class='flex-item'>
+        <view class='icon-btn-box'>
+          <view class='icon-btn' style='background-image:url(../../assets/icon/icon_Receipt@2x.png);'></view>
         </view>
         <view class='center_text font-14pt sub_text_color2'>待收货</view>
-      </navigator>
-      <navigator open-type='navigate' class='flex-item'>
-        <view class='icon-btn-box'>
-          <view class='icon-order-btn' style='background-image:url(../../assets/icon/icon_completed@2x.png);'></view>
-        </view>
-        <view class='center_text font-14pt sub_text_color2'>已完成</view>
-      </navigator>
-      <!-- all order -->
-      <navigator open-type='navigate' class='flex-item'>
-        <view class='icon-btn-box'>
-          <view class='icon-order-btn' style='background-image:url(../../assets/icon/icon_All@2x.png);'></view>
-        </view>
-        <view class='center_text font-14pt sub_text_color2'>全部订单</view>
       </navigator>
     </view>
 
@@ -73,35 +69,33 @@
 
   <view class='section-box bg-white'>
     <view class='section-title flex flex-row'>
-      我的工具
+        我的工具
     </view>
     <view class='section-body'>
       <view class='flex flex-row flex-wrapper'>
-        <navigator open-type='navigate' url='../card_bag/card_bag' class='tools-item font-14 deep'>
-          <view class='icon-btn' style='background-image:url(../../assets/icon/icon_Red-envelope@2x.png);'></view>
-          <view class='padTop-15'>卡券红包</view>
+        <navigator open-type='navigate' url='../card_bag/card_bag' class='tools-item font-14pt'>
+          <view class='icon-btn' style='background-image:url(../../assets/icon/icon_red_packet@2x.png);'></view>
+          <view>卡券红包</view>
         </navigator>
-          <navigator open-type='navigate' class='tools-item font-14 deep'>
-          <view class='icon-btn' style='background-image:url(../../assets/icon/icon_address@2x.png);'></view>
-          <view class='padTop-15'>收货地址</view>
+        <navigator open-type='navigate' class='tools-item font-14pt'>
+          <view class='icon-btn' style='background-image:url(../../assets/icon/icon_information@2x.png);'></view>
+          <view>我的消息</view>
         </navigator>
-
-        <navigator open-type='navigate' class='tools-item font-14 deep'>
-          <view class='icon-btn' style='background-image:url(../../assets/icon/icon_Message@2x.png);'></view>
-          <view class='padTop-15'>我的消息</view>
-        </navigator>
-        <navigator open-type='navigate' url='../myscore/myscore' class='tools-item font-14 deep'>
+        <navigator open-type='navigate' url='../myscore/myscore' class='tools-item font-14pt'>
           <view class='icon-btn' style='background-image:url(../../assets/icon/icon_integral@2x.png);'></view>
-          <view class='padTop-15'>我的积分</view>
+          <view>我的积分</view>
         </navigator>
-        <navigator open-type='navigate' class='tools-item font-14 deep'>
-          <view class='icon-btn' style='background-image:url(../../assets/icon/icon_help@2x.png);'></view>
-          <view class='padTop-15'>帮助与客服</view>
+        <navigator url='../helpCenter/helpCenter' open-type='navigate' class='tools-item font-14pt'>
+          <view class='icon-btn' style='background-image:url(../../assets/icon/icon_Customer-service@2x.png);'></view>
+          <view>帮助与客服</view>
         </navigator>
-      
-        <navigator open-type='navigate' class='tools-item font-14 deep'>
-          <view class='icon-btn' style='background-image:url(../../assets/icon/icon_Footprint@2x.png);'></view>
-          <view class='padTop-15'>我的足迹</view>
+        <navigator url='../addrList/addrList' open-type='navigate' class='tools-item font-14pt'>
+          <view class='icon-btn' style='background-image:url(../../assets/icon/icon_address1@2x.png);'></view>
+          <view>收货地址</view>
+        </navigator>
+        <navigator open-type='navigate' class='tools-item font-14pt'>
+          <view class='icon-btn' style='background-image:url(../../assets/icon/icon_pug@2x.png);'></view>
+          <view>足迹</view>
         </navigator>
       </view>
     </view>
@@ -117,5 +111,5 @@
       </view>
     </view>
   </view>
-
+  
 </view>

@@ -1,0 +1,72 @@
+/* pages/orderList/orderList.wxss */
+
+/* pages/orderList/orderList.wxss */
+page {
+  background-color: #f4f4f4;
+}
+.bgWhite {
+  background-color: #fff;
+}
+text {
+  white-space: nowrap;
+}
+::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  color: transparent;
+}
+.tab-wrapper {
+  width: 120rpx;
+  height: 80rpx;
+}
+.wrapper {
+  padding: 20rpx 32rpx;
+}
+.active {
+  border-bottom: solid 4rpx #FE5968;
+}
+.line {
+  width: 2rpx;
+  height: 16rpx;
+  background-color: rgba(152,152,152,1);
+}
+.icon {
+  width: 40rpx;
+  height: 40rpx;
+}
+.production-img {
+  width: 120rpx;
+  height: 120rpx;
+}
+.text-ellipses {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.btn {
+  width:180rpx;
+  height:60rpx;
+  line-height: 60rpx;
+  border-radius:4rpx;
+  background:rgba(254,89,104,1);
+  
+}
+.btn-shadow {
+  box-shadow:2rpx 2rpx 8rpx rgba(245,57,110,0.44);
+}
+.grey-line {
+  height: 20rpx;
+  background-color: #f4f4f4;
+}
+.shop-icon {
+  width: 32rpx;
+  height: 32rpx;
+}
+.back-btn {
+  width:24%;
+  border-radius:8rpx;
+  font-size:28rpx;
+  font-family:Noto Sans S Chinese;
+  color:rgba(0,0,0,1);
+}

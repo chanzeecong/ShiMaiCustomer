@@ -45,7 +45,7 @@
       </view>
     </view>
 
-    <view style='padding: 20rpx 0;'>
+    <view class='row'>
       <text class='font-12pt' style='opacity: .6'>
       自从腾讯把酷我、酷狗收购以后， 音乐正式迎来收费时代。现在随便下载一首普通的歌曲都要钱了。而且随着音乐人与唱片公司的版权意识越来越强
       </text>
