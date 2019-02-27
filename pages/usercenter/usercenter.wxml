@@ -20,8 +20,10 @@
       <view class='user_footer'>
         <view class='flex justify-between'>
           <view class='padRig-40'>
-            <view class='font-12 deep flex justify-center'>10</view>
-            <view class='font-12 padTop-10 deep'>我的关注</view>
+            <navigator open-type='navigate' url='../userFollow/userFollow'>
+              <view class='font-12 deep flex justify-center'>10</view>
+              <view class='font-12 padTop-10 deep'>我的关注</view>
+            </navigator>
           </view>
           <view>
             <view class='font-12 deep flex justify-center'>10</view>
@@ -41,12 +43,12 @@
       </view> -->
     </navigator>
 
-    <view class='section-body flex flex-row'>
+    <view class='section-body flex flex-row'> 
       <navigator open-type='navigate' class='flex-item'>
         <view class='icon-btn-box'>
           <view class='icon-order-btn' style='background-image:url(../../assets/icon/icon_payment@2x.png);'></view>
         </view>
-        <view class='center_text font-14pt sub_text_color2'>待付款</view>
+        <view class='center_text font-14pt sub_text_color2'>待发货</view>
       </navigator>
       <navigator open-type='navigate' class='flex-item'>
         <view class='icon-btn-box'>
@@ -86,7 +88,7 @@
           <view class='padTop-15'>收货地址</view>
         </navigator>
 
-        <navigator open-type='navigate' class='tools-item font-14 deep'>
+        <navigator open-type='navigate' url='../mynotice/mynotice' class='tools-item font-14 deep'>
           <view class='icon-btn' style='background-image:url(../../assets/icon/icon_Message@2x.png);'></view>
           <view class='padTop-15'>我的消息</view>
         </navigator>
@@ -94,12 +96,12 @@
           <view class='icon-btn' style='background-image:url(../../assets/icon/icon_integral@2x.png);'></view>
           <view class='padTop-15'>我的积分</view>
         </navigator>
-        <navigator open-type='navigate' class='tools-item font-14 deep'>
+        <navigator open-type='navigate' url="../helpCenter/helpCenter" class='tools-item font-14 deep'>
           <view class='icon-btn' style='background-image:url(../../assets/icon/icon_help@2x.png);'></view>
           <view class='padTop-15'>帮助与客服</view>
         </navigator>
       
-        <navigator open-type='navigate' class='tools-item font-14 deep'>
+        <navigator open-type='navigate' url='../myhistory/myhistory' class='tools-item font-14 deep'>
           <view class='icon-btn' style='background-image:url(../../assets/icon/icon_Footprint@2x.png);'></view>
           <view class='padTop-15'>我的足迹</view>
         </navigator>

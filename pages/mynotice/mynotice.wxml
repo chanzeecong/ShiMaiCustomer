@@ -1,60 +1,63 @@
 <!--pages/mynotice/mynotice.wxml-->
-<view class='wrapper bg-white' style='margin-top: 20rpx;'>
-  <view class='notice_navigation'>
-    <navigator open-type='navigator' class='navigate_item flex flex-row align-center system_notice p-v-10pt section-padding'>
-      <view class='navigate-icon'><image src='../../assets/icon/icon_information@2x.png'></image></view>
-      <view class='flex-item flex flex-row'>
-        <view class='font-14pt p-h-10pt font-bold navigate_text'>系统通知</view>
-        <view class='circle_badge_red'>8</view>
-      </view>
-      <view class='icon-arrow' style='background-image:url(../../assets/icon/icon_arrow@2x.png);'></view>
-    </navigator>
-    <navigator open-type='navigator' class='navigate_item flex flex-row align-center system_notice p-v-10pt section-padding'>
-      <view class='navigate-icon'><image src='../../assets/icon/icon_Reply2@2x.png'></image></view>
-      <view class='flex-item flex flex-row'>
-        <view class='font-14pt p-h-10pt font-bold navigate_text'>系统通知</view>
-        <view class='circle_badge_red'>8</view>
-      </view>
-      <view class='icon-arrow' style='background-image:url(../../assets/icon/icon_arrow@2x.png);'></view>
-    </navigator>
-  </view>
+<view class='flex flex-row bg-white h-120'>
+  <navigator open-type='navigate' class='flex-item'>
+    <view class='flex justify-center'>
+      <image class="icon-img padTop-26" src='../../assets/icon/icon_Receipt@2x.png'></image>
+    </view>
+    <view class='flex align-center font-14 black justify-center padTop-15 padBot-25'>交易物流</view>
+  </navigator>
 
-  <view class='mybuyer_list'>
-    <view class='mybuyer_item flex flex-row p-v-10pt section-padding'>
+  <navigator open-type='navigate' url="../myreply_list/myreply_list" class='flex-item'>
+    <view class='flex justify-center'>
+      <image class="icon-img padTop-26" src='../../assets/icon/icon_Receipt@2x.png'></image>
+    </view>
+    <view class='flex align-center font-14 black justify-center padTop-15 padBot-25'>回复我的</view>
+  </navigator>
+
+  <navigator open-type='navigate' class='flex-item'>
+    <view class='flex justify-center'>
+      <image class="icon-img padTop-26" src='../../assets/icon/icon_Receipt@2x.png'></image>
+    </view>
+    <view class='flex align-center font-14 black justify-center padTop-15 padBot-25'>通知</view>
+  </navigator>
+
+</view>
+
+
+
+  <view class='magTop-10 bg-white'>
+    <view class='flex flex-row p-v-20pt section-padding'>
       <view class='buyer_avatar' style='background-image:url(../../assets/img/4.png)'></view>
       <view class='flex flex-column justify-between flex-item'>
         <text class='font-14pt font-bold'>少女心1</text>
         <text class='font-14pt sub_text_color2'>在吗？</text>
       </view>
       <view class='flex flex-column justify-around'>
-        <view class='mybuyer_status active align-self-end'></view>
+        <view class='font-10pt sub_text_color2'>14:36</view>
+      </view>
+    </view>
+
+    <view class='mybuyer_item flex flex-row p-v-20pt section-padding'>
+      <view class='buyer_avatar' style='background-image:url(../../assets/img/4.png)'></view>
+      <view class='flex flex-column justify-between flex-item'>
+        <text class='font-14pt font-bold'>少女心2</text>
+        <text class='font-14pt sub_text_color2 '>在吗？</text>
+      </view>
+      <view class='flex flex-column justify-around'>
         <view class='font-10pt sub_text_color2'>昨天</view>
       </view>
     </view>
 
-    <view class='mybuyer_item flex flex-row p-v-10pt section-padding'>
-      <view class='buyer_avatar' style='background-image:url(../../assets/img/4.png)'></view>
-      <view class='flex flex-column justify-between flex-item'>
-        <text class='font-14pt font-bold'>少女心2</text>
-        <text class='font-14pt sub_text_color2'>在吗？</text>
-      </view>
-      <view class='flex flex-column justify-around'>
-        <view class='mybuyer_status active align-self-end'></view>
-        <view class='font-10pt sub_text_color2'>12-13</view>
-      </view>
-    </view>
-
-    <view class='mybuyer_item flex flex-row p-v-10pt section-padding'>
+    <view class='mybuyer_item flex flex-row p-v-20pt section-padding'>
       <view class='buyer_avatar' style='background-image:url(../../assets/img/4.png)'></view>
       <view class='flex flex-column justify-between flex-item'>
         <text class='font-14pt font-bold'>少女心3</text>
         <text class='font-14pt sub_text_color2'>在吗？</text>
       </view>
       <view class='flex flex-column justify-around'>
-        <view class='mybuyer_status active align-self-end'></view>
-        <view class='font-10pt sub_text_color2'>2017-12-13</view>
+        <view class='font-10pt sub_text_color2'>2019-02-03   14:36</view>
       </view>
     </view>
 
+
   </view>
-</view>

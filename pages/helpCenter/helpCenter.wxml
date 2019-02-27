@@ -2,12 +2,17 @@
   <view class='warpper'>
     <view class='row row-center' style='height: 60rpx;'>
       <icon type="search" size="20" class='padLef-10 padRig-5'/>
-      <input bindinput='onHelpInput' class='input flex1' placeholder='搜索问题' placeholder-class='font-14' placeholder-style='color:#8E8E93;'></input>
+      <input 
+      bindinput='onHelpInput' 
+      class='input flex1' 
+      placeholder='搜索问题' 
+      placeholder-class='font-16' 
+      placeholder-style='color:#8E8E93;'></input>
     </view>
   </view>
 </view>
 
-<view class='row padTop-40 padLef-16 padBot-11'>
+<view class='row magTop-34 padLef-16 padBot-12 bgWhite h-40 underline'>
   <text class='font-16 black'>问题分类</text>
 </view>
 <view class='row bgWhite' style='height:240rpx;'>
@@ -29,7 +34,7 @@
   </swiper>
 </view>
 
-<view class='row padTop-20 padLef-16 padBot-11'>
+<view class='row magTop-10 padLef-16 padBot-12 bgWhite h-40 underline'>
   <text class='font-16 black'>{{type}}</text>
 </view>
 <block wx:for="{{helpList}}" wx:key="{{index}}">

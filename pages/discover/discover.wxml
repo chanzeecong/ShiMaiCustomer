@@ -9,23 +9,23 @@
     </view>
   </view>
 
-  <navigator open-type='navigate' url='../search_buyer/search_buyer' class='search-wrapper bg-white' style='margin-bottom: 10rpx;'>
+  <navigator open-type='navigate' url='../search_buyer/search_buyer' class='search-wrapper bg-white magTop-10'>
     <view class='search-box'>
       <view class='icon icon-search'>
         <image src='../../assets/icon/icon_search@2x.png'></image>
       </view>
-      <text class='search-place-text'>搜索买手、标签、地区</text>
+      <text bindinput='onSearchInput' class='search-place-text'>搜索买手、标签、地区</text>
     </view>
   </navigator>
 
-  <view class='flex flex-row category-scroll-box bg-white'>
+  <!-- <view class='flex flex-row category-scroll-box bg-white'>
 
     <scroll-view bindtap='chooseCategory' scroll-into-view='{{scrollID}}' scroll-x scroll-with-animation scroll-left='{{scrollLeft}}'>
       <view class='category-scroll'>
         <view id='item_{{index}}' wx:for='{{cate}}' wx:key='{{index}}' class='scroll-item {{item.active}}' data-index='{{index}}'>{{item.name}}</view>
       </view>
     </scroll-view>
-    
+
     <view class='arrow-bottom' bindtap='showAllSelections' style='background-image:url(../../assets/icon/icon_drop_down@2x.png)'></view>
 
     <view class='all_selections {{selectionActive}}'>
@@ -45,8 +45,68 @@
         </view>
       </view>
     </view>
-  </view>
-  
+  </view> -->
+  <block wx:if="{{isShowAllTab}}">
+
+    <view class='row row-between padLef-16 padRig-16 padTop-10 padBot-10 underline'>
+      <text class='font-16 grey'>请选择</text>
+      <image bindtap='onShowTabBtnClick' class='arrow-icon' src='../../image/icon_arrow_down@2x.png' style='transform:rotate(180deg)'></image>
+    </view>
+
+    <view class='row drop_menu' bindtap="onTabClick">
+      <view 
+        wx:for="{{tabList}}" 
+        wx:key="{{index}}" 
+        wx:for-item="tabData" 
+        data-index='{{index}}' 
+        class='col-center row-center tab-wrapper' 
+        >
+        <!-- style='width:{{tabDeminsion}}px;height:{{tabDeminsion}}px;' -->
+        <!-- <image src='{{tabData.src}}' class='tab-icon'></image> -->
+        {{tabData.name}}
+        <!-- <text class='font-14 padTop-10' style='color:#788188'>{{tabData.label}}</text> -->
+      </view>
+    </view>
+
+  </block>
+  <block wx:else>
+
+    <view class='row row-center menu-wrapper '>
+
+      <scroll-view scroll-x="true" scroll-left="{{scrollToLeft}}rpx" scroll-with-animation="true" scroll-into-view='{{nextTab}}'>
+        <view class="row row-center " style='width:200%;justify-content:center;' bindtap="onTabClick">
+          <view wx:for="{{tabList}}" wx:key="{{index}}" class='row row-center tag-item-box' id='tab-{{index}}'>
+            <view class='h-50 row row-center {{index === currentTab? "active-menu red font-16" : "black font-14"}}' data-id='{{item.id}}' data-index='{{index}}'>
+              {{item.name}}
+            </view>
+          </view>
+        </view>
+      </scroll-view>
+
+      <view bindtap='onShowTabBtnClick' class=''>
+        <image class='arrow-icon' src='../../image/icon_arrow_down@2x.png'></image>
+      </view>
+
+    </view>
+
+  </block>
+
+
+
+  <!-- 商品列表 -->
+  <scroll-view scroll-y="{{isScroll}}" class='padLef-16 padRig-16'>
+    <block wx:if="{{eassyList.length !== 0}}">
+      <view wx:for="{{eassyList}}" wx:key="{{index}}">
+        <view class='eassyItem flex flex-column flex-wrapper magTop-10 bg-white' style='width:45%;'>
+          <view class='row'>
+            <image class='cover_img' mode="aspectFill" src='{{item.cover_img_link}}'></image>
+          </view>
+          <view class='essay_text font-14 black bold-text'>{{item.essay_title}}</view>
+
+        </view>
+
+
+      </view>
+    </block>
+  </scroll-view>
 </view>
-
-

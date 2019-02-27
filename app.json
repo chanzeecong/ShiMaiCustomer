@@ -1,12 +1,12 @@
 {
   "pages": [
     "pages/discover/discover",
+    "pages/register/register",
     "pages/buyer/buyer",
     "pages/index/index",
     "pages/myhistory/myhistory",
     "pages/buyer_detail/buyer_detail",
     "pages/myreply_list/myreply_list",
-    "pages/mynotice/mynotice",
     "pages/card_bag/card_bag",
     "pages/myscore/myscore",
     "pages/usercenter/usercenter",
@@ -16,7 +16,9 @@
     "pages/search_buyer/search_buyer",
     "pages/orderList/orderList",
     "pages/addrList/addrList",
-    "pages/editAddr/editAddr"
+    "pages/editAddr/editAddr",
+    "pages/userFollow/userFollow",
+    "pages/mynotice/mynotice"
   ],
   "window": {
     "backgroundTextStyle": "light",

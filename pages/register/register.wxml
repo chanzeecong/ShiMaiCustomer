@@ -1,6 +1,6 @@
 <block wx:if="{{!isWaiting}}">
   <view class="row row-center padTop-40">
-    <image class="shield-icon" src='../../image/icon_Shield@2x.png'></image>
+    <image class="shield-icon" src='../../assets/icon/icon_Shield@2x.png'></image>
     <view class='col-left padLef-10'>
       <text class='font-18 black'>为了您的账号安全</text>
       <text class='font-18 black'>请及时绑定手机</text>
@@ -60,7 +60,7 @@
           </label>
         </checkbox-group>
         
-        <text class='font-14' style='color:#FE5968;'>《名品邦商城服务协议》</text>
+        <text class='font-14' style='color:#FE5968;'>《识买商城服务协议》</text>
       </view>
     </view>
   </view>

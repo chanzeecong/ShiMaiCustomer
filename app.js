@@ -1,7 +1,7 @@
 //app.js
 App({
   onLaunch: function () {
-    this.getMobileScreen();
+    this.getMobileDemision();
     // 展示本地存储能力
     var logs = wx.getStorageSync('logs') || []
     logs.unshift(Date.now())
@@ -34,19 +34,46 @@ App({
       }
     })
   },
-  windowHeight: 667,
-  windowWidth:375,
-  globalData: {
-    userInfo: null
-  },
-  getMobileScreen(){
-    let _this = this;
+  // windowHeight: 667,
+  // windowWidth:375,
+  // globalData: {
+  //   userInfo: null
+  // },
+  // getMobileScreen(){
+  //   let _this = this;
+  //   wx.getSystemInfo({
+  //     success: function(res) {
+  //       // console.log(res);
+  //       _this.windowHeight = res.windowHeight;
+  //       _this.windowWidth = res.windowWidth;
+  //     },
+  //   })
+  // }
+
+  getMobileDemision() {
     wx.getSystemInfo({
-      success: function(res) {
-        // console.log(res);
-        _this.windowHeight = res.windowHeight;
-        _this.windowWidth = res.windowWidth;
-      },
+      success: (res) => {
+        let width = res.screenWidth;
+        let height = res.screenHeight;
+
+        this.globalData.width = width;
+        this.globalData.height = height;
+        this.globalData.windowWidth = res.windowWidth;
+        console.log(res.windowWidth);
+      }
     })
-  }
+  },
+  // hostName: `http://distributor.shimai.com/api/`,
+  hostName: `https://customer.afxclub.top/api/`,
+  token: ``,
+  scanPath: '',
+  orderId: 0,
+  distributorId: 0,
+  isCustom: 0,
+  globalData: {
+    width: 375,
+    windowWidth: 555,
+    height: 667,
+    userInfo: null,
+  },
 })
