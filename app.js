@@ -65,7 +65,7 @@ App({
   },
   // hostName: `http://distributor.shimai.com/api/`,
   hostName: `https://customer.afxclub.top/api/`,
-  token: ``,
+  token: `eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9jdXN0b21lci5hZnhjbHViLnRvcFwvYXBpXC9jdXN0b21lciIsImlhdCI6MTU1MTIzMzIyMCwiZXhwIjoxNTUzODI1MjIwLCJuYmYiOjE1NTEyMzMyMjAsImp0aSI6IjZnZDRtWk4xVUVMeGUza0ciLCJzdWIiOjYzLCJwcnYiOiJjZTM5YTYwNmNiZTcwNDIwNTRhM2Y1MzYxNGY4ZjIwMjk5ZmQ5YWFlIn0.EXgaxbXZ-JMehR6NrWKoqvekIxpZn8Bf4FGLARHlks4`,
   scanPath: '',
   orderId: 0,
   distributorId: 0,

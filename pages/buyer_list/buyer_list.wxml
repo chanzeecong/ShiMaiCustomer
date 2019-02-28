@@ -15,25 +15,25 @@
 
     <view class='buyer_box' wx:for="{{buyerList}}" wx:for-item="list" wx:for-index="listidx" wx:key="{{idex}}">
       <navigator open-type='navigate' url='../buyer_detail/buyer_detail' class='flex flex-row buyer_head'>
-          <image class='buyer_img' mode='aspectFill' src='../../assets/img/4.png'></image>
-          <view class='flex-item'>
-            <view class='buyer_title'>
-              <text>The storyor（美国）</text>
-              <view class='title_location'>
-                <image class='icon icon_location' src='../../assets/icon/icon_position1@2x.png'></image>
-                韩国Suwon
-              </view>
+        <image class='buyer_img' mode='aspectFill' src='../../assets/img/4.png'></image>
+        <view class='flex-item'>
+          <view class='buyer_title'>
+            <text>The storyor</text>
+            <view class='title_location padTop-5'>
+              <image class='icon icon_location padTop-5' src='../../assets/icon/icon_position1@2x.png'></image>
+              韩国Suwon
             </view>
-            <view class='flex flex-row buyer-badges'>
-              <view class='badges-item' wx:for='{{list.badge}}' wx:for-index="cidx" wx:key="{{cidx}}" wx:for-item="child">
-                {{child}}
-              </view>
+            <view></view>
+          </view>
+          <view class='flex flex-row buyer-badges'>
+            <view class='badges-item' wx:for='{{list.badge}}' wx:for-index="cidx" wx:key="{{cidx}}" wx:for-item="child">
+              {{child}}
             </view>
           </view>
+        </view>
       </navigator>
 
       <view class='buyer_middle_info'>
-        <text class='info_title'>优惠最大 业内高手 亲身购买</text>
         <text class='info_sub_title'>职业代购，会定期去日本采购</text>
       </view>
 
@@ -45,10 +45,13 @@
       </scroll-view>
 
       <view class='buyer-action'>
-          <button class='buyer-focus'>进店逛逛</button>
+        <button class='buyer-focus'>进店逛逛</button>
       </view>
 
     </view>
-    
+
+
+
+    <image src='../../assets/icon/icon_top@2x.png' class='goTop' hidden='{{!floorstatus}}' bindtap="goTop"></image>
   </view>
 </view>

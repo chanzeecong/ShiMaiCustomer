@@ -18,7 +18,9 @@
     "pages/addrList/addrList",
     "pages/editAddr/editAddr",
     "pages/userFollow/userFollow",
-    "pages/mynotice/mynotice"
+    "pages/mynotice/mynotice",
+    "pages/myordernotice/myordernotice",
+    "pages/mycollect/mycollect"
   ],
   "window": {
     "backgroundTextStyle": "light",

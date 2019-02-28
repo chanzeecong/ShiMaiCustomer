@@ -9,3 +9,10 @@
   line-height: 2;
   box-shadow: 0 2rpx 6rpx rgba(245, 57, 110, .72);
 }
+.goTop {
+  width:100rpx;
+  height:108rpx;
+  position: fixed;
+  bottom: 50rpx;
+  right: 0;
+}

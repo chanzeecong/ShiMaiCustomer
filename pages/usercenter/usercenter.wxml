@@ -2,9 +2,9 @@
 <view class='wrapper'>
 
   <view class='user_header bg-white'>
-    <view class='daily_btn' bindtap='getDailySign'>    
+    <view class='daily_btn' bindtap='getDailySign'>
       <image class="dail_icon" src='../../assets/icon/icon_sign@2x.png'></image>
-      <text class='daily_text'>签到赚积分</text>        
+      <text class='daily_text'>签到赚积分</text>
     </view>
     <view class='user_info flex flex-column justify-center align-center'>
       <view class='user_avartor' style='background-image:url(../../assets/img/4.png);'></view>
@@ -25,10 +25,12 @@
               <view class='font-12 padTop-10 deep'>我的关注</view>
             </navigator>
           </view>
-          <view>
-            <view class='font-12 deep flex justify-center'>10</view>
-            <view class='font-12 padTop-10 deep'>我的收藏</view>
-          </view>
+          <navigator open-type='navigate' url="../mycollect/mycollect">
+            <view>
+              <view class='font-12 deep flex justify-center'>10</view>
+              <view class='font-12 padTop-10 deep'>我的收藏</view>
+            </view>
+          </navigator>
         </view>
       </view>
     </view>
@@ -43,7 +45,7 @@
       </view> -->
     </navigator>
 
-    <view class='section-body flex flex-row'> 
+    <view class='section-body flex flex-row'>
       <navigator open-type='navigate' class='flex-item'>
         <view class='icon-btn-box'>
           <view class='icon-order-btn' style='background-image:url(../../assets/icon/icon_payment@2x.png);'></view>
@@ -83,7 +85,7 @@
           <view class='icon-btn' style='background-image:url(../../assets/icon/icon_Red-envelope@2x.png);'></view>
           <view class='padTop-15'>卡券红包</view>
         </navigator>
-          <navigator open-type='navigate' class='tools-item font-14 deep'>
+        <navigator open-type='navigate' class='tools-item font-14 deep'>
           <view class='icon-btn' style='background-image:url(../../assets/icon/icon_address@2x.png);'></view>
           <view class='padTop-15'>收货地址</view>
         </navigator>
@@ -100,7 +102,7 @@
           <view class='icon-btn' style='background-image:url(../../assets/icon/icon_help@2x.png);'></view>
           <view class='padTop-15'>帮助与客服</view>
         </navigator>
-      
+
         <navigator open-type='navigate' url='../myhistory/myhistory' class='tools-item font-14 deep'>
           <view class='icon-btn' style='background-image:url(../../assets/icon/icon_Footprint@2x.png);'></view>
           <view class='padTop-15'>我的足迹</view>
