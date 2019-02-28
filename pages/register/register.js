@@ -13,41 +13,22 @@ Page({
     msgKey: ``,
     getCode: 'true',
     canSignIn: 'true',
-    currentCountry: {
-      cn: ``,
-      en: ``,
-      code: ``
-    },
     countDown: 180,
     isSendMsg: false,
-    isWaiting: true,
-    countryList: []
+    isWaiting: true
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    // console.log(app.scanPath)
-    if (app.distributorId=== 0){
-      if (app.scanPath !== '') {
-        wx.redirectTo({
-          url: app.scanPath
-        })
-      } else {
-        this.checkUserLogin();
-      }
-    }else{
+    console.log(app.distributorId);
+
+    if (app.distributorId === 0) {
+      this.checkUserLogin(); 
+    } else {
       this.startRegist();
     }
-    
-    // if (options.distributorId) {
-      
-    // }
-
-    // if (options.distributorId) {
-    //   app.distributorId = Number(options.distributorId)
-    // }
   },
 
   /**
@@ -62,12 +43,8 @@ Page({
    */
   onShow: function () {
     wx.showLoading({
-      title: '正在进入名品邦',
+      title: '正在进入识买',
     });
-    if (app.distributorId === 0){
-      this.initPageData();
-    }
-    
   },
 
   /**
@@ -109,8 +86,7 @@ Page({
     let code = await this.getCode();
     let token = await this.userLogin(code);
     app.token = token;
-    app.uploadToken = await this.getUploadToken();
-    let isCustom = await this.checkCustom();
+//    app.uploadToken = await this.getUploadToken();
     
     this.setData({
       isWaiting: false
@@ -175,6 +151,7 @@ Page({
     }
 
     let msgData = await this.getMsgCode();
+    console.log(msgData);
 
     if (msgData.errors) {
       phoneTip = msgData.errors.phone[0];
@@ -187,15 +164,6 @@ Page({
       phoneTip: phoneTip,
       msgKey: msgKey
     })
-
-    // if (!this.data.currentCountry.cn) {
-    //   wx.showToast({
-    //     title: '请选择国家和地区',
-    //     icon: `none`
-    //   })
-
-    //   return;
-    // }
 
     if (msgData.errors) {
       return
@@ -233,31 +201,11 @@ Page({
         dataType: 'json',
         success: (res) => {
           resolve(res.data);
+          console.log('success', res);
         },
         fail(res){
           console.log('fail', res);
           rejected('fail');
-        }
-      })
-    })
-  },
-
-  async initPageData () {
-    // let countryList = await this.getCountry ();
-
-    // this.setData ({
-    //   countryList: countryList
-    // })
-  },
-
-  getCountry() {
-    return new Promise(resolve => {
-      wx.request({
-        url: `${app.hostName}countryCode`,
-        method: 'GET',
-        dataType: 'json',
-        success: (res) => {
-          resolve(res.data);
         }
       })
     })
@@ -283,38 +231,28 @@ Page({
       })
       return
     }
+    else{
+      wx.switchTab({
+        url: '../discover/discover',
+      })
+    }
 
     app.token = registerResult.access_token;
-    app.uploadToken = await this.getUploadToken();
+//    app.uploadToken = await this.getUploadToken();
     
     wx.setStorageSync(`phoneNum`, this.data.phoneNum);
 
-    wx.showLoading({
-      title: '注册成功',
-    })
-
-    let isCustom = await this.checkCustom();
-    app.isCustom = isCustom;
-
-    if (Number(isCustom)) {
-      setTimeout(() => {
-        wx.redirectTo({
-          url: '../customCenter/customCenter',
-        })
-      }, 800)
-    } else {
-      setTimeout(() => {
-        wx.switchTab({
-          url: '../index/index?isfirst=1',
-        })
-      }, 800)
-    }
+    setTimeout(function(){
+      wx.showLoading({
+        title: '注册成功',
+      })
+    },800)    
   },
 
   userRegister(code, nickName, avatarUrl) {
     return new Promise(resolve => {
       wx.request({
-        url: `${app.hostName}distributor`,
+        url: `${app.hostName}customer`,
         method: 'POST',
         data: {
           verification_key: this.data.msgKey,
@@ -322,8 +260,7 @@ Page({
           code: code,
           nickName: nickName,
           avatarUrl: avatarUrl,
-          inviting_distributor_id: app.distributorId
-          // state_name: this.data.currentCountry.code.replace (`+`, `00`)
+          inviting_distributor_id: app.distributorId,
         },
         dataType: 'json',
         success: (res) => {
@@ -359,28 +296,19 @@ Page({
   async checkUserLogin() {
     let code = await this.getCode();
     let token = await this.userLogin(code);
+    console.log(token)
 
     if (token) {
 
       app.token = token;
-      app.uploadToken = await this.getUploadToken();
+ //     app.uploadToken = await this.getUploadToken();
 
-      let isCustom = await this.checkCustom();
+      wx.switchTab({
+        url: '../discover/discover',
+        })
 
-      if (Number(isCustom)) {
-        setTimeout(() => {
-          wx.redirectTo({
-            url: '../customCenter/customCenter',
-          })
-        }, 800)
-      } else {
-        setTimeout(() => {
-          wx.switchTab({
-            url: '../index/index',
-          })
-        }, 800)
-      }
-    } else {
+    }
+     else {
       wx.hideLoading();
 
       this.setData({
@@ -390,24 +318,6 @@ Page({
 
     console.log(code)
   },
-
-  checkCustom () {
-    return new Promise(resolve => {
-      wx.request({
-        url: `${app.hostName}isCustomer`,
-        method: 'GET',
-        header: {
-          'Authorization': `Bearer ${app.token}`
-        },
-        dataType: 'json',
-        success: (res) => {
-          resolve(res.data.data);
-          console.log(res.data.data);
-        }
-      })
-    })
-  },
-
 
   getCode() {
     return new Promise(resolve => {
@@ -435,13 +345,13 @@ Page({
     })
   },
 
-  getUploadToken() {
+/*  getUploadToken() {
     return new Promise(resolve => {
       wx.request({
-        url: `${app.hostName}uploadToken`,
+        url: `${app.hostName}authorizations`,
         method: 'POST',
         header: {
-          'Authorization': `Bearer ${app.token}`
+          'authorizations': `Bearer ${app.token}`
         },
         dataType: 'json',
         success: (res) => {
@@ -450,11 +360,5 @@ Page({
         }
       })
     })
-  },
-
-  onCountryChanged (e) {
-    // this.setData ({
-    //   currentCountry: this.data.countryList[e.detail.value]
-    // })
-  }
+  }*/
 })

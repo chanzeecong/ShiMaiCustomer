@@ -1,0 +1,58 @@
+<view class='module-wrapper underline'>
+  <view class='row' style='align-items:flex-start;'>
+    <view class='out-line' style='position:relative;'>
+      <image class='pic-icon' mode='aspectFill' src='{{orderDetail.good_cover_img ? orderDetail.good_cover_img: "../../image/nonimg@2x.png"}}'></image>
+      <view class='row row-center tip-wrapper' style='position:absolute;bottom:0;'>
+        <text class='font-12 white'>共{{orderDetail.amount}}件</text>
+      </view>
+    </view>
+
+    <view class='col-left magLef-16'>
+      <view class='row pad'>
+        <text class="font-14" style='color:rgba(0,0,0,.6)'>承运来源：</text>
+        <text class="font-14 red">{{expressDetail.china_post.com ? expressDetail.china_post.com : "暂无消息"}}</text>
+      </view>
+      <view class='row padTop-6'>
+        <text class="font-14 black" style='color:rgba(0,0,0,.6);white-space:nowrap;'>运单编号：</text>
+        <view class='row'>
+          <text class="font-14 text-ellipse" style='color:rgba(0,0,0,.6)'>{{orderDetail.post_id ? orderDetail.post_id : "暂无消息"}}</text>
+          <button wx:if="{{orderDetail.post_id}}" bindtap='onCopyBtnClick' class='btn' plain='true' style='border:2rpx solid rgba(0,0,0,0.2);'>复制</button>
+        </view>
+      </view>
+      <view class='row padTop-6'>
+        <text class="font-14" style='color:rgba(0,0,0,.6)'>快递电话：</text>
+        <text class="font-14 dark-blue">{{expressDetail.china_post.phone}}</text>
+      </view>
+    </view>
+    
+  </view>
+</view>
+
+<block wx:if="{{expressDetail.china_post.data.length}}">
+  <view class='grey-line'></view>
+
+  <view class='module-wrapper'>
+    <view class='timeline padBot-40 '>
+      <view class="timeline-box">
+        <block wx:for="{{expressDetail.china_post.data}}" wx:key="{{index}}"> 
+
+          <view class='{{index ? "" : "cur"}} timeline-item'>
+            <view class='col-left underline'>
+              <text class='{{index ? "black" : "red"}} font-14 text-break'>{{item.context}}</text> 
+              <text class='{{index ? "black" : "red"}} font-12 text-break magTop-10 magBot-20'>{{item.time}}</text> 
+            </view>
+          </view>
+        </block>
+        
+      </view>
+    </view>
+  </view>
+</block>
+<block wx:else>
+  <view class='row row-center padTop-50'>
+    <image src='../../image/img_N_goods@2x.png' style='width:340rpx;height:340rpx;'></image>
+  </view>
+  <view class='row row-center padTop-20'>
+    <text class='font-16 grey'>您还没有相关的物流消息哦！</text>
+  </view>
+</block>

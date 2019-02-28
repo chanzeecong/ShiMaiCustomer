@@ -34,10 +34,16 @@ App({
       }
     })
   },
-  windowHeight: 667,
-  windowWidth:375,
+  hostName: `https://customer.afxclub.top/api/`,
+  token: '',
+  distributorId: 0,
   globalData: {
-    userInfo: null
+    width: 375,
+    windowHeiht: 555,
+    height: 667,
+
+    userInfo: null,
+    isIphoneX: false,
   },
   getMobileScreen(){
     let _this = this;
@@ -47,6 +53,42 @@ App({
         _this.windowHeight = res.windowHeight;
         _this.windowWidth = res.windowWidth;
       },
+    })
+  },
+
+  getMobileDemision() {
+    wx.getSystemInfo({
+      success: (res) => {
+        let width = res.screenWidth;
+        let height = res.screenHeight;
+
+
+        this.globalData.width = width;
+        this.globalData.height = height;
+        this.globalData.windowWidth = res.windowWidth;
+        let model = res.model;
+        if (model.search('iPhone X') != -1) {
+          this.width = res.windowWidth;
+        }
+        console.log(width)
+      }
+    })
+  },
+
+  userLogin(code) {
+    return new Promise(resolve => {
+      wx.request({
+        url: `${this.hostName}authorizations`,
+        method: 'POST',
+        data: {
+          token: code
+        },
+        dataType: 'json',
+        success: (res) => {
+          resolve(res.data.access_token);
+          console.log(token)
+        }
+      })
     })
   }
 })

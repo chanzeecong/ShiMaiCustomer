@@ -4,6 +4,14 @@
 page {
   background-color: #f4f4f4;
 }
+
+.user_avartor {
+  width: 60rpx;
+  height: 60rpx;
+  background-size: cover;
+  background-position: center;
+  border-radius: 50%;
+}
 .bgWhite {
   background-color: #fff;
 }

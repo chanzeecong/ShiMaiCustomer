@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/register/register",
     "pages/discover/discover",
     "pages/buyer/buyer",
     "pages/index/index",
@@ -16,7 +17,10 @@
     "pages/search_buyer/search_buyer",
     "pages/orderList/orderList",
     "pages/addrList/addrList",
-    "pages/editAddr/editAddr"
+    "pages/editAddr/editAddr",
+    "pages/expressDetail/expressDetail",
+    "pages/orderDetail/orderDetail",
+    "pages/myShop/myShop"
   ],
   "window": {
     "backgroundTextStyle": "light",
