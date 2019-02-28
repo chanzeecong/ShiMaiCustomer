@@ -8,8 +8,12 @@ Page({
   data: {
     tabList: [
       {
-        id: -2,
+        id: '',
         label: `全部`
+      },
+      {
+        id: 0,
+        label: `待付款`
       },
       {
         id: 1,
@@ -17,20 +21,12 @@ Page({
       },
       {
         id: 2,
-        label: `已发货`
-      },
-      {
-        id: 3,
-        label: `已收货`
-      },
-      {
-        id: 0,
-        label: `待付款`
+        label: `待收货`
       },
       {
         id: -1,
         label: `已取消`
-      },
+      }
     ],
     currentTab: 0,
     borderTab: [0, 3],
@@ -140,6 +136,7 @@ Page({
 
     let status = this.data.tabList[currentTab].id;
     let orderList = await this.getOrderList(status);
+    console.log(orderList)
 
     if (orderList === undefined) {
       orderList = [];
@@ -154,8 +151,12 @@ Page({
   },
 
   async initPageData() {
+    console.log(this.data.tabList);
+    console.log(this.data.currentTab);
     let status = this.data.tabList[this.data.currentTab].id
+    console.log(status);
     let orderList = await this.getOrderList(status);
+    console.log(orderList);
     this.setData({
       orderList: orderList,
     })
@@ -189,7 +190,7 @@ Page({
           },
           dataType: 'json',
           success: (res) => {
-            resolve(res.data.data)
+            resolve(res.data.data);
           }
         })
       })
@@ -315,7 +316,7 @@ Page({
 
   onBackBtnClick() {
     wx.switchTab({
-      url: '../index/index',
+      url: '../discover/discover',
     })
   }
 })

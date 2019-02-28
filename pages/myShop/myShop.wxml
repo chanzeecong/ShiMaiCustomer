@@ -1,0 +1,217 @@
+<block wx:if="{{isShowImg}}">
+  <view class="row row-center mask" bindtap='onHideImgBtnClick' style="z-index:200;">
+    <swiper style="width:90%;height:100vh;" current="{{currentImgIndex}}">
+        <swiper-item wx:for="{{imgList}}" wx:key="{{index}}" class="row row-center">
+          <image src='{{item}}' mode='aspectFill'></image>
+        </swiper-item>
+      </swiper>
+  </view>
+</block>
+
+<view class='info-wrapper bgWhite magBot-10'>
+  <view class='row'>
+
+    <view class='row flex1'>
+      <image class='big-avatar' mode="aspectFill" src='{{buyer.buyer_avatar}}'></image>
+    </view>
+
+    <view class='flex3 padLef-30'>
+
+      <view class='row row-between'>
+        <text class='font-18 black font-bold'>{{buyer.buyer_name}}</text>
+
+        <view wx:if="{{buyer.is_followed}}" class='row row-center'>
+          <button bindtap='onUnfollowBtnClick' class='follow-btn'>已关注</button>
+        </view>
+        <view wx:else class='row row-center'>
+          <button bindtap='onFollowBtnClick' class='follow-btn'>+ 关注</button>
+        </view>
+
+      </view>
+
+      <view class='row padTop-5'>
+        <image class='share-icon' src='../../image/icon_position@2x.png'></image>
+        <text class='font-12 grey'>{{buyer.state}} {{buyer.city}}</text>
+      </view>
+
+      <view class='row  padTop-10' style='justify-content:space-around;'>
+        <view class='col-center'>
+          <text class='font-16 black'>{{buyer.follower}}</text>
+          <text class='font-12 grey padTop-5'>关注</text>
+        </view>
+        <view class='col-center'>
+          <text class='font-16 black'>0</text>
+          <text class='font-12 grey padTop-5'>粉丝</text>
+        </view>
+        <view class='col-center'>
+          <text class='font-16 black'>0</text>
+          <text class='font-12 grey padTop-5'>获赞与收藏</text>
+        </view>
+      </view>
+
+    </view>
+  
+  </view>
+
+  <view class='row padTop-15'>
+    <text class='font-12 black padRig-10'>代购商品</text>
+
+    <block wx:for="{{buyer.buyer_tag}}" wx:key="{{index}}">
+      <view class='row row-center tag-wrapper magRig-5'>
+        <text class='font-10 red'>{{item}}</text>
+      </view>
+    </block>
+  </view>
+
+  <view class='row padTop-15'>
+    <text class='font-12 grey' style='word-break:break-all;'>{{buyer.buyer_introduction ? buyer.buyer_introduction: ""}}</text>
+  </view>
+</view>
+
+<block wx:for="{{goodList}}" wx:key="{{index}}">
+
+  <view class='row row-between padTop-12 padRig-16 padLef-16 padBot-10 bgWhite'>
+
+    <navigator url='../myShop/myShop' class='row' style='align-items:flex-start;'>
+
+      <view class='row padRig-10'>
+        <image class='avatar-icon' mode="aspectFill" src='{{buyer.buyer_avatar}}'></image>
+      </view>
+      
+      <view class='col-left'>
+        <view class='row'>
+          <text class='font-18 black padRig-10 font-bold'>{{buyer.buyer_name}}</text>
+          <view class='row row-center tag-wrapper'>
+            <text class='font-10 red'>{{item.tag_name}}</text>
+          </view>
+        </view>
+        <text class='font-10 grey padTop-5'>{{buyer.state}} {{item.start_time}}</text>
+      </view>
+
+    </navigator>
+
+  </view>
+
+  <view class='row padTop-10 padBot-10 padRig-16 padLef-16 bgWhite'>
+    <block wx:if="{{0 === item.isEllipsis}}">
+      <text class='font-14 black text-ellipsis'>{{item.good_name}}</text>
+    </block>
+    <block wx:elif="{{1 === item.isEllipsis}}">
+      <view class='col-left'>
+        <text class='font-14 black text-ellipsis'>{{item.good_name}}</text>
+        <text bindtap='onEllipsisArticleBtnClick' data-index="{{index}}" class='font-14 red padTop-10'>全文</text>
+      </view>
+    </block>
+    <block wx:elif="{{2 === item.isEllipsis}}">
+      <view class='col-left'>
+        <text class='font-14 black'>{{item.good_name}}</text>
+        <image bindtap='onEllipsisArticleBtnClick' data-index="{{index}}" class='arrow-icon magTop-10' src="../../image/icon_arrow_right@2x.png" style='transform:rotate(-90deg);'></image>
+      </view>
+    </block>
+  </view>
+
+  <view class='padLef-16 padRig-16 row bgWhite' style='flex-wrap:wrap;'>
+
+    <block wx:if='{{item.videoPath===""}}'>
+
+      <view wx:for="{{item.images}}" wx:key="{{index}}" wx:for-item="imgData" bindtap='onShowImgBtnClick' data-id="{{item.id}}" data-index="{{index}}" class='row row-center' style='width:{{deminsion}}px;height:{{deminsion}}px;'>
+        <image src="{{imgData}}" mode="aspectFill" style='width:96%;height:96%;'></image>
+      </view>
+      
+    </block>
+
+    <block wx:else>
+      <view class='video_box'>
+        <video autoplay='' src='{{item.videoPath}}'></video>
+      </view>
+    </block>
+  </view>
+
+  <view class='row row-between padTop-10 padBot-10 padLef-16 padRig-16 bgWhite'>
+    
+    <block wx:if="{{item.end_time}}">
+      <view class='row' style='align-items:flex-end;'>
+        <view class='row'>
+          <image class='fire-icon' src='../../image/icon_Selling@2x.png'></image>
+        </view>
+        <view class='row padLef-5'>
+          <text class='font-10 black'>距离结束：</text>
+          <view class='row row-center countDown-wrapper'>
+            <text class='font-10 white'>{{item.countDownDay}}</text>
+          </view>
+          <text class='font-10 black padLef-5 padRig-5'>天</text>
+          <view class='row row-center countDown-wrapper'>
+            <text class='font-10 white'>{{item.countDownHour}}</text>
+          </view>
+          <text class='font-10 black padLef-5 padRig-5'>时</text>
+          <view class='row row-center countDown-wrapper'>
+            <text class='font-10 white'>{{item.countDownMin}}</text>
+          </view>
+          <text class='font-10 black padLef-5 padRig-5'>分</text>
+          <view class='row row-center countDown-wrapper'>
+            <text class='font-10 white'>{{item.countDownSec}}</text>
+          </view>
+          <text class='font-10 black padLef-5 padRig-5'>秒</text>
+        </view>
+      </view>
+    </block>
+    <block wx:else>
+      <view></view>
+    </block>
+
+    <view class='row row-center'>
+      <button bindtap='onShareBtnClick' data-index="{{index}}" class='row row-center share-btn' plain='true' style='border:none;'>
+        <image class='share-icon' src='../../image/icon_moments@2x.png'></image>
+        <text class='font-14 white padLef-5'>一键分享</text>
+      </button>
+    
+    </view>
+  
+  </view>
+
+  <view class='row padTop-5 padBot-5 padLef-16 padRig-16 bgWhite'>
+    <text class='font-12 grey'>先选规格 再下单购买</text>
+  </view>
+
+  <view class='bgWhite' style='width:100%'>
+    <view class='row size-area-wrapper' style='flex-wrap:wrap;'>
+
+      <block wx:for="{{item.buyer_good_attr}}" wx:key="{{index}}" wx:for-item="sizeData">
+
+        <view bindtap='onSizeBtnClick' data-id="{{item.id}}" data-index="{{index}}" class='row row-center size-wrapper {{sizeData.isChoose ? "active-size" : ""}}'>
+          <text class='font-12 padLef-5 padRig-5 {{sizeData.isChoose ? "white" : "black"}}'>{{sizeData.name}}</text>
+        </view>
+
+      </block>
+    
+    </view>
+  </view>
+
+  
+
+  <view class='row row-between padTop-10 padBot-10 padLef-16 padRig-16 bgWhite' style='align-items:flex-end;'>
+    <view>
+      <text class='font-12 black'>疯抢价：</text>
+      <text class='font-10 red'>￥</text>
+      <text class='font-20 red'>{{item.good_price}}</text>
+    </view>
+
+    <view>
+      <text class='font-12 black'>建议服务费：</text>
+      <text class='font-14 black'>￥{{item.purchase_cost}}</text>
+    </view>
+  </view>
+
+  <view class='row row-between padTop-10 padBot-10 padLef-16 padRig-16 bgWhite magBot-10'>
+    <view></view>
+    <view class='row'>
+      <button bindtap='onCreateOrderBtnClick' data-index="{{index}}" class='btn' plain='true' style='border:none;background:rgba(244,65,104,1);color:#fff;'>生成订单</button>
+      <button open-type='contact' class='btn magLef-10' plain='true' style='border:none;background:rgba(244,65,104,1);color:#fff;'>联系客服</button>
+      <button bindtap='onShoppingBtnClick' data-index="{{index}}" class='btn magLef-10' plain='true' style='border:none;background:rgba(244,65,104,1);color:#fff;'>购买</button>
+    </view>
+  </view>
+</block>
+
+<view class='col-left fix'>
+  <image wx:if="{{isBackTop}}" bindtap="onBackTopBtnClick" class='nav-icon' src="../../image/icon_top@2x.png"></image>
+</view>

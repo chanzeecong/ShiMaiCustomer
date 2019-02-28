@@ -29,10 +29,7 @@
 }
 
 .icon_edit {
-  position: absolute;
   display: block;
-  right: -30rpx;
-  top: 10rpx;
   width: 24rpx;
   height: 24rpx;
   background-position: center;
@@ -87,7 +84,6 @@
 .dail_icon {
   width: 40rpx;
   height: 40rpx;
-  padding-top: 10rpx;
 }
 
 .daily_btn {
@@ -97,17 +93,11 @@
   font-size: 20rpx;
   width: 180rpx;
   height: 60rpx;
-  line-height: 60rpx;
-  /* padding: 10rpx; */
   background: rgba(153, 153, 153, 1);
   color: #fff;
   text-align: center;
   border-top-right-radius: 50rpx;
   border-bottom-right-radius: 50rpx;
-}
-
-.daily_text {
-  padding-bottom: 10rpx;
 }
 
 .section-box {
@@ -210,8 +200,13 @@
 }
 
 .daily_mask > .daily_img > .daily_img_box {
-  width: 320px;
-  height: 240px;
+  width: 600rpx;
+  height: 650rpx;
+}
+
+.daily_img_box > image{
+  width: 600rpx;
+  height: 650rpx;
 }
 
 .daily_wrapper.in > .daily_mask > .daily_img > .daily_img_box {
@@ -272,4 +267,9 @@
   top: 10px;
   left: 5px;
   transform: rotateZ(-45deg);
+}
+
+.line{
+  width: 8rpx;
+  height: 120rpx;
 }

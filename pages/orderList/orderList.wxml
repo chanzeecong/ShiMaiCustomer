@@ -1,6 +1,6 @@
 <!--pages/orderList/orderList.wxml-->
 <scroll-view scroll-x="true" scroll-left="{{scrollToLeft}}rpx" scroll-with-animation="true">
-  <view class="row row-center underline bgWhite" style='width:150%;justify-content:center;'>
+  <view class="row row-center underline bgWhite" style='justify-content:center;'>
     <view bindtap="onTapClick" data-index='{{index}}' wx:for="{{tabList}}" wx:key="{{index}}" style='width:220rpx;' class='row row-center'>
       <view class='tab-wrapper row row-center {{index === currentTab? "active red" : "black"}}'>
         <text class='{{index === currentTab? "red font-16" : "black font-14"}}'>{{item.label}}</text>
@@ -22,7 +22,7 @@
 
     <view class='row row-between wrapper underline bgWhite'>
       <navigator url='../myShop/myShop?id={{item.buyer_id}}' class='row'>
-        <image class='shop-icon' src='../../image/icon_store@2x.png'></image>
+        <image src='../../image/4.png' class='user_avartor'></image>
         <text class='font-16 black font-bold padLef-10'>{{item.buyer_name}}</text>
         <image class='shop-icon' src='../../image/icon_arrow_right@2x.png'></image>
       </navigator>
@@ -41,7 +41,7 @@
           <text class='font-14 red padRig-10'>待收货</text>
         </block>
         <block wx:elif="{{3 === item.status}}">
-          <text class='font-14 grey padRig-10'>待评价</text>
+          <text class='font-14 grey padRig-10'>已取消</text>
         </block>
 
         <view class='line'></view>
@@ -76,7 +76,8 @@
       <view></view>
       <view class='row'>
         <text class='font-14 black'>共{{item.amount}}件商品</text>
-        <text class='font-16 red padLef-10'>付款金额：￥{{item.real_pay}}</text>
+        <text class='font-14 black padLef-10'>实付：</text>
+        <text class='font-14 black font-bold'>￥{{item.real_pay}}</text>
       </view>
     </view>
 
@@ -84,7 +85,7 @@
       <view class='row'>
       
         <block wx:if="{{-1 === item.status}}">
-          <text class='font-12 grey'>订单状态：</text>
+          <text class='font-12 grey'>状态：</text>
           <text class='font-12 red'>订单已关闭(24小时未付款关闭)</text>
         </block>
     
@@ -95,7 +96,7 @@
         <block wx:if="{{-1 === item.status}}">
           <button plain bindtap='onBuyAgainBtnClick' data-attrId="{{item.buyer_good_attr_id}}" class='btn font-14 white magLef-10 btn-shadow primary_btn'>再次购买</button>
         </block>
-        <block wx:elif="{{ 1 === item.status || 3 === item.status}}">
+        <block wx:elif="{{ 1 === item.status }}">
           <button open-type='contact' class='btn font-14 black' plain='true' style='border:2rpx solid #CCCCCC;'>联系客服</button>
         </block>
 

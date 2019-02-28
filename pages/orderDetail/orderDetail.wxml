@@ -1,0 +1,208 @@
+<view class="row" style='position:relative;height:200rpx;'>
+  <image class='bg-img' src="../../image/img_illustration@2x.png" style='width:{{width}}px;'></image>
+  
+  <view class="col-left padLef-16">
+
+    <block wx:if="{{-1 === orderDetail.status}}">
+      <text class='font-18 white'>已取消</text>
+      <text class='font-12 white padTop-20'>取消原因：多拍</text>
+    </block>
+    <block wx:elif="{{0 === orderDetail.status}}">
+      <text class='font-18 white'>未付款</text>
+      <view class='row row-center padTop-20 '>
+        <image class="count-icon" src="../../image/icon_Countdown_white@3x.png"></image>
+        <text class='font-12 white padLef-5'>剩余时间：{{orderDetail.countDownHour}}时{{orderDetail.countDownMin}}分{{orderDetail.countDownSec}}秒</text>
+      </view>
+    </block>
+    <block wx:elif="{{1 === orderDetail.status}}">
+      <text class='font-18 white'>买家已付款</text>
+      <text class='font-12 white padTop-20'>包裹待发送</text>
+    </block>
+    <block wx:elif="{{2 === orderDetail.status}}">
+      <text class='font-18 white'>已发货</text>
+      <text class='font-12 white padTop-20'>包裹待收货</text>
+    </block>
+    <block wx:elif="{{3 === orderDetail.status}}">
+      <text class='font-18 white'>已收货</text>
+      <text class='font-12 white padTop-20'>包裹已签收，期待您的下次光临</text>
+    </block>
+  </view>
+</view>
+
+<block>
+  <view class='row padLef-16 padRig-16 padTop-20 padBot-20 magTop-10 bgWhite'>
+    <view class='col-left'>
+      <view class='row'>
+        <text class='font-14 black padRig-25'>{{orderDetail.received_name}}</text>
+        <text class='font-14 black'>{{orderDetail.received_tel}}</text>
+      </view>
+      <view class='row padTop-10'>
+        <text class='font-14 grey'>{{orderDetail.received_address}}</text>
+      </view>
+    </view>
+  </view>
+
+  <view class='row padLef-16 padRig-16 padTop-10 padBot-10 magTop-10 bgWhite underline'>
+    <image src='../../image/4.png' class='user_avartor'></image>
+    <text class='font-14 black padLef-10'>{{orderDetail.buyer_name}}</text>
+  </view>
+
+  <view class='row row-between padLef-16 padRig-16 padTop-10 padBot-10 bgWhite underline'>
+    <view class='row' style='align-items:flex-start;'>
+      <view class='row'>
+        <image class='production' src='{{orderDetail.good_cover_img ? orderDetail.good_cover_img: "../../image/nonimg@2x.png"}}' mode='aspectFill'></image>
+      </view>
+      <view class='row padLef-10'>
+        <view class='col-left'>
+          <text class='font-14 font-bold black text-ellipses'>{{orderDetail.good_name}}</text>
+          <view class='row row-between' style='width:100%;'>
+            <view></view>
+            <text class='font-12 grey padTop-28 font-bold' style='text-align:left'>{{orderDetail.good_attr_name}}</text>
+        </view>
+        </view>
+      </view>
+    </view>
+    <view class='row padLef-20'>
+      <view class='col-left'>
+        <text class='font-14 font-bold black text-ellipses'>￥{{orderDetail.good_price}}</text>
+        <view class='row row-between' style='width:100%;'>
+          <view></view>
+          <text class='font-12 grey padTop-28 font-bold' style='text-align:left'>X{{orderDetail.amount}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class='row row-between padLef-16 padRig-16 padTop-10 padBot-10 bgWhite'>
+    <view class='row' style='align-items:flex-start;'>
+      <text class='font-14 black'>数量</text>
+    </view>
+
+    <view class='col-left'>
+      <text class='font-14 black padTop-10' style='text-align:left'>{{orderDetail.amount}}</text>
+    </view>
+  </view>
+
+  <view class='row row-between padLef-16 padRig-16 padTop-10 padBot-10 bgWhite'>
+    <view class='row row-center'>
+      <text class='font-14 black'>备注留言:</text>
+      <text class='font-12 grey padLef-10' style='white-space:normal;'>{{orderDetail.comment ? orderDetail.comment: ""}}</text>
+    </view>
+  </view>
+</block>
+
+<view class='row padLef-16 padRig-16 padTop-10 padBot-10 magTop-10 bgWhite'>
+  <text class='font-14 black'>实物返图</text>
+  <view wx:for="{{orderDetail.good_send_img}}" wx:key="{{index}}" wx:for-item="imgData" data-id="{{item.id}}" data-index="{{index}}" class='row row-center send_img' style='width:{{deminsion}}px;height:{{deminsion}}px;'>
+    <image src="{{imgData}}" mode="aspectFill" style='width:96%;height:96%;'></image>
+  </view>
+</view>
+
+<view class='row padLef-16 padRig-16 padTop-10 padBot-10 magTop-10 bgWhite'>
+  <text class='font-14 black'>小票返图</text>
+  <view wx:for="{{orderDetail.receipt_img}}" wx:key="{{index}}" wx:for-item="imgData" data-id="{{item.id}}" data-index="{{index}}" class='row row-center send_img' style='width:{{deminsion}}px;height:{{deminsion}}px;'>
+    <image src="{{imgData}}" mode="aspectFill" style='width:96%;height:96%;'></image>
+  </view>
+</view>
+
+<block>
+  <view class='row row-between padLef-16 padRig-16 padTop-20 padBot-20 magTop-10 bgWhite underline'>
+    <view class='row' style='align-items:flex-start;'>
+      <text class='font-14 black'>商品总件数:</text>
+    </view>
+
+    <view class='col-left'>
+      <text class='font-14 black' style='text-align:left'>{{orderDetail.amount}}件</text>
+    </view>
+  </view>
+
+  <view class='row row-between padLef-16 padRig-16 padTop-20 bgWhite'>
+    <text class='font-14 grey'>商品总额:</text>
+    <text class='font-14 grey'>￥{{orderDetail.good_price ? orderDetail.good_price: 0}}</text>
+  </view>
+
+  <view class='row row-between padLef-16 padRig-16 padTop-15 bgWhite'>
+    <text class='font-14 grey'>运费:</text>
+    <text class='font-14 grey'>+￥{{orderDetail.transportation_costs ? orderDetail.transportation_costs: 0}}</text>
+  </view>
+
+  <view class='row row-between padLef-16 padRig-16 padTop-15 bgWhite'>
+    <text class='font-14 grey'>税额:</text>
+    <text class='font-14 grey'>+￥{{orderDetail.tax_fee ? orderDetail.tax_fee: 0}}</text>
+  </view>
+
+  <view class='row row-between padLef-16 padRig-16 padTop-15 padBot-20 bgWhite underline'>
+    <text class='font-14 grey'>红包:</text>
+    <text class='font-14 grey'>-￥{{orderDetail.tax_fee ? orderDetail.tax_fee: 0}}</text>
+  </view>
+
+  <view class='row row-between padLef-16 padRig-16 padTop-15 padBot-15 bgWhite'>
+    <view class='row' style='align-items:flex-start;'>
+    </view>
+
+    <view style='text-align:left'>
+      <text class='font-12 black'>共{{orderDetail.amount}}件商品   合计:</text>
+      <text class='font-20 font-bold red padRig-10' >￥{{orderDetail.good_price ? orderDetail.good_price: 0}}</text>
+    </view>
+  </view>
+</block>
+
+<block>
+  <view class='row row-between padLef-16 padRig-16 padTop-20 padBot-20 magTop-10 bgWhite underline'>
+      <text class='font-14 black'>订单信息</text>
+    </view>
+
+  <view class='row row-between padLef-16 padRig-16 padTop-10 padBot-10 bgWhite'>
+    <text class='font-12' style='color:rgba(0,0,0,.6)'>订单编号</text>
+    <view class='row'>
+      <text class='font-12 grey magRig-5'>{{orderDetail.order_no}}</text>
+      <button bindtap='onCopyBtnClick' class='s-btn' plain='true' style='border:2rpx solid rgba(0,0,0,.2);color:rgba(0,0,0,.4)'>复制</button>
+    </view>
+  </view>
+
+  <view class='row row-between padLef-16 padRig-16 padTop-10 padBot-10 bgWhite'>
+    <text class='font-12' style='color:rgba(0,0,0,.6)'>下单日期</text>
+    <text class='font-12 grey'>{{orderDetail.created_at ? orderDetail.created_at : ""}}</text>
+  </view>
+
+  <block wx:if="{{2 === orderDetail.status || 3 === orderDetail.status}}">
+    <view class='row row-between padLef-16 padRig-16 padTop-10 padBot-10 bgWhite'>
+      <text class='font-12' style='color:rgba(0,0,0,.6)'>发货日期</text>
+      <text class='font-12 grey'>{{orderDetail.created_at ? orderDetail.created_at : ""}}</text>
+    </view>
+  </block>
+
+  <block wx:if="{{3 === orderDetail.status}}">
+    <view class='row row-between  padLef-16 padRig-16 padTop-10 padBot-10 bgWhite'>
+      <text class='font-12' style='color:rgba(0,0,0,.6)'>成交日期</text>
+      <text class='font-12 grey'>{{orderDetail.created_at ? orderDetail.created_at : ""}}</text>
+    </view>
+  </block>
+
+  <view class='row row-between padLef-16 padRig-16 padTop-10 padBot-10 magBot-120 bgWhite'>
+    <view></view>
+    <view class='row'> 
+      <button open-type='contact' class='m-btn black' plain='true' style='border:2rpx solid #D5D5D5;border-radius:30rpx;'>联系客服</button>
+    </view>
+  </view>
+</block>
+
+<block wx:if="{{0 === orderDetail.status}}">
+  <view class='row row-between fixed'>
+    <view></view>
+    <view class='row padRig-16'> 
+      <button bindtap='onPayBtnClick' class='btn' plain>去支付</button>
+    </view>
+  </view>
+</block>
+<block wx:else>
+  <view class='row row-between fixed'>
+    <view></view>
+    <view class='row padRig-16'> 
+      <button bindtap='onExpressBtnClick' class='btn' plain>查物流</button>
+    </view>
+  </view>
+</block>
+
+
+

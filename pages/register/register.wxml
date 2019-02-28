@@ -10,19 +10,8 @@
   <view class='row row-center padBot-40'>
 
     <view class='wrapper'>
-      <!-- <picker bindchange='onCountryChanged' range='{{countryList}}' range-key='cn'>
-        <view class="row row-center list-item underline padTop-20" style='justify-content:space-between;'>
-          <text class='font-14 grey'>国家和地区</text>
-          <view class="row">
-            <text class='font-14 padRig-10 black'>{{currentCountry.cn}}</text>
-            <image class="arrow-icon" src='../../image/icon_arrow_right@2x.png'></image>
-          </view>
-        </view>
-      </picker> -->
 
       <view class="row row-center list-item underline padTop-20" style='justify-content:space-between;'>
-        <!-- <text wx:if="{{currentCountry.code}}" class='font-14 black padRig-20'>{{currentCountry.code}}</text>
-        <text wx:else class='font-14 grey padRig-20'>区号</text> -->
         <input bindinput='onPhoneNumInput' value='{{phoneNum}}' type='number' maxlength='11' class="input-font" placeholder="手机号" placeholder-class="font-14 grey"></input>
         <image wx:if="{{phoneNum}}" bindtap='onDeletePhoneBtnClick' class="arrow-icon" src='../../image/icon_delete@2x.png'></image>
       </view>

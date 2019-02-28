@@ -1,0 +1,183 @@
+::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  color: transparent;
+}
+page {
+  background-color: #f4f4f4;
+}
+.bgWhite {
+  background-color: #fff;
+}
+.mask {
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  background-color: rgba(0,0,0,.6);
+  z-index: 50;
+}
+.info-wrapper {
+  padding: 40rpx 32rpx;
+}
+.grey-line {
+  width: 100%;
+  height: 20rpx;
+  background-color: #f4f4f4;
+}
+.input-wrapper {
+  width: 82%;
+  height:60rpx;
+  background:rgba(0,0,0,.05);
+  border-radius: 10rpx;
+}
+.menu-wrapper {
+  height: 100rpx;
+  width: 100%;
+  box-sizing: border-box;
+  border-top: 2rpx solid #F4F4F4;
+  border-bottom: 2rpx solid #F4F4F4;
+  padding: 26rpx 32rpx;
+}
+.active-menu {
+  height:100rpx;
+  border-bottom: 4rpx solid #F44168;
+}
+.arrow-icon {
+  width: 30rpx;
+  height: 30rpx;
+}
+.big-avatar {
+  width:160rpx;
+  height:160rpx;
+  border-radius:50%;
+  overflow: hidden;
+}
+.avatar-icon {
+  width:80rpx;
+  height:80rpx;
+  border-radius:50%;
+  overflow: hidden;
+}
+.tag-wrapper {
+  height:32rpx;
+  border:2rpx solid rgba(244,65,104,1);
+  border-radius:4rpx;
+  padding: 0 10rpx;
+}
+.follow-warpper {
+  width:100rpx;
+  height:40rpx;
+  background:rgba(244,65,104,1);
+  border-radius:20rpx;
+}
+.follow-icon {
+  width: 20rpx;
+  height: 20rpx;
+}
+.text-ellipsis {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 4;
+  overflow: hidden;
+}
+.fire-icon {
+  width: 48rpx;
+  height: 48rpx;
+}
+.countDown-wrapper {
+  width: 28rpx;
+  height: 28rpx;
+  background-color: #F44168;
+}
+.share-icon {
+  width: 40rpx;
+  height: 40rpx;
+}
+.share-btn {
+  width:240rpx;
+  height:60rpx;
+  line-height:60rpx;
+  background:linear-gradient(139deg,rgba(238,132,62,1) 0%,rgba(245,57,110,1) 100%);
+  box-shadow:2rpx 2rpx 12rpx rgba(245,57,110,0.44);
+  font-size:28rpx;
+  font-family:Noto Sans S Chinese;
+  color:rgba(255,255,255,1);
+  border-radius: 4rpx;
+}
+.btn {
+  height:60rpx;
+  line-height:60rpx;
+  background:rgba(244,65,104,1);
+  border: none;
+  box-shadow:2rpx 2rpx 8rpx rgba(245,57,110,0.44);
+  border-radius:4rpx;
+  font-size:28rpx;
+  font-family:Noto Sans S Chinese;
+  font-weight:400;
+  color:rgba(255,255,255,1);
+}
+.follow-btn {
+  width: 120rpx;
+  height:40rpx;
+  line-height:40rpx;
+  background:rgba(244,65,104,1);
+  border-radius:20rpx;
+  font-size:24rpx;
+  font-family:Noto Sans S Chinese;
+  color:rgba(255,255,255,1);
+  padding: 0 20rpx;
+}
+.size-area-wrapper {
+  padding-bottom: 30rpx;
+  margin: 0 32rpx;
+  border: 2rpx solid rgba(0,0,0,.2);
+  box-sizing: border-box;
+}
+.size-wrapper {
+  height:48rpx;
+  background:rgba(0,0,0,0.04);
+  border:2rpx solid rgba(0,0,0,.078);
+  border-radius:6rpx;
+  margin: 30rpx 30rpx 0;
+}
+.active-size {
+  background:rgba(244,65,104,1);
+}
+.amount-wrapper {
+  width: 100%;
+  height: 380rpx;
+  position: fixed;
+  bottom: 0;
+  background-color: #fff;
+  box-sizing: border-box;
+   z-index: 102;
+}
+.mask {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  background-color: rgba(0,0,0,.6);
+  z-index: 101;
+}
+.rect {
+  width:52rpx;
+  height: 52rpx;
+  background-color: #E5E5E5;
+}
+.sub-sign {
+  width: 24rpx;
+  height:4rpx;
+  background:rgba(103,103,103,1);
+}
+.fix {
+  position: fixed;
+  bottom: 100rpx;
+  right: 0;
+  z-index:200;
+}
+.nav-icon {
+  width: 120rpx;
+  height: 120rpx;
+}
