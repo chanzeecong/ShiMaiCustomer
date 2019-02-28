@@ -1,0 +1,41 @@
+<!--pages/userFollow/userFollow.wxml-->
+<block>
+  <view class='follow-list magTop-10 bg-white magRig-16 magLef-16'>
+    <view class='flex flex-row p-v-10pt section-padding'>
+      <view class='buyer_avatar' style='background-image:url(../../assets/img/4.png)'></view>
+      <view class='flex flex-column justify-between flex-item'>
+        <text class='font-14pt font-bold'>Janglingking</text>
+        <view class='flex flex-row'>
+          <image class="follow-pos" src='../../assets/icon/icon_position@2x.png'></image>
+          <text class='font-11 socolor'>韩国Suwon</text>
+        </view>
+      </view>
+      <view class='flex flex-column justify-around'>
+        <view class='font-12 low'>已关注</view>
+      </view>
+    </view>
+  </view>
+
+  <view class='follow-list magTop-10 bg-white magRig-16 magLef-16'>
+    <view class='flex flex-row p-v-10pt section-padding'>
+      <view class='buyer_avatar' style='background-image:url(../../assets/img/4.png)'></view>
+      <view class='flex flex-column justify-between flex-item'>
+        <text class='font-14pt font-bold'>Janglingking</text>
+        <view class='flex flex-row'>
+          <image class="follow-pos" src='../../assets/icon/icon_position@2x.png'></image>
+          <text class='font-11 socolor'>韩国Suwon</text>
+        </view>
+      </view>
+      <view class='flex flex-column justify-around'>
+        <view class='font-12 low'>已关注</view>
+      </view>
+    </view>
+  </view>
+
+</block>
+
+
+<block>
+
+
+</block>

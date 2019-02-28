@@ -1,0 +1,5 @@
+/* pages/mycollect/mycollect.wxss */
+.active {
+  
+  border-bottom: 4rpx solid #F5396E;
+}
