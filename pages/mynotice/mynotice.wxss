@@ -1,1 +1,6 @@
 /* pages/mynotice/mynotice.wxss */
+
+.icon-img {
+  width: 80rpx;
+  height: 80rpx;
+}

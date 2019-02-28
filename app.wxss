@@ -21,12 +21,6 @@ page{
   display: flex;
   padding:32rpx;
 }
-.search-box{
-  flex: 1;
-  display: flex;
-  flex-direction: row;
-  background-color: rgba(0, 0, 0, .05);
-}
 .search_btn{
   font-size: 28rpx;
   font-weight: bold;
@@ -120,6 +114,10 @@ page{
 .p-h-10pt{
   padding-left: 20rpx;
   padding-right: 20rpx;
+}
+.p-v-20pt{
+  padding-top: 40rpx;
+  padding-bottom: 40rpx;
 }
 
 .p-h-20pt{
@@ -431,6 +429,9 @@ page{
 .padTop-25 {
   padding-top: 50rpx;
 }
+.padTop-26 {
+  padding-top: 52rpx;
+}
 .padTop-28 {
   padding-top: 56rpx;
 }
@@ -472,6 +473,9 @@ page{
 }
 .padBot-20 {
   padding-bottom: 40rpx;
+}
+.padBot-25 {
+  padding-bottom: 50rpx;
 }
 .padBot-30 {
   padding-bottom: 60rpx;
@@ -528,6 +532,9 @@ page{
   padding-right: 60rpx;
 }
 .padRig-40 {
+  padding-right: 80rpx;
+}
+.padRig-50 {
   padding-right: 80rpx;
 }
 .padRig-81 {
@@ -603,11 +610,17 @@ page{
 .magTop-20 {
   margin-top: 40rpx;
 }
+.magTop-26 {
+  margin-top: 52rpx;
+}
 .magTop-28 {
   margin-top: 56rpx;
 }
 .magTop-30 {
   margin-top: 60rpx;
+}
+.magTop-34 {
+  margin-top: 68rpx;
 }
 .magTop-40 {
   margin-top: 80rpx;
@@ -810,7 +823,7 @@ page{
   color: #fff;
 }
 .black {
-  color: rgba(0, 0, 0, .8);
+  color: #000000;
 }
 .red {
   color: #FE5968;
@@ -830,6 +843,12 @@ page{
 .underline {
   border-bottom: solid 2rpx #F4F4F4;
 }
+.socolor {
+  color:rgba(0,0,0,0.40);
+}
+.focolor {
+  color:rgba(153,153,153,1);
+}
 .h-25 {
   height: 50rpx;
 }
@@ -841,6 +860,12 @@ page{
 }
 .h-60 {
   height: 120rpx;
+}
+.h-80 {
+  height: 160rpx;
+}
+.h-120 {
+  height: 240rpx;
 }
 .h-140 {
   height: 280rpx;

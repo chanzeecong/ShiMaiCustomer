@@ -1,7 +1,7 @@
 //app.js
 App({
   onLaunch: function () {
-    this.getMobileScreen();
+    this.getMobileDemision();
     // 展示本地存储能力
     var logs = wx.getStorageSync('logs') || []
     logs.unshift(Date.now())
@@ -34,6 +34,7 @@ App({
       }
     })
   },
+
   hostName: `https://customer.afxclub.top/api/`,
   token: '',
   distributorId: 0,
@@ -48,29 +49,14 @@ App({
   getMobileScreen(){
     let _this = this;
     wx.getSystemInfo({
-      success: function(res) {
-        // console.log(res);
-        _this.windowHeight = res.windowHeight;
-        _this.windowWidth = res.windowWidth;
-      },
-    })
-  },
-
-  getMobileDemision() {
-    wx.getSystemInfo({
       success: (res) => {
         let width = res.screenWidth;
         let height = res.screenHeight;
 
-
         this.globalData.width = width;
         this.globalData.height = height;
         this.globalData.windowWidth = res.windowWidth;
-        let model = res.model;
-        if (model.search('iPhone X') != -1) {
-          this.width = res.windowWidth;
-        }
-        console.log(width)
+        console.log(res.windowWidth);
       }
     })
   },
@@ -91,4 +77,5 @@ App({
       })
     })
   }
+
 })

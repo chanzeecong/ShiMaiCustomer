@@ -2,12 +2,12 @@
   "pages": [
     "pages/register/register",
     "pages/discover/discover",
+    "pages/register/register",
     "pages/buyer/buyer",
     "pages/index/index",
     "pages/myhistory/myhistory",
     "pages/buyer_detail/buyer_detail",
     "pages/myreply_list/myreply_list",
-    "pages/mynotice/mynotice",
     "pages/card_bag/card_bag",
     "pages/myscore/myscore",
     "pages/usercenter/usercenter",
@@ -21,6 +21,8 @@
     "pages/expressDetail/expressDetail",
     "pages/orderDetail/orderDetail",
     "pages/myShop/myShop"
+    "pages/userFollow/userFollow",
+    "pages/mynotice/mynotice"
   ],
   "window": {
     "backgroundTextStyle": "light",

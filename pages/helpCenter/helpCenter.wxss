@@ -44,6 +44,16 @@ text {
   border-top:2rpx solid rgba(0,0,0,.1);
 }
 .icon {
-  width: 48rpx;
-  height: 48rpx;
+  display: inline-block;
+  width: 60rpx;
+  height: 60rpx;
+  background-size: cover;
+  background-position: center;
+}
+.warn {
+  width: 8rpx;
+  height: 40rpx;
+}
+.section-body {
+  padding: 20rpx 0;
 }
