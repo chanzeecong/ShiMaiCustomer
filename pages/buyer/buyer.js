@@ -14,7 +14,7 @@ Page({
     ],
     areaList: [
       { id: '1', area: 'Japan', img: '../../assets/img/banner-test.png' },
-      { id: '2', area: 'Korea', img: '../../assets/img/banner-test.png' },
+      { id: '2', area: 'Korea', img: '../../assets/img/bannar_Korea01@2x.png' },
       { id: '3', area: 'America', img: '../../assets/img/banner-test.png' },
     ]
   },

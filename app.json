@@ -23,6 +23,7 @@
     "pages/userFollow/userFollow",
     "pages/mynotice/mynotice",
     "pages/userCollect/userCollect"
+    "pages/myordernotice/myordernotice",
   ],
   "window": {
     "backgroundTextStyle": "light",

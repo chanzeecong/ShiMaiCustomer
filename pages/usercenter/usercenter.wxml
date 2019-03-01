@@ -2,9 +2,10 @@
 <view class='wrapper'>
 
   <view class='user_header bg-white'>
+
     <view class='row daily_btn padLef-5' bindtap='getDailySign'>    
       <image class="dail_icon" src='../../assets/icon/icon_sign@2x.png'></image>
-      <text class='daily_text'>签到赚积分</text>        
+      <text class='daily_text'>签到赚积分</text>
     </view>
     <view class='user_info flex flex-column justify-center align-center'>
       <view class='user_avartor' style='background-image:url(../../assets/img/4.png);'></view>
@@ -101,7 +102,7 @@
           <view class='icon-btn' style='background-image:url(../../assets/icon/icon_help@2x.png);'></view>
           <view class='padTop-15'>帮助与客服</view>
         </navigator>
-      
+
         <navigator open-type='navigate' url='../myhistory/myhistory' class='tools-item font-14 deep'>
           <view class='icon-btn' style='background-image:url(../../assets/icon/icon_Footprint@2x.png);'></view>
           <view class='padTop-15'>我的足迹</view>

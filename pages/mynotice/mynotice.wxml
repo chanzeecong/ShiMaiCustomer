@@ -14,7 +14,7 @@
     <view class='flex align-center font-14 black justify-center padTop-15 padBot-25'>回复我的</view>
   </navigator>
 
-  <navigator open-type='navigate' class='flex-item'>
+  <navigator open-type='navigate' url="../myordernotice/myordernotice" class='flex-item'>
     <view class='flex justify-center'>
       <image class="icon-img padTop-26" src='../../assets/icon/icon_Receipt@2x.png'></image>
     </view>

@@ -180,7 +180,7 @@ page{
 }
 .buyer_title{
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: space-between;
   font-size: 24rpx;
   font-weight: bold;
@@ -312,6 +312,7 @@ page{
   display: flex;
   flex-direction: row;
   background-color: rgba(0, 0, 0, .05);
+  border-radius:36rpx;
 }
 .search_btn{
   font-size: 28rpx;
@@ -391,6 +392,9 @@ page{
 }
 .padTop-2 {
   padding-top: 4rpx;
+}
+.padTop-4 {
+  padding-top: 8rpx;
 }
 .padTop-5 {
   padding-top: 10rpx;
@@ -537,6 +541,9 @@ page{
 .padRig-81 {
   padding-right: 162rpx;
 }
+.padLef-4 {
+  padding-left: 8rpx;
+}
 .padLef-5 {
   padding-left: 10rpx;
 }
@@ -671,6 +678,9 @@ page{
 .magRig-70 {
   margin-right: 140rpx;
 }
+.magLef-4 {
+  margin-left: 8rpx;
+}
 .magLef-5 {
   margin-left: 10rpx;
 }
@@ -696,6 +706,14 @@ page{
   margin-left: 560rpx;
 }
 
+.font-6 {
+  font-size:6px;
+  font-family:San Francisco Display;
+  font-weight: normal;
+	font-stretch: normal;
+	letter-spacing: 0rpx;
+	color: transparent;
+}
 .font-8 {
   font-family: San Francisco Display;
 	font-size: 16rpx;
@@ -853,6 +871,9 @@ page{
 .h-25 {
   height: 50rpx;
 }
+.h-32 {
+  height: 64rpx;
+}
 .h-40 {
   height: 80rpx;
 }
@@ -867,6 +888,9 @@ page{
 }
 .h-120 {
   height: 240rpx;
+}
+.h-136 {
+  height: 272rpx;
 }
 .h-140 {
   height: 280rpx;

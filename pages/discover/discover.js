@@ -1,5 +1,7 @@
 // pages/discover/discover.js
+// pages/discover/discover.js
 const regeneratorRuntime = require('../../lib/runtime.js');
+const touches = require('../../lib/touchScroll.js');
 const app = getApp();
 Page({
 
@@ -7,6 +9,10 @@ Page({
   * 页面的初始数据
   */
   data: {
+    top: 0,
+    scrollToLeft: 0,
+    topNum: 0,
+    borderTab: [0, 4],
     selectionActive: '',
     scrollID: '',
     tabList: [
@@ -56,16 +62,138 @@ Page({
         src: `../../image/icon_Skin-care@2x.png`
       },
     ],
-    scrollLeft: 0,
+    currentTab: 0,
+    productionCount: 1,
+    height: app.globalData.windowHeight * 0.77,
     isShowAllTab: false,
     isScroll: true,
-    showList: [],
-    eassyList: [],
     isShowMask: false,
+    isShowLesson: false,
+    showList: [],
+    homeList: [],
+    eassyList: [],
+    temporaryList: {},
+    imgList: [],
+    isShowImg: false,
     searchContent: ``,
+    currentImgIndex: 0,
+    userInfo: {},
+    nextTab: '',
+    page: 1,
   },
 
-  
+  scrollTabStart(e) {
+    touches.touchStart(e);
+  },
+
+  scrollTabEnd(e) {
+
+    let scrollDirection = touches.touchEnd(e);
+    let current = this.data.currentTab;
+
+    if (current >= 0 && scrollDirection === 1) {
+      let nextTab = current + 1;
+      (this.data.tabList.length - 1 < nextTab) ? nextTab = this.data.tabList.length - 1 : nextTab
+      // console.log(nextTab);
+      this.setData({
+        currentTab: nextTab,
+        nextTab: `tab-${nextTab}`,
+      })
+      this.showListFn(nextTab)
+      // console.log('current tab', current);
+      // console.log('next tab', nextTab);
+    } else if (current > 0 && scrollDirection === 2) {
+      // console.log('preview tab')
+      let nextTab = current - 1;
+      this.setData({
+        currentTab: nextTab,
+        nextTab: `tab-${nextTab}`,
+      })
+      this.showListFn(nextTab)
+    }
+  },
+
+  onTabClick(e) {
+    // console.log(e);
+    if (typeof (e.target.dataset.index) === 'undefined') {
+      return false;
+    }
+    let currentTab = Number(e.target.dataset.index);
+    let currentId = Number(e.target.dataset.id);
+    let leftTab = this.data.borderTab[0];
+    let rightTab = this.data.borderTab[1];
+    let borderTab = this.data.borderTab;
+    let scrollToLeft = this.data.scrollToLeft;
+    let tabLen = this.data.tabList.length;
+    let showTabCount = 5;
+
+
+    if (borderTab[0] >= currentTab) {
+
+      leftTab = Math.max(currentTab - 1, 0);
+      rightTab = leftTab + (showTabCount - 1);
+      scrollToLeft = app.globalData.width / 2.6 * leftTab;
+
+    } else if (borderTab[1] <= currentTab) {
+
+      rightTab = Math.min(currentTab + 1, tabLen);
+      leftTab = rightTab - (showTabCount - 1);
+      scrollToLeft = app.globalData.width / 2.6 * (rightTab - (showTabCount - 1));
+    }
+
+    this.setData({
+      currentTab: currentTab,
+      scrollToLeft: scrollToLeft,
+      borderTab: [leftTab, rightTab],
+      isShowAllTab: false,
+      isScroll: true,
+      isShowMask: false,
+    })
+
+    this.showListFn(currentTab);
+  },
+
+
+  async showListFn(currentId) {
+    let showList = [];
+    showList = await this.getEssay(currentId);
+    this.setData({
+      showList: showList
+    })
+  },
+
+  scrollTopFun(e) {
+    let that = this;
+    that.top = e.detail.scrollTop;
+    that.$apply();
+  },
+
+  onPageScroll(e) {
+    // console.log(e)
+    if (e.scrollTop > 300) {
+      this.setData({
+        floorstatus: true
+      });
+    } else {
+      this.setData({
+        floorstatus: false
+      });
+    }
+  },
+
+  //回到顶部
+  goTop(e) { 
+    if (wx.pageScrollTo) {
+      wx.pageScrollTo({
+        scrollTop: 0
+      })
+    } else {
+      wx.showModal({
+        title: '提示',
+        content: '当前微信版本过低，无法使用该功能，请升级到最新微信版本后重试。'
+      })
+    }
+  },
   /**
   * 生命周期函数--监听页面加载
   */
@@ -98,7 +226,7 @@ Page({
       eassyList: eassay,
     });
   },
-  
+
   onShowTabBtnClick() {
     this.setData({
       isShowAllTab: !this.data.isShowAllTab,
@@ -132,7 +260,7 @@ Page({
   },
 
   // 数据请求
-  getEssay(tag = 0, page = 1, key=' ') {
+  getEssay(tag = 0, page = 1, key = ' ') {
     return new Promise(resolve => {
       wx.request({
         url: `${app.hostName}essayList`,
@@ -231,7 +359,7 @@ Page({
   * 页面上拉触底事件的处理函数
   */
   onReachBottom: function () {
-
+  
   },
 
   /**
