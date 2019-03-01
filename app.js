@@ -1,7 +1,7 @@
 //app.js
 App({
   onLaunch: function () {
-    this.getMobileDemision();
+    this.getMobileScreen();
     // 展示本地存储能力
     var logs = wx.getStorageSync('logs') || []
     logs.unshift(Date.now())
@@ -42,9 +42,7 @@ App({
     width: 375,
     windowHeiht: 555,
     height: 667,
-
     userInfo: null,
-    isIphoneX: false,
   },
   getMobileScreen(){
     let _this = this;
@@ -60,7 +58,7 @@ App({
       }
     })
   },
-<<<<<<< HEAD
+
   // hostName: `http://distributor.shimai.com/api/`,
   hostName: `https://customer.afxclub.top/api/`,
   token: `eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9jdXN0b21lci5hZnhjbHViLnRvcFwvYXBpXC9jdXN0b21lciIsImlhdCI6MTU1MTIzMzIyMCwiZXhwIjoxNTUzODI1MjIwLCJuYmYiOjE1NTEyMzMyMjAsImp0aSI6IjZnZDRtWk4xVUVMeGUza0ciLCJzdWIiOjYzLCJwcnYiOiJjZTM5YTYwNmNiZTcwNDIwNTRhM2Y1MzYxNGY4ZjIwMjk5ZmQ5YWFlIn0.EXgaxbXZ-JMehR6NrWKoqvekIxpZn8Bf4FGLARHlks4`,
@@ -74,7 +72,7 @@ App({
     height: 667,
     userInfo: null,
   },
-=======
+
 
   userLogin(code) {
     return new Promise(resolve => {
@@ -93,5 +91,4 @@ App({
     })
   }
 
->>>>>>> ea3db8ffb4c7a4f245c04322d733e5d0e167985a
 })

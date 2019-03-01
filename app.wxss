@@ -5,6 +5,9 @@ page{
 .bg-white{
   background-color: #ffffff;
 }
+.bg-red{
+  background-color: #7CB0EB;
+}
 .color_primary{
   color: #F5396E;
 }
@@ -451,6 +454,9 @@ page{
 .padTop-61 {
   padding-top: 122rpx;
 }
+.padTop-67 {
+  padding-top: 134rpx;
+}
 .padTop-130 {
   padding-top: 260rpx;
 }
@@ -873,11 +879,17 @@ page{
 .h-32 {
   height: 64rpx;
 }
+.h-35 {
+  height: 70rpx;
+}
 .h-40 {
   height: 80rpx;
 }
 .h-50 {
   height: 100rpx;
+}
+.h-55 {
+  height: 110rpx;
 }
 .h-60 {
   height: 120rpx;
@@ -897,7 +909,7 @@ page{
 .line-ellipsis {
   display: -webkit-box;
   -webkit-box-orient: vertical;
-  -webkit-line-clamp: 1;
+  -webkit-line-clamp: 2;
   overflow: hidden;
 }
 button.primary_btn{

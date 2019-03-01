@@ -7,15 +7,15 @@ Page({
   data: {
     toView: 'buyer_id_1',
     hotList: [
-      { id: 'b_1', name: 'Jane', area: '法国', badge: ['法国代购', '香水', '包'], state: true, img: '../../assets/img/4.png' },
-      { id: 'b_2', name: 'Jane2', area: '美国', badge: ['美国代购', '香水', '包'], state: true, img: '../../assets/img/4.png' },
-      { id: 'b_3', name: 'Jane3', area: '英国', badge: ['英国代购', '香水', '包'], state: true, img: '../../assets/img/4.png' },
-      { id: 'b_4', name: 'Jane4', area: '日本', badge: ['日本代购', '香水', '包'], state: true, img: '../../assets/img/4.png' },
+      { id: 'b_1', name: 'Jane', area: '法国', badge: ['法国代购', '香水', '包'], state: true, img: 'https://buyer.sm.afxclub.top/4.png' },
+      { id: 'b_2', name: 'Jane2', area: '美国', badge: ['美国代购', '香水', '包'], state: true, img: 'https://buyer.sm.afxclub.top/4.png' },
+      { id: 'b_3', name: 'Jane3', area: '英国', badge: ['英国代购', '香水', '包'], state: true, img: 'https://buyer.sm.afxclub.top/4.png' },
+      { id: 'b_4', name: 'Jane4', area: '日本', badge: ['日本代购', '香水', '包'], state: true, img: 'https://buyer.sm.afxclub.top/4.png' },
     ],
     areaList: [
-      { id: '1', area: 'Japan', img: '../../assets/img/banner-test.png' },
-      { id: '2', area: 'Korea', img: '../../assets/img/bannar_Korea01@2x.png' },
-      { id: '3', area: 'America', img: '../../assets/img/banner-test.png' },
+      { id: '1', area: 'Japan', img: 'https://buyer.sm.afxclub.top/banner-test.png' },
+      { id: '2', area: 'Korea', img: 'https://buyer.sm.afxclub.top/bannar_Korea01@2x.png' },
+      { id: '3', area: 'America', img: 'https://buyer.sm.afxclub.top/banner-test.png' },
     ]
   },
 

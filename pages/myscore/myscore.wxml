@@ -1,7 +1,7 @@
 <!--pages/myscore/myscore.wxml-->
 <view class='wrapper'>
   <view class='bg-white p-h-10pt p-v-10pt flex flex-row justify-center'>
-    <view class='myscore-card' style='background-image:url(../../assets/icon/icon_cardbg@2x.png)'>
+    <view class='myscore-card' style='background-image:url(https://buyer.sm.afxclub.top/icon_cardbg@2x.png)'>
       <view class='card-content flex flex-column justify-center align-center'>
         <text>识买商城积分卡</text>
         <view class='card_info'>当前积分：{{score}}</view>

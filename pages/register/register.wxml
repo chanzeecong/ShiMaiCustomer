@@ -1,6 +1,6 @@
 <block wx:if="{{!isWaiting}}">
   <view class="row row-center padTop-40">
-    <image class="shield-icon" src='../../assets/icon/icon_Shield@2x.png'></image>
+    <image class="shield-icon" src='https://buyer.sm.afxclub.top/icon_Shield@2x.png'></image>
     <view class='col-left padLef-10'>
       <text class='font-18 black'>为了您的账号安全</text>
       <text class='font-18 black'>请及时绑定手机</text>
@@ -13,7 +13,7 @@
 
       <view class="row row-center list-item underline padTop-20" style='justify-content:space-between;'>
         <input bindinput='onPhoneNumInput' value='{{phoneNum}}' type='number' maxlength='11' class="input-font" placeholder="手机号" placeholder-class="font-14 grey"></input>
-        <image wx:if="{{phoneNum}}" bindtap='onDeletePhoneBtnClick' class="arrow-icon" src='../../image/icon_delete@2x.png'></image>
+        <image wx:if="{{phoneNum}}" bindtap='onDeletePhoneBtnClick' class="arrow-icon" src='https://buyer.sm.afxclub.top/icon_delete@2x.png'></image>
       </view>
 
       <view class="row row-center" style='justify-content:space-between;height:20rpx'>

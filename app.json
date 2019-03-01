@@ -1,6 +1,5 @@
 {
   "pages": [
-    "pages/register/register",
     "pages/discover/discover",
     "pages/register/register",
     "pages/buyer/buyer",
@@ -20,8 +19,7 @@
     "pages/editAddr/editAddr",
     "pages/expressDetail/expressDetail",
     "pages/orderDetail/orderDetail",
-    "pages/myShop/myShop"
-    "pages/userFollow/userFollow",
+    "pages/myShop/myShop",
     "pages/mynotice/mynotice",
     "pages/myordernotice/myordernotice",
     "pages/mycollect/mycollect"

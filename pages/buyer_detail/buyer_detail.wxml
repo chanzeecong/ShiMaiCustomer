@@ -4,7 +4,7 @@
   <view class='buyer_info_box bg-white'>
 
     <view class='flex flex-row'>
-      <view class='buyer_img' style='background-image:url(../../assets/img/4.png);'></view>
+      <view class='buyer_img' style='background-image:url(https://buyer.sm.afxclub.top/4.png);'></view>
 
       <view class='flex flex-column flex-item'>
         <view class='buyer_title_info'>
@@ -13,7 +13,7 @@
             <view><text class='font-12pt primary_bg focus_btn'>+关注</text></view>
           </view>
           <view class='title_location'>
-            <image class='icon icon_location' src='../../assets/icon/icon_position1@2x.png'></image>
+            <image class='icon icon_location' src='https://buyer.sm.afxclub.top/icon_position1@2x.png'></image>
             韩国Suwon
           </view>
         </view>
@@ -53,13 +53,13 @@
 
     <view class='flex flex-row justify-around p-v-10pt'>
       <view style='padding: 10rpx 0;'>
-        <image class='icon_btn' src='../../assets/icon/icon_awesome@2x.png'></image>
+        <image class='icon_btn' src='https://buyer.sm.afxclub.top/icon_awesome@2x.png'></image>
       </view>
       <view>
         <view class='flex-item primary_bg btn contact_btn'>立即联系</view>
       </view>
       <view style='padding: 10rpx 0;'>
-      <image class='icon_btn' src='../../assets/icon/icon_share@2x.png'></image>
+      <image class='icon_btn' src='https://buyer.sm.afxclub.top/icon_share@2x.png'></image>
       </view>
     </view>
 
@@ -90,7 +90,7 @@
             <view class='list-info flex-item flex flex-column justify-between'>
               <text class='info-title'>{{showitem.title}}</text>
               <text class='info-price'>抢购价{{showitem.price}}元</text>
-              <view class='info-content'>{{showitem.tag}} | {{showitem.time}} <view class='right_comments'><image src='../../assets/icon/icon_reply@2x.png'></image>{{showitem.comments}}</view></view>
+              <view class='info-content'>{{showitem.tag}} | {{showitem.time}} <view class='right_comments'><image src='https://buyer.sm.afxclub.top/icon_reply@2x.png'></image>{{showitem.comments}}</view></view>
             </view>
           </view>
         </view>

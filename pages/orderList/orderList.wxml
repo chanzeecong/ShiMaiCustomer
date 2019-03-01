@@ -22,9 +22,9 @@
 
     <view class='row row-between wrapper underline bgWhite'>
       <navigator url='../myShop/myShop?id={{item.buyer_id}}' class='row'>
-        <image src='../../image/4.png' class='user_avartor'></image>
+        <image src='https://buyer.sm.afxclub.top/4.png' class='user_avartor'></image>
         <text class='font-16 black font-bold padLef-10'>{{item.buyer_name}}</text>
-        <image class='shop-icon' src='../../image/icon_arrow_right@2x.png'></image>
+        <image class='shop-icon' src='https://buyer.sm.afxclub.top/icon_arrow_right@2x.png'></image>
       </navigator>
 
       <view class='row'>
@@ -45,14 +45,14 @@
         </block>
 
         <view class='line'></view>
-        <image bindtap='onDeleteOrderBtnClick' data-id="{{item.id}}" data-index="{{index}}" class='icon magLef-10' src='../../image/icon_ashcan-gray@2x.png'></image>
+        <image bindtap='onDeleteOrderBtnClick' data-id="{{item.id}}" data-index="{{index}}" class='icon magLef-10' src='https://buyer.sm.afxclub.top/icon_ashcan-gray@2x.png'></image>
       </view>
     </view>
 
     <navigator url="../orderDetail/orderDetail?id={{item.id}}" class='row row-between wrapper underline bgWhite'>
       <view class='row' style='align-items:flex-start;'>
         <view class='row'>
-          <image class='production-img' src='{{item.good_cover_img ? item.good_cover_img: "../../image/nonimg@2x.png"}}' mode='aspectFill'></image>
+          <image class='production-img' src='{{item.good_cover_img ? item.good_cover_img: "https://buyer.sm.afxclub.top/nonimg@2x.png"}}' mode='aspectFill'></image>
         </view>
         <view class='row padLef-10'>
           <view class='col-left'>
@@ -117,7 +117,7 @@
 </block>
 <block wx:else>
   <view class='row row-center magTop-30'>
-    <image src='../../image/img_No_data@2x.png' style='width:340rpx;height:340rpx;'></image>
+    <image src='https://buyer.sm.afxclub.top/img_No_data@2x.png' style='width:340rpx;height:340rpx;'></image>
   </view>
   <view class='row row-center padTop-20'>
     <text class='font-16 grey'>您还没有相关的订单哦！</text>

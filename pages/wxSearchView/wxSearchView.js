@@ -13,6 +13,8 @@
  *  value
  * }
  */
+const regeneratorRuntime = require('../../lib/runtime.js');
+const app = getApp();
 
 // 提示集合
 var __tipKeys = [];
@@ -30,6 +32,7 @@ function init(that, hotKeys, tipKeys, searchFunction, goBackFunction) {
   __tipKeys = tipKeys;
   __searchFunction = searchFunction;
   __goBackFunction = goBackFunction;
+  
 
   var temData = {};
   var barHeight = 43;
@@ -51,6 +54,7 @@ function init(that, hotKeys, tipKeys, searchFunction, goBackFunction) {
 
   getHisKeys(__that);
 }
+
 
 // 搜索框输入时候操作
 function wxSearchInput(e) {

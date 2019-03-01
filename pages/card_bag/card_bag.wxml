@@ -11,7 +11,7 @@
     
     <block wx:if='{{showData.length===0}}'>
       <view class='flex flex-column justify-center align-center nodata'>
-        <image src='../../assets/icon/img_No-card@2x.png'></image>
+        <image src='https://buyer.sm.afxclub.top/img_No-card@2x.png'></image>
         <view class='font-16pt sub_text_color' style='margin: 40rpx 0;'>暂无任何卡券可用</view>
         <!-- <navigator class='history_back_btn' open-type='switchTab' url='../buyer/buyer'>返回首页</navigator> -->
       </view>
@@ -24,7 +24,7 @@
         </view>
 
         <view class='card-time-box sub_text_color font-12pt flex flex-column justify-center align-center'>
-          <view class='card-side' style='background-image:url(../../assets/icon/circle_side.png)'></view>
+          <view class='card-side' style='background-image:url(https://buyer.sm.afxclub.top/circle_side.png)'></view>
           <view>使用期限</view>
           <view>{{allitem.starttime}}</view>
           <view>{{allitem.endtime}}</view>

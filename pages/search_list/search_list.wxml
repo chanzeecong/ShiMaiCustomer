@@ -4,7 +4,7 @@
       <navigator open-type='navigate' url='../search_buyer/search_buyer' class='search-wrapper bg-white'>
         <view class='search-box'>
           <view class='icon icon-search'>
-            <image src='../../assets/icon/icon_search@2x.png'></image>
+            <image src='https://buyer.sm.afxclub.top/icon_search@2x.png'></image>
           </view>
           <text class='search-place-text'>{{searchValue}}</text>
         </view>
@@ -38,12 +38,12 @@
 
     <view class='buyer_box' wx:for="{{buyerList}}" wx:for-item="list" wx:for-index="listidx" wx:key="{{idex}}">
       <view class='flex flex-row buyer_head'>
-          <image class='buyer_img' mode='aspectFill' src='../../assets/img/4.png'></image>
+          <image class='buyer_img' mode='aspectFill' src='https://buyer.sm.afxclub.top/4.png'></image>
           <view class='flex-item'>
             <view class='buyer_title'>
               <text>The storyor（美国）</text>
               <view class='title_location'>
-                <image class='icon icon_location' src='../../assets/icon/icon_position1@2x.png'></image>
+                <image class='icon icon_location' src='https://buyer.sm.afxclub.top/icon_position1@2x.png'></image>
                 韩国Suwon
               </view>
             </view>
@@ -61,10 +61,10 @@
       </view>
 
       <scroll-view style='white-space:nowrap;' scroll-x scroll-with-animation>
-        <view class='product_item' style='background-image: url(../../assets/img/text-img.png)'></view>
-        <view class='product_item' style='background-image: url(../../assets/img/text-img.png)'></view>
-        <view class='product_item' style='background-image: url(../../assets/img/text-img.png)'></view>
-        <view class='product_item' style='background-image: url(../../assets/img/text-img.png)'></view>
+        <view class='product_item' style='background-image: url(https://buyer.sm.afxclub.top/text-img.png)'></view>
+        <view class='product_item' style='background-image: url(https://buyer.sm.afxclub.top/text-img.png)'></view>
+        <view class='product_item' style='background-image: url(https://buyer.sm.afxclub.top/text-img.png)'></view>
+        <view class='product_item' style='background-image: url(https://buyer.sm.afxclub.top/text-img.png)'></view>
       </scroll-view>
 
       <view class='buyer-action'>

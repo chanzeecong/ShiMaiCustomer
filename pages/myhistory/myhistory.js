@@ -10,8 +10,8 @@ Page({
     activeCheckBox: '',
     showList:
     [
-      { id: '1', img: '../../assets/img/text-img.png', title: '一直以来，音乐的加入，都可以让运动的过程变得更加快乐，前提是有一直以来，音乐的加入，都可以让运动的过程变得更加快乐，前提是有', price: '99', tag: '识买精选', time: '2018-10-26', comments: '15621', checked: '' },
-      { id: '2', img: '../../assets/img/text-img.png', title: '一直以来，音乐的加入，都可以让运动的过程变得更加快乐，前提是有一直以来，音乐的加入，都可以让运动的过程变得更加快乐，前提是有', price: '99', tag: '识买精选', time: '2018-10-26', comments: '15621', checked: '' }
+      { id: '1', img: 'https://buyer.sm.afxclub.top/text-img.png', title: '一直以来，音乐的加入，都可以让运动的过程变得更加快乐，前提是有一直以来，音乐的加入，都可以让运动的过程变得更加快乐，前提是有', price: '99', tag: '识买精选', time: '2018-10-26', comments: '15621', checked: '' },
+      { id: '2', img: 'https://buyer.sm.afxclub.top/text-img.png', title: '一直以来，音乐的加入，都可以让运动的过程变得更加快乐，前提是有一直以来，音乐的加入，都可以让运动的过程变得更加快乐，前提是有', price: '99', tag: '识买精选', time: '2018-10-26', comments: '15621', checked: '' }
     ]
   },
 

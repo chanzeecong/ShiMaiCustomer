@@ -3,7 +3,7 @@
   <view class='wrapper bg-white'>
     <view class='mybuyer_list'>
       <view class='mybuyer_item flex flex-row p-v-20pt section-padding'>
-        <view class='buyer_avatar' style='background-image:url(../../assets/img/4.png)'></view>
+        <view class='buyer_avatar' style='background-image:url(https://buyer.sm.afxclub.top/4.png)'></view>
         <view class='flex flex-column justify-between flex-item'>
           <text class='font-14pt font-bold'>少女心</text>
           <text class='font-14pt sub_text_color2'>在吗？</text>
@@ -14,7 +14,7 @@
       </view>
 
       <view class='mybuyer_item flex flex-row p-v-20pt section-padding'>
-        <view class='buyer_avatar' style='background-image:url(../../assets/img/4.png)'></view>
+        <view class='buyer_avatar' style='background-image:url(https://buyer.sm.afxclub.top/4.png)'></view>
         <view class='flex flex-column justify-between flex-item'>
           <text class='font-14pt font-bold'>少女心</text>
           <text class='font-14pt sub_text_color2'>在吗？</text>
@@ -25,7 +25,7 @@
       </view>
 
       <view class='mybuyer_item flex flex-row p-v-20pt section-padding'>
-        <view class='buyer_avatar' style='background-image:url(../../assets/img/4.png)'></view>
+        <view class='buyer_avatar' style='background-image:url(https://buyer.sm.afxclub.top/4.png)'></view>
         <view class='flex flex-column justify-between flex-item'>
           <text class='font-14pt font-bold'>少女心</text>
           <text class='font-14pt sub_text_color2'>在吗？</text>

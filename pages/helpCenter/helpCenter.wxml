@@ -45,11 +45,11 @@
 <view style='height:100rpx;'></view>
 <view class='row fix-bottom bgWhite bottom-wrapper'>
   <button class='row row-center flex1' plain="true" open-type="contact" style='border:none;'>
-    <image class='icon padRig-5' src='../../image/icon_chat@2x.png'></image>
+    <image class='icon padRig-5' src='https://buyer.sm.afxclub.top/icon_chat@2x.png'></image>
     <text class='font-14' style='color:#F5396E'>在线客服</text>
   </button>
   <navigator url='../advice/advice' class='row row-center flex1' style='border-left: 2rpx solid rgba(0,0,0,.1)'>
-    <image class='icon padRig-5' src='../../image/icon_Complaint@2x.png'></image>
+    <image class='icon padRig-5' src='https://buyer.sm.afxclub.top/icon_Complaint@2x.png'></image>
     <text class='font-14' style='color:#F5396E'>投诉建议</text>
   </navigator>
 </view>
