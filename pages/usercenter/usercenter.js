@@ -1,4 +1,7 @@
 // pages/usercenter/usercenter.js
+const app = getApp();
+const regeneratorRuntime = require('../../lib/runtime.js');
+
 Page({
 
   /**
@@ -13,7 +16,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    
   },
 
   /**
@@ -27,7 +30,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.initPageData();
   },
 
   getDailySign(){
@@ -41,6 +44,23 @@ Page({
     this.setData({
       showMask: '',
       maskState: ''
+    })
+  },
+
+  getUserCollection() {
+    return new Promise(resolve => {
+      wx.request({
+        url: `${app.hostName}userCollection`,
+        method: 'GET',
+        header: {
+          'Authorization': `Bearer ${app.token}`
+        },
+        dataType: 'json',
+        success: (res) => {
+          console.log(res)
+          resolve(res.data.data)
+        }
+      })
     })
   },
   /**
@@ -69,6 +89,14 @@ Page({
    */
   onReachBottom: function () {
 
+  },
+
+  async initPageData(){
+    let collect = await this.getUserCollection();
+
+    this.setData({
+      collect: collect.length
+    })
   },
 
   /**

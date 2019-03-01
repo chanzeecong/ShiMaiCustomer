@@ -145,6 +145,8 @@ Page({
     new Promise (resolve => {
       wx.getSetting({
         success(res) {
+          console.log(res.authSetting)
+
           if (!res.authSetting['scope.address']) {
             wx.authorize({
               scope: 'scope.address',
@@ -438,6 +440,7 @@ Page({
       let title = `新建失败,请重试`;
 
       if (200 === result.status_code) {
+        console.log(this.data.addrDetail.phone)
         title = `新建地址成功`;
 
         setTimeout (()=> {
@@ -526,7 +529,7 @@ Page({
   onDeleteBtnClick () {
     new Promise(resolve => {
       wx.request({
-        url: `${app.hostName}address/${this.data.addrId}`,
+        url: `${app.hostName}address${this.data.addrId}`,
         method: 'DELETE',
         header: {
           'Authorization': `Bearer ${app.token}`

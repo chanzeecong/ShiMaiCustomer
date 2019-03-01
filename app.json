@@ -2,7 +2,6 @@
   "pages": [
     "pages/register/register",
     "pages/discover/discover",
-    "pages/register/register",
     "pages/buyer/buyer",
     "pages/index/index",
     "pages/myhistory/myhistory",
@@ -20,9 +19,10 @@
     "pages/editAddr/editAddr",
     "pages/expressDetail/expressDetail",
     "pages/orderDetail/orderDetail",
-    "pages/myShop/myShop"
+    "pages/myShop/myShop",
     "pages/userFollow/userFollow",
-    "pages/mynotice/mynotice"
+    "pages/mynotice/mynotice",
+    "pages/userCollect/userCollect"
   ],
   "window": {
     "backgroundTextStyle": "light",

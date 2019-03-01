@@ -50,7 +50,7 @@ Page({
   },
 
   changeTab(e){
-    // console.log(e.target.dataset);
+     // console.log(e.target.dataset);
     let idx = Number(e.target.dataset.idx);
     let flag = e.target.dataset.type;
     let list = this.data.list;

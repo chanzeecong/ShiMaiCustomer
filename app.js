@@ -1,4 +1,7 @@
 //app.js
+const regeneratorRuntime = require('lib/runtime.js');
+const qiniuUploader = require("lib/qiniuUploader.js");
+
 App({
   onLaunch: function () {
     this.getMobileDemision();
@@ -35,6 +38,71 @@ App({
     })
   },
 
+  async chooseImage(imgcount, sourceType) {
+
+    imgcount = imgcount || 1;
+
+    let imageArr = await this.wxChooseImage(imgcount, sourceType);
+    wx.showLoading({
+      title: '图片加载中',
+    })
+    let imgList = [];
+    if (imageArr.length) {
+
+      for (let item of imageArr) {
+        let url = await this.uploadImg(item)
+        imgList.push(url)
+      }
+    }
+    wx.hideLoading();
+
+    return imgList;
+
+  },
+
+  wxChooseImage(imgcount, sourceType) {
+    imgcount = imgcount || 1;
+
+    if (sourceType) {
+      return new Promise(resovle => {
+        wx.chooseImage({
+          count: imgcount,
+          sourceType: [sourceType],
+          success(res) {
+            console.log(res)
+            resovle(res.tempFilePaths);
+          }
+        })
+      })
+    } else {
+      return new Promise(resovle => {
+        wx.chooseImage({
+          count: imgcount,
+          success(res) {
+            console.log(res)
+            resovle(res.tempFilePaths);
+          }
+        })
+      })
+    }
+  },
+
+  uploadImg(tempUrl) {
+    return new Promise(resolve => {
+      qiniuUploader.upload(tempUrl, (res) => {
+
+        resolve(res.imageURL)
+      }, (error) => {
+        console.log('error' + error)
+      }, {
+          region: 'SCN',
+          domain: 'https://buyer.sm.afxclub.top',
+          uptoken: this.uploadToken,
+        });
+    })
+  },
+
+
   hostName: `https://customer.afxclub.top/api/`,
   token: '',
   distributorId: 0,
@@ -46,8 +114,7 @@ App({
     userInfo: null,
     isIphoneX: false,
   },
-  getMobileScreen(){
-    let _this = this;
+  getMobileDemision() {
     wx.getSystemInfo({
       success: (res) => {
         let width = res.screenWidth;
@@ -56,7 +123,8 @@ App({
         this.globalData.width = width;
         this.globalData.height = height;
         this.globalData.windowWidth = res.windowWidth;
-        console.log(res.windowWidth);
+        let model = res.model;
+        console.log(width)
       }
     })
   },

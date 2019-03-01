@@ -26,10 +26,10 @@
               <view class='font-12 padTop-10 deep'>我的关注</view>
             </navigator>
           </view>
-          <view>
-            <view class='font-12 deep flex justify-center'>10</view>
+          <navigator open-type='navigate' url='../userCollect/userCollect'>
+            <view class='font-12 deep flex justify-center'>{{collect}}</view>
             <view class='font-12 padTop-10 deep'>我的收藏</view>
-          </view>
+          </navigator>
         </view>
       </view>
     </view>

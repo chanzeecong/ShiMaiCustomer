@@ -86,6 +86,8 @@ Page({
     let code = await this.getCode();
     let token = await this.userLogin(code);
     app.token = token;
+    app.uploadToken = await this.getUploadToken();
+
     this.setData({
       isWaiting: false
     })
@@ -236,8 +238,7 @@ Page({
     }
 
     app.token = registerResult.access_token;
-
-//    app.uploadToken = await this.getUploadToken();
+    app.uploadToken = await this.getUploadToken();
     
     wx.setStorageSync(`phoneNum`, this.data.phoneNum);
 
@@ -300,7 +301,7 @@ Page({
 
       app.token = token;
 
- //     app.uploadToken = await this.getUploadToken();
+      app.uploadToken = await this.getUploadToken();
 
       wx.switchTab({
         url: '../discover/discover',
@@ -340,6 +341,23 @@ Page({
         dataType: 'json',
         success: (res) => {
           resolve(res.data.access_token);
+        }
+      })
+    })
+  },
+
+  getUploadToken() {
+    return new Promise(resolve => {
+      wx.request({
+        url: `${app.hostName}uploadToken`,
+        method: 'POST',
+        header: {
+          'Authorization': `Bearer ${app.token}`
+        },
+        dataType: 'json',
+        success: (res) => {
+          console.log(res)
+          resolve(res.data.data)
         }
       })
     })
