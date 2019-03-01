@@ -43,8 +43,9 @@ text {
   height: 40rpx;
 }
 .production-img {
-  width: 120rpx;
-  height: 120rpx;
+  width: 160rpx;
+  height: 160rpx;
+  border-radius:8rpx;
 }
 .text-ellipses {
   display: -webkit-box;
@@ -56,12 +57,9 @@ text {
   width:180rpx;
   height:60rpx;
   line-height: 60rpx;
-  border-radius:4rpx;
-  background:rgba(254,89,104,1);
-  
-}
-.btn-shadow {
-  box-shadow:2rpx 2rpx 8rpx rgba(245,57,110,0.44);
+  background: white;
+  border:2rpx solid rgba(244,65,104,1);
+  border-radius:30rpx;
 }
 .grey-line {
   height: 20rpx;

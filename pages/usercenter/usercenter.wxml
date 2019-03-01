@@ -4,8 +4,7 @@
   <view class='user_header bg-white'>
 
     <view class='row daily_btn padLef-5' bindtap='getDailySign'>    
-
-      <image class="dail_icon" src='https://buyer.sm.afxclub.top/icon_sign@2x.png'></image>
+      <image class="dail_icon" src='../../assets/icon/icon_sign@2x.png'></image>
       <text class='daily_text'>签到赚积分</text>
     </view>
     <view class='user_info flex flex-column justify-center align-center'>
@@ -28,11 +27,9 @@
               <view class='font-12 padTop-10 deep'>我的关注</view>
             </navigator>
           </view>
-          <navigator open-type='navigate' url="../mycollect/mycollect">
-            <view>
-              <view class='font-12 deep flex justify-center'>10</view>
-              <view class='font-12 padTop-10 deep'>我的收藏</view>
-            </view>
+          <navigator open-type='navigate' url='../userCollect/userCollect'>
+            <view class='font-12 deep flex justify-center'>{{collect}}</view>
+            <view class='font-12 padTop-10 deep'>我的收藏</view>
           </navigator>
         </view>
       </view>
@@ -45,9 +42,7 @@
     </navigator>
 
     <view class='section-body flex flex-row'>
-
       <navigator url='../orderList/orderList?tab=1' open-type='navigate' class='flex-item'>
-
         <view class='icon-btn-box'>
           <view class='icon-order-btn' style='background-image:url(https://buyer.sm.afxclub.top/icon_payment@2x.png);'></view>
         </view>
@@ -89,10 +84,8 @@
           <view class='icon-btn' style='background-image:url(https://buyer.sm.afxclub.top/icon_Red-envelope@2x.png);'></view>
           <view class='padTop-15'>卡券红包</view>
         </navigator>
-
           <navigator url='../addrList/addrList' open-type='navigate' class='tools-item font-14 deep'>
-
-          <view class='icon-btn' style='background-image:url(https://buyer.sm.afxclub.top/icon_address@2x.png);'></view>
+          <view class='icon-btn' style='background-image:url(../../assets/icon/icon_address@2x.png);'></view>
           <view class='padTop-15'>收货地址</view>
         </navigator>
 

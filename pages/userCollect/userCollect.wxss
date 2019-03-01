@@ -1,0 +1,29 @@
+/* pages/userCollect/userCollect.wxss */
+
+Page{
+  background: #f4f4f4;
+}
+
+.bgWhite {
+  background-color: #fff;
+}
+
+.tab-wrapper {
+  width: 120rpx;
+  height: 80rpx;
+}
+
+.active {
+  border-bottom: solid 4rpx #FE5968;
+}
+
+.buyer-focus{
+  border-radius: 50rpx;
+  background-color: rgba(245, 57, 110, 1);
+  color: #fff;
+  font-size: 24rpx;
+  display: inline-block;
+  width: 160rpx;
+  line-height: 2;
+  box-shadow: 0 2rpx 6rpx rgba(245, 57, 110, .72);
+}
