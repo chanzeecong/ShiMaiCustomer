@@ -1,35 +1,39 @@
 <!--pages/card_bag/card_bag.wxml-->
 <view class='wrapper'>
-  <view class='card_tab bg-white' bindtap='chooseTab'>
-    <view class='tab_item font-14pt {{tabActive[0]}}' data-status='0'>全部 ({{allData.length}})</view>
-    <view class='tab_item font-14pt {{tabActive[1]}}' data-status='1'>未使用 ({{useful.length}})</view>
-    <view class='tab_item font-14pt {{tabActive[2]}}' data-status='2'>已使用 ({{used.length}})</view>
-    <view class='tab_item font-14pt {{tabActive[3]}}' data-status='3'>已过期 ({{disabled.length}})</view>
-  </view>
-  <view class='bg-white section-padding' style='padding-top: 20rpx;padding-bottom:20rpx;'>
+  <scroll-view scroll-x="true" scroll-left="{{scrollToLeft}}rpx" scroll-with-animation="true">
+      <view class="row row-center underline bgWhite" style='justify-content:center;'>
+        <view bindtap="onTapClick" data-index='{{index}}' wx:for="{{tabList}}" wx:key="{{index}}" style='width:220rpx;' class='row row-center'>
+          <view class='tab-wrapper row row-center {{index === currentTab? "active red" : "black"}}'>
+            <text class='{{index === currentTab? "red font-16" : "black font-14"}}'>{{item.label}}</text>
+          </view>
+        </view>
+      </view>
+    </scroll-view>
     
+  <view class='section-padding' style='padding-top: 20rpx;padding-bottom:20rpx;'>
     
-    <block wx:if='{{showData.length===0}}'>
+    <block wx:if='{{couponList.length == 0}}'>
       <view class='flex flex-column justify-center align-center nodata'>
-        <image src='https://buyer.sm.afxclub.top/img_No-card@2x.png'></image>
+        <image class='no-card' src='../../assets/icon/img_No-card@2x.png'></image>
         <view class='font-16pt sub_text_color' style='margin: 40rpx 0;'>暂无任何卡券可用</view>
         <!-- <navigator class='history_back_btn' open-type='switchTab' url='../buyer/buyer'>返回首页</navigator> -->
       </view>
     </block>
     <block wx:else>
-      <view class='card-box flex flex-row {{allitem.status}}' wx:for='{{showData}}' wx:for-item='allitem' wx:for-index='allidx' wx:key='{{allidx}}'>
+      <view class='card-box flex flex-row {{allitem.status}}' wx:for='{{couponList}}' wx:for-item='allitem' wx:for-index='allidx' wx:key='{{allidx}}'>
         <view class='flex-item card-status-box'>
-            <view class='font-14pt'>{{allitem.title}}</view>
-            <view><text class='font-12pt'>¥</text>{{allitem.value}} <text class='font-12pt'>{{allitem.tag}}</text></view>
+            <view class='font-14pt'>{{allitem.coupon.coupon_type_name}}</view>
+            <view><text class='font-12pt'>¥</text>{{allitem.coupon.coupon_amount}} <text class='font-12pt'>{{allitem.tag}}</text></view>
         </view>
 
         <view class='card-time-box sub_text_color font-12pt flex flex-column justify-center align-center'>
           <view class='card-side' style='background-image:url(https://buyer.sm.afxclub.top/circle_side.png)'></view>
           <view>使用期限</view>
-          <view>{{allitem.starttime}}</view>
-          <view>{{allitem.endtime}}</view>
+          <view>{{allitem.coupon.coupon_start_time}}</view>
+          <view>{{allitem.coupon.coupon_end_time}}</view>
         </view>
       </view>
     </block>
+  
   </view>
 </view>

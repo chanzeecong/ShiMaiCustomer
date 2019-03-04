@@ -11,36 +11,69 @@
       </view>
     </scroll-view>
 
-    <block wx:if="{{1 === item.type}}">
-      <text class='font-14 grey padRig-10'>{{currentTab}}</text>
+    <view wx:if='{{currentTab == 0}}' class="content">
+      <view class="left">
+        <block wx:for="{{collectList}}" wx:key="{{index}}">
+          <template is="item" data="{{...item}}" wx:if="{{index%2==0}}"></template>
+        </block>
+      </view>
+      <view class="right">
+        <block wx:for="{{collectList}}" wx:key="{{index}}">
+          <template is="item" data="{{...item}}" wx:if="{{index%2==1}}"></template>
+        </block>
+      </view>
+    </view>
+
+  <block wx:for="{{collectList}}" wx:key="{{index}}">
+    <block wx:if="{{1 == item.type}}">
+      <template name="item">
+        <view class="item">
+          <block wx:if='{{eassy_img != ""}}'>
+            <image class="item-img" src="{{eassy_img}}" mode="widthFix"></image>
+          </block>
+          <block wx:else>
+            <video poster='{{video_url}}' src='{{video_url}}'></video>
+          </block>
+
+          <view class="item-title-box">
+            <navigator url="url" class="item-title">{{title}}</navigator> 
+          </view>
+          <view class="name">
+            <image class="item-ava" src="{{img_link}}"></image>    
+            <text class="name-title">{{name}}</text>
+            <view class="heart_">
+              <image class="heart" src="../../image/heart.png"></image>
+              <text>{{heart_num}}</text>
+            </view>
+          </view>
+        </view>
+      </template>
+    </block>
+
+    <block wx:if="{{2 == item.type}}">
 
     </block>
 
-    <block wx:elif="{{2 === item.type}}">
-      <text class='font-14 grey padRig-10'>{{currentTab}}</text>
-    </block>
-
-    <block wx:elif="{{3 === item.type}}">
+    <block wx:elif="{{3 == item.type}}">
       <view class='buyer_box_list'>
-       <block wx:for="{{collectList}}" wx:for-item="list" wx:for-index="listindex" wx:key="{{index}}">
-         <view class='buyer_box'>
+        <view class='buyer_box'>
           <navigator open-type='navigate' url='../buyer_detail/buyer_detail' class='flex flex-row buyer_head'>
-              <image class='buyer_img' mode='aspectFill' src='{{list.img_link}}'></image>
+              <image class='buyer_img' mode='aspectFill' src='{{item.img_link}}'></image>
               <view class='flex-item'>
                 <view class='buyer_title'>
-                  <text>{{list.name}}</text>
-                  <view class='title_location font-20 font-bold'>
+                  <text>{{item.name}}</text>
+                  <!--<view class='title_location font-20 font-bold'>
                     <image class='icon icon_location' src='../../assets/icon/icon_position1@2x.png'></image>
-                  </view>
+                  </view>-->
                 </view>
 
                 <view class='row font-10 grey'>
                   <image class='icon icon_location' src='../../assets/icon/icon_position1@2x.png'></image>
-                  {{list.region_name}}
+                  {{item.region_name}}
                 </view>
 
                 <view class='flex flex-row buyer-badges'>
-                  <view class='badges-item' wx:for='{{list.tag}}' wx:for-index="cidx" wx:key="{{cidx}}" wx:for-item="child">
+                  <view class='badges-item' wx:for='{{item.tag}}' wx:for-index="cidx" wx:key="{{cidx}}" wx:for-item="child">
                     {{child}}
                   </view>
                 </view>
@@ -48,11 +81,11 @@
           </navigator>
 
           <view class='buyer_middle_info'>
-            <text class='info_sub_title'>{{list.essay_title}}</text>
+            <text class='info_sub_title'>{{item.introduction}}自从腾讯把酷我、酷狗收购以后， 音乐正式迎来收费时代。现在随便下载一首普通的歌曲都要钱了。而且随着</text>
           </view>
 
           <scroll-view style='white-space:nowrap;' scroll-x scroll-with-animation>
-            <block wx:for='{{list.essay_img_link}}' wx:key="{{essay_img}}" wx:for-item="item">
+            <block wx:for='{{item.goods_imgs}}' wx:key="{{essay_img}}" wx:for-item="item">
               <view class='product_item' style='background-image: url({{item}})'></view>
             </block>
           </scroll-view>
@@ -61,12 +94,11 @@
               <button class='buyer-focus'>进店逛逛</button>
           </view>
 
-        </view>
-
-       </block>
-        
+        </view>        
       </view>
     </block>
+  </block>
+
 </block>
 
 <block wx:else>

@@ -1,34 +1,38 @@
 /* pages/card_bag/card_bag.wxss */
-.card_tab{
-  border-top: 1px solid #f4f4f4;
-  border-bottom: 1px solid #f4f4f4;
-  padding: 0 32rpx;
-  text-align: center;
+Page{
+  background: #fff;
 }
-.card_tab > .tab_item{
+
+.bgWhite {
+  background-color: #fff;
+}
+
+.tab-wrapper {
+  width: 120rpx;
+  height: 80rpx;
+}
+
+.active {
+  border-bottom: solid 4rpx #FE5968;
+}
+
+.buyer-focus{
+  border-radius: 50rpx;
+  background-color: rgba(245, 57, 110, 1);
+  color: #fff;
+  font-size: 24rpx;
   display: inline-block;
-  text-align: center;
-  padding: 28rpx 0;
-  margin-right: 48rpx;
-  font-weight: bold;
-  position: relative;
+  width: 160rpx;
+  line-height: 2;
+  box-shadow: 0 2rpx 6rpx rgba(245, 57, 110, .72);
 }
-.card_tab > .tab_item:last-child{
-  margin-right: 0;
+
+.no-card{
+  height:340rpx;
+  width:500rpx;
 }
-.card_tab > .tab_item.active{
-  color: #F5396E;
-}
-.card_tab > .tab_item.active::after{
-  display: block;
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  height: 4rpx;
-  width: 100%;
-  background-color: #F5396E;
-  content: "";
-}
+
+
 .card-box{
   overflow: hidden;
   border-radius: 10rpx;
@@ -36,6 +40,7 @@
   position: relative;
   box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, .05);
 }
+
 .card-status-box{
   padding: 24rpx 0 24rpx 60rpx;
   font-size: 60rpx;
@@ -80,7 +85,7 @@
   padding: 16rpx 0;
 }
 .nodata{
-  padding: 100rpx 0;
+  padding: 200rpx 0;
 }
 .card-box.used .card-time-box::after{
   content: '';
