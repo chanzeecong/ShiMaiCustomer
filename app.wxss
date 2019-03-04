@@ -211,6 +211,7 @@ page{
 }
 .buyer_middle_info{
   padding-left: 28rpx;
+  padding-right: 26rpx;
   margin-bottom: 20rpx;
 }
 .info_title{
@@ -225,7 +226,7 @@ page{
   color: rgba(0, 0, 0, 0.4);
 }
 .buyer-action{
-  margin-top: 40rpx;
+  margin-top: 20rpx;
   text-align: center;
 }
 .product_item{

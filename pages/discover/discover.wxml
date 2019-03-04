@@ -89,7 +89,7 @@
       </block>
       <block wx:else>
         <view class='video-wrapper'>
-          <video autoplay='' poster='{{item.video_url}}?vframe/jpg/offset/0' src='{{item.video_url}}'></video>
+          <video autoplay='' poster='{{item.video_url}}' src='{{item.video_url}}'></video>
         </view>
       </block>
     </view>

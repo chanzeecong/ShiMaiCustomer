@@ -36,7 +36,7 @@
   </scroll-view>
 
   <view class='buyer-area-list' wx:for="{{areaList}}"  wx:for-index="aidx"  wx:key="{{aidx}}">
-    <navigator class='area-item' open-type='navigate' url='../buyer_list/buyer_list' style='background-image:url({{item.img}});'>
+    <navigator class='area-item' open-type='navigate' url='../buyer_list/buyer_list?country_id={{item.id}}' style='background-image:url({{item.img}});'>
       {{item.area}}
     </navigator>
   </view>

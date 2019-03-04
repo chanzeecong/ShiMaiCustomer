@@ -128,21 +128,6 @@ App({
       }
     })
   },
-<<<<<<< HEAD
-  // hostName: `http://distributor.shimai.com/api/`,
-  hostName: `https://customer.afxclub.top/api/`,
-  token: `eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9jdXN0b21lci5hZnhjbHViLnRvcFwvYXBpXC9jdXN0b21lciIsImlhdCI6MTU1MTIzMzIyMCwiZXhwIjoxNTUzODI1MjIwLCJuYmYiOjE1NTEyMzMyMjAsImp0aSI6IjZnZDRtWk4xVUVMeGUza0ciLCJzdWIiOjYzLCJwcnYiOiJjZTM5YTYwNmNiZTcwNDIwNTRhM2Y1MzYxNGY4ZjIwMjk5ZmQ5YWFlIn0.EXgaxbXZ-JMehR6NrWKoqvekIxpZn8Bf4FGLARHlks4`,
-  scanPath: '',
-  orderId: 0,
-  distributorId: 0,
-  isCustom: 0,
-  globalData: {
-    width: 375,
-    windowWidth: 555,
-    height: 667,
-    userInfo: null,
-  },
-=======
 
   userLogin(code) {
     return new Promise(resolve => {
@@ -160,6 +145,4 @@ App({
       })
     })
   }
-
->>>>>>> ea3db8ffb4c7a4f245c04322d733e5d0e167985a
 })
