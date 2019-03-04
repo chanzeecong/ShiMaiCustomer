@@ -1,6 +1,5 @@
 {
   "pages": [
-    "pages/register/register",
     "pages/discover/discover",
     "pages/buyer/buyer",
     "pages/index/index",

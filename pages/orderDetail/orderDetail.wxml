@@ -1,5 +1,5 @@
 <view class="row" style='position:relative;height:200rpx;'>
-  <image class='bg-img' src="../../image/img_illustration@2x.png" style='width:{{width}}px;'></image>
+  <image class='bg-img' src="https://buyer.sm.afxclub.top/img_illustration@2x.png" style='width:{{width}}px;'></image>
   
   <view class="col-left padLef-16">
 
@@ -10,7 +10,7 @@
     <block wx:elif="{{0 === orderDetail.status}}">
       <text class='font-18 white'>未付款</text>
       <view class='row row-center padTop-20 '>
-        <image class="count-icon" src="../../image/icon_Countdown_white@3x.png"></image>
+        <image class="count-icon" src="https://buyer.sm.afxclub.top/icon_Countdown_white@3x.png"></image>
         <text class='font-12 white padLef-5'>剩余时间：{{orderDetail.countDownHour}}时{{orderDetail.countDownMin}}分{{orderDetail.countDownSec}}秒</text>
       </view>
     </block>
@@ -43,14 +43,14 @@
   </view>
 
   <view class='row padLef-16 padRig-16 padTop-10 padBot-10 magTop-10 bgWhite underline'>
-    <image src='../../image/4.png' class='user_avartor'></image>
+    <image src='https://buyer.sm.afxclub.top/4.png' class='user_avartor'></image>
     <text class='font-14 black padLef-10'>{{orderDetail.buyer_name}}</text>
   </view>
 
   <view class='row row-between padLef-16 padRig-16 padTop-10 padBot-10 bgWhite underline'>
     <view class='row' style='align-items:flex-start;'>
       <view class='row'>
-        <image class='production' src='{{orderDetail.good_cover_img ? orderDetail.good_cover_img: "../../image/nonimg@2x.png"}}' mode='aspectFill'></image>
+        <image class='production' src='{{orderDetail.good_cover_img ? orderDetail.good_cover_img: "https://buyer.sm.afxclub.top/nonimg@2x.png"}}' mode='aspectFill'></image>
       </view>
       <view class='row padLef-10'>
         <view class='col-left'>

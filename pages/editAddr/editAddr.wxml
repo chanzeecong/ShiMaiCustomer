@@ -26,7 +26,7 @@
         <view class='row'>
           <text wx:if="{{currentCountry.code}}" class='font-14 grey padRig-5'>{{currentCountry.code}}</text>
           <text wx:else class='font-14 grey padRig-5'>区号</text>
-          <image class='icon' src='../../image/icon_arrow_right@2x.png'></image>
+          <image class='icon' src='https://buyer.sm.afxclub.top/icon_arrow_right@2x.png'></image>
         </view>
       </view>
     </picker> -->
@@ -43,7 +43,7 @@
   <view class='row row-between flex1'>
     <view></view>
     <view bindtap='onLocalBtnClick' class='row'>
-      <image class='position-icon' src='../../image/icon_position@2x(1).png'></image>
+      <image class='position-icon' src='https://buyer.sm.afxclub.top/icon_position@2x(1).png'></image>
       <text class='font-14 blue'>定位</text>
     </view>
   </view>
@@ -65,7 +65,7 @@
 <view class='row row-center padBot-20 bgWhite'>
   <view class='col-center'>
     <view bindtap='onFrontImgClick' class='idCard-wrapper' style='position:relative;'>
-      <image class='idCard-wrapper' src='../../image/img_05@2x.png' style='position:absolute;top:0;'></image>
+      <image class='idCard-wrapper' src='https://buyer.sm.afxclub.top/img_05@2x.png' style='position:absolute;top:0;'></image>
       <view class='row row-center idCard-wrapper'>
         <image class='idCard-img' mode='aspectFill' src='{{addrDetail.id_card_front_img}}' style='z-index:2;'></image>
       </view>
@@ -77,7 +77,7 @@
 
   <view class='col-center magLef-20'>
     <view bindtap='onBackImgClick' class='idCard-wrapper' style='position:relative;'>
-      <image class='idCard-wrapper' src='../../image/img_06@2x.png' style='position:absolute;top:0;'></image>
+      <image class='idCard-wrapper' src='https://buyer.sm.afxclub.top/img_06@2x.png' style='position:absolute;top:0;'></image>
       <view class='row row-center idCard-wrapper'>
         <image class='idCard-img' mode='aspectFill' src='{{addrDetail.id_card_back_img}}' style='z-index:2;'></image>
       </view>
@@ -89,40 +89,40 @@
 </view>
 
 <view class='row padTop-5 padBot-5 padLef-16 padRig-16 bgWhite'>
-  <image src='../../image/icon_sigh@2x.png' class='warn-icon'></image>
+  <image src='https://buyer.sm.afxclub.top/icon_sigh@2x.png' class='warn-icon'></image>
   <text class='font-12 red padLef-5'>注意事项</text>
 </view>
 
 <view class='row padTop-10 padBot-10 padLef-16 padRig-16 bgWhite'>
 
   <view class='col-center flex1'>
-    <image class='demo-img' src='../../image/img_01@2x.png'></image>
+    <image class='demo-img' src='https://buyer.sm.afxclub.top/img_01@2x.png'></image>
     <view class='row padTop-20'>
-      <image class='warn-icon' src='../../image/icon_right_blue@2x.png'></image>
+      <image class='warn-icon' src='https://buyer.sm.afxclub.top/icon_right_blue@2x.png'></image>
       <text class='font-10 black padLef-5'>标准</text>
     </view>
   </view>
 
   <view class='col-center flex1'>
-    <image class='demo-img' src='../../image/img_02@2x.png'></image>
+    <image class='demo-img' src='https://buyer.sm.afxclub.top/img_02@2x.png'></image>
     <view class='row padTop-20'>
-      <image class='warn-icon' src='../../image/icon_wrong@2x.png'></image>
+      <image class='warn-icon' src='https://buyer.sm.afxclub.top/icon_wrong@2x.png'></image>
       <text class='font-10 black padLef-5'>边框缺失</text>
     </view>
   </view>
 
   <view class='col-center flex1'>
-    <image class='demo-img' src='../../image/img_03@2x.png'></image>
+    <image class='demo-img' src='https://buyer.sm.afxclub.top/img_03@2x.png'></image>
     <view class='row padTop-20'>
-      <image class='warn-icon' src='../../image/icon_wrong@2x.png'></image>
+      <image class='warn-icon' src='https://buyer.sm.afxclub.top/icon_wrong@2x.png'></image>
       <text class='font-10 black padLef-5'>照片模糊</text>
     </view>
   </view>
 
   <view class='col-center flex1'>
-    <image class='demo-img' src='../../image/img_04@2x.png'></image>
+    <image class='demo-img' src='https://buyer.sm.afxclub.top/img_04@2x.png'></image>
     <view class='row padTop-20'>
-      <image class='warn-icon' src='../../image/icon_wrong@2x.png'></image>
+      <image class='warn-icon' src='https://buyer.sm.afxclub.top/icon_wrong@2x.png'></image>
       <text class='font-10 black padLef-5'>闪光强烈</text>
     </view>
   </view>
@@ -158,7 +158,7 @@
     <view class='row flex3 padLef-20 padRig-20'>
       <view class='row flex1'>
         <view bindtap='addAddrLabelBtnClick' class='row row-center label-wrapper'>
-          <image class='position-icon' src='../../image/icon_delete@2x.png' style='transform:rotate(45deg);'></image>
+          <image class='position-icon' src='https://buyer.sm.afxclub.top/icon_delete@2x.png' style='transform:rotate(45deg);'></image>
         </view>
       </view>
       <view class='flex1'></view>

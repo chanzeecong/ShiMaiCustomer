@@ -27,7 +27,7 @@
         </view>
 
         <view class='card-time-box sub_text_color font-12pt flex flex-column justify-center align-center'>
-          <view class='card-side' style='background-image:url(../../assets/icon/circle_side.png)'></view>
+          <view class='card-side' style='background-image:url(https://buyer.sm.afxclub.top/circle_side.png)'></view>
           <view>使用期限</view>
           <view>{{allitem.coupon.coupon_start_time}}</view>
           <view>{{allitem.coupon.coupon_end_time}}</view>

@@ -1,10 +1,10 @@
 <!--pages/buyer_list/buyer_list.wxml-->
 <view class='wrapper'>
-  <view class='buyer_area_bg' style='background-image:url(../../assets/img/banner-test.png);margin-bottom: 20rpx;'></view>
+  <view class='buyer_area_bg' style='background-image:url(https://buyer.sm.afxclub.top/banner-test.png);margin-bottom: 20rpx;'></view>
   <navigator open-type='navigate' url='../search_buyer/search_buyer' class='search-wrapper bg-white' style='margin-bottom: 10rpx;'>
     <view class='search-box'>
       <view class='icon icon-search'>
-        <image src='../../assets/icon/icon_search@2x.png'></image>
+        <image src='https://buyer.sm.afxclub.top/icon_search@2x.png'></image>
       </view>
       <text class='search-place-text'>搜索买手、标签、地区</text>
     </view>
@@ -15,12 +15,12 @@
 
     <view class='buyer_box' wx:for="{{buyerList}}" wx:for-item="list" wx:for-index="listidx" wx:key="{{idex}}">
       <navigator open-type='navigate' url='../buyer_detail/buyer_detail' class='flex flex-row buyer_head'>
-        <image class='buyer_img' mode='aspectFill' src='../../assets/img/4.png'></image>
+        <image class='buyer_img' mode='aspectFill' src='https://buyer.sm.afxclub.top/4.png'></image>
         <view class='flex-item'>
           <view class='buyer_title'>
             <text>The storyor</text>
             <view class='title_location padTop-5'>
-              <image class='icon icon_location padTop-5' src='../../assets/icon/icon_position1@2x.png'></image>
+              <image class='icon icon_location padTop-5' src='https://buyer.sm.afxclub.top/icon_position1@2x.png'></image>
               韩国Suwon
             </view>
             <view></view>
@@ -38,10 +38,10 @@
       </view>
 
       <scroll-view style='white-space:nowrap;' scroll-x scroll-with-animation>
-        <view class='product_item' style='background-image: url(../../assets/img/text-img.png)'></view>
-        <view class='product_item' style='background-image: url(../../assets/img/text-img.png)'></view>
-        <view class='product_item' style='background-image: url(../../assets/img/text-img.png)'></view>
-        <view class='product_item' style='background-image: url(../../assets/img/text-img.png)'></view>
+        <view class='product_item' style='background-image: url(https://buyer.sm.afxclub.top/text-img.png)'></view>
+        <view class='product_item' style='background-image: url(https://buyer.sm.afxclub.top/text-img.png)'></view>
+        <view class='product_item' style='background-image: url(https://buyer.sm.afxclub.top/text-img.png)'></view>
+        <view class='product_item' style='background-image: url(https://buyer.sm.afxclub.top/text-img.png)'></view>
       </scroll-view>
 
       <view class='buyer-action'>
@@ -52,6 +52,6 @@
 
 
 
-    <image src='../../assets/icon/icon_top@2x.png' class='goTop' hidden='{{!floorstatus}}' bindtap="goTop"></image>
+    <image src='https://buyer.sm.afxclub.top/icon_top@2x.png' class='goTop' hidden='{{!floorstatus}}' bindtap="goTop"></image>
   </view>
 </view>

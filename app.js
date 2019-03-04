@@ -4,7 +4,7 @@ const qiniuUploader = require("lib/qiniuUploader.js");
 
 App({
   onLaunch: function () {
-    this.getMobileDemision();
+    this.getMobileScreen();
     // 展示本地存储能力
     var logs = wx.getStorageSync('logs') || []
     logs.unshift(Date.now())
@@ -110,9 +110,7 @@ App({
     width: 375,
     windowHeiht: 555,
     height: 667,
-
     userInfo: null,
-    isIphoneX: false,
   },
   getMobileDemision() {
     wx.getSystemInfo({

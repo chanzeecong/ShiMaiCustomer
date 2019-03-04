@@ -45,14 +45,14 @@
         </block>
 
         <view class='line'></view>
-        <image bindtap='onDeleteOrderBtnClick' data-id="{{item.id}}" data-index="{{index}}" class='icon magLef-10' src='../../image/icon_ashcan-gray@2x.png'></image>
+        <image bindtap='onDeleteOrderBtnClick' data-id="{{item.id}}" data-index="{{index}}" class='icon magLef-10' src='https://buyer.sm.afxclub.top/icon_ashcan-gray@2x.png'></image>
       </view>
     </view>
 
     <navigator url="../orderDetail/orderDetail?id={{item.id}}" class='row row-between bgWhite padLef-16 padRig-16'>
       <view class='row' style='background:#F4F4F4;width:646rpx;height:180rpx;padding:20rpx 20rpx;'>
         <view class='row'>
-          <image class='production-img' src='{{item.good_cover_img ? item.good_cover_img: "../../image/nonimg@2x.png"}}' mode='aspectFill'></image>
+          <image class='production-img' src='{{item.good_cover_img ? item.good_cover_img: "https://buyer.sm.afxclub.top/nonimg@2x.png"}}' mode='aspectFill'></image>
         </view>
         <view class='row padLef-10'>
           <view class='col-left'>
@@ -114,7 +114,7 @@
 </block>
 <block wx:else>
   <view class='row row-center magTop-30'>
-    <image src='../../image/img_No_data@2x.png' style='width:340rpx;height:340rpx;'></image>
+    <image src='https://buyer.sm.afxclub.top/img_No_data@2x.png' style='width:340rpx;height:340rpx;'></image>
   </view>
   <view class='row row-center padTop-20'>
     <text class='font-16 grey'>您还没有相关的订单哦！</text>

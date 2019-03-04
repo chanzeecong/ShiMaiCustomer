@@ -11,10 +11,10 @@ Page({
     sortActive: '',
     sortActiveState: '',
     buyerList: [
-      { id: 'b_1', name: 'Jane', area: '法国', badge: ['法国代购', '香水', '包'], state: true, img: '../../assets/img/4.png' },
-      { id: 'b_2', name: 'Jane2', area: '美国', badge: ['美国代购', '香水', '包'], state: true, img: '../../assets/img/4.png' },
-      { id: 'b_3', name: 'Jane3', area: '英国', badge: ['英国代购', '香水', '包'], state: true, img: '../../assets/img/4.png' },
-      { id: 'b_4', name: 'Jane4', area: '日本', badge: ['日本代购', '香水', '包'], state: true, img: '../../assets/img/4.png' },
+      { id: 'b_1', name: 'Jane', area: '法国', badge: ['法国代购', '香水', '包'], state: true, img: 'https://buyer.sm.afxclub.top/4.png' },
+      { id: 'b_2', name: 'Jane2', area: '美国', badge: ['美国代购', '香水', '包'], state: true, img: 'https://buyer.sm.afxclub.top/4.png' },
+      { id: 'b_3', name: 'Jane3', area: '英国', badge: ['英国代购', '香水', '包'], state: true, img: 'https://buyer.sm.afxclub.top/4.png' },
+      { id: 'b_4', name: 'Jane4', area: '日本', badge: ['日本代购', '香水', '包'], state: true, img: 'https://buyer.sm.afxclub.top/4.png' },
     ],
     sortItems: [
       { name: 'USA', value: '综合排序', checked: 'true' },

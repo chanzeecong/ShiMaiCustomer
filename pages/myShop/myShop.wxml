@@ -30,7 +30,7 @@
       </view>
 
       <view class='row padTop-5'>
-        <image class='share-icon' src='../../image/icon_position@2x.png'></image>
+        <image class='share-icon' src='https://buyer.sm.afxclub.top/icon_position@2x.png'></image>
         <text class='font-12 grey'>{{buyer.state}} {{buyer.city}}</text>
       </view>
 
@@ -105,7 +105,7 @@
     <block wx:elif="{{2 === item.isEllipsis}}">
       <view class='col-left'>
         <text class='font-14 black'>{{item.good_name}}</text>
-        <image bindtap='onEllipsisArticleBtnClick' data-index="{{index}}" class='arrow-icon magTop-10' src="../../image/icon_arrow_right@2x.png" style='transform:rotate(-90deg);'></image>
+        <image bindtap='onEllipsisArticleBtnClick' data-index="{{index}}" class='arrow-icon magTop-10' src="https://buyer.sm.afxclub.top/icon_arrow_right@2x.png" style='transform:rotate(-90deg);'></image>
       </view>
     </block>
   </view>
@@ -132,7 +132,7 @@
     <block wx:if="{{item.end_time}}">
       <view class='row' style='align-items:flex-end;'>
         <view class='row'>
-          <image class='fire-icon' src='../../image/icon_Selling@2x.png'></image>
+          <image class='fire-icon' src='https://buyer.sm.afxclub.top/icon_Selling@2x.png'></image>
         </view>
         <view class='row padLef-5'>
           <text class='font-10 black'>距离结束：</text>
@@ -161,7 +161,7 @@
 
     <view class='row row-center'>
       <button bindtap='onShareBtnClick' data-index="{{index}}" class='row row-center share-btn' plain='true' style='border:none;'>
-        <image class='share-icon' src='../../image/icon_moments@2x.png'></image>
+        <image class='share-icon' src='https://buyer.sm.afxclub.top/icon_moments@2x.png'></image>
         <text class='font-14 white padLef-5'>一键分享</text>
       </button>
     
@@ -213,5 +213,5 @@
 </block>
 
 <view class='col-left fix'>
-  <image wx:if="{{isBackTop}}" bindtap="onBackTopBtnClick" class='nav-icon' src="../../image/icon_top@2x.png"></image>
+  <image wx:if="{{isBackTop}}" bindtap="onBackTopBtnClick" class='nav-icon' src="https://buyer.sm.afxclub.top/icon_top@2x.png"></image>
 </view>

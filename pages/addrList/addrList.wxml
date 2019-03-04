@@ -3,16 +3,16 @@
     <view bindtap='onChooseOrderAddrBtnClick' data-id="{{defaultAddr.id}}" class='row padLef-10' style='width:100%;'>
       <block wx:if='{{currentAddr!==0}}'>
         <view class='row' wx:if='{{currentAddr===defaultAddr.id}}'>
-          <image class='icon' src='../../image/icon_Selected@2x.png'></image>
+          <image class='icon' src='https://buyer.sm.afxclub.top/icon_Selected@2x.png'></image>
         </view>
       </block>
       <!-- <block wx:else>
         <view class='row'>
-          <image class='icon' src='../../image/icon_Selected@2x.png'></image>
+          <image class='icon' src='https://buyer.sm.afxclub.top/icon_Selected@2x.png'></image>
         </view>
       </block> -->
       <!-- <view class='row' wx:if='{{currentAddr===defaultAddr.id}}'>
-        <image class='icon' src='../../image/icon_Selected@2x.png'></image>
+        <image class='icon' src='https://buyer.sm.afxclub.top/icon_Selected@2x.png'></image>
       </view> -->
       <view class='padLef-16'>
         <view class='row'>
@@ -30,7 +30,7 @@
       </view>
     </view>
     <navigator url='../editAddr/editAddr?id={{defaultAddr.id}}' class='row'>
-      <image class='pen-icon' src='../../image/icon_edit@2x.png'></image>
+      <image class='pen-icon' src='https://buyer.sm.afxclub.top/icon_edit@2x.png'></image>
     </navigator>
   </view>
 </block>
@@ -40,7 +40,7 @@
   <block wx:if="{{!item.is_default}}">
     <view class="row row-between padTop-20 padBot-20 padLef-16 padRig-16 underline bgWhite">
       <view class='row' wx:if='{{currentAddr===item.id}}'>
-        <image class='icon' src='../../image/icon_Selected@2x.png'></image>
+        <image class='icon' src='https://buyer.sm.afxclub.top/icon_Selected@2x.png'></image>
       </view>
       <view bindtap='onChooseOrderAddrBtnClick' data-id="{{item.id}}" class='padLef-10' style='width:100%;'>
         <view class='row'>
@@ -54,7 +54,7 @@
         </view>
       </view>
       <navigator url='../editAddr/editAddr?id={{item.id}}' class='row'>
-        <image class='pen-icon' src='../../image/icon_edit@2x.png'></image>
+        <image class='pen-icon' src='https://buyer.sm.afxclub.top/icon_edit@2x.png'></image>
       </navigator>
       
     </view>

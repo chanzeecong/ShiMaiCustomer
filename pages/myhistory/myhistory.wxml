@@ -16,7 +16,7 @@
               <view class='list-info flex-item flex flex-column justify-between'>
                 <text class='info-title'>{{showitem.title}}</text>
                 <text class='info-price'>抢购价{{showitem.price}}元</text>
-                <view class='info-content'>{{showitem.tag}} | {{showitem.time}} <view class='right_comments'><image src='../../assets/icon/icon_browse@2x.png'></image>{{showitem.comments}}</view></view>
+                <view class='info-content'>{{showitem.tag}} | {{showitem.time}} <view class='right_comments'><image src='https://buyer.sm.afxclub.top/icon_browse@2x.png'></image>{{showitem.comments}}</view></view>
               </view>
             </view>
           </label>
@@ -43,7 +43,7 @@
   <view class='wrapper bg-white' style='height: 100vh'>
     <view class='flex flex-column justify-center align-center' style='height: 100%;'>
       <view class='center-text m-b-10pt'>
-        <image src='../../assets/icon/img_No-data@2x.png'></image>
+        <image src='https://buyer.sm.afxclub.top/img_No-data@2x.png'></image>
         <view class='font-16pt sub_text_color empty_text center_text m-b-10pt'>您还没有浏览的记录哦！</view>
         <view class='font-12pt sub_text_color empty_text center_text'>主人快去给我挑点宝贝吧</view>
       </view>

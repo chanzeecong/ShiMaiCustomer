@@ -6,9 +6,9 @@
 
 <view class='wrapper'>
   <view class='top_banner p-h-10pt bg-white'>
-    <view class='banner_img' style='background-image:url(../../assets/icon/bannar_01@2x.png)'></view>
+    <view class='banner_img' style='background-image:url(https://buyer.sm.afxclub.top/bannar_01@2x.png)'></view>
     <view class='flex flex-row p-v-10pt'>
-      <view class='text_img' style='background-image:url(../../assets/icon/icon_xiaoxi@2x.png)'></view>
+      <view class='text_img' style='background-image:url(https://buyer.sm.afxclub.top/icon_xiaoxi@2x.png)'></view>
       <text class='color_primary font-12pt' style='margin-right: 20rpx;'>貌美实力派</text>
       <text class='sub_text_color font-12pt hidetext flex-item'>松霖泉水面盆龙头，洗脸也成为一种高级享受松霖泉水面盆龙头，洗脸也成为一种高级享受松霖泉水面盆龙头，洗脸也成为一种高级享受</text>
     </view>
@@ -18,7 +18,7 @@
     <navigator open-type='navigate' url='../search_buyer/search_buyer' class='search-wrapper bg-white magTop-10 underline'>
       <view class='search-box'>
         <view class='icon icon-search'>
-          <image src='../../assets/icon/icon_search@2x.png'></image>
+          <image src='https://buyer.sm.afxclub.top/icon_search@2x.png'></image>
         </view>
         <text bindinput='onSearchInput' class='search-place-text'>大家都在搜：卫衣</text>
       </view>
@@ -28,7 +28,7 @@
 
       <view class='row row-between padLef-16 padRig-16 bg-white h-40'>
         <text class='font-16 grey padTop-11 padLef-16'>请选择</text>
-        <image bindtap='onShowTabBtnClick' class='arrow-icon' src='../../assets/icon/icon_arrow_down@2x.png' style='transform:rotate(180deg)'></image>
+        <image bindtap='onShowTabBtnClick' class='arrow-icon' src='https://buyer.sm.afxclub.top/icon_arrow_down@2x.png' style='transform:rotate(180deg)'></image>
 
       </view>
 
@@ -52,7 +52,7 @@
         </scroll-view>
 
         <view bindtap='onShowTabBtnClick' class=''>
-          <image class='arrow-icon' src='../../assets/icon/icon_arrow_down@2x.png'></image>
+          <image class='arrow-icon' src='https://buyer.sm.afxclub.top/icon_arrow_down@2x.png'></image>
         </view>
 
       </view>
@@ -61,17 +61,19 @@
   </view>
   <view style='height:60rpx;'></view>
 
-  <!-- 商品列表 -->
-  <scroll-view scroll-y="{{isScroll}}" style='height:100%;z-index:-1;' bindtouchstart='scrollTabStart' bindtouchend='scrollTabEnd' class='padLef-16 padRig-16'>
-    <view wx:for="{{eassyList}}" wx:key="{{index}}" class='flex flex-wrapper justify-between'>
-      <block wx:if="{{item.type == 'essay'}}" class="flex flex-wrapper">
-        <view class='eassy-wrapper flex flex-column magTop-10' style='width:45%;'>
+
+  <!-- 商品列表 
+  <scroll-view scroll-y="{{isScroll}}" style='height:100%;z-index:-1;' bindtouchstart='scrollTabStart' bindtouchend='scrollTabEnd' class='padLef-16'>
+    <view wx:for="{{eassyList}}" wx:key="{{index}}">
+      <block wx:if="{{item.type == 'essay'}}">
+        <view class='good-list' wx:if="{{index%2==0}}">
           <view class='row'>
-            <image src='{{item.cover_img_link}}?imageView2/2/w/169/h/169' mode="widthFix" style='border-radius:12rpx 12rpx 0px 0px;'></image>
+            <image class="good-items" bindload="imgLoad" src='{{item.cover_img_link}}?imageView2/1/w/169/h/169' mode="widthFix" style='border-radius:12rpx 12rpx 0px 0px;'></image>
           </view>
           <view class='row padRig-4 padLef-4 padTop-10 bg-white'>
-            <text class='font-14 black'>{{item.essay_title}}</text>
+            <text class='font-14 black line-ellipsis'>{{item.essay_title}}</text>
           </view>
+
           <view class='bg-white padTop-10 h-32' style='border-radius:0px 0px 12rpx 12rpx;'>
             <view class='flex flex-row magLef-4'>
               <image class="avartor-img" src='{{item.img_link}}'></image>
@@ -79,23 +81,103 @@
                 <text class='font-10 black'>{{item.name}}</text>
                 <text class='font-6 black'>{{item.region_name}}</text>
               </view>
-              <view class='flex row justify-around padRig-6 padTop-9'>
-                <image class="heart padRig-4" src='../../assets/icon/icon_like@2x.png'></image>
+              
+              <view class='flex row padRig-6'>
+                <image class="heart padRig-4" src='https://buyer.sm.afxclub.top/icon_like@2x.png'></image>
                 <view class='font-10 black'>21</view>
               </view>
             </view>
           </view>
         </view>
       </block>
+
       <block wx:else>
-        <view class='video-wrapper'>
-          <video autoplay='' poster='{{item.video_url}}' src='{{item.video_url}}'></video>
+        <view class='video-list padLef-5 magBot-10' wx:if="{{index%2==1}}">
+          <video class="good-items" autoplay='' poster='{{item.video_url}}?vframe/jpg/offset/0' src='{{item.video_url}}' style='border-radius:12rpx 12rpx 0px 0px;'>
+          </video>
+          <view class='row padRig-4 padLef-4 magTop-10'>
+            <text class='font-14 black line-ellipsis font-bold'>{{item.type}}ghgfnbvncvnghfbvfgdbfxd</text>
+          </view>
+
+          <view class='row padTop-10'>
+            <text class='font-10 white'>抢购价</text>
+            <text class='font-16 black'>{{item.good_price}}</text>
+          </view>
+
+          <view class='padTop-10 h-32' style='border-radius:0px 0px 12rpx 12rpx;'>
+            <view class='flex flex-row magLef-4'>
+              <image class="avartor-img" src='{{item.img_link}}'></image>
+              <view class='flex flex-column justify-between flex-item padLef-6'>
+                <text class='font-10 black'>{{item.name}}</text>
+                <text class='font-6 black'>{{item.region_name}}</text>
+              </view>
+              
+              <view class='flex row padRig-6'>
+                <image class="heart padRig-4" src='https://buyer.sm.afxclub.top/icon_like@2x.png'></image>
+                <view class='font-10 black'>21</view>
+              </view>
+            </view>
+          </view>
         </view>
       </block>
     </view>
 
-  </scroll-view>
+  </scroll-view>-->
 
-  <image src='../../assets/icon/icon_top@2x.png' mode='aspectFill' class='goTop' hidden='{{!floorstatus}}' bindtap="goTop"></image>
+<view class="content" style='z-index:-1'>
+  <view class="left">
+    <block wx:for="{{eassyList}}" wx:key="">
+      <template is="item" data="{{...item}}" wx:if="{{index%2==0}}"></template>
+    </block>
+  </view>
+  <view class="right">
+    <block wx:for="{{eassyList}}" wx:key="">
+      <template is="item" data="{{...item}}" wx:if="{{index%2==1}}"></template>
+    </block>
+  </view>
+</view>
+<!--  下面是一个模块 -->
+<template name="item">
+  <view class="item">
+    <block wx:if="{{type == 'essay'}}">
+      <image class="item-img" src="{{cover_img_link}}" mode="widthFix"></image>
+    </block>
+
+    <block wx:else>
+       <video class="good-items" autoplay='' poster='{{video_url}}' src='{{video_url}}' style='border-radius:12rpx 12rpx 0px 0px;'></video>
+    </block>
+    
+    <view class="item-title-box">
+      <view class='row padRig-4 padLef-4 magTop-10'>
+        <text class='font-14 black line-ellipsis font-bold'>{{type}}</text>
+      </view>
+
+      <view class='row padTop-10'>
+        <text class='font-10 white'>抢购价</text>
+        <text class='font-16 black'>{{good_price}}</text>
+      </view> 
+    </view>
+
+    <view class="name">
+      <view class='padTop-10 h-32' style='border-radius:0px 0px 12rpx 12rpx;'>
+        <view class='flex flex-row magLef-4'>
+          <image class="avartor-img" src='{{img_link}}'></image>
+          <view class='flex flex-column justify-between flex-item padLef-6'>
+            <text class='font-10 black'>{{name}}</text>
+            <text class='font-6 black'>{{region_name}}</text>
+          </view>
+          
+          <view class='flex row padRig-6'>
+            <image class="heart padRig-4" src='https://buyer.sm.afxclub.top/icon_like@2x.png'></image>
+            <view class='font-10 black'>21</view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+</template>
+
+<image src='https://buyer.sm.afxclub.top/icon_top@2x.png' mode='aspectFill' class='goTop' hidden='{{!floorstatus}}' bindtap="goTop"></image>
 
 </view>
