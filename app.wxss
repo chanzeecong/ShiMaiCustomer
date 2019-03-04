@@ -11,6 +11,9 @@ page{
 .color_primary{
   color: #F5396E;
 }
+.lh {
+  line-height: 0.9;
+}
 .container {
   height: 100%;
   display: flex;
@@ -589,6 +592,9 @@ page{
 .padLef-40 {
   padding-left: 80rpx;
 }
+.padLef-41 {
+  padding-left: 82rpx;
+}
 .padLef-42 {
   padding-left: 84rpx;
 }
@@ -603,8 +609,14 @@ page{
 }
 .padLef-123 {
   padding-left: 220rpx;
-
 }
+.padLef-166 {
+  padding-left: 332rpx;
+}
+.padLef-177 {
+  padding-left: 354rpx;
+}
+
 .magTop-1 {
   margin-top: 2rpx;
 }
@@ -701,6 +713,9 @@ page{
 }
 .magLef-36 {
   margin-left: 72rpx;
+}
+.magLef-45 {
+  margin-left: 90rpx;
 }
 .magLef-70 {
   margin-left: 140rpx;
@@ -857,13 +872,16 @@ page{
   color: #7CB0EB;
 }
 .blue {
-  color: #5CC6F8;
+  color: #208BC2;
 }
 .yellow{
   color: #FFCE00;
 }
 .deyellow {
   color: #FFC41F;
+}
+.topline {
+  border-top: solid 2rpx #F4F4F4;
 }
 .underline {
   border-bottom: solid 2rpx #F4F4F4;
@@ -886,6 +904,9 @@ page{
 .h-40 {
   height: 80rpx;
 }
+.h-46 {
+  height: 92rpx;
+}
 .h-50 {
   height: 100rpx;
 }
@@ -901,12 +922,22 @@ page{
 .h-120 {
   height: 240rpx;
 }
+.h-122 {
+  height: 242rpx;
+}
 .h-136 {
   height: 272rpx;
 }
 .h-140 {
   height: 280rpx;
 }
+.h-208 {
+  height: 416rpx;
+}
+.h-360 {
+  height: 720rpx;
+}
+
 .line-ellipsis {
   display: -webkit-box;
   -webkit-box-orient: vertical;

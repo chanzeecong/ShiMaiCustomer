@@ -1,0 +1,167 @@
+<!--pages/Articlepage/Articlepage.wxml-->
+<scroll-view scroll-y="{{isScroll}}" scroll-top='{{topNum}}' class='scroll-info'  bindscroll="scrolltoupper" style='height:{{scrollHeight}}px;'>
+  <block wx:if="{{detailList !== 0}}">
+    <view wx:for="{{detailList}}" wx:key="{{index}}">
+      <view class='row row-between padTop-12 padRig-16 padLef-16 padBot-10 bgWhite'>
+
+        <view class='row' style='align-items:flex-start;'>
+
+          <view class='row padRig-10'>
+            <image class='avatar-icon' mode="aspectFill" src='{{item.img_link}}'></image>
+          </view>
+
+          <view class='col-left'>
+            <view class='row'>
+              <text class='font-18 black padRig-10 font-bold'>{{item.name}}</text>
+              <view class='row row-center tag-wrapper'>
+                <text class='font-10 red'>{{item.tag_name}}</text>
+              </view>
+            </view>
+            <text class='font-10 grey padTop-5'>{{item.region_name}} {{item.created_at}}</text>
+          </view>
+
+        </view>
+        <!-- 关注 -->
+        <view wx:if="{{item.is_followed}}" bindtap='onUnfollowBtnClick' data-index="{{index}}" class='follow-btn' style='background:rgba(0,0,0,.4);'>已关注</view>
+        <view wx:else bindtap='onFollowBtnClick' data-index="{{index}}" class='follow-btn'>+关注</view>
+      </view>
+      <!-- 轮播 -->
+      <swiper indicator-dots="{{indicatorDots}}" duration="{{duration}}" circular="{{circular}}" class='slide-image'>
+        <block wx:for="{{detailList[0].essay_img_link}}" wx:key="{{index}}">
+          <swiper-item>
+            <image src="{{item}}" mode="aspectFill" style='width:100%;height:750rpx;'/>
+          </swiper-item>
+        </block>
+      </swiper>
+      <!-- 文章内容 -->
+      <view class='padLef-16 padRig-16 padTop-20 bg-white'>
+        <text class='fz-18 black font-bold'>{{item.essay_title}}</text>
+        <view class='magTop-20'>
+          <text class='fz-14' style='color:rgba(0,0,0,0.60);line-height:48rpx;'>一直以来，音乐的加入，都可以让运动的过程变得更加快乐，前提是有一款好用的耳机，而要达到无拘无束的体验，传统的有线耳机当然是直接淘汰的，那么蓝牙运动耳机自然是更受欢迎了，这其中，真无线耳机由于彻底摆脱了线材的束缚，在使用中相对普通蓝牙耳机来说就更加方便了，专注于运动耳机领域的缤特力最近就发布了这么一款蓝牙真无线运动耳机，不仅颜值高，而且功能齐全，还可以通过APP进行自定义设置，可玩性也是提高了不少。</text>
+        </view>
+        <view class='magTop-20'>
+          <text class='fz-16 black'>心得体会</text>
+          <view class='magTop-20 padBot-20'>
+            <text class='fz-14' style='color:rgba(0,0,0,0.60);line-height:48rpx;'>早春脱下毛衣正是穿卫衣的好季节。今天的造型比较韩范儿，和平时街拍中的欧美风不太一样。其实我私服最看中的就是舒适，小脚裤，球鞋，卫衣最舒适不过！说说几个搭配要点：娇小型和微胖型mm搭配宽松卫衣，尽量选择修身高腰小脚裤，让你的腿看起来纤细！不要选择显矮的阔腿裤！可以适当加着配饰增加亮点，比如毛衣链，棒球帽等等。穿修身小脚裤尽量别穿高跟鞋，太女人的搭配，不会太好看。</text>
+          </view>
+        </view>
+      </view>
+
+      <!-- 底部 -->
+      <view class="padLef-16 padRig-16 bg-white h-122">
+        <view class='row padTop-26'>
+          <image class="browse-icon magRig-5" src='{{item.img_link}}'></image>
+          <image class="browse-icon magRig-5" src='{{item.img_link}}'></image>
+          <image class="browse-icon magRig-5" src='{{item.img_link}}'></image>
+          <image class="browse-icon magRig-5" src='{{item.img_link}}'></image>
+          <image class="browse-icon magRig-5" src='{{item.img_link}}'></image>
+          <image class="browse-icon magRig-5" src='{{item.img_link}}'></image>
+          <image class="browse-icon magRig-5" src='{{item.img_link}}'></image>
+          <image class="browse-icon magRig-5" src='{{item.img_link}}'></image>
+          <text class='font-11 magRig-5' style='color:rgba(245,57,110,1);'>21人浏览</text>
+        </view>
+        <view class='row padTop-26'>
+          <image class="icon-use" src='../../assets/icon/icon_like_gray@2x.png'></image>
+          <text class='font-10 low padLef-10'>21</text>
+          <image class='icon-use padLef-41' src='../../assets/icon/icon_Reply_gray@2x.png'></image>
+          <image class='icon-use padLef-40' src='../../assets/icon/icon_Collection_gray@2x.png'></image>
+          <image class='icon-use padLef-166' src='../../assets/icon/icon_share@2x.png'></image>
+        </view>
+      </view>
+
+      <!-- 评论部分 -->
+      <view class='padLef-16 padRig-16 magTop-10 bg-white'>
+        <view class='bg-white h-46 padTop-20'>
+          <text class='font-16 black'>相关评论</text>
+        </view>
+        <view class='h-360 bg-white underline'>
+          <view class='row bg-white' style='align-items:flex-start;'>
+            <view class='row padRig-10'>
+              <image class='comment-avatar' mode="aspectFill" src='{{item.img_link}}'></image>
+            </view>
+
+            <view class='col-left'>
+              <view class='row'>
+                <text class='font-14 black padRig-10 font-bold'>陈京味</text>
+              </view>
+              <text class='font-14 black padTop-5'>这个还不错，上次在小红书里也看到了推荐。这个还不错，上次在小红书里也看到了推荐。</text>
+              <view class='row padTop-20'>
+                <text class='font-10 low'>2018-10-26 08:24</text>
+                <image class="icon-com padLef-177" src='../../assets/icon/icon_Reply@2x.png'></image>
+                <text class='padLef-5 font-10' style='color:rgba(0,0,0,0.60);'>回复</text>
+              </view>
+            </view>
+
+          </view>
+
+          <!-- 灰色部分 -->
+          <view class='reply-content'>
+            <view class='padTop-10 padLef-10 padRig-10 lh'>
+              <text class='font-12 black'><text class='font-12 blue'>小浪：</text>这个还不错，上次在小红书里也看到了推荐。这个还不错，上次在小红书里也看到了推荐。这个还不错，上次在小红书里也看到了推荐。这个还不错，上次在小红书里也看到了推荐。上次在小红书里也看到了推荐。</text>
+            </view>
+            <view class='padLef-10 padRig-10 lh'>
+              <text class='font-12 black'><text class='font-12 blue'>小浪：</text>这个还不错，上次在小红书里也看到了推荐。这个还不错，上次在小红书里也看到了推荐。这个还不错，上次在小红书里也看到了推荐。这个还不错，上次在小红书里也看到了推荐。上次在小红书里也看到了推荐。</text>
+            </view>
+            <navigator open-type='navigate'>
+              <view class='padTop-10 padLef-10 padBot-10 lh'>
+                <text class='font-12 blue font-bold'>共11条评论></text>
+              </view>
+            </navigator>
+          </view>
+        </view>
+
+        <view class='h-360 bg-white underline magTop-20'>
+          <view class='row bg-white' style='align-items:flex-start;'>
+            <view class='row padRig-10'>
+              <image class='comment-avatar' mode="aspectFill" src='{{item.img_link}}'></image>
+            </view>
+
+            <view class='col-left'>
+              <view class='row'>
+                <text class='font-14 black padRig-10 font-bold'>陈京味</text>
+              </view>
+              <text class='font-14 black padTop-5'>这个还不错，上次在小红书里也看到了推荐。这个还不错，上次在小红书里也看到了推荐。</text>
+              <view class='row padTop-20'>
+                <text class='font-10 low'>2018-10-26 08:24</text>
+                <image class="icon-com padLef-177" src='../../assets/icon/icon_Reply@2x.png'></image>
+                <text class='padLef-5 font-10' style='color:rgba(0,0,0,0.60);'>回复</text>
+              </view>
+            </view>
+
+          </view>
+
+          <!-- 灰色部分 -->
+          <view class='reply-content'>
+            <view class='padTop-10 padLef-10 padRig-10 lh'>
+              <text class='font-12 black'><text class='font-12 blue'>小浪：</text>这个还不错，上次在小红书里也看到了推荐。这个还不错，上次在小红书里也看到了推荐。这个还不错，上次在小红书里也看到了推荐。这个还不错，上次在小红书里也看到了推荐。上次在小红书里也看到了推荐。</text>
+            </view>
+            <view class='padLef-10 padRig-10 lh'>
+              <text class='font-12 black'><text class='font-12 blue'>小浪：</text>这个还不错，上次在小红书里也看到了推荐。这个还不错，上次在小红书里也看到了推荐。这个还不错，上次在小红书里也看到了推荐。这个还不错，上次在小红书里也看到了推荐。上次在小红书里也看到了推荐。</text>
+            </view>
+            <navigator open-type='navigate'>
+              <view class='padTop-10 padLef-10 padBot-10 lh'>
+                <text class='font-12 blue font-bold'>共11条评论></text>
+              </view>
+            </navigator>
+          </view>
+        </view>
+        <navigator open-type='navigate'>
+          <view class='topline h-40 bg-white row justify-center'>
+            <text class='font-14 focolor'>查看全部评论</text>
+          </view>
+        </navigator>
+      </view>
+
+
+
+
+    </view>
+
+
+  
+ 
+  </block>
+ 
+ 
+ <image src='https://buyer.sm.afxclub.top/icon_top@2x.png' mode='aspectFill' class='goTop' hidden='{{!floorstatus}}' bindtap="goTop"></image>
+</scroll-view>

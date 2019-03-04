@@ -2,8 +2,6 @@
 const regeneratorRuntime = require('../../lib/runtime.js');
 const touches = require('../../lib/touchScroll.js');
 const app = getApp();
-var leftImg = []; //左容器图片
-var rightImg = []; //右容器图片
 Page({
 
   /**
@@ -15,56 +13,54 @@ Page({
     topNum: 0,
     borderTab: [0, 4],
     selectionActive: '',
-    scrollID: '',
     tabList: [{
-        id: -1,
-        label: `推荐`,
-        src: `https://buyer.sm.afxclub.top/icon_recommendation@2x.png`
-      },
-      {
-        id: -2,
-        label: `关注`,
-        src: `https://buyer.sm.afxclub.top/icon_attention@2x.png`
-      },
-      {
-        id: 1,
-        label: `母婴`,
-        src: `https://buyer.sm.afxclub.top/icon_Baby-Products@2x.png`
-      },
-      {
-        id: 2,
-        label: `鞋包`,
-        src: `https://buyer.sm.afxclub.top/icon_Shoe-bag@2x.png`
-      },
-      {
-        id: 3,
-        label: `家居`,
-        src: `https://buyer.sm.afxclub.top/icon_household-products@2x.png`
-      },
-      {
-        id: 4,
-        label: `生活`,
-        src: `https://buyer.sm.afxclub.top/icon_life@2x.png`
-      },
-      {
-        id: 5,
-        label: `家电`,
-        src: `https://buyer.sm.afxclub.top/icon_Home-appliance@2x.png`
-      },
-      {
-        id: 6,
-        label: `美妆`,
-        src: `https://buyer.sm.afxclub.top/icon_makeups@2x.png`
-      },
-      {
-        id: 7,
-        label: `护肤`,
-        src: `https://buyer.sm.afxclub.top/icon_Skin-care@2x.png`
-      },
+      id: -1,
+      label: `推荐`,
+      src: `https://buyer.sm.afxclub.top/icon_recommendation@2x.png`
+    },
+    {
+      id: -2,
+      label: `关注`,
+      src: `https://buyer.sm.afxclub.top/icon_attention@2x.png`
+    },
+    {
+      id: 1,
+      label: `母婴`,
+      src: `https://buyer.sm.afxclub.top/icon_Baby-Products@2x.png`
+    },
+    {
+      id: 2,
+      label: `鞋包`,
+      src: `https://buyer.sm.afxclub.top/icon_Shoe-bag@2x.png`
+    },
+    {
+      id: 3,
+      label: `家居`,
+      src: `https://buyer.sm.afxclub.top/icon_household-products@2x.png`
+    },
+    {
+      id: 4,
+      label: `生活`,
+      src: `https://buyer.sm.afxclub.top/icon_life@2x.png`
+    },
+    {
+      id: 5,
+      label: `家电`,
+      src: `https://buyer.sm.afxclub.top/icon_Home-appliance@2x.png`
+    },
+    {
+      id: 6,
+      label: `美妆`,
+      src: `https://buyer.sm.afxclub.top/icon_makeups@2x.png`
+    },
+    {
+      id: 7,
+      label: `护肤`,
+      src: `https://buyer.sm.afxclub.top/icon_Skin-care@2x.png`
+    },
     ],
     currentTab: 0,
     productionCount: 1,
-    // height: app.globalData.windowHeight * 0.77,
     isShowAllTab: false,
     isScroll: true,
     isShowMask: false,
@@ -73,55 +69,14 @@ Page({
     homeList: [],
     eassyList: [],
     temporaryList: {},
-    imgList: [],
-    isShowImg: false,
     searchContent: ``,
-    currentImgIndex: 0,
+    tagsList: ``,
     userInfo: {},
     nextTab: '',
-    imgLeft: [], //左容器图片
-    imgRight: [], //右容器图片
-    lHeight: 0, //左容器高
-    rHeight: 0, //右容器高
-    imgWidth: 0, //图片宽
-    load: true,
-    loading: false, //加载动画的显示
     currentPage: 1, //当前页
-  },
-
-  imgLoad(e) {
-    //图片原始宽度
-    let beforeWidth = e.detail.width;
-    //图片原始高度
-    let beforeHeight = e.detail.height;
-    //图片显示的宽度
-    let nowWidth = this.data.imgWidth;
-    //比例=图片原始宽度/图片显示的宽度
-    let wProportion = beforeWidth / nowWidth;
-    //图片显示的高度=图片原始高度/比例
-    let imgHeight = beforeHeight / wProportion;
-
-    //当左区域高=右区域高   或   当左区域高<右区域高
-    if (this.data.lHeight == this.data.rHeight || this.data.lHeight < this.data.rHeight) {
-      leftImg.push(e.target.dataset.url)
-      this.setData({
-        lHeight: this.data.lHeight + imgHeight
-      })
-      //当左区域高>右区域高
-    } else if (this.data.lHeight > this.data.rHeight) {
-      rightImg.push(e.target.dataset.url)
-      this.setData({
-        rHeight: this.data.rHeight + imgHeight
-      })
-    }
-    //当完成最后一次分组时        
-    if (e.target.dataset.index == this.data.imgList.length - 1) {
-      this.setData({
-        imgLeft: leftImg,
-        imgRight: rightImg,
-        imgList: []
-      })
-    }
+    pageSize: 2, // 每页条数
+    hasMoreData: true,
+    iscollected: false,
   },
 
   scrollTabStart(e) {
@@ -135,7 +90,7 @@ Page({
 
     if (current >= 0 && scrollDirection === 1) {
       let nextTab = current + 1;
-      (this.data.tabList.length - 1 < nextTab) ? nextTab = this.data.tabList.length - 1: nextTab
+      (this.data.tabList.length - 1 < nextTab) ? nextTab = this.data.tabList.length - 1 : nextTab
       // console.log(nextTab);
       this.setData({
         currentTab: nextTab,
@@ -157,7 +112,7 @@ Page({
 
   onTabClick(e) {
     // console.log(e);
-    if (typeof(e.target.dataset.index) === 'undefined') {
+    if (typeof (e.target.dataset.index) === 'undefined') {
       return false;
     }
     let currentTab = Number(e.target.dataset.index);
@@ -183,6 +138,8 @@ Page({
       scrollToLeft = app.globalData.width / 2.6 * (rightTab - (showTabCount - 1));
     }
 
+    console.log(currentTab)
+
     this.setData({
       currentTab: currentTab,
       scrollToLeft: scrollToLeft,
@@ -204,11 +161,11 @@ Page({
     })
   },
 
-  scrollTopFun(e) {
-    let that = this;
-    that.top = e.detail.scrollTop;
-    that.$apply();
-  },
+  // scrollTopFun(e) {
+  //   let that = this;
+  //   that.top = e.detail.scrollTop;
+  //   that.$apply();
+  // },
 
   onPageScroll(e) {
     // console.log(e)
@@ -227,7 +184,8 @@ Page({
   goTop(e) {
     if (wx.pageScrollTo) {
       wx.pageScrollTo({
-        scrollTop: 0
+        scrollTop: 0,
+        duration: 1000
       })
     } else {
       wx.showModal({
@@ -240,44 +198,35 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function(options) {
-    var that = this;
-    //获取设备参数
-    wx.getSystemInfo({
-      success: function(res) {
-        that.setData({
-          imgWidth: res.windowWidth * 0.48,
-        })
-      },
-    })
-    this.getEssay(1);
+  onLoad: function (options) {
+    this.initPageData();
+  },
+  async initPageData() {
+    let tagsList = await this.getTags();
+    let eassyList = await this.getEssay();
+    console.log(tagsList);
+    console.log(eassyList);
+
+    this.setData({
+      tagsList: tagsList,
+      eassyList: eassyList,
+    });
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function() {
-
+  onReady: function () {
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function() {
-    this.initPageData();
+  onShow: function () {
+
   },
 
-  async initPageData() {
-    let tagsList = await this.getTags();
-    let eassay = await this.getEssay();
-    console.log(tagsList);
-    console.log(eassay);
 
-    this.setData({
-      tabList: tagsList,
-      eassyList: eassay,
-    });
-  },
 
   onShowTabBtnClick() {
     this.setData({
@@ -330,10 +279,43 @@ Page({
         dataType: `json`,
         success: (res) => {
           resolve(res.data.data);
+          var list = res.data.data;
+          if (res.data.data.length < this.data.pageSize) {
+            wx.showToast({
+              icon: "none",
+              title: '没有更多数据'
+            });
+            that.setData({
+              hasMoreData: false
+            })
+          } else {
+            that.setData({
+              eassyList: that.data.eassyList.concat(list),
+              hasMoreData: true,
+              currentPage: that.data.currentPage + 1
+            })
+          }
+          wx.hideLoading();
         }
       })
     })
   },
+
+
+  // 点击收藏
+  hascollected() {
+    var that = this;
+    let isCollected = !this.data.isCollected
+    this.setData({
+      isCollected: isCollected
+    })
+    //提示用户
+    wx.showToast({
+      title: isCollected ? '收藏成功' : '取消收藏',
+      icon: 'none'
+    })
+  },
+
   showAllSelections() {
     let activeClass = 'active';
     this.setData({
@@ -371,7 +353,7 @@ Page({
     let offsetLeft = e.target.offsetLeft;
     let cateList = this.data.cate;
     let left = offsetLeft - 60;
-    (left < 0) ? left = 0: '';
+    (left < 0) ? left = 0 : '';
 
     cateList.forEach((item, i) => {
       if (i === currentIdx) {
@@ -390,35 +372,47 @@ Page({
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function() {
+  onHide: function () {
 
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function() {
+  onUnload: function () {
 
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function() {
+  onPullDownRefresh: function () {
 
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function() {
-    console.log('上拉')
+  onReachBottom: function () {
+    if (this.data.hasMoreData) {
+      this.getEssay()
+      wx.showLoading({
+        title: '在加载啦',
+      })
+    } else {
+      wx.showToast({
+        icon: "none",
+        title: '都没有了你还想咋地'
+      })
+    }
+
   },
+
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function() {
+  onShareAppMessage: function () {
 
   }
 })

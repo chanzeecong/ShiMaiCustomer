@@ -1,5 +1,11 @@
 /* pages/discover/discover.wxss */
 
+.scroll-info {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+}
 .banner_img {
   background-position: center;
   background-size: cover;
@@ -217,7 +223,7 @@
   z-index: 100;
   background-color: #fff;
   height: 180rpx;
-  top: 0rpx;
+  top: 0;
   box-sizing: border-box;
 }
 
@@ -329,9 +335,10 @@
   color: #1e1e1e;
   font-family: 'PingFang SC-Medium';
 }
-.name image{
+/* .name image{
   flex: 0 0 30rpx;
-}
+} */
+
 .item-title-box{
   position: relative;
 }
@@ -347,10 +354,8 @@
 }
 .name text:last-child{
   flex: 0 0 30rpx;
-  color: #c4c4c4;
-  text-decoration: underline;
-  line-height: 10rpx;
-  
+  font-size:6px;
+  color:rgba(0,0,0,0.60);
 }
 .left,.right{
   display: inline-block;

@@ -22,7 +22,8 @@
     "pages/userFollow/userFollow",
     "pages/mynotice/mynotice",
     "pages/userCollect/userCollect",
-    "pages/myordernotice/myordernotice"
+    "pages/myordernotice/myordernotice",
+    "pages/Articlepage/Articlepage"
   ],
   "window": {
     "backgroundTextStyle": "light",
