@@ -9,6 +9,7 @@ Page({
   data: {
     id: ``,
     type: ``,
+    buyer_id: ``,
     detailList: [],
     currentPage: 1, //当前页
     isScroll: true,
@@ -17,6 +18,11 @@ Page({
     duration: 1000,
     scrollHeight: 0,
     topNum: 0,
+    acticeCollected: 2,
+    followBuyer: 3,
+    is_followed: false,
+    isCollected: false,
+    isLike: false,
   },
 
   /**
@@ -28,15 +34,17 @@ Page({
     let buyer_id = options.buyer_id
     console.log(id)
     console.log(type)
+    console.log(buyer_id)
     this.setData({
       id,
       type,
+      buyer_id,
     })
     let self = this;
     wx.getSystemInfo({
       success: function(res) {
         self.setData({
-          scrollHeight:res.windowHeight
+          scrollHeight: res.windowHeight
         })
       }
     })
@@ -44,7 +52,7 @@ Page({
 
   scrolltoupper(e) {
     // console.log(e);
-    if(e.detail.scrollTop > 300) {
+    if (e.detail.scrollTop > 300) {
       this.setData({
         floorstatus: true
       });
@@ -56,14 +64,13 @@ Page({
   },
 
   //回到顶部
-  goTop (e) {  // 一键回到顶部
+  goTop(e) {
     this.setData({
       topNum: this.data.topNum = 0,
-      duration: 3000
     });
   },
 
-  getDetail(type = '', id = '', page = '', ) {
+  getDetail(type = '', id = '', page = '',) {
     return new Promise(resolve => {
       wx.request({
         url: `${app.hostName}getEssayListById`,
@@ -84,7 +91,120 @@ Page({
     })
   },
 
+  onFollowBtnClick(e) {
+    return new Promise(resolve => {
+      wx.request({
+        url: `${app.hostName}buyer/${this.data.buyer_id}/follow`,
+        method: 'POST',
+        header: {
+          'Authorization': `Bearer ${app.token}`
+        },
+        data:{
+          id: this.data.buyer_id
+        },
+        dataType: 'json',
+        success: (res) => {
+          let is_followed = !this.data.is_followed;
+          this.setData({
+            is_followed
+          })
+          wx.showToast({
+            title: '关注买手成功！',
+          })
+          resolve(res.data.data);
+        }
+      })
+    })
+  },
 
+  onUnfollowBtnClick(e) {
+    return new Promise(resolve => {
+      wx.request({
+        url: `${app.hostName}buyer/${this.data.buyer_id}/unFollow`,
+        method: 'DELETE',
+        header: {
+          'Authorization': `Bearer ${app.token}`
+        },
+        dataType: 'json',
+        success: (res) => {
+          let is_followed = !this.data.is_followed;
+          this.setData({
+            is_followed
+          })
+          wx.showToast({
+            title: '取消关注成功！',
+          })
+          resolve(res.data.data);
+        }
+      })
+    })
+  },
+
+  // 小星星收藏
+  handleCollection() {
+    return new Promise(resolve => {
+      wx.request({
+        url: `${app.hostName}clickCollection`,
+        method: 'GET',
+        header: {
+          'Authorization': `Bearer ${app.token}`
+        },
+        data: {
+          collection_id: this.data.id,
+          collection: this.data.acticeCollected,
+        },
+        dataType: 'json',
+        success: (res) => {
+          let isCollected = !this.data.isCollected;
+          this.setData({
+            isCollected
+          })
+          wx.showToast({
+            title: '收藏文章成功！',
+          })
+          resolve(res.data.data);
+        }
+      })
+    })
+
+  },
+
+  // 小星星收藏
+  UnhandleCollection() {
+    return new Promise(resolve => {
+      wx.request({
+        url: `${app.hostName}clickCollection`,
+        method: 'GET',
+        header: {
+          'Authorization': `Bearer ${app.token}`
+        },
+        data: {
+          collection_id: this.data.id,
+          collection: this.data.acticeCollected,
+        },
+        dataType: 'json',
+        success: (res) => {
+          let isCollected = !this.data.isCollected;
+          this.setData({
+            isCollected
+          })
+          wx.showToast({
+            title: '取消收藏成功！',
+          })
+          resolve(res.data.data);
+        }
+      })
+    })
+  },
+
+  // 点赞功能
+  Likebtn() {
+    let isLike = !this.data.isLike;
+    let num = this.data.id;
+    this.setData({
+      isLike
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -101,7 +221,6 @@ Page({
   async initPageData() {
     let detailList = await this.getDetail();
     console.log(detailList);
-    console.log(detailList[0].buyer_id)
 
     this.setData({
       detailList: detailList,

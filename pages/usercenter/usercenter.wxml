@@ -85,7 +85,7 @@
           <view class='padTop-15'>卡券红包</view>
         </navigator>
           <navigator url='../addrList/addrList' open-type='navigate' class='tools-item font-14 deep'>
-          <view class='icon-btn' style='background-image:url(../../assets/icon/icon_address@2x.png);'></view>
+          <view class='icon-btn' style='background-image:url(https://buyer.sm.afxclub.top/icon_address@2x.png);'></view>
           <view class='padTop-15'>收货地址</view>
         </navigator>
 

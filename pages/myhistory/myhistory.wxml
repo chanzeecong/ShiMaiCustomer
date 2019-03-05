@@ -4,7 +4,7 @@
     <view class='p-h-20pt font-14pt sub_text_color2 p-v-10pt' wx:if='{{!manageActive}}' bindtap='toggleManage' style='text-align:right'>管理</view>
     <view class='p-h-20pt font-14pt sub_text_color2 p-v-10pt' wx:else bindtap='toggleManage' style='text-align:right'>完成</view>
 
-    <view class='myhistory_list'>
+    <!-- <view class='myhistory_list'>
       <checkbox-group class="check-group {{activeCheckBox}}" bindchange="listSelection">
         <view class='list-item product' wx:for="{{showList}}" wx:for-index="showidx" wx:key="{{showidx}}" wx:for-item="showitem">
           <label class="radio">
@@ -22,21 +22,60 @@
           </label>
         </view>
       </checkbox-group>
+    </view> -->
+    <view class="content">
+      <view class="left">
+        <block wx:for="{{goodList}}" wx:key="{{}}">
+          <template is="item" data="{{...item}}" wx:if="{{index%2==0}}"></template>
+        </block>
+      </view>
+      <view class="right">
+        <block wx:for="{{goodList}}" wx:key="{{}}">
+          <template is="item" data="{{...item}}" wx:if="{{index%2==1}}"></template>
+        </block>
+      </view>
     </view>
+    <!--  下面是一个模块 -->
+    <template name="item">
+      <view class="item">
+        <block wx:if="{{type === 1}}">
+          <navigator open-type='navigate'>
+            <image class="item-img" src="{{essay_img}}" mode="widthFix" style='border-radius:12rpx 12rpx 0px 0px;'></image>
+          </navigator>
+        </block>
+
+        <block wx:elif="{{type === 2 || video_url === '' }}">
+          <video class="good-items" autoplay='' poster='{{video_url}}' src='{{video_url}}' style='border-radius:12rpx 12rpx 0px 0px;'></video>
+            <image class="good-items" src="{{essay_img_link[0]}}" mode="widthFix" style='border-radius:12rpx 12rpx 0px 0px;'></image>
+        </block>
+
+        <block wx:else>
+          <text>啥也没有</text>
+        </block>
+
+        
+          <!-- <view class='row padTop-10'>
+        <text class='font-10 white'>抢购价</text>
+        <text class='font-16 black'>{{good_price}}</text>
+          </view> -->
+        </view>
+
+    </template>
 
     <view class='manage_box bg-white flex-row justify-between {{activeCheckBox}}'>
       <view class='flex-item flex flex-column justify-center'>
         <checkbox-group bindchange="selectAll">
           <label class='font-12pt' style='padding-left: 32rpx;'>
-            <checkbox value="all" checked="{{selectAll}}" />
-            全选
+            <checkbox value="all" checked="{{selectAll}}" />全选
           </label>
         </checkbox-group>
       </view>
-      <view class='flex flex-column justify-center align-center delete_item font-14pt'>删除</view>
+      <view class='flex flex-column justify-center align-center'>
+        <image class="icon-delete" src='../../assets/icon/icon_ashcan@2x.png'></image>
+      </view>
     </view>
 
-  </view>
+    </view>
 </block>
 
 <block wx:else>

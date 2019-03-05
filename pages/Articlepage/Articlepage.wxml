@@ -22,9 +22,10 @@
 
         </view>
         <!-- 关注 -->
-        <view wx:if="{{item.is_followed}}" bindtap='onUnfollowBtnClick' data-index="{{index}}" class='follow-btn' style='background:rgba(0,0,0,.4);'>已关注</view>
-        <view wx:else bindtap='onFollowBtnClick' data-index="{{index}}" class='follow-btn'>+关注</view>
+        <view wx:if="{{is_followed}}" bindtap='onUnfollowBtnClick' class='follow-btn' style='background:rgba(0,0,0,.4);'>已关注</view>
+        <view wx:else  bindtap='onFollowBtnClick' class='follow-btn'>+关注</view>
       </view>
+
       <!-- 轮播 -->
       <swiper indicator-dots="{{indicatorDots}}" duration="{{duration}}" circular="{{circular}}" class='slide-image'>
         <block wx:for="{{detailList[0].essay_img_link}}" wx:key="{{index}}">
@@ -61,10 +62,18 @@
           <text class='font-11 magRig-5' style='color:rgba(245,57,110,1);'>21人浏览</text>
         </view>
         <view class='row padTop-26'>
-          <image class="icon-use" src='../../assets/icon/icon_like_gray@2x.png'></image>
-          <text class='font-10 low padLef-10'>21</text>
+          <image catchtap="Likebtn" wx:if="{{!isLike}}" class="icon-use" src='../../assets/icon/icon_like_gray@2x.png'></image>
+          <image catchtap="Likebtn" wx:if="{{isLike}}" class="icon-use" src='../../assets/icon/icon_like_red@2x.png'></image>
+
+          <text class='font-10 low padLef-10'>{{item.id}}</text>
+
+          
           <image class='icon-use padLef-41' src='../../assets/icon/icon_Reply_gray@2x.png'></image>
-          <image class='icon-use padLef-40' src='../../assets/icon/icon_Collection_gray@2x.png'></image>
+            
+              <!-- 收藏  -->
+            <image catchtap='handleCollection' wx:if="{{!isCollected}}" class='icon-use padLef-40' src='../../assets/icon/icon_Collection_gray@2x.png'></image>       
+            <image catchtap='UnhandleCollection' wx:if="{{isCollected}}" class='icon-use padLef-40' src='../../assets/icon/icon_Collection_red@2x.png'></image>
+            
           <image class='icon-use padLef-166' src='../../assets/icon/icon_share@2x.png'></image>
         </view>
       </view>
@@ -145,11 +154,15 @@
             </navigator>
           </view>
         </view>
-        <navigator open-type='navigate'>
+        
+        <!-- 查看全部评论 -->
+        <view wx:for="{{detailList}}" wx:key="{{index}}">
+          <navigator open-type='navigate' url="../Allcomments/Allcomments?id={{item.id}}">
           <view class='topline h-40 bg-white row justify-center'>
             <text class='font-14 focolor'>查看全部评论</text>
           </view>
         </navigator>
+        </view>
       </view>
 
 
@@ -161,7 +174,6 @@
   
  
   </block>
- 
  
  <image src='https://buyer.sm.afxclub.top/icon_top@2x.png' mode='aspectFill' class='goTop' hidden='{{!floorstatus}}' bindtap="goTop"></image>
 </scroll-view>

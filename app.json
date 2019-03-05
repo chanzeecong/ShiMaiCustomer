@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/register/register",
     "pages/discover/discover",
     "pages/buyer/buyer",
     "pages/index/index",
@@ -23,7 +24,9 @@
     "pages/mynotice/mynotice",
     "pages/userCollect/userCollect",
     "pages/myordernotice/myordernotice",
-    "pages/Articlepage/Articlepage"
+    "pages/Articlepage/Articlepage",
+    "pages/Videoarticle/Videoarticle",
+    "pages/Allcomments/Allcomments"
   ],
   "window": {
     "backgroundTextStyle": "light",

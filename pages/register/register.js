@@ -221,7 +221,7 @@ Page({
     }
 
     let code = await this.getCode();
-    // let registerResult = await this.userRegister(code, nickName, avatarUrl);
+    let registerResult = await this.userRegister(code, nickName, avatarUrl);
 
     console.log('registerResult', registerResult)
     if (!registerResult.access_token) {

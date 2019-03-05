@@ -4,7 +4,9 @@
 </block>
 
 
-<view class='wrapper'>
+<scroll-view class='scroll-info' scroll-y="{{isScroll}}" scroll-top='{{topNum}}' bindscroll="scrolltoupper" bindscrolltolower="loadMore" style='height:{{scrollHeight}}px;'>
+
+  <view class='wrapper'>
   <view class='top_banner p-h-10pt bg-white'>
     <view class='banner_img' style='background-image:url(https://buyer.sm.afxclub.top/bannar_01@2x.png)'></view>
     <view class='flex flex-row p-v-10pt'>
@@ -33,7 +35,7 @@
       </view>
 
       <view class='row drop_menu' bindtap="onTabClick">
-        <view wx:for="{{tabList}}" wx:key="{{index}}" wx:for-item="tabData" data-index='{{index}}' class='col-center row-center tab-wrapper {{index === currentTab? "active-choose" : "tab-wrapper"}}'>
+        <view wx:for="{{tagsList}}" wx:key="{{index}}" wx:for-item="tabData" data-index='{{index}}' class='col-center row-center tab-wrapper {{index === currentTab? "active-choose" : "tab-wrapper"}}'>
           {{tabData.name}}
         </view>
       </view>
@@ -87,11 +89,11 @@
       </block>
 
       <view class="item-title-box">
-       
-          <view class='row padRig-4 padLef-4'>
+
+        <view class='row padRig-4 padLef-4'>
           <text class='font-14 black line-ellipsis'>18新品质感绒面韩版时尚拼接百搭舒适……</text>
         </view>
-      
+
 
         <!-- <view class='row padTop-10'>
         <text class='font-10 white'>抢购价</text>
@@ -100,8 +102,8 @@
       </view>
 
       <view class="name" style='border-radius:0px 0px 12rpx 12rpx;'>
-     
-          <view class='padTop-10 h-32'>
+
+        <view class='padTop-10 h-32'>
           <view class='flex flex-row'>
             <image class="avartor-img" src='{{img_link}}'></image>
             <view class='flex flex-column justify-between flex-item padLef-6'>
@@ -111,18 +113,19 @@
 
             <view class='flex row padRig-6'>
               <image class="heart padRig-4" wx:if="{{!iscollected}}" catchtap='hascollected' src='https://buyer.sm.afxclub.top/icon_like@2x.png' mode='aspectFill'></image>
-              <image class='heart padRig-4' wx:if="{{iscollected}}"  catchtap='hascollected' src='../../assets/icon/icon_like_red@2x.png' mode='aspectFill'></image>
+              <image class='heart padRig-4' wx:if="{{iscollected}}" catchtap='hascollected' src='../../assets/icon/icon_like_red@2x.png' mode='aspectFill'></image>
               <view class='font-10 black'>{{id}}</view>
             </view>
           </view>
         </view>
-      
+
       </view>
     </view>
   </template>
 
 
-  <view>
-    <image src='https://buyer.sm.afxclub.top/icon_top@2x.png' mode='aspectFill' class='goTop' hidden='{{!floorstatus}}' bindtap="goTop"></image>
-  </view>
+  <image src='https://buyer.sm.afxclub.top/icon_top@2x.png' mode='aspectFill' class='goTop' hidden='{{!floorstatus}}' bindtap="goTop"></image>
+
 </view>
+
+</scroll-view>

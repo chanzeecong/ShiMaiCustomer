@@ -1,0 +1,49 @@
+<!--pages/Allcomments/Allcomments.wxml-->
+<scroll-view scroll-y="true">
+  <block wx:for="{{commentList}}" wx:key="{{index}}">
+    <view class='padLef-16 padRig-16  bg-white'>
+      <view class='bg-white underline topline'>
+        <view class='row bg-white' style='align-items:flex-start;'>
+          <view class='row padRig-10 magTop-20'>
+            <image class='comment-avatar' mode="aspectFill" src='{{item.from_user_avatar}}'></image>
+          </view>
+
+          <view class='col-left magTop-20'>
+            <view class='row'>
+              <text class='font-14 black padRig-10 font-bold'>{{item.from_user_name}}</text>
+            </view>
+            <text class='font-14 black padTop-5'>{{item.content}}</text>
+            <view class='row padTop-20 justify-between'>
+              <text class='font-10 low'>{{item.created_at}}</text>
+              <view class='row justify-around'>
+                <image class="icon-com" src='../../assets/icon/icon_Reply@2x.png'></image>
+                <text class='padLef-5 font-10' style='color:rgba(0,0,0,0.60);'>回复</text>
+              </view>
+            </view>
+          </view>
+
+        </view>
+
+        <!-- 灰色部分 -->
+        <view class='reply-content bg-gray magLef-45 magTop-20'>
+          <view class='padLef-10 padRig-10 magBot-20'>
+            <text class='font-12 blue'>小浪\n</text>
+            <text class='font-12 black padTop-10'>这个还不错，上次在小红书里也看到了推荐。</text>
+            <view class='row padTop-5 justify-between'>
+              <text class='font-10 low'>{{item.created_at}}</text>
+              <view class='row justify-around'>
+                <image class="icon-com" src='../../assets/icon/icon_Reply@2x.png'></image>
+                <text class='padLef-5 font-10' style='color:rgba(0,0,0,0.60);'>回复</text>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </block>
+
+
+</scroll-view>
+<view class='comment-view'>
+  <input placeholder='你长的这么好看，也来评论一下吧~' placeholder-class='place-holder'></input>
+</view>

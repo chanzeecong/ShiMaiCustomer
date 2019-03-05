@@ -11,6 +11,7 @@ Page({
     top: 0,
     scrollToLeft: 0,
     topNum: 0,
+    scrollHeight: 0,
     borderTab: [0, 4],
     selectionActive: '',
     tabList: [{
@@ -77,6 +78,11 @@ Page({
     pageSize: 2, // 每页条数
     hasMoreData: true,
     iscollected: false,
+    job: [],
+    jobList: [],
+    id: '',
+    jobStorage: [],
+    jobId: ''
   },
 
   scrollTabStart(e) {
@@ -167,9 +173,9 @@ Page({
   //   that.$apply();
   // },
 
-  onPageScroll(e) {
+  scrolltoupper(e) {
     // console.log(e)
-    if (e.scrollTop > 300) {
+    if (e.detail.scrollTop > 300) {
       this.setData({
         floorstatus: true
       });
@@ -180,17 +186,22 @@ Page({
     }
   },
 
-  //回到顶部
-  goTop(e) {
-    if (wx.pageScrollTo) {
-      wx.pageScrollTo({
-        scrollTop: 0,
-        duration: 1000
+  goTop(e) {  // 一键回到顶部
+    this.setData({
+      topNum: this.data.topNum = 0
+    });
+  },
+
+  loadMore() {
+    if (this.data.hasMoreData) {
+      this.getEssay()
+      wx.showLoading({
+        title: '在加载啦',
       })
     } else {
-      wx.showModal({
-        title: '提示',
-        content: '当前微信版本过低，无法使用该功能，请升级到最新微信版本后重试。'
+      wx.showToast({
+        icon: "none",
+        title: '都没有了你还想咋地'
       })
     }
   },
@@ -200,24 +211,32 @@ Page({
    */
   onLoad: function (options) {
     this.initPageData();
+    var postId = options.id;
+    console.log(postId);
   },
   async initPageData() {
     let tagsList = await this.getTags();
     let eassyList = await this.getEssay();
     console.log(tagsList);
     console.log(eassyList);
-
     this.setData({
       tagsList: tagsList,
       eassyList: eassyList,
     });
+    let self = this;
+    wx.getSystemInfo({
+      success: function (res) {
+        self.setData({
+          scrollHeight: res.windowHeight
+        })
+      }
+    })
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function () {
-  },
+  onReady: function () { },
 
   /**
    * 生命周期函数--监听页面显示
@@ -303,16 +322,24 @@ Page({
 
 
   // 点击收藏
-  hascollected() {
-    var that = this;
-    let isCollected = !this.data.isCollected
+  hascollected(e) {
+    if (!this.data.isClick == true) {
+      let jobData = this.data.jobStorage;
+      jobData.push({
+        jobid: jobData.length,
+        id: this.data.job.id
+      })
+      wx.setStorageSync('jobData', jobData);//设置缓存
+      wx.showToast({
+        title: '已收藏',
+      });
+    } else {
+      wx.showToast({
+        title: '已取消收藏',
+      });
+    }
     this.setData({
-      isCollected: isCollected
-    })
-    //提示用户
-    wx.showToast({
-      title: isCollected ? '收藏成功' : '取消收藏',
-      icon: 'none'
+      isClick: !this.data.isClick
     })
   },
 
@@ -393,18 +420,8 @@ Page({
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function () {
-    if (this.data.hasMoreData) {
-      this.getEssay()
-      wx.showLoading({
-        title: '在加载啦',
-      })
-    } else {
-      wx.showToast({
-        icon: "none",
-        title: '都没有了你还想咋地'
-      })
-    }
+  onReachBottom() {
+
 
   },
 

@@ -8,6 +8,9 @@ page{
 .bg-red{
   background-color: #7CB0EB;
 }
+.bg-gray {
+  background-color: #f4f4f4;
+}
 .color_primary{
   color: #F5396E;
 }
@@ -608,6 +611,7 @@ page{
 .padLef-81 {
   padding-left: 162rpx;
 }
+
 .padLef-123 {
   padding-left: 220rpx;
 }
