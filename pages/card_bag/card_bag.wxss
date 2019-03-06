@@ -46,7 +46,7 @@ Page{
   font-size: 60rpx;
   color: #fff;
 }
-.useful .card-status-box{
+.card-status-box{
   background-color: #F5396E;
 }
 .disabled .card-status-box, .used .card-status-box{

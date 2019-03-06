@@ -1,17 +1,17 @@
 <!--pages/card_bag/card_bag.wxml-->
 <view class='wrapper'>
   <scroll-view scroll-x="true" scroll-left="{{scrollToLeft}}rpx" scroll-with-animation="true">
-      <view class="row row-center underline bgWhite" style='justify-content:center;'>
-        <view bindtap="onTapClick" data-index='{{index}}' wx:for="{{tabList}}" wx:key="{{index}}" style='width:220rpx;' class='row row-center'>
-          <view class='tab-wrapper row row-center {{index === currentTab? "active red" : "black"}}'>
-            <text class='{{index === currentTab? "red font-16" : "black font-14"}}'>{{item.label}}</text>
-          </view>
+    <view class="row row-center underline bgWhite" style='justify-content:center;'>
+      <view bindtap="onTapClick" data-index='{{index}}' wx:for="{{tabList}}" wx:key="{{index}}" style='width:220rpx;' class='row row-center'>
+        <view class='tab-wrapper row row-center {{index === currentTab? "active red" : "black"}}'>
+          <text class='{{index === currentTab? "black font-16 font-bold" : "black font-14"}}'>{{item.label}}</text>
         </view>
       </view>
-    </scroll-view>
-    
+    </view>
+  </scroll-view>
+
   <view class='section-padding' style='padding-top: 20rpx;padding-bottom:20rpx;'>
-    
+
     <block wx:if='{{couponList.length == 0}}'>
       <view class='flex flex-column justify-center align-center nodata'>
         <image class='no-card' src='../../assets/icon/img_No-card@2x.png'></image>
@@ -22,8 +22,11 @@
     <block wx:else>
       <view class='card-box flex flex-row {{allitem.status}}' wx:for='{{couponList}}' wx:for-item='allitem' wx:for-index='allidx' wx:key='{{allidx}}'>
         <view class='flex-item card-status-box'>
-            <view class='font-14pt'>{{allitem.coupon.coupon_type_name}}</view>
-            <view><text class='font-12pt'>¥</text>{{allitem.coupon.coupon_amount}} <text class='font-12pt'>{{allitem.tag}}</text></view>
+          <view class='font-14pt'>{{allitem.coupon.coupon_type_name}}</view>
+          <view>
+            <text class='font-12pt'>¥</text>{{allitem.coupon.coupon_amount}}
+            <text class='font-12pt'>{{allitem.coupon.coupon_title}}</text>
+          </view>
         </view>
 
         <view class='card-time-box sub_text_color font-12pt flex flex-column justify-center align-center'>
@@ -34,6 +37,6 @@
         </view>
       </view>
     </block>
-  
+
   </view>
 </view>

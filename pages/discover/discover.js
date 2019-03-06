@@ -322,24 +322,35 @@ Page({
 
 
   // 点击收藏
-  hascollected(e) {
-    if (!this.data.isClick == true) {
-      let jobData = this.data.jobStorage;
-      jobData.push({
-        jobid: jobData.length,
-        id: this.data.job.id
-      })
-      wx.setStorageSync('jobData', jobData);//设置缓存
-      wx.showToast({
-        title: '已收藏',
-      });
-    } else {
-      wx.showToast({
-        title: '已取消收藏',
-      });
-    }
-    this.setData({
-      isClick: !this.data.isClick
+  onFollowBtnClick(e) {
+    let index = e.currentTarget.dataset.index;
+    let buyerId = this.data.homeList[index].buyer_id;
+    console.log(this.data.homeList[index])
+
+    wx.request({
+      url: `${app.hostName}buyer/${this.data.homeList[index].buyer_id}/follow`,
+      method: 'POST',
+      header: {
+        'Authorization': `Bearer ${app.token}`
+      },
+      dataType: 'json',
+      success: (res) => {
+
+        for (let i in this.data.showList) {
+          if (buyerId === this.data.showList[i].buyer_id) {
+            this.data.showList[i].is_followed = true;
+          }
+        }
+        for (let i in this.data.homeList) {
+          if (buyerId === this.data.homeList[i].buyer_id) {
+            this.data.homeList[i].is_followed = true;
+          }
+        }
+        this.setData({
+          showList: this.data.showList,
+          homeList: this.data.homeList,
+        })
+      }
     })
   },
 

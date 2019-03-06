@@ -1,17 +1,15 @@
 // pages/myscore/myscore.js
+const app = getApp();
+const regeneratorRuntime = require('../../lib/runtime.js');
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    score: 500,
-    myscore: [
-      { 'title': '签到成功', 'score': 5, 'type': 'up', 'time': '2018-12-12' },
-      { 'title': '活动扣除', 'score': 5, 'type': 'down', 'time': '2018-12-13' },
-      { 'title': '签到成功', 'score': 5, 'type': 'up', 'time': '2018-12-14' },
-      { 'title': '活动扣除', 'score': 5, 'type': 'down', 'time': '2018-12-15' }
-    ]
+    score: 0,
+    myscore: []
   },
 
   /**
@@ -32,7 +30,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.initPageData();
   },
 
   /**
@@ -63,10 +61,29 @@ Page({
 
   },
 
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
+  async initPageData() {
+    let score = await this.getScoreDetail();
+    console.log(score);
 
-  }
+    this.setData({
+      score: score
+    })
+  },
+
+  getScoreDetail() {
+    return new Promise(resolve => {
+      wx.request({
+        url: `${app.hostName}getScoreDetail`,
+        method: 'GET',
+        header: {
+          'Authorization': `Bearer ${app.token}`
+        },
+        dataType: 'json',
+        success: (res) => {
+          console.log(res)
+          resolve(res.data.data)
+        }
+      })
+    })
+  },
 })

@@ -289,11 +289,11 @@
 
 
 .content{
-  margin: 0 20rpx;
+  margin: 60rpx 20rpx;
   text-align: justify; 
 }  
 .item{
-  background-color: #fff;
+  background-color: transparent;
   margin: 1%; 
   margin-bottom: 20rpx;
 }
@@ -303,13 +303,9 @@
   border-radius: 20rpx;
 }
 .heart{
-  width: 30rpx;
-  height: 26rpx;
+  width: 20rpx;
+  height: 18rpx;
   margin-right: 8rpx;
-}
-.heart_{
-  display: flex;
-  align-items: center;
 }
 .item-img{
   width: 100%
@@ -342,6 +338,7 @@
 
 .item-title-box{
   position: relative;
+  margin-top: -10rpx;
 }
 .name-title{
   flex: 1;

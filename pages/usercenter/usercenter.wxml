@@ -3,14 +3,14 @@
 
   <view class='user_header bg-white'>
 
-    <view class='row daily_btn padLef-5' bindtap='getDailySign'>    
-      <image class="dail_icon" src='../../assets/icon/icon_sign@2x.png'></image>
+    <view class='row daily_btn padLef-5' bindtap='onDailySign'>    
+      <image class="dail_icon" src='https://buyer.sm.afxclub.top/icon_sign@2x.png'></image>
       <text class='daily_text'>签到赚积分</text>
     </view>
     <view class='user_info flex flex-column justify-center align-center'>
-      <view class='user_avartor' style='background-image:url(https://buyer.sm.afxclub.top/4.png);'></view>
+      <view class='user_avartor' style='background-image:url({{userInfo.avatar}});'></view>
       <view class='row'>
-        <view class='user_nickname' style='text-align:center;font-size: 32rpx; font-weight: bold;'>Joiandib</view>
+        <view class='user_nickname' style='text-align:center;font-size: 32rpx; font-weight: bold;'>{{userInfo.name}}</view>
         <image class='icon_edit' src='https://buyer.sm.afxclub.top/icon_Female@2x.png'></image>
       </view>
 

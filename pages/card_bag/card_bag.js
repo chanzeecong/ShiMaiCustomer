@@ -8,8 +8,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    tabList: [
-      {
+    tabList: [{
         id: 0,
         label: `全部`
       },
@@ -30,11 +29,6 @@ Page({
     borderTab: [0, 3],
     scrollToLeft: 0,
     couponList: [],
-    showData:  [
-        { id: '1', title: '无门槛红包', value: '50', tag: '识买商城专用券', starttime: '2018.11.10 00:00', endtime: '2018.12.10 23:00', status: 'useful' },
-        { id: '1', title: '无门槛红包', value: '50', tag: '识买商城专用券', starttime: '2018.11.10 00:00', endtime: '2018.12.10 23:00', status: 'disabled' },
-        { id: '1', title: '无门槛红包', value: '50', tag: '识买商城专用券', starttime: '2018.11.10 00:00', endtime: '2018.12.10 23:00', status: 'used' }
-    ],
     allData: [],
     useful: [],
     disabled: [],
@@ -44,25 +38,25 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
-    
+  onLoad: function(options) {
+
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function () {
+  onReady: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
+  onShow: function() {
     this.initPageData();
   },
 
-  async spitAllData(){
+  async spitAllData() {
     let status = this.data.tabList[currentTab].id;
     console.log(status)
     let allData = await this.getCoupon(status);
@@ -77,7 +71,7 @@ Page({
     let disabled = [];
     let used = [];
 
-    if (this.isString(allData)==='[object Array]'){
+    if (this.isString(allData) === '[object Array]') {
       allData.forEach(item => {
         switch (item.status) {
           case 'useful':
@@ -103,11 +97,11 @@ Page({
     }
   },
 
-  isString(data){
+  isString(data) {
     return Object.prototype.toString.call(data);
   },
 
-  chooseTab(e){
+  chooseTab(e) {
     let tabIndex = e.target.dataset.status || this.data.currentTab.toString();
     // console.log(tabIndex)
     let currentTab = this.data.currentTab.toString();
@@ -120,24 +114,24 @@ Page({
     let used = this.data.used;
     let showDataArray = this.data.showData;
 
-    if ( currentTab !== tabIndex ) {
+    if (currentTab !== tabIndex) {
       switch (tabIndex) {
         case '1':
           showDataArray = useFul;
           // console.log('未使用')
-        break;
+          break;
         case '2':
           showDataArray = used;
           // console.log('已使用');
-        break;
+          break;
         case '3':
           showDataArray = disabled;
           // console.log('已过期')
-        break;
+          break;
         default:
           showDataArray = allData;
           // console.log('全部')
-        break;
+          break;
       }
     }
 
@@ -152,28 +146,28 @@ Page({
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function () {
+  onHide: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function () {
+  onUnload: function() {
 
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function () {
+  onPullDownRefresh: function() {
 
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function () {
+  onReachBottom: function() {
 
   },
 
@@ -203,7 +197,7 @@ Page({
 
     let status = this.data.tabList[currentTab].id;
     let couponList = await this.getCoupon(status);
-    console.log(couponList)
+      console.log(couponList)
 
     if (couponList === undefined) {
       couponList = [];
@@ -235,7 +229,7 @@ Page({
         header: {
           'Authorization': `Bearer ${app.token}`
         },
-        data:{
+        data: {
           status: status
         },
         dataType: `json`,
@@ -249,7 +243,7 @@ Page({
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
+  onShareAppMessage: function() {
 
   }
 })

@@ -27,7 +27,7 @@
       </view>
 
       <!-- 轮播 -->
-      <swiper indicator-dots="{{indicatorDots}}" duration="{{duration}}" circular="{{circular}}" class='slide-image'>
+      <swiper indicator-dots="{{indicatorDots}}" circular="{{circular}}" class='slide-image'>
         <block wx:for="{{detailList[0].essay_img_link}}" wx:key="{{index}}">
           <swiper-item>
             <image src="{{item}}" mode="aspectFill" style='width:100%;height:750rpx;'/>
@@ -36,16 +36,16 @@
       </swiper>
       <!-- 文章内容 -->
       <view class='padLef-16 padRig-16 padTop-20 bg-white'>
-        <text class='fz-18 black font-bold'>{{item.essay_title}}</text>
+        <!-- <text class='fz-18 black font-bold'>{{item.essay_title}}</text> -->
         <view class='magTop-20'>
           <text class='fz-14' style='color:rgba(0,0,0,0.60);line-height:48rpx;'>一直以来，音乐的加入，都可以让运动的过程变得更加快乐，前提是有一款好用的耳机，而要达到无拘无束的体验，传统的有线耳机当然是直接淘汰的，那么蓝牙运动耳机自然是更受欢迎了，这其中，真无线耳机由于彻底摆脱了线材的束缚，在使用中相对普通蓝牙耳机来说就更加方便了，专注于运动耳机领域的缤特力最近就发布了这么一款蓝牙真无线运动耳机，不仅颜值高，而且功能齐全，还可以通过APP进行自定义设置，可玩性也是提高了不少。</text>
         </view>
-        <view class='magTop-20'>
+        <!-- <view class='magTop-20'>
           <text class='fz-16 black'>心得体会</text>
           <view class='magTop-20 padBot-20'>
             <text class='fz-14' style='color:rgba(0,0,0,0.60);line-height:48rpx;'>早春脱下毛衣正是穿卫衣的好季节。今天的造型比较韩范儿，和平时街拍中的欧美风不太一样。其实我私服最看中的就是舒适，小脚裤，球鞋，卫衣最舒适不过！说说几个搭配要点：娇小型和微胖型mm搭配宽松卫衣，尽量选择修身高腰小脚裤，让你的腿看起来纤细！不要选择显矮的阔腿裤！可以适当加着配饰增加亮点，比如毛衣链，棒球帽等等。穿修身小脚裤尽量别穿高跟鞋，太女人的搭配，不会太好看。</text>
           </view>
-        </view>
+        </view> -->
       </view>
 
       <!-- 底部 -->
@@ -174,6 +174,6 @@
   
  
   </block>
- 
+  
  <image src='https://buyer.sm.afxclub.top/icon_top@2x.png' mode='aspectFill' class='goTop' hidden='{{!floorstatus}}' bindtap="goTop"></image>
 </scroll-view>

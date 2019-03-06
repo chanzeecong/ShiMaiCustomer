@@ -15,7 +15,6 @@ Page({
     isScroll: true,
     indicatorDots: true,
     circular: true,
-    duration: 1000,
     scrollHeight: 0,
     topNum: 0,
     acticeCollected: 2,
@@ -40,6 +39,7 @@ Page({
       type,
       buyer_id,
     })
+
     let self = this;
     wx.getSystemInfo({
       success: function(res) {
@@ -70,7 +70,7 @@ Page({
     });
   },
 
-  getDetail(type = '', id = '', page = '',) {
+  getDetail(type = '', id = '', page = '', ) {
     return new Promise(resolve => {
       wx.request({
         url: `${app.hostName}getEssayListById`,
@@ -99,7 +99,7 @@ Page({
         header: {
           'Authorization': `Bearer ${app.token}`
         },
-        data:{
+        data: {
           id: this.data.buyer_id
         },
         dataType: 'json',
@@ -205,6 +205,27 @@ Page({
       isLike
     })
   },
+
+  // 保存足迹
+  saveFootList() {
+    return new Promise(resolve => {
+      wx.request({
+        url: `${app.hostName}saveFootPrintList`,
+        method: 'GET',
+        header: {
+          'Authorization': `Bearer ${app.token}`
+        },
+        data: {
+          id: this.data.id,
+          type: this.data.type,
+        },
+        dataType: 'json',
+        success: (res) => {
+          resolve(res.data.data);
+        }
+      })
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -212,11 +233,13 @@ Page({
 
   },
 
+
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
     this.initPageData();
+    this.saveFootList();
   },
   async initPageData() {
     let detailList = await this.getDetail();

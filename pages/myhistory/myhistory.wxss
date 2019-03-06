@@ -1,69 +1,87 @@
 /* pages/myhistory/myhistory.wxss */
-.list-item{
-  padding: 0 40rpx;
-  border-bottom: 2rpx solid #DEDEDE;
+
+page {
+  background-color: #f4f4f4;
 }
-.list-item .list-img{
+
+.list-item {
+  padding: 0 40rpx;
+  border-bottom: 2rpx solid #dedede;
+}
+
+.list-item .list-img {
   width: 120rpx;
   height: 120rpx;
   margin-right: 32rpx;
 }
-.list-item .item-group{
+
+.list-item .item-group {
   padding: 40rpx 0;
 }
-.list-info{
-  font-size:28rpx; 
+
+.list-info {
+  font-size: 28rpx;
 }
-.list-info .info-title{
+
+.list-info .info-title {
   overflow: hidden;
   text-overflow: ellipsis;
-  display:-webkit-box; 
-  -webkit-box-orient:vertical;
-  -webkit-line-clamp:2; 
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
 }
-.list-info .info-content{
+
+.list-info .info-content {
   display: block;
-  color: rgba(0, 0, 0, .6);
+  color: rgba(0, 0, 0, 0.6);
   margin-top: 10rpx;
   font-size: 20rpx;
 }
-.product .list-img{
+
+.product .list-img {
   width: 224rpx;
   height: 224rpx;
 }
-.product .info-price{
+
+.product .info-price {
   font-size: 32rpx;
-  color: #F5396E;
+  color: #f5396e;
 }
-.product .right_comments{
+
+.product .right_comments {
   float: right;
 }
-.product .right_comments image{
+
+.product .right_comments image {
   position: relative;
   width: 30rpx;
   height: 30rpx;
   top: 6rpx;
   margin-right: 6rpx;
 }
-.empty_text{
+
+.empty_text {
   display: block;
   width: 100%;
 }
-.history_back_btn{
-  border: 2rpx solid rgba(0, 0, 0, .2);
+
+.history_back_btn {
+  border: 2rpx solid rgba(0, 0, 0, 0.2);
   font-size: 28rpx;
   width: 180rpx;
   text-align: center;
   padding: 16rpx 0;
 }
-.check-group .check_selection{
+
+.check-group .check_selection {
   display: none;
 }
-.check-group.active .check_selection{
+
+.check-group.active .check_selection {
   display: block;
 }
 
-.checkbox_label{
+.checkbox_label {
   display: inline-block;
   position: relative;
   margin-bottom: 20rpx;
@@ -71,11 +89,13 @@
   padding-left: 10rpx;
   overflow: hidden;
 }
-checkbox .wx-checkbox-input.wx-checkbox-input-checked::before{
+
+checkbox .wx-checkbox-input.wx-checkbox-input-checked::before {
   display: block;
   color: rgba(245, 57, 110, 1);
 }
-checkbox .wx-checkbox-input{
+
+checkbox .wx-checkbox-input {
   border-radius: 50%;
   background-color: transparent;
   padding: 4rpx;
@@ -84,73 +104,56 @@ checkbox .wx-checkbox-input{
   height: 28rpx;
 }
 
-.delete_item{
+.delete_item {
   color: #fff;
-  box-shadow:0px -4px 12px rgba(0,0,0,0.1);
   height: 100rpx;
 }
-.manage_box{
+
+.manage_box {
   display: flex;
   position: fixed;
   bottom: -100%;
   left: 0;
   width: 100%;
-  -webkit-transition: bottom .2s ease-in-out;
-  transition: bottom .2s ease-in-out;
+  height: 100rpx;
+  box-shadow: 0px -4rpx 12rpx rgba(0, 0, 0, 0.1);
+  -webkit-transition: bottom 0.2s ease-in-out;
+  transition: bottom 0.2s ease-in-out;
 }
-.manage_box.active{
+
+.manage_box.active {
   bottom: 0;
 }
 
-
-.content{
-  margin: 0 20rpx;
-  text-align: justify; 
-}  
-.item{
-  background-color: #fff;
-  margin: 1%; 
-  margin-bottom: 20rpx;
+.content {
+  margin: 0rpx 20rpx;
+  text-align: justify;
 }
-.item-ava{
+
+.item {
+  background-color: transparent;
+  margin: 1%;
+  margin-bottom: 20rpx;
+  margin-top: 20rpx;
+}
+
+.item-ava {
   width: 40rpx;
   height: 40rpx;
   border-radius: 20rpx;
 }
-.item-img{
-  width: 100%
-  
+
+.item-img {
+  width: 100%;
 }
-.item-title{
-  font-size: 24rpx;
-  text-overflow: ellipsis;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 1;
-  overflow: hidden;
-  font-family: 'PingFang SC-Medium';
-  color: #1e1e1e;
-  margin: 15rpx;
-  line-height: 27rpx;
-}
-.item .name{
-  display: flex;
-  padding: 0 15rpx;
-  margin-top: 20rpx;
-  padding-bottom: 10rpx;
-  align-items: center;
-  font-size: 22rpx;
-  color: #1e1e1e;
-  font-family: 'PingFang SC-Medium';
-}
-.name image{
-  flex: 0 0 30rpx;
-}
-.item-title-box{
+
+.item-title-box {
   display: flex;
   position: relative;
+  margin-top: -10rpx;
 }
-.name-title{
+
+.name-title {
   flex: 1;
   margin-left: 18rpx;
   margin-right: 20rpx;
@@ -160,27 +163,65 @@ checkbox .wx-checkbox-input{
   -webkit-line-clamp: 1;
   overflow: hidden;
 }
-.name text:last-child{
-  flex: 0 0 30rpx;
-  color: #c4c4c4;
-  text-decoration: underline;
-  line-height: 10rpx;
-  
-}
-.left,.right{
+
+.left, .right {
   display: inline-block;
   vertical-align: top;
   width: 49%;
 }
-.right{
+
+.right {
   float: right;
 }
+
 .icon-delete {
   width: 40rpx;
   height: 40rpx;
+  margin-right: 32rpx;
 }
 
 .good-items {
   width: 100%;
   margin: 1% 0;
+}
+
+.avartor-img {
+  width: 40rpx;
+  height: 40rpx;
+  border-radius: 50%;
+}
+
+.heart {
+  width: 20rpx;
+  height: 18rpx;
+}
+
+checkbox .wx-checkbox-input {
+  width: 32rpx;
+  height: 32rpx;
+  border-radius: 50%;
+}
+
+checkbox .wx-checkbox-input.wx-checkbox-input-checked {
+  border: none;
+  background: #e33a68;
+}
+
+checkbox .wx-checkbox-input.wx-checkbox-input-checked::before {
+  width: 32rpx;
+  height: 32rpx;
+  line-height: 32rpx;
+  text-align: center;
+  font-size: 22rpx;
+  color: #fff;
+  background: transparent;
+  transform: translate(-50%, -50%) scale(1);
+  -webkit-transform: translate(-50%, -50%) scale(1);
+}
+.mask {
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 50;
 }
