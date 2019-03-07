@@ -43,6 +43,8 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    console.log(options.country_id)
+
     this.setData({
       country_id: options.country_id
     })
@@ -102,10 +104,13 @@ Page({
   getBuyers() {
     return new Promise(resolve => {
       wx.request({
-        url: `${app.hostName}getBuyersByCountryId/${this.data.country_id}`,
+        url: `${app.hostName}getBuyersByCountryId`,
         method: 'GET',
         header: {
           'Authorization': `Bearer ${app.token}`
+        },
+        data:{
+          country_id: this.data.country_id
         },
         dataType: 'json',
         success: (res) => {
@@ -113,12 +118,6 @@ Page({
         }
       })
     })
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
   }
+
 })

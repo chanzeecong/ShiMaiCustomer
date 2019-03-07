@@ -1,4 +1,7 @@
 // pages/buyer/buyer.js
+const regeneratorRuntime = require('../../lib/runtime.js');
+const app = getApp();
+
 Page({
 
   /**
@@ -12,11 +15,7 @@ Page({
       { id: 'b_3', name: 'Jane3', area: '英国', badge: ['英国代购', '香水', '包'], state: true, img: 'https://buyer.sm.afxclub.top/4.png' },
       { id: 'b_4', name: 'Jane4', area: '日本', badge: ['日本代购', '香水', '包'], state: true, img: 'https://buyer.sm.afxclub.top/4.png' },
     ],
-    areaList: [
-      { id: '1', area: 'Japan', img: 'https://buyer.sm.afxclub.top/banner-test.png' },
-      { id: '2', area: 'Korea', img: 'https://buyer.sm.afxclub.top/bannar_Korea01@2x.png' },
-      { id: '3', area: 'America', img: 'https://buyer.sm.afxclub.top/banner-test.png' },
-    ]
+    countryList: []
   },
 
   /**
@@ -37,7 +36,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.initPageData();
   },
 
   scroll(e){
@@ -82,10 +81,28 @@ Page({
 
   },
 
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
+  async initPageData(){
+    let countryList = await this.getCountry();
 
+    this.setData({
+      countryList: countryList
+    })
+  },
+
+  getCountry() {
+    return new Promise(resolve => {
+      wx.request({
+        url: `${app.hostName}getAllCountryBuyers`,
+        method: 'GET',
+        header: {
+          'Authorization': `Bearer ${app.token}`
+        },
+        dataType: 'json',
+        success: (res) => {
+          resolve(res.data.data);
+        }
+      })
+    })
   }
+
 })

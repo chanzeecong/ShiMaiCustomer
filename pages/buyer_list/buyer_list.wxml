@@ -1,32 +1,32 @@
 <!--pages/buyer_list/buyer_list.wxml-->
 <view class='wrapper'>
-  <view class='buyer_area_bg' style='background-image:url(https://buyer.sm.afxclub.top/banner-test.png);margin-bottom: 20rpx;'></view>
+  <view class='buyer_area_bg' style='background-image:url({{buyerList.bg_img}});margin-bottom: 20rpx;'></view>
   <navigator open-type='navigate' url='../search_buyer/search_buyer' class='search-wrapper bg-white' style='margin-bottom: 10rpx;'>
     <view class='search-box'>
       <view class='icon icon-search'>
-        <image src='https://buyer.sm.afxclub.top/icon_search@2x.png'></image>
+        <image src='https://buyer.sm.afxclub.top/icon_search_big@2x.png'></image>
       </view>
-      <text class='search-place-text'>搜索买手、标签、地区</text>
+      <text class='search-place-text'>搜索您想找寻的买手</text>
     </view>
     <text class='search_btn'>搜索</text>
   </navigator>
 
   <view class='buyer_box_list'>
 
-    <view class='buyer_box' wx:for="{{buyerList}}" wx:for-item="list" wx:for-index="listidx" wx:key="{{idex}}">
+    <view class='buyer_box' wx:for="{{buyerList.buyer_data}}" wx:for-item="list" wx:for-index="listidx" wx:key="{{index}}">
       <navigator open-type='navigate' url='../buyer_detail/buyer_detail' class='flex flex-row buyer_head'>
-        <image class='buyer_img' mode='aspectFill' src='https://buyer.sm.afxclub.top/4.png'></image>
+        <image class='buyer_img' mode='aspectFill' src='{{list.img_link}}'></image>
         <view class='flex-item'>
           <view class='buyer_title'>
-            <text>The storyor</text>
-            <view class='title_location padTop-5'>
-              <image class='icon icon_location padTop-5' src='https://buyer.sm.afxclub.top/icon_position1@2x.png'></image>
-              韩国Suwon
+            <text>{{list.name}}</text>
+            <view class='title_location padTop-2'>
+              <image class='icon icon_location' src='https://buyer.sm.afxclub.top/icon_locate_big@2x.png'></image>
+              {{list.region_name}}
             </view>
             <view></view>
           </view>
           <view class='flex flex-row buyer-badges'>
-            <view class='badges-item' wx:for='{{list.badge}}' wx:for-index="cidx" wx:key="{{cidx}}" wx:for-item="child">
+            <view class='badges-item' wx:for='{{list.tag}}' wx:for-index="cidx" wx:key="{{cidx}}" wx:for-item="child">
               {{child}}
             </view>
           </view>
@@ -34,14 +34,11 @@
       </navigator>
 
       <view class='buyer_middle_info'>
-        <text class='info_sub_title'>职业代购，会定期去日本采购</text>
+        <text class='info_sub_title'>{{list.introduction}}</text>
       </view>
 
       <scroll-view style='white-space:nowrap;' scroll-x scroll-with-animation>
-        <view class='product_item' style='background-image: url(https://buyer.sm.afxclub.top/text-img.png)'></view>
-        <view class='product_item' style='background-image: url(https://buyer.sm.afxclub.top/text-img.png)'></view>
-        <view class='product_item' style='background-image: url(https://buyer.sm.afxclub.top/text-img.png)'></view>
-        <view class='product_item' style='background-image: url(https://buyer.sm.afxclub.top/text-img.png)'></view>
+        <view class='product_item' style='background-image: url({{list.goods_imgs}})'></view>
       </scroll-view>
 
       <view class='buyer-action'>

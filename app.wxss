@@ -26,17 +26,7 @@ page{
   padding: 200rpx 0;
   box-sizing: border-box;
 } 
-.search-wrapper{
-  display: flex;
-  padding:32rpx;
-}
-.search_btn{
-  font-size: 28rpx;
-  font-weight: bold;
-  padding-left: 28rpx;
-  padding-top: 14rpx;
-  padding-bottom: 14rpx;
-}
+
 .search-place-text{
   margin-left: 30rpx;
   font-size: 28rpx;
@@ -200,7 +190,6 @@ page{
   border: 2rpx solid #F5396E;
   border-radius: 4rpx;
   font-size: 20rpx;
-  padding: 4rpx 0;
   text-align: center;
   width: 100rpx;
   margin: 10rpx;
@@ -211,11 +200,9 @@ page{
   font-weight: normal;
   line-height: 1.4;
   font-size: 20rpx;
-  padding-left:35rpx;
-
 }
 .icon_location{
-  width: 16rpx;
+  width: 20rpx;
   height: 20rpx;
 }
 .buyer_middle_info{
@@ -314,7 +301,7 @@ page{
 } 
 .search-wrapper{
   display: flex;
-  padding:32rpx;
+  padding:14rpx;
   border-bottom: 1px solid #F4F4F4;
 }
 .search-box{
@@ -326,10 +313,10 @@ page{
 }
 .search_btn{
   font-size: 28rpx;
-  font-weight: bold;
-  padding-left: 28rpx;
-  padding-top: 14rpx;
-  padding-bottom: 14rpx;
+  font-weight:500;
+  line-height:48rpx;
+  color:rgba(0,0,0,0.60);
+  padding: 18rpx 10rpx;
 }
 .search-place-text{
   margin-left: 30rpx;
@@ -954,4 +941,12 @@ button.primary_btn{
   background:rgba(254,89,104,1);
   color: #fff;
   border: none;
+}
+
+.goTop {
+  width: 100rpx;
+  height: 108rpx;
+  position: fixed;
+  bottom: 50rpx;
+  right: 0;
 }
