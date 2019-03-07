@@ -26,7 +26,8 @@
     "pages/myordernotice/myordernotice",
     "pages/Articlepage/Articlepage",
     "pages/Videoarticle/Videoarticle",
-    "pages/Allcomments/Allcomments"
+    "pages/Allcomments/Allcomments",
+    "pages/Modifydata/Modifydata"
   ],
   "window": {
     "backgroundTextStyle": "light",

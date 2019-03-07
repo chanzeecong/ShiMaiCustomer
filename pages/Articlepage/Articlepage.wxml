@@ -51,15 +51,8 @@
       <!-- 底部 -->
       <view class="padLef-16 padRig-16 bg-white h-122">
         <view class='row padTop-26'>
-          <image class="browse-icon magRig-5" src='{{item.img_link}}'></image>
-          <image class="browse-icon magRig-5" src='{{item.img_link}}'></image>
-          <image class="browse-icon magRig-5" src='{{item.img_link}}'></image>
-          <image class="browse-icon magRig-5" src='{{item.img_link}}'></image>
-          <image class="browse-icon magRig-5" src='{{item.img_link}}'></image>
-          <image class="browse-icon magRig-5" src='{{item.img_link}}'></image>
-          <image class="browse-icon magRig-5" src='{{item.img_link}}'></image>
-          <image class="browse-icon magRig-5" src='{{item.img_link}}'></image>
-          <text class='font-11 magRig-5' style='color:rgba(245,57,110,1);'>21人浏览</text>
+          <image class="browse-icon magRig-5" src='{{item.browse_img}}'></image>
+          <text class='font-11 magRig-5' style='color:rgba(245,57,110,1);'>{{item.browse_number}}人浏览</text>
         </view>
         <view class='row padTop-26'>
           <image catchtap="Likebtn" wx:if="{{!isLike}}" class="icon-use" src='../../assets/icon/icon_like_gray@2x.png'></image>
