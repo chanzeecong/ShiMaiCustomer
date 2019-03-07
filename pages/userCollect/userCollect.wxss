@@ -28,28 +28,39 @@ Page{
   box-shadow: 0 2rpx 6rpx rgba(245, 57, 110, .72);
 }
 
+ .mask {
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  background-color: rgba(0,0,0,.6);
+  z-index: 50;
+} 
+
+.avartor-img {
+  width: 40rpx;
+  height: 40rpx;
+  border-radius: 50%;
+}
+
+.good-items {
+  width: 100%;
+  margin: 1% 0;
+}
+
 .content{
-  margin: 0 20rpx;
+  margin: 20rpx 20rpx;
   text-align: justify; 
 }  
 .item{
-  background-color: #fff;
+  background-color: transparent;
   margin: 1%; 
   margin-bottom: 20rpx;
 }
-.item-ava{
-  width: 40rpx;
-  height: 40rpx;
-  border-radius: 20rpx;
-}
+
 .heart{
-  width: 30rpx;
-  height: 26rpx;
+  width: 20rpx;
+  height: 18rpx;
   margin-right: 8rpx;
-}
-.heart_{
-  display: flex;
-  align-items: center;
 }
 .item-img{
   width: 100%
@@ -68,7 +79,6 @@ Page{
   line-height: 27rpx;
 }
 .item .name{
-  display: flex;
   padding: 0 15rpx;
   margin-top: 20rpx;
   padding-bottom: 10rpx;
@@ -77,29 +87,16 @@ Page{
   color: #1e1e1e;
   font-family: 'PingFang SC-Medium';
 }
-.name image{
-  flex: 0 0 30rpx;
-}
+
 .item-title-box{
-  display: flex;
   position: relative;
+  margin-top: -10rpx;
 }
-.name-title{
-  flex: 1;
-  margin-left: 18rpx;
-  margin-right: 20rpx;
-  text-overflow: ellipsis;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 1;
-  overflow: hidden;
-}
+
 .name text:last-child{
   flex: 0 0 30rpx;
-  color: #c4c4c4;
-  text-decoration: underline;
-  line-height: 10rpx;
-  
+  font-size:6px;
+  color:rgba(0,0,0,0.60);
 }
 .left,.right{
   display: inline-block;
@@ -108,4 +105,275 @@ Page{
 }
 .right{
   float: right;
+}
+
+.search_info{
+  font-size: 28rpx;
+  color: rgba(0, 0, 0, .6);
+  padding: 16rpx 32rpx;
+}
+.icon_arrow{
+  width: 20rpx;
+  height: 20rpx;
+  overflow: hidden;
+  position: absolute;
+  left: 65rpx;
+  top: 0;
+  transform: rotateZ(-45deg);
+}
+.icon_arrow::after{
+  display: block;
+  content: "";
+  background-color: #000;
+  width: 100%;
+  height: 100%;
+  transform: rotateZ(45deg) translateY(12rpx);
+}
+
+@-webkit-keyframes showMask{
+  from{
+    opacity: 0;
+  }
+  to{
+    opacity: 1;
+  }
+}
+@keyframes showMask{
+  from{
+    opacity: 0;
+  }
+  to{
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes showContent{
+  from{
+    transform: translateX(110%);
+  }
+  to{
+    transform: translateX(0);
+  }
+}
+@keyframes showContent{
+  from{
+    transform: translateX(110%);
+  }
+  to{
+    transform: translateX(0);
+  }
+}
+
+@-webkit-keyframes hideContent{
+  from{
+    -webkit-transform: translateX(0);
+  }
+  to{
+    transform: translateX(110%);
+  }
+}
+@keyframes hideContent{
+  from{
+    transform: translateX(0);
+  }
+  to{
+    transform: translateX(110%);
+  }
+}
+
+@-webkit-keyframes hideMask{
+  from{
+    opacity: 1;
+  }
+  to{
+    opacity: 0;
+  }
+}
+@keyframes hideMask{
+  from{
+    opacity: 1;
+  }
+  to{
+    opacity: 0;
+  }
+}
+
+.search-tools{
+  position: relative;
+  padding: 14rpx 0;
+  border-top: 2rpx solid #F7F7F7;
+}
+.pull-down-sort{
+  display: none;
+  position: absolute;
+  top: 50px;
+  left: 0;
+  width: 100%;
+  background-color: #fff;
+  z-index: 5;
+  -webkit-transform-origin: 0 0;
+  transform-origin: 0 0;
+}
+
+.pull-down-sort .sort-box{
+  padding: 0 32rpx 32rpx 32rpx;
+}
+
+.pull-down-sort.active{
+  display: block;
+}
+.pull-down-sort.in{
+  display: block;
+}
+.pull-down-sort.out{
+  display: block;
+}
+.pull-down-sort.in{
+  -webkit-transform: scaleY(0);
+  transform: scaleY(0);
+  -webkit-animation: showSortContent .2s ease-out forwards;
+  animation: showSortContent .2s ease-out forwards;
+}
+
+@-webkit-keyframes showSortContent{
+  from{
+    -webkit-transform: scaleY(0);
+  }
+  to{
+    transform: scaleY(1);
+  }
+}
+@keyframes showSortContent{
+  from{
+    transform: scaleY(0);
+  }
+  to{
+    transform: scaleY(1);
+  }
+}
+
+.pull-down-sort.out{
+  -webkit-transform: scaleY(1);
+  transform: scaleY(1);
+  -webkit-animation: hideSortContent .2s ease-out forwards;
+  animation: hideSortContent .2s ease-out forwards;
+}
+
+@-webkit-keyframes hideSortContent{
+  from{
+    -webkit-transform: scaleY(1);
+  }
+  to{
+    transform: scaleY(0);
+  }
+}
+@keyframes hideSortContent{
+  from{
+    transform: scaleY(1);
+  }
+  to{
+    transform: scaleY(0);
+  }
+}
+
+.sort-mask{
+  display: none;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 3;
+  background-color: rgba(0, 0, 0, .4);
+  opacity: 0;
+}
+.sort-mask.active{
+  display: block;
+}
+
+.sort-mask.in{
+  opacity: 0;
+  -webkit-animation: showSortMask .2s ease-in forwards;
+  animation: showSortMask .2s ease-in forwards;
+}
+
+@-webkit-keyframes showSortMask{
+  from{
+    opacity: 0;
+  }
+  to{
+    opacity: 1;
+  }
+}
+@keyframes showSortMask{
+  from{
+    opacity: 0;
+  }
+  to{
+    opacity: 1;
+  }
+}
+
+.sort-mask.out{
+  opacity: 1;
+  -webkit-animation: hideSortMask .2s .2s ease-out forwards;
+  animation: hideSortMask .2s .2s ease-out forwards;
+}
+
+@-webkit-keyframes hideSortMask{
+  from{
+    opacity: 1;
+  }
+  to{
+    opacity: 0;
+  }
+}
+@keyframes hideSortMask{
+  from{
+    opacity: 1;
+  }
+  to{
+    opacity: 0;
+  }
+}
+
+.pull-down-sort .sort-box .radio{
+  display: block;
+  font-size: 28rpx;
+  padding: 20rpx 0;
+  background-color: transparent;
+  position: relative;
+}
+
+.radio .wx-radio-input{
+  height: 40rpx; 
+  width: 40rpx;
+  border: none;
+  background-color: #fff;
+}
+
+radio .wx-radio-input.wx-radio-input-checked{
+  border: none;
+  background-color: #fff;
+}
+
+radio .wx-radio-input.wx-radio-input-checked::before{
+  width: 40rpx;
+  height: 40rpx;
+  line-height: 40rpx;
+  text-align: center;
+  font-size:30rpx;
+  color: rgba(245, 57, 110, 1);
+  background-color: #fff;
+  transform:translate(-50%, -50%) scale(1);
+  -webkit-transform:translate(-50%, -50%) scale(1);
+}
+.radio-input{
+  position: absolute;
+  right: 0;
+  background-color: transparent;
+}
+.sort_btn{
+  display: block;
+  position:relative;
 }

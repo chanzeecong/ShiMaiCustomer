@@ -27,61 +27,10 @@ Page({
     scrollToLeft: 0,
     collectList:[],
 
-    note: [
-      {
-        name: '大脸猫爱吃鱼大脸猫爱吃鱼大脸猫爱吃鱼大脸猫爱吃鱼大脸猫爱吃鱼',
-        heart_num: '1',
-        title: '你所不知道的红酒知识你所不知道的红酒知识你所不知道的红酒知识你所不知道的红酒知识你所不知道的红酒知识',
-        url: 'http://f10.baidu.com/it/u=121654667,1482133440&fm=72',
-        avatar: 'http://img4.imgtn.bdimg.com/it/u=349345436,3394162868&fm=26&gp=0.jpg'
-      },
-      {
-        name: '大脸猫爱吃鱼',
-        heart_num: '2',
-        title: '你所不知道的红酒知识你所不知道的红酒知识你所不知道的红酒知识你所不知道的红酒知识你所不知道的红酒知识',
-        url: 'http://img3.imgtn.bdimg.com/it/u=1417732605,3777474040&fm=26&gp=0.jpg',
-        avatar: 'http://img4.imgtn.bdimg.com/it/u=349345436,3394162868&fm=26&gp=0.jpg'
-      },
-      {
-        name: '大脸猫爱吃鱼',
-        heart_num: '3',
-        title: '你所不知道的红酒知识你所不知道的红酒知识你所不知道的红酒知识你所不知道的红酒知识你所不知道的红酒知识',
-        url: 'http://img3.imgtn.bdimg.com/it/u=1417732605,3777474040&fm=26&gp=0.jpg',
-        avatar: 'http://img4.imgtn.bdimg.com/it/u=349345436,3394162868&fm=26&gp=0.jpg'
-      }, {
-        name: '大脸猫爱吃鱼',
-        heart_num: '4',
-        title: '你所不知道的红酒知识你所不知道的红酒知识你所不知道的红酒知识你所不知道的红酒知识你所不知道的红酒知识',
-        url: 'http://f10.baidu.com/it/u=121654667,1482133440&fm=72',
-        avatar: 'http://img4.imgtn.bdimg.com/it/u=349345436,3394162868&fm=26&gp=0.jpg'
-      },
-      {
-        name: '大脸猫爱吃鱼',
-        heart_num: '5',
-        title: '你所不知道的红酒知识你所不知道的红酒知识你所不知道的红酒知识你所不知道的红酒知识你所不知道的红酒知识',
-        url: 'http://f10.baidu.com/it/u=121654667,1482133440&fm=72',
-        avatar: 'http://img4.imgtn.bdimg.com/it/u=349345436,3394162868&fm=26&gp=0.jpg'
-      },
-      {
-        name: '大脸猫爱吃鱼',
-        heart_num: '6',
-        title: '你所不知道的红酒知识你所不知道的红酒知识你所不知道的红酒知识你所不知道的红酒知识你所不知道的红酒知识',
-        url: 'http://img3.imgtn.bdimg.com/it/u=1417732605,3777474040&fm=26&gp=0.jpg',
-        avatar: 'http://img4.imgtn.bdimg.com/it/u=349345436,3394162868&fm=26&gp=0.jpg'
-      },
-      {
-        name: '大脸猫爱吃鱼',
-        heart_num: '7',
-        title: '你所不知道的红酒知识你所不知道的红酒知识你所不知道的红酒知识你所不知道的红酒知识你所不知道的红酒知识',
-        url: 'http://img4.imgtn.bdimg.com/it/u=2748975304,2710656664&fm=26&gp=0.jpg',
-        avatar: 'http://img4.imgtn.bdimg.com/it/u=349345436,3394162868&fm=26&gp=0.jpg'
-      }, {
-        name: '大脸猫爱吃鱼',
-        heart_num: '8',
-        title: '你所不知道的红酒知识你所不知道的红酒知识你所不知道的红酒知识你所不知道的红酒知识你所不知道的红酒知识',
-        url: 'http://img2.imgtn.bdimg.com/it/u=1561660534,130168102&fm=26&gp=0.jpg',
-        avatar: 'http://img4.imgtn.bdimg.com/it/u=349345436,3394162868&fm=26&gp=0.jpg'
-      }
+    sortItems: [
+      { id: 2, value: '全部', checked: 'true' },
+      { id: 1, value: '显示有货' },
+      { id: 0, value: '已下架' },
     ]
   },
 
@@ -173,6 +122,42 @@ Page({
       collectList: collectList
     })
   },
+
+  showSort() {
+    this.setData({
+      sortActive: 'active',
+      sortActiveState: 'in',
+      wrapperHeight: `${app.windowHeight}px`
+    })
+  },
+
+  hideSort() {
+    let timeout;
+    clearTimeout(timeout);
+
+    this.setData({
+      sortActive: 'active',
+      sortActiveState: 'out'
+    })
+
+    timeout = setTimeout(() => {
+      this.setData({
+        sortActive: '',
+        sortActiveState: '',
+        wrapperHeight: `auto`
+      })
+    }, 500)
+  },
+
+  sortChange(e) {
+    console.log(e);
+    let change = sortItems.value;
+
+    this.hideSort();
+    this.setData({
+      
+    })
+  },
   
   
   async initPageData() {
@@ -204,12 +189,5 @@ Page({
         }
       })
     })
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
   }
 })

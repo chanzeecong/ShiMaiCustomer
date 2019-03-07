@@ -34,6 +34,7 @@ Page({
   },
 
   async onDailySign() {
+    let status = await this.getDailySign();
     let message = await this.getUserInfo();
     console.log(message.is_sign)
 

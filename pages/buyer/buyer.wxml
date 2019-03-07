@@ -35,9 +35,9 @@
 
   </scroll-view>
 
-  <view class='buyer-area-list' wx:for="{{areaList}}"  wx:for-index="aidx"  wx:key="{{aidx}}">
-    <navigator class='area-item' open-type='navigate' url='../buyer_list/buyer_list?country_id={{item.id}}' style='background-image:url({{item.img}});'>
-      {{item.area}}
+  <view class='buyer-area-list' wx:for="{{countryList}}"  wx:for-index="aidx"  wx:key="{{aidx}}">
+    <navigator class='area-item' open-type='navigate' url='../buyer_list/buyer_list?country_id={{item.country_id}}' style='background-image:url({{item.cover_img}});'>
+      {{item.country_en}}
     </navigator>
   </view>
 </view>

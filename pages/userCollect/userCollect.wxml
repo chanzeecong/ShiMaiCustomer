@@ -1,49 +1,94 @@
 <!--pages/userCollect/userCollect.wxml-->
 <!--pages/orderList/orderList.wxml-->
 <block wx:if="{{collectList.length}}">
-    <scroll-view scroll-x="true" scroll-left="{{scrollToLeft}}rpx" scroll-with-animation="true">
-      <view class="row row-center underline bgWhite" style='justify-content:center;'>
-        <view bindtap="onTapClick" data-index='{{index}}' wx:for="{{tabList}}" wx:key="{{index}}" style='width:220rpx;' class='row row-center'>
-          <view class='tab-wrapper row row-center {{index === currentTab? "active red" : "black"}}'>
-            <text class='{{index === currentTab? "red font-16" : "black font-14"}}'>{{item.label}}</text>
-          </view>
+  <scroll-view scroll-x="true" scroll-left="{{scrollToLeft}}rpx" scroll-with-animation="true">
+    <view class="row row-center underline bgWhite" style='justify-content:center;'>
+      <view bindtap="onTapClick" data-index='{{index}}' wx:for="{{tabList}}" wx:key="{{index}}" style='width:220rpx;' class='row row-center'>
+        <view class='tab-wrapper row row-center {{index === currentTab? "active red" : "black"}}'>
+          <text class='{{index === currentTab? "red font-16" : "black font-14"}}'>{{item.label}}</text>
         </view>
       </view>
-    </scroll-view>
+    </view>
+  </scroll-view>
 
-    <view wx:if='{{currentTab == 0}}' class="content">
-      <view class="left">
-        <block wx:for="{{collectList}}" wx:key="{{index}}">
-          <template is="item" data="{{...item}}" wx:if="{{index%2==0}}"></template>
-        </block>
+  <view class='flex flex-row bg-white search-tools'>
+      <view class='search_info flex-item flex -flex-row'>
+        <view bindtap='showSort' class='flex-item sort_btn'>
+          全部
+          <view class='icon_arrow'></view>
+        </view>
+
+        <text>管理</text>
       </view>
-      <view class="right">
-        <block wx:for="{{collectList}}" wx:key="{{index}}">
-          <template is="item" data="{{...item}}" wx:if="{{index%2==1}}"></template>
-        </block>
+
+      <view class='pull-down-sort {{sortActive}} {{sortActiveState}}'>
+        <view class='sort-box'>
+          <radio-group class="radio-group" bindchange="sortChange">
+            <label class="radio" wx:for="{{sortItems}}" wx:key="sortItems">
+              <radio class='radio-input' value="{{item.name}}" checked="{{item.checked}}" />
+              {{item.value}}
+            </label>
+          </radio-group>
+        </view>
       </view>
     </view>
+
+  <view wx:if='{{currentTab == 0}}' class="content">
+    <view class="left">
+      <block wx:for="{{collectList}}" wx:key="{{index}}">
+        <template is="item" data="{{...item}}" wx:if="{{index%2==0}}"></template>
+      </block>
+    </view>
+    <view class="right">
+      <block wx:for="{{collectList}}" wx:key="{{index}}">
+        <template is="item" data="{{...item}}" wx:if="{{index%2==1}}"></template>
+      </block>
+    </view>
+  </view>
+
+  <view class='sort-mask {{sortActive}} {{sortActiveState}}' bindtap='hideSort'></view>
 
   <block wx:for="{{collectList}}" wx:key="{{index}}">
     <block wx:if="{{1 == item.type}}">
       <template name="item">
         <view class="item">
-          <block wx:if='{{eassy_img != ""}}'>
-            <image class="item-img" src="{{eassy_img}}" mode="widthFix"></image>
-          </block>
-          <block wx:else>
-            <video poster='{{video_url}}' src='{{video_url}}'></video>
+          <block wx:if="{{video_url == ''}}">
+            <navigator open-type='navigate' url="../Articlepage/Articlepage?type={{type}}&id={{id}}&buyer_id={{buyer_id}}">
+              <image class="item-img" src="{{essay_img}}" mode="widthFix" style='border-radius:12rpx 12rpx 0px 0px;'></image>
+            </navigator>
           </block>
 
-          <view class="item-title-box">
-            <navigator url="url" class="item-title">{{title}}</navigator> 
-          </view>
-          <view class="name">
-            <image class="item-ava" src="{{img_link}}"></image>    
-            <text class="name-title">{{name}}</text>
-            <view class="heart_">
-              <image class="heart" src="../../image/heart.png"></image>
-              <text>{{heart_num}}</text>
+          <block wx:else>
+            <video class="good-items" autoplay='' poster='{{video_url}}' src='{{video_url}}' style='border-radius:12rpx 12rpx 0px 0px;                '></video>
+          </block>
+
+          <view class='bg-white' style='border-radius:0px 0px 12rpx 6px;'>
+            <view class="item-title-box">
+              <view class='row padRig-4 padLef-4 padTop-10'>
+                <text class='font-14 black line-ellipsis'>18新品质感绒面韩版时尚拼接百搭舒适……</text>
+              </view>
+
+              <view class="name">    
+                  <view class='flex flex-row'>
+                    <image class="avartor-img" src='{{img_link}}'></image>
+                    <view class='flex flex-column justify-between flex-item padLef-6'>
+                      <text class='font-10 black'>{{name}}</text>
+                      <text class='font-6 black'>{{region_name}} {{created_at}}</text>
+                    </view>
+
+                    <view class='flex row padRig-6'> 
+                      <view wx:if="{{item.is_followed}}" bindtap='onUnfollowBtnClick' data-index="{{index}}" class='follow-btn'>
+                        <image class='heart padRig-4' src='https://buyer.sm.afxclub.top/icon_like_red@2x.png'></image>
+                      </view>
+
+                      <view wx:else bindtap='onFollowBtnClick' data-index="{{index}}" class='follow-btn'>
+                        <image class="heart padRig-4" src='https://buyer.sm.afxclub.top/icon_like@2x.png'></image>
+                      </view>
+
+                      <view class='font-10 black'>{{id}}</view>
+                    </view>
+                  </view>
+                </view>
             </view>
           </view>
         </view>
@@ -62,14 +107,10 @@
               <view class='flex-item'>
                 <view class='buyer_title'>
                   <text>{{item.name}}</text>
-                  <!--<view class='title_location font-20 font-bold'>
-                    <image class='icon icon_location' src='../../assets/icon/icon_position1@2x.png'></image>
-                  </view>-->
-                </view>
-
-                <view class='row font-10 grey'>
-                  <image class='icon icon_location' src='../../assets/icon/icon_position1@2x.png'></image>
-                  {{item.region_name}}
+                  <view class='title_location padTop-2'>
+                    <image class='icon icon_location' src='https://buyer.sm.afxclub.top/icon_locate_big@2x.png'></image>
+                    {{item.region_name}}
+                  </view>
                 </view>
 
                 <view class='flex flex-row buyer-badges'>
