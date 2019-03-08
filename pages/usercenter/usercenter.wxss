@@ -34,6 +34,7 @@
   height: 24rpx;
   background-position: center;
   background-size: cover;
+  padding-left: 10rpx;
 }
 
 .user_footer {

@@ -61,12 +61,6 @@ Page({
     console.log(status)
     let allData = await this.getCoupon(status);
     console.log(allData)
-    /*let allData = [
-      { id: '1', title: '无门槛红包', value: '50', tag: '识买商城专用券', starttime: '2018.11.10 00:00', endtime: '2018.12.10 23:00', status: 'useful' },
-      { id: '1', title: '无门槛红包', value: '50', tag: '识买商城专用券', starttime: '2018.11.10 00:00', endtime: '2018.12.10 23:00', status: 'disabled' },
-      { id: '1', title: '无门槛红包', value: '50', tag: '识买商城专用券', starttime: '2018.11.10 00:00', endtime: '2018.12.10 23:00', status: 'disabled' }
-    ];*/
-    // console.log(this.isString(allData) === '[object Array]');
     let useFul = [];
     let disabled = [];
     let used = [];
@@ -140,7 +134,7 @@ Page({
       currentTab: tabIndex,
       showData: showDataArray
     })
-    // console.log(this.data.currentTab)
+    console.log(this.data.currentTab)
   },
 
   /**

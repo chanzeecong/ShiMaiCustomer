@@ -1,0 +1,66 @@
+/* pages/Modifydata/Modifydata.wxss */
+
+.photo {
+  width: 686rpx;
+  height: 686rpx;
+}
+
+.font-color, .phcolor {
+  color: #b9b9b9;
+}
+
+.input {
+  width: 100%;
+  height: 40rpx;
+}
+
+.input-wrapper {
+  width: 100%;
+  height: 64rpx;
+  margin: 40rpx 0rpx;
+  border-bottom: 2rpx solid rgb(244, 244, 244);
+}
+
+.icon {
+  width: 32rpx;
+  height: 32rpx;
+}
+
+.btn-wrapper {
+  width: 100%;
+  padding-top: 80rpx;
+}
+
+.button {
+  height: 92rpx;
+  background: rgba(244, 65, 104, 1);
+  box-shadow: 0px 1px 8px rgba(245, 57, 110, 0.5);
+  font-size: 32rpx;
+  font-weight: normal;
+  font-stretch: normal;
+  letter-spacing: 2rpx;
+  font-family: Noto Sans S Chinese;
+  padding-top: 6rpx;
+}
+
+.mask {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 50;
+}
+.modal {
+  width:560rpx;
+  height:408rpx;
+  background:rgba(255,255,255,1);
+  border-radius:16rpx;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-top: -204rpx;
+  margin-left: -280rpx;
+  box-sizing: border-box;
+  z-index: 99;
+}

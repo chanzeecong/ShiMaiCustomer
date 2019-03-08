@@ -1,0 +1,88 @@
+<!--pages/Modifydata/Modifydata.wxml-->
+<block wx:if="{{isShowMask}}">
+  <view class='mask'></view>
+</block>
+
+<block wx:if="{{isShowAvatarModal}}">
+  <view class='modal'>
+    <view bindtap='onPhotoBtnClick' class='row padTop-15 padBot-15 padLef-20 underline'>
+      <text class='font-16 black'>修改头像</text>
+    </view>
+    <view bindtap='onPhotoBtnClick' data-type="camera" class='row padTop-15 padBot-15 padLef-20 underline'>
+      <text class='font-16 black'>现在拍摄一张</text>
+    </view>
+    <view bindtap='onPhotoBtnClick' data-type="album" class='row padTop-15 padBot-15 padLef-20 underline'>
+      <text class='font-16 black'>从相册中选择</text>
+    </view>
+    <view bindtap='onCancelBtnClick' class='row padTop-15 padBot-15 padLef-20'>
+      <text class='font-16 black'>取消</text>
+    </view>
+  </view>
+</block>
+
+
+<view class='wrapper padLef-16 padRig-16 bg-white'>
+  <view class='magTop-16'>
+    <image class='photo' bindtap='onAvatarBtnClick' style='background-image:url({{userInfo.avatar}});background-size: cover;' mode="widthFix"></image>
+  </view>
+
+  <view class="row padTop-40 bgWhite">
+    <text class='font-12 font-color'>用户昵称</text>
+  </view>
+
+  <view class="row bgWhite">
+    <view class='input-wrapper row'>
+      <input value='{{userInfo.name}}' placeholder='点击修改' placeholder-class='phcolor' class='input padRig-16 font-16 black' maxlength="16" type="text" bindinput="onNameInput"></input>
+       <image wx:if="{{name.length}}" bindtap='onClearNameBtnClick' class="icon" src='https://buyer.sm.afxclub.top/icon_delete@2x.png'></image>
+      <!-- <block wx:else>
+        <input value='{{name}}' placeholder='点击修改' placeholder-class='phcolor' class='input padRig-16 font-16 black' maxlength="16" type="text" bindinput="onNameInput"></input>
+        <image wx:if="{{name.length}}" bindtap='onClearNameBtnClick' class="icon" src='https://buyer.sm.afxclub.top/icon_delete@2x.png'></image>
+      </block> -->
+
+    </view>
+  </view>
+
+  <view class="row bgWhite">
+    <text class='font-12 font-color'>手机号</text>
+  </view>
+
+  <view class="row bgWhite padBot-10">
+    <view class='input-wrapper row'>
+      <block wx:if="{{userInfo.phone.length !== 0}}">
+        <text class='padRig-16 font-16 black'>{{userInfo.phone}}</text>
+      </block>
+      <block wx:else>
+        <input value='{{phone}}' placeholder='点击修改' placeholder-class='phcolor' class='input padRig-16 font-16 black' maxlength="11" type="number" bindinput="onPhoneInput"></input>
+      </block>
+      <image wx:if="{{phone.length}}" bindtap='onClearPhoneBtnClick' class="icon" src='https://buyer.sm.afxclub.top/icon_delete@2x.png'></image>
+    </view>
+  </view>
+
+  <view class="row  bgWhite">
+    <text class='font-12 font-color'>性别</text>
+  </view>
+
+  <view class="row bgWhite">
+    <view class='input-wrapper row'>
+      <input value='{{userInfo.gender}}' placeholder='点击修改' placeholder-class='phcolor' class='input padRig-16 font-16 black' maxlength="1" type="text" bindinput="onSexInput"></input>
+      <image wx:if="{{sex.length}}" bindtap='onClearSexBtnClick' class="icon" src='https://buyer.sm.afxclub.top/icon_delete@2x.png'></image>
+    </view>
+  </view>
+
+  <view class="row bgWhite">
+    <text class='font-12 font-color'>个人签名</text>
+  </view>
+
+  <view class="row bgWhite">
+    <view class='input-wrapper row'>
+      <input value='{{userInfo.signature}}' placeholder='点击修改' placeholder-class='phcolor' class='input padRig-16 font-16 black' maxlength="14" type="text" bindinput="onSignInput"></input>
+      <image wx:if="{{signature.length}}" bindtap='onClearSignBtnClick' class="icon" src='https://buyer.sm.afxclub.top/icon_delete@2x.png'></image>
+    </view>
+  </view>
+
+  <view class='row row-center padBot-111'>
+    <view class='btn-wrapper'>
+      <button bindtap='onConfirmBtnClick' class='button' style='border:none;color:#fff;'>保存</button>
+    </view>
+  </view>
+</view>

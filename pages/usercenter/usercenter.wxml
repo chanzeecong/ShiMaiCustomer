@@ -3,22 +3,38 @@
 
   <view class='user_header bg-white'>
 
-    <view class='row daily_btn padLef-5' bindtap='onDailySign'>    
+    <view class='row daily_btn padLef-5' bindtap='onDailySign'>
       <image class="dail_icon" src='https://buyer.sm.afxclub.top/icon_sign@2x.png'></image>
       <text class='daily_text'>签到赚积分</text>
     </view>
     <view class='user_info flex flex-column justify-center align-center'>
-      <view class='user_avartor' style='background-image:url({{userInfo.avatar}});'></view>
+      <navigator open-type='navigate' url="../Modifydata/Modifydata">
+        <view class='user_avartor' style='background-image:url({{userInfo.avatar}});'></view>
+      </navigator>
+
       <view class='row'>
         <view class='user_nickname' style='text-align:center;font-size: 32rpx; font-weight: bold;'>{{userInfo.name}}</view>
-        <image class='icon_edit' src='https://buyer.sm.afxclub.top/icon_Female@2x.png'></image>
+        <view wx:if="{{userInfo.gender === 0}}">
+          <image class='icon_edit' src=''></image>
+        </view>
+        <view wx:elif="{{userInfo.gender === 1}}">
+          <image class='icon_edit' src='https://buyer.sm.afxclub.top/icon_Female@2x.png'></image>
+        </view>
+        <view wx:elif="{{userInfo.gender === 2}}">
+          <image class='icon_edit' src='https://buyer.sm.afxclub.top/icon_Female@2x.png'></image>
+        </view>
       </view>
 
-      <view class="user_text" style='text-align:center;'>
-        <image class="icon_yin" src='https://buyer.sm.afxclub.top/icon_yin@2x.png'></image>
-        <text class='font-10 gray'>这家伙很懒，但是还是留下了什么</text>
+      <view class="user_text row" style='text-align:center;'>
+        <image class="icon_yin align-center" src='https://buyer.sm.afxclub.top/icon_yin@2x.png'></image>
+        <view class='flex' wx:if="{{userInfo.signature.length === 0}}">
+          <text class='font-10 gray'>这家伙很懒，但是还是留下了什么</text>
+        </view>
+        <view wx:else>
+          <text class='flex font-10 gray'>{{userInfo.signature}}</text>
+        </view>
       </view>
-     
+
       <view class='user_footer'>
         <view class='flex justify-between'>
           <view class='padRig-40'>
@@ -84,7 +100,7 @@
           <view class='icon-btn' style='background-image:url(https://buyer.sm.afxclub.top/icon_Red-envelope@2x.png);'></view>
           <view class='padTop-15'>卡券红包</view>
         </navigator>
-          <navigator url='../addrList/addrList' open-type='navigate' class='tools-item font-14 deep'>
+        <navigator url='../addrList/addrList' open-type='navigate' class='tools-item font-14 deep'>
           <view class='icon-btn' style='background-image:url(https://buyer.sm.afxclub.top/icon_address@2x.png);'></view>
           <view class='padTop-15'>收货地址</view>
         </navigator>
