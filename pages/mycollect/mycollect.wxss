@@ -1,7 +1,0 @@
-/* pages/mycollect/mycollect.wxss */
-.active {
-  line-height: 80rpx;
-  text-align: center;
-  font-weight: bold;
-  border-bottom: 4rpx solid #F5396E;
-}

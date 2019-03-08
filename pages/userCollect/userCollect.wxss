@@ -117,7 +117,7 @@ Page{
   height: 20rpx;
   overflow: hidden;
   position: absolute;
-  left: 65rpx;
+  left: 120rpx;
   top: 0;
   transform: rotateZ(-45deg);
 }
@@ -376,4 +376,13 @@ radio .wx-radio-input.wx-radio-input-checked::before{
 .sort_btn{
   display: block;
   position:relative;
+}
+
+.choose-icon{
+  width: 80rpx;
+  height: 80rpx;
+  z-index: 10;
+  position: relative;
+  bottom: 40rpx;
+  left: 240rpx;
 }

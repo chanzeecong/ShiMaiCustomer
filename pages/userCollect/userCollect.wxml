@@ -11,50 +11,137 @@
     </view>
   </scroll-view>
 
-  <view class='flex flex-row bg-white search-tools'>
+  
+  <block wx:if='{{currentTab == 0}}'>
+    <view class='flex flex-row bg-white search-tools'>
       <view class='search_info flex-item flex -flex-row'>
-        <view bindtap='showSort' class='flex-item sort_btn'>
-          全部
-          <view class='icon_arrow'></view>
-        </view>
+          <view bindtap='showSort' class='flex-item sort_btn'>
+            {{changeSort ? changeSort: '全部'}}
+            <view class='icon_arrow'></view>
+          </view>
 
-        <text>管理</text>
+          <view wx:if='{{isShow}}' bindtap='onCancelBtnClick'> 取消</view>
+          <view wx:else bindtap='onEditBtnClick'> 管理</view>
       </view>
 
       <view class='pull-down-sort {{sortActive}} {{sortActiveState}}'>
-        <view class='sort-box'>
-          <radio-group class="radio-group" bindchange="sortChange">
-            <label class="radio" wx:for="{{sortItems}}" wx:key="sortItems">
-              <radio class='radio-input' value="{{item.name}}" checked="{{item.checked}}" />
-              {{item.value}}
-            </label>
-          </radio-group>
-        </view>
+          <view class='sort-box'>
+            <radio-group class="radio-group" bindchange="sortChange">
+              <label class="radio" wx:for="{{sortItems}}" wx:key="sort">
+                <radio class='radio-input' value="{{item.id}}" checked="{{item.checked}}" />
+                {{item.value}}
+              </label>
+            </radio-group>
+          </view>
       </view>
     </view>
 
-  <view wx:if='{{currentTab == 0}}' class="content">
-    <view class="left">
-      <block wx:for="{{collectList}}" wx:key="{{index}}">
-        <template is="item" data="{{...item}}" wx:if="{{index%2==0}}"></template>
-      </block>
+    <view class="content">
+      <view class="left">
+        <block wx:for="{{collectList}}" wx:key="{{index}}">
+          <template is="item" data="{{...item}}" wx:if="{{index%2==0}}"></template>
+        </block>
+      </view>
+      <view class="right">
+        <block wx:for="{{collectList}}" wx:key="{{index}}">
+          <template is="item" data="{{...item}}" wx:if="{{index%2==1}}"></template>
+        </block>
+      </view>
     </view>
-    <view class="right">
-      <block wx:for="{{collectList}}" wx:key="{{index}}">
-        <template is="item" data="{{...item}}" wx:if="{{index%2==1}}"></template>
-      </block>
+  </block>
+
+  <block wx:elif='{{currentTab == 1}}'>
+    <view class='flex flex-row bg-white search-tools'>
+      <view class='search_info flex-item flex -flex-row'>
+          <view bindtap='showSort' class='flex-item sort_btn'>
+            {{changeArticle ? changeArticle: '全部'}}
+            <view class='icon_arrow'></view>
+          </view>
+
+          <text>管理</text>
+      </view>
+
+      <view class='pull-down-sort {{sortActive}} {{sortActiveState}}'>
+          <view class='sort-box'>
+            <radio-group class="radio-group" bindchange="sortChange">
+              <label class="radio" wx:for="{{articleItems}}" wx:key="sort">
+                <radio class='radio-input' value="{{item.id}}" checked="{{item.checked}}" />
+                {{item.value}}
+              </label>
+            </radio-group>
+          </view>
+      </view>
     </view>
-  </view>
+
+    <view class="content">
+      <view class="left">
+        <block wx:for="{{collectList}}" wx:key="{{index}}">
+          <template is="item" data="{{...item}}" wx:if="{{index%2==0}}"></template>
+        </block>
+      </view>
+      <view class="right">
+        <block wx:for="{{collectList}}" wx:key="{{index}}">
+          <template is="item" data="{{...item}}" wx:if="{{index%2==1}}"></template>
+        </block>
+      </view>
+    </view>
+  </block>
 
   <view class='sort-mask {{sortActive}} {{sortActiveState}}' bindtap='hideSort'></view>
 
-  <block wx:for="{{collectList}}" wx:key="{{index}}">
+  <block wx:for="{{collectList}}" wx:key="{{index}}" class="{{item.isShow ?'touch-move-active':''}}">
     <block wx:if="{{1 == item.type}}">
       <template name="item">
         <view class="item">
-          <block wx:if="{{video_url == ''}}">
+          <block wx:if="{{essay_img}}">
             <navigator open-type='navigate' url="../Articlepage/Articlepage?type={{type}}&id={{id}}&buyer_id={{buyer_id}}">
               <image class="item-img" src="{{essay_img}}" mode="widthFix" style='border-radius:12rpx 12rpx 0px 0px;'></image>
+            </navigator>
+          </block>
+
+          <block wx:else>
+            <video class="good-items" autoplay='' poster='{{video_url}}' src='{{video_url}}' style='border-radius:12rpx 12rpx 0px 0px;                '></video>
+          </block>            
+
+          <view class='bg-white' style='border-radius:0px 0px 12rpx 6px;'>
+            <view class="item-title-box">
+              <view class='row padRig-4 padLef-4 padTop-10'>
+                <text class='font-14 black line-ellipsis'>18新品质感绒面韩版时尚拼接百搭舒适……</text>
+              </view>
+
+              <view class="name">    
+                  <view class='flex flex-row'>
+                    <image class="avartor-img" src='{{img_link}}'></image>
+                    <view class='flex flex-column justify-between flex-item padLef-6'>
+                      <text class='font-10 black'>{{name}}</text>
+                      <text class='font-6 black'>{{region_name}} {{created_at}}</text>
+                    </view>
+
+                    <view class='flex row padRig-6'> 
+                      <view wx:if="{{item.is_followed}}" bindtap='onUnfollowBtnClick' data-index="{{index}}" class='follow-btn'>
+                        <image class='heart padRig-4' src='https://buyer.sm.afxclub.top/icon_like_red@2x.png'></image>
+                      </view>
+
+                      <view wx:else bindtap='onFollowBtnClick' data-index="{{index}}" class='follow-btn'>
+                        <image class="heart padRig-4" src='https://buyer.sm.afxclub.top/icon_like@2x.png'></image>
+                      </view>
+
+                      <view class='font-10 black'>{{id}}</view>
+                    </view>
+                  </view>
+                </view>
+            </view>
+          </view>
+        </view>
+      </template>
+    </block>
+
+    <block wx:if="{{2 == item.type}}">
+      <template name="item">
+        <view class="item">
+          <block wx:if="{{cover_img_link}}">
+            <navigator open-type='navigate' url="../Articlepage/Articlepage?type={{type}}&id={{id}}&buyer_id={{buyer_id}}">
+              <image class="item-img" src="{{cover_img_link}}" mode="widthFix" style='border-radius:12rpx 12rpx 0px 0px;'></image>
             </navigator>
           </block>
 
@@ -91,12 +178,8 @@
                 </view>
             </view>
           </view>
-        </view>
+        </view>  
       </template>
-    </block>
-
-    <block wx:if="{{2 == item.type}}">
-
     </block>
 
     <block wx:elif="{{3 == item.type}}">

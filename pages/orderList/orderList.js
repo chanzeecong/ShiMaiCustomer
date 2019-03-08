@@ -16,12 +16,12 @@ Page({
         label: `待付款`
       },
       {
-        id: 1,
-        label: `待发货`
-      },
-      {
         id: 2,
         label: `待收货`
+      },
+      {
+        id: 3,
+        label: `已完成`
       },
       {
         id: -1,
@@ -63,7 +63,6 @@ Page({
 
     this.setData({
       currentTab: currentTab,
-      borderTab: borderTab,
       scrollToLeft: scrollToLeft
     })
   },
@@ -145,7 +144,6 @@ Page({
     this.setData({
       currentTab: currentTab,
       scrollToLeft: scrollToLeft,
-      borderTab: [leftTab, rightTab],
       orderList: orderList
     })
   },

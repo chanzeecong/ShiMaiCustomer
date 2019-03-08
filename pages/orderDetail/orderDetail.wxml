@@ -5,7 +5,14 @@
 
     <block wx:if="{{-1 === orderDetail.status}}">
       <text class='font-18 white'>已取消</text>
-      <text class='font-12 white padTop-20'>取消原因：多拍</text>
+
+      <block wx:if='{{orderDetail.order_remark}}'>
+        <text class='font-12 white padTop-20'>{{orderDetail.order_remark}}</text>
+      </block>
+
+      <block wx:else>
+        <text class='font-12 white padTop-20'>本人申请取消</text>
+      </block>
     </block>
     <block wx:elif="{{0 === orderDetail.status}}">
       <text class='font-18 white'>未付款</text>
@@ -15,16 +22,16 @@
       </view>
     </block>
     <block wx:elif="{{1 === orderDetail.status}}">
-      <text class='font-18 white'>买家已付款</text>
-      <text class='font-12 white padTop-20'>包裹待发送</text>
+      <text class='font-18 white'>待发货</text>
+      <text class='font-12 white padTop-20'>商家正在积极备货中，请耐心等待</text>
     </block>
     <block wx:elif="{{2 === orderDetail.status}}">
       <text class='font-18 white'>已发货</text>
-      <text class='font-12 white padTop-20'>包裹待收货</text>
+      <text class='font-12 white padTop-20'>包裹已发货，请耐心等待</text>
     </block>
     <block wx:elif="{{3 === orderDetail.status}}">
       <text class='font-18 white'>已收货</text>
-      <text class='font-12 white padTop-20'>包裹已签收，期待您的下次光临</text>
+      <text class='font-12 white padTop-20'>交易已完成，期待您的下次光临</text>
     </block>
   </view>
 </view>

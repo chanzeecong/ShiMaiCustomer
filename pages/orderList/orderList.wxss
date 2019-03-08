@@ -1,6 +1,4 @@
 /* pages/orderList/orderList.wxss */
-
-/* pages/orderList/orderList.wxss */
 page {
   background-color: #f4f4f4;
 }
@@ -75,4 +73,9 @@ text {
   font-size:28rpx;
   font-family:Noto Sans S Chinese;
   color:rgba(0,0,0,1);
+}
+
+.clock{
+  width: 28rpx;
+  height: 28rpx;
 }
