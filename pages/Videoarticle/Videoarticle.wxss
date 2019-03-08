@@ -1,1 +1,111 @@
 /* pages/Videoarticle/Videoarticle.wxss */
+
+page {
+  background-color: #f4f4f4;
+}
+
+.bgWhite {
+  background-color: #fff;
+}
+
+.scroll-info {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  overflow: auto;
+}
+
+.avatar-icon {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.tag-wrapper {
+  height: 32rpx;
+  border: 2rpx solid rgba(244, 65, 104, 1);
+  border-radius: 4rpx;
+  padding: 0 10rpx;
+}
+
+button.follow-btn {
+  width: 100rpx;
+  height: 40rpx;
+  line-height: 40rpx;
+  background: rgba(244, 65, 104, 1);
+  border-radius: 20rpx;
+  font-size: 24rpx;
+  font-family: Noto Sans S Chinese;
+  padding: 0 20rpx;
+  border: none;
+  background: rgba(244, 65, 104, 1);
+  color: #fff;
+}
+
+.follow-btn {
+  width: 100rpx;
+  height: 40rpx;
+  line-height: 40rpx;
+  background: rgba(244, 65, 104, 1);
+  border-radius: 20rpx;
+  font-size: 24rpx;
+  font-family: Noto Sans S Chinese;
+  border: none;
+  background: rgba(244, 65, 104, 1);
+  color: #fff;
+  text-align: center;
+}
+
+.slide-image {
+  height: 750rpx;
+  width: 100%;
+}
+
+.icon-topic {
+  width: 32rpx;
+  height: 32rpx;
+}
+
+.browse-icon {
+  width: 60rpx;
+  height: 60rpx;
+  border-radius: 20rpx;
+}
+
+.icon-use {
+  width: 40rpx;
+  height: 36rpx;
+}
+
+.comment-avatar {
+  width: 70rpx;
+  height: 70rpx;
+  border-radius: 20rpx;
+}
+
+.icon-com {
+  width: 20rpx;
+  height: 16rpx;
+}
+
+.reply-content {
+  width: 596rpx;
+  height: 416rpx;
+  background-color: #f4f4f4;
+  margin-left: 90rpx;
+  margin-top: 20rpx;
+}
+
+.goTop {
+  width: 100rpx;
+  height: 108rpx;
+  position: fixed;
+  bottom: 50rpx;
+  right: 0;
+}
+.video-item {
+  width: 100%;
+  height: 1000rpx;
+}

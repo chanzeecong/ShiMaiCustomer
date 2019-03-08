@@ -36,6 +36,7 @@ Page({
   async onDailySign() {
     let status = await this.getDailySign();
     let message = await this.getUserInfo();
+
     console.log(message.is_sign)
 
     if (message.is_sign == '1') {
@@ -74,6 +75,24 @@ Page({
       })
     })
   },
+
+  getFollowList() {
+    return new Promise(resolve => {
+      wx.request({
+        url: `${app.hostName}followings`,
+        method: 'GET',
+        header: {
+          'Authorization': `Bearer ${app.token}`
+        },
+        dataType: 'json',
+        success: (res) => {
+          resolve(res.data.data);
+          console.log(res.data.data)
+        }
+      })
+    })
+  },
+  
   /**
    * 生命周期函数--监听页面隐藏
    */
@@ -105,10 +124,12 @@ Page({
   async initPageData() {
     let collect = await this.getUserCollection();
     let userInfo = await this.getUserInfo();
+    let follow = await this.getFollowList();
 
     this.setData({
       userInfo: userInfo,
-      collect: collect.length
+      collect: collect.length,
+      follow: follow.length,
     })
   },
 

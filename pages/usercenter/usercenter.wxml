@@ -25,7 +25,7 @@
         </view>
       </view>
 
-      <view class="user_text row" style='text-align:center;'>
+      <view class="user_text row padTop-10" style='text-align:center;'>
         <image class="icon_yin align-center" src='https://buyer.sm.afxclub.top/icon_yin@2x.png'></image>
         <view class='flex' wx:if="{{userInfo.signature.length === 0}}">
           <text class='font-10 gray'>这家伙很懒，但是还是留下了什么</text>
@@ -39,7 +39,7 @@
         <view class='flex justify-between'>
           <view class='padRig-40'>
             <navigator open-type='navigate' url='../userFollow/userFollow'>
-              <view class='font-12 deep flex justify-center'>10</view>
+              <view class='font-12 deep flex justify-center'>{{follow}}</view>
               <view class='font-12 padTop-10 deep'>我的关注</view>
             </navigator>
           </view>

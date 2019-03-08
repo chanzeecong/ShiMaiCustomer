@@ -223,6 +223,7 @@ Page({
       tagsList: tagsList,
       eassyList: eassyList,
     });
+    
     let self = this;
     wx.getSystemInfo({
       success: function (res) {

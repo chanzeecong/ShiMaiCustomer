@@ -4,7 +4,7 @@
 </block>
 
 
-<scroll-view class='scroll-info' scroll-y="{{isScroll}}" scroll-top='{{topNum}}' bindscroll="scrolltoupper" bindscrolltolower="loadMore" style='height:{{scrollHeight}}px;'>
+<scroll-view class='scroll-info' scroll-y="{{isScroll}}" scroll-top='{{topNum}}' bindscroll="scrolltoupper" style='height:{{scrollHeight}}px;' bindscrolltolower="loadMore">
 
   <view class='wrapper'>
     <view class='top_banner p-h-10pt bg-white'>
@@ -85,7 +85,9 @@
         </block>
 
         <block wx:else>
-          <video class="good-items" autoplay='' poster='{{video_url}}' src='{{video_url}}' style='border-radius:12rpx 12rpx 0px 0px;'></video>
+          <navigator open-type='navigate' url="../Videoarticle/Videoarticle?type={{type}}&id={{id}}&buyer_id={{buyer_id}}">
+            <video class="good-items" autoplay='' poster='{{video_url}}' src='{{video_url}}' style='border-radius:12rpx 12rpx 0px 0px;'></video>
+          </navigator>
         </block>
 
         <view class='bg-white' style='border-radius:0px 0px 12rpx 6px;'>
@@ -98,29 +100,29 @@
 
             <view class="name">
 
-          
-                <view class='flex flex-row'>
-                  <image class="avartor-img" src='{{img_link}}'></image>
-                  <view class='flex flex-column justify-between flex-item padLef-6'>
-                    <text class='font-10 black'>{{name}}</text>
-                    <text class='font-6 black'>{{region_name}} {{created_at}}</text>
+
+              <view class='flex flex-row'>
+                <image class="avartor-img" src='{{img_link}}'></image>
+                <view class='flex flex-column justify-between flex-item padLef-6'>
+                  <text class='font-10 black'>{{name}}</text>
+                  <text class='font-6 black'>{{region_name}} {{created_at}}</text>
+                </view>
+
+                <view class='flex row padRig-6'>
+                  <view wx:if="{{item.is_followed}}" bindtap='onUnfollowBtnClick' data-index="{{index}}" class='follow-btn'>
+                    <image class='heart padRig-4' src='https://buyer.sm.afxclub.top/icon_like_red@2x.png'></image>
                   </view>
 
-                  <view class='flex row padRig-6'> 
-                    <view wx:if="{{item.is_followed}}" bindtap='onUnfollowBtnClick' data-index="{{index}}" class='follow-btn'>
-                      <image class='heart padRig-4' src='https://buyer.sm.afxclub.top/icon_like_red@2x.png'></image>
-                    </view>
-
-                    <view wx:else bindtap='onFollowBtnClick' data-index="{{index}}" class='follow-btn'>
-                      <image class="heart padRig-4" src='https://buyer.sm.afxclub.top/icon_like@2x.png'></image>
-                    </view>
-
-                    <view class='font-10 black'>{{id}}</view>
+                  <view wx:else bindtap='onFollowBtnClick' data-index="{{index}}" class='follow-btn'>
+                    <image class="heart padRig-4" src='https://buyer.sm.afxclub.top/icon_like@2x.png'></image>
                   </view>
+
+                  <view class='font-10 black'>{{id}}</view>
                 </view>
               </view>
+            </view>
 
-           
+
           </view>
 
 
