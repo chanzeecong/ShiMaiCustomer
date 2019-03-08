@@ -149,10 +149,9 @@ Page({
     this.setData({
       currentTab: currentTab,
       scrollToLeft: scrollToLeft,
-      borderTab: [leftTab, rightTab],
       isShowAllTab: false,
       isScroll: true,
-      isShowMask: false,
+      isShowMask: false
     })
 
     this.showListFn(currentTab);
@@ -305,14 +304,9 @@ Page({
               icon: "none",
               title: '没有更多数据'
             });
-            that.setData({
-              hasMoreData: false
-            })
           } else {
             that.setData({
-              eassyList: that.data.eassyList.concat(list),
-              hasMoreData: true,
-              currentPage: that.data.currentPage + 1
+              eassyList: that.data.eassyList.concat(list)
             })
           }
           wx.hideLoading();

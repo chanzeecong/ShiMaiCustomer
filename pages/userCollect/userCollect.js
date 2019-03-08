@@ -26,11 +26,19 @@ Page({
     borderTab: [0, 3],
     scrollToLeft: 0,
     collectList:[],
+    is_on_sale: '',
+    isShow: false,
+    isShowMask: false,
 
     sortItems: [
-      { id: 2, value: '全部', checked: 'true' },
+      { id: '', value: '全部', checked: 'true'},
       { id: 1, value: '显示有货' },
-      { id: 0, value: '已下架' },
+      { id: 0, value: '已下架' }
+    ],
+    articleItems:[
+      { id: '', value: '全部', checked: 'true' },
+      { id: 1, value: '视频' },
+      { id: 0, value: '图文' },
     ]
   },
 
@@ -108,7 +116,37 @@ Page({
     }
 
     let status = this.data.tabList[currentTab].id;
-    let collectList = await this.getCollectList(status);
+    let is_on_sale = '';
+
+    if (status == 1) {
+      for (let i in this.data.sortItems) {
+        if (is_on_sale == this.data.sortItems[i].id) {
+          let changeSort = this.data.sortItems[i].value;
+
+          this.setData({
+            changeSort: changeSort
+          })
+
+          break;
+        }
+      }
+    }
+    else if (status == 2) {
+      for (let i in this.data.articleItems) {
+        if (is_on_sale == this.data.articleItems[i].id) {
+          let changeArticle = this.data.articleItems[i].value;
+
+          this.setData({
+            changeArticle: changeArticle
+          })
+
+          break;
+        }
+      }
+    }
+
+    console.log(status)
+    let collectList = await this.getCollectList(status, is_on_sale);
     console.log(collectList)
 
     if (collectList === undefined) {
@@ -149,30 +187,79 @@ Page({
     }, 500)
   },
 
-  sortChange(e) {
+  async sortChange(e) {
     console.log(e);
-    let change = sortItems.value;
+    let is_on_sale = e.detail.value;
+    let status = this.data.tabList[this.data.currentTab].id;
+    let collectList = await this.getCollectList(status, is_on_sale);
+    console.log(collectList)
+
+    if (collectList === undefined) {
+      collectList = [];
+    }
+
+    this.setData({
+      collectList: collectList
+    })
+
+    if(status == 1)
+    {
+      for (let i in this.data.sortItems) {
+        if (e.detail.value == this.data.sortItems[i].id) {
+          let changeSort = this.data.sortItems[i].value;
+
+          this.setData({
+            changeSort: changeSort
+          })
+
+          break;
+        }
+      }
+    }
+    else if(status == 2)
+    {
+      for (let i in this.data.articleItems) {
+        if (e.detail.value == this.data.articleItems[i].id) {
+          let changeArticle = this.data.articleItems[i].value;
+
+          this.setData({
+            changeArticle: changeArticle
+          })
+
+          break;
+        }
+      }
+    }
 
     this.hideSort();
+  },
+
+  onEditBtnClick(){
+
     this.setData({
-      
+      isShow:true
+    })
+  },
+
+  onCancelBtnClick() {
+
+    this.setData({
+      isShow: false
     })
   },
   
   
   async initPageData() {
-    let status = this.data.tabList[this.data.currentTab].id
-    console.log(status);
-
-    let collectList = await this.getCollectList(status);
-    console.log(collectList);
+    let status = this.data.tabList[this.data.currentTab].id;
+    let is_on_sale = '';
+    let collectList = await this.getCollectList(status, is_on_sale);
 
     this.setData({
       collectList: collectList,
     })
   },
 
-  getCollectList(status) {
+  getCollectList(status, is_on_sale) {
     return new Promise(resolve => {
       wx.request({
         url: `${app.hostName}userCollection`,
@@ -181,7 +268,8 @@ Page({
           'Authorization': `Bearer ${app.token}`
         },
         data:{
-          type: status
+          type: status,
+          is_on_sale: is_on_sale
         },
         dataType: 'json',
         success: (res) => {

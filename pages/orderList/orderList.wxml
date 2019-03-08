@@ -1,6 +1,6 @@
 <!--pages/orderList/orderList.wxml-->
 <scroll-view scroll-x="true" scroll-left="{{scrollToLeft}}rpx" scroll-with-animation="true">
-  <view class="row row-center underline bgWhite" style='justify-content:center;'>
+  <view class="row row-center underline bgWhite" style='width:150%;justify-content:center;'>
     <view bindtap="onTapClick" data-index='{{index}}' wx:for="{{tabList}}" wx:key="{{index}}" style='width:220rpx;' class='row row-center'>
       <view class='tab-wrapper row row-center {{index === currentTab? "active red" : "black"}}'>
         <text class='{{index === currentTab? "red font-16" : "black font-14"}}'>{{item.label}}</text>
@@ -22,9 +22,9 @@
 
     <view class='row row-between wrapper bgWhite magTop-10'>
       <navigator url='../myShop/myShop?id={{item.buyer_id}}' class='row'>
-        <image src='../../image/4.png' class='user_avartor'></image>
+        <image src='{{item.buyer_avatar}}' class='user_avartor'></image>
         <text class='font-14 black font-bold padLef-10'>{{item.buyer_name}}</text>
-        <image class='shop-icon' src='../../image/icon_arrow_right@2x.png'></image>
+        <!--<image class='shop-icon' src='https://buyer.sm.afxclub.top/icon_arrow_right@2x.png'></image>-->
       </navigator>
 
       <view class='row'>
@@ -38,10 +38,10 @@
           <text class='font-14 red padRig-10'>待发货</text>
         </block>
         <block wx:elif="{{2 === item.status}}">
-          <text class='font-14 red padRig-10'>待收货</text>
+          <text class='font-14 red padRig-10'>已发货</text>
         </block>
         <block wx:elif="{{3 === item.status}}">
-          <text class='font-14 grey padRig-10'>已取消</text>
+          <text class='font-14 grey padRig-10'>已完成</text>
         </block>
 
         <view class='line'></view>
@@ -80,10 +80,9 @@
 
     <view class='row row-between underline bgWhite magBot-10 padTop-10 padBot-10 padRig-16'>
       <view class='row'>
-      
         <block wx:if="{{0 === item.status}}">
-          <text class='font-12 grey padLef-20'>状态：</text>
-          <text class='font-12 red'>订单已关闭(24小时未付款关闭)</text>
+          <image class='clock padLef-20' src='https://buyer.sm.afxclub.top/icon_Countdown_red@2x.png'></image>
+          <text class='font-12 red'>支付剩余{{orderDetail.countDownHour}}时{{orderDetail.countDownMin}}分</text>
         </block>
     
       </view>
@@ -91,21 +90,29 @@
       <view class='row'>
 
         <block wx:if="{{-1 === item.status}}">
+          <button open-type='contact' class='btn font-14 black' plain='true' style='border:2rpx solid #EAEAEA;'>联系客服</button>
           <button bindtap='onBuyAgainBtnClick' data-attrId="{{item.buyer_good_attr_id}}" class='btn font-14 red magLef-10'>再次购买</button>
         </block>
         <block wx:elif="{{ 1 === item.status }}">
-          <button open-type='contact' class='btn font-14 black padBot-18' plain='true' style='border:2rpx solid #EAEAEA;'>售后服务</button>
+          <button open-type='contact' class='btn font-14 black padBot-18' plain='true' style='border:2rpx solid #EAEAEA;'>联系客服</button>
           <button bindtap='onExpressBtnClick' data-id="{{item.id}}" class='btn font-14 red magLef-10'>查看物流</button>
         </block>
 
-         <block wx:elif="{{0 === item.status}}">
+        <block wx:elif="{{0 === item.status}}">
+          <button open-type='contact' class='btn font-14 black padBot-18' plain='true' style='border:2rpx solid #EAEAEA;'>联系客服</button>
           <button bindtap='onPayBtnClick' data-id='{{item.id}}' class='btn font-14 red magLef-10'>去支付</button>
         </block>
 
         <block wx:elif="{{2 === item.status}}">
-          <button open-type='contact' class='btn font-14 black' plain='true' style='border:2rpx solid #EAEAEA;'>售后服务</button>
+          <button open-type='contact' class='btn font-14 black' plain='true' style='border:2rpx solid #EAEAEA;'>联系客服</button>
           <button bindtap='onExpressBtnClick' data-id="{{item.id}}" class='btn font-14 black magLef-10' plain='true' style='border:2rpx solid #EAEAEA;'>查看物流</button>
           <button bindtap='onConfirmOrderBtnClick' data-id="{{item.id}}" class='btn font-14 red magLef-10'>确认收货</button>
+        </block>
+
+        <block wx:elif="{{3 === item.status}}">
+          <button open-type='contact' class='btn font-14 black' plain='true' style='border:2rpx solid #EAEAEA;'>联系客服</button>
+          <button bindtap='onExpressBtnClick' data-id="{{item.id}}" class='btn font-14 black magLef-10' plain='true' style='border:2rpx solid #EAEAEA;'>查看物流</button>
+          <button bindtap='onBuyAgainBtnClick' data-attrId="{{item.buyer_good_attr_id}}" class='btn font-14 red magLef-10'>再次购买</button>
         </block>
       </view>
     </view>
