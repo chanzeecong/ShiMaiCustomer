@@ -81,10 +81,9 @@
     <view class='row row-between underline bgWhite magBot-10 padTop-10 padBot-10 padRig-16'>
       <view class='row'>
         <block wx:if="{{0 === item.status}}">
-          <image class='clock padLef-20' src='https://buyer.sm.afxclub.top/icon_Countdown_red@2x.png'></image>
-          <text class='font-12 red'>支付剩余{{orderDetail.countDownHour}}时{{orderDetail.countDownMin}}分</text>
+          <image class='clock padLef-2' src='https://buyer.sm.afxclub.top/icon_Countdown_red@2x.png'></image>
+          <text class='font-12 red'>支付截止{{item.order_pay_end_time}}</text>
         </block>
-    
       </view>
 
       <view class='row'>

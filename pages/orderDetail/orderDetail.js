@@ -79,7 +79,7 @@ Page({
       orderDetail: orderDetail
     })
 
-    if (0 === orderDetail.status) {
+   /* if (0 === orderDetail.status) {
       let date = orderDetail.created_at;
       let arr = date.split (` `);
       let arr0 = arr[0].split (`-`);
@@ -88,7 +88,7 @@ Page({
       console.log(arr0[0], arr0[1], Number(arr0[2]) + 5, arr1[0], arr1[1], 0)
 
       this.countDown(arr0[0], arr0[1], Number(arr0[2]) + 5, arr1[0], arr1[1], 0);
-    }
+    }*/
   },
 
   getOrderDetail() {
@@ -120,7 +120,7 @@ Page({
     })
   },
 
-  countDown(yy, MM, dd, hh, mm, ss) {
+  /*countDown(yy, MM, dd, hh, mm, ss) {
     let date = new Date(yy, MM, dd, hh, mm, ss);
 
     let deadlineTime = date.getTime();
@@ -157,7 +157,7 @@ Page({
       this.data.orderDetail.countDownMin = 0;
       this.data.orderDetail.countDownSec = 0;
     }
-  },
+  },*/
 
   onPayBtnClick () {
     new Promise(resolve => {

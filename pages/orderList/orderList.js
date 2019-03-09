@@ -31,7 +31,8 @@ Page({
     currentTab: 0,
     borderTab: [0, 3],
     scrollToLeft: 0,
-    orderList: []
+    orderList: [],
+    orderDetail: {}
   },
 
   /**
@@ -148,16 +149,73 @@ Page({
     })
   },
 
+  /*countDown(yy, MM, dd, hh, mm, ss) {
+    let date = new Date(yy, MM, dd, hh, mm, ss);
+
+    let deadlineTime = date.getTime();
+    let nowDate = new Date();
+    let nowTime = nowDate.getTime();
+    let distTime = deadlineTime - nowTime;
+
+    if (distTime > 0) {
+      let day = Math.floor(distTime / 1000 / 3600 / 24);
+      let hour = Math.floor(distTime / 1000 / 3600 % 24);
+      let minute = Math.floor(distTime / 1000 / 60 % 60);
+      let second = Math.floor(distTime / 1000 % 60);
+
+      day = (day <= 9) ? `0${day}` : day;
+      hour = (hour <= 9) ? `0${hour}` : hour;
+      minute = (minute <= 9) ? `0${minute}` : minute;
+      second = (second <= 9) ? `0${second}` : second;
+
+      for (let i in this.data.orderList) {
+        let orderDetail = this.data.orderList[i];
+
+        if (0 == orderDetail.status) {
+          orderDetail.countDownDay = day;
+          orderDetail.countDownHour = hour;
+          orderDetail.countDownMin = minute;
+          orderDetail.countDownSec = second;
+
+          this.setData({
+            orderDetail: orderDetail
+          })
+
+          setTimeout(() => {
+            this.countDown(yy, MM, dd, hh, mm, ss);
+          }, 1000);
+        }
+      }
+    } else {
+      orderDetail.countDownDay = 0;
+      orderDetail.countDownHour = 0;
+      orderDetail.countDownMin = 0;
+      orderDetail.countDownSec = 0;
+    }
+  },*/
+
   async initPageData() {
-    console.log(this.data.tabList);
-    console.log(this.data.currentTab);
     let status = this.data.tabList[this.data.currentTab].id
-    console.log(status);
     let orderList = await this.getOrderList(status);
-    console.log(orderList);
+
     this.setData({
       orderList: orderList,
     })
+
+    for (let i in orderList) {
+      let orderDetail = orderList[i];
+
+      if (0 === orderDetail.status) {
+        let date = orderDetail.created_at;
+        let arr = date.split(` `);
+        let arr0 = arr[0].split(`-`);
+        let arr1 = arr[1].split(`:`);
+
+        console.log(arr0[0], arr0[1], Number(arr0[2]) + 5, arr1[0], arr1[1], 0)
+
+        this.countDown(arr0[0], arr0[1], Number(arr0[2]) + 5, arr1[0], arr1[1], 0);
+      }
+    }    
   },
 
   getOrderList(status) {

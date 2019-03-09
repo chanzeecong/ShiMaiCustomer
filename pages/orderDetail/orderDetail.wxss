@@ -99,3 +99,15 @@ button.btn {
   width: 30rpx;
   height: 30rpx;
 }
+.btnTax{
+  min-width:160rpx;
+  line-height: 2;
+  height:60rpx;
+  border-radius:46rpx;
+  background:#fff;
+  opacity:1;
+  font-size:32rpx;
+  font-family:Noto Sans S Chinese;
+  color:rgba(244,65,104,1);
+  border:1px solid rgba(244,65,104,1);
+}

@@ -58,19 +58,19 @@
     </navigator>
 
     <view class='section-body flex flex-row'>
-      <navigator url='../orderList/orderList?tab=1' open-type='navigate' class='flex-item'>
+      <navigator url='../orderList/orderList?tab=2' open-type='navigate' class='flex-item'>
         <view class='icon-btn-box'>
           <view class='icon-order-btn' style='background-image:url(https://buyer.sm.afxclub.top/icon_payment@2x.png);'></view>
         </view>
         <view class='center_text font-14pt sub_text_color2'>待发货</view>
       </navigator>
-      <navigator url='../orderList/orderList?tab=3' open-type='navigate' class='flex-item'>
+      <navigator url='../orderList/orderList?tab=2' open-type='navigate' class='flex-item'>
         <view class='icon-btn-box'>
           <view class='icon-order-btn' style='background-image:url(https://buyer.sm.afxclub.top/icon_receipt@2x.png);'></view>
         </view>
         <view class='center_text font-14pt sub_text_color2'>待收货</view>
       </navigator>
-      <navigator url='../orderList/orderList?tab=4' open-type='navigate' class='flex-item'>
+      <navigator url='../orderList/orderList?tab=3' open-type='navigate' class='flex-item'>
         <view class='icon-btn-box'>
           <view class='icon-order-btn' style='background-image:url(https://buyer.sm.afxclub.top/icon_completed@2x.png);'></view>
         </view>
