@@ -25,13 +25,9 @@
     "pages/userCollect/userCollect",
     "pages/myordernotice/myordernotice",
     "pages/Articlepage/Articlepage",
-    "pages/Videoarticle/Videoarticle",
+    "pages/VideoGoods/VideoGoods",
     "pages/Allcomments/Allcomments",
-<<<<<<< HEAD
-    "pages/helpCenter/helpCenter"
-=======
     "pages/Modifydata/Modifydata"
->>>>>>> 28391eee81b51a13ed235e05db1bc1d18f27c211
   ],
   "window": {
     "backgroundTextStyle": "light",

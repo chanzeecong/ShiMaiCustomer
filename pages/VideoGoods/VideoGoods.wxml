@@ -1,0 +1,265 @@
+<!--pages/Videoarticle/Videoarticle.wxml-->
+<scroll-view scroll-y="{{isScroll}}" scroll-top='{{topNum}}' class='scroll-info' bindscroll="scrolltoupper" style='height:{{scrollHeight}}px;'>
+  <block wx:if="{{detailList !== 0}}">
+    <view wx:for="{{detailList}}" wx:key="{{index}}">
+      <view class='row row-between padTop-12 padRig-16 padLef-16 padBot-10 bgWhite'>
+
+        <view class='row' style='align-items:flex-start;'>
+
+          <view class='row padRig-10'>
+            <image class='avatar-icon' mode="aspectFill" src='{{item.img_link}}'></image>
+          </view>
+
+          <view class='col-left'>
+            <view class='row'>
+              <text class='font-18 black padRig-10 font-bold'>{{item.name}}</text>
+              <view class='row row-center tag-wrapper'>
+                <text class='font-10 red'>{{item.tag_name}}</text>
+              </view>
+            </view>
+            <text class='font-10 grey padTop-5'>{{item.region_name}} {{item.created_at}}</text>
+          </view>
+
+        </view>
+        <!-- 关注 -->
+        <view wx:if="{{is_followed}}" bindtap='onUnfollowBtnClick' class='follow-btn' style='background:rgba(0,0,0,.4);'>已关注</view>
+        <view wx:else bindtap='onFollowBtnClick' class='follow-btn'>+关注</view>
+      </view>
+
+      <block wx:if="{{item.video_url !== 0}}">
+        <video class='video-item' autoplay='' poster='{{item.video_url}}' src='{{item.video_url}}' objectFit='cover'></video>
+      </block>
+      <block wx:elif="{{item.essay_img_link !== 0}}">
+        <!-- 轮播 -->
+        <swiper indicator-dots="{{indicatorDots}}" circular="{{circular}}" class='slide-image'>
+          <block wx:for="{{detailList[0].essay_img_link}}" wx:key="{{index}}">
+            <swiper-item>
+              <image src="{{item}}" mode="aspectFill" style='width:100%;height:750rpx;' />
+            </swiper-item>
+          </block>
+        </swiper>
+      </block>
+
+      <!-- 抢购 -->
+      <view class='padLef-16 padRig-16 padTop-20 bg-white'>
+        <view class='row row-between'>
+
+          <view class='row' style='align-items:flex-start;'>
+            <view class='col-left'>
+              <view class='row'>
+                <text class='recommend-tag font-12 flex align-center justify-center'>{{item.tag_name}}</text>
+                <text class='padLef-8 font-26 black'>￥{{item.good_price}}</text>
+              </view>
+            </view>
+          </view>
+
+          <!-- 倒计时 -->
+          <block wx:if="{{item.end_time}}">
+            <view class='row' style='align-items:flex-end;'>
+              <view class='row padLef-5'>
+                <view class='row row-center countDown-wrapper'>
+                  <text class='font-11 white'>{{item.countDownDay}}</text>
+                </view>
+                <text class='font-11 red padLef-5 padRig-5'>:</text>
+                <view class='row row-center countDown-wrapper'>
+                  <text class='font-11 white'>{{item.countDownHour}}</text>
+                </view>
+                <text class='font-11 red padLef-5 padRig-5'>:</text>
+                <view class='row row-center countDown-wrapper'>
+                  <text class='font-11 white'>{{item.countDownMin}}</text>
+                </view>
+                <text class='font-11 red padLef-5 padRig-5'>:</text>
+                <view class='row row-center countDown-wrapper'>
+                  <text class='font-11 white'>{{item.countDownSec}}</text>
+                </view>
+              </view>
+            </view>
+          </block>
+          <block wx:else>
+            <view></view>
+          </block>
+        </view>
+        <view class='magTop-20'>
+          <view class='padTop-15 topline'>
+            <text class='fz-18 black font-bold'>{{item.essay_title}}</text>
+          </view>
+          <view class='padTop-18'>
+            <text class='fz-14 ' style='color:rgba(0,0,0,0.60);line-height:48rpx;'>一直以来，音乐的加入，都可以让运动的过程变得更加快乐，前提是有一款好用的耳机，而要达到无拘无束的体验，传统的有线耳机当然是直接淘汰的，那么蓝牙运动耳机自然是更受欢迎了，这其中，真无线耳机由于彻底摆脱了线材的束缚，在使用中相对普通蓝牙耳机来说就更加方便了，专注于运动耳机领域的缤特力最近就发布了这么一款蓝牙真无线运动耳机，不仅颜值高，而且功能齐全，还可以通过APP进行自定义设置，可玩性也是提高了不少。</text>
+          </view>
+
+        </view>
+
+      </view>
+
+
+
+      <!-- 商品部分 -->
+      <view class='magTop-10'>
+        <view class='bg-white h-46 padTop-20 padLef-16 padRig-16'>
+          <text class='font-16 black'>其他商品</text>
+        </view>
+
+
+        <view class='h-140 bg-white padLef-16 padRig-16'>
+          <view class='row bg-white' style='align-items:flex-start;'>
+            <view class='row padRig-10'>
+              <image class='goods-item' mode="aspectFill" src='https://img.sm.afxclub.top/essays20181203b36421f12649ebe0852c670fd8f387ab.jpg'></image>
+            </view>
+
+            <view class='flex flex-column'>
+              <view class='row'>
+                <text class='font-14 black padRig-10 font-bold'>18新品质感绒面韩版时尚拼接百搭舒适……</text>
+              </view>
+              <text class='font-16 red padTop-20'>抢购价99元</text>
+              <view class='row row-between padTop-20'>
+                <view class='row' style='align-items:flex-start;'>
+                  <view class='col-left'>
+                    <view class='row'>
+                      <text class='font-10 low'>识买精选 | 2018-12-12</text>
+                    </view>
+                  </view>
+                </view>
+
+                <view class='row'>
+                  <image class="icon-watch" src='../../assets/icon/icon_browse@2x.png' mode="aspectFill"></image>
+                  <text class='padLef-5 font-10' style='color:rgba(0,0,0,0.60);'>15621</text>
+                </view>
+              </view>
+            </view>
+
+          </view>
+        </view>
+
+
+        <view class='h-140 bg-white padLef-16 padRig-16 topline padTop-13'>
+          <view class='row bg-white' style='align-items:flex-start;'>
+            <view class='row padRig-10'>
+              <image class='goods-item' mode="aspectFill" src='https://img.sm.afxclub.top/essays20181203b36421f12649ebe0852c670fd8f387ab.jpg'></image>
+            </view>
+
+            <view class='flex flex-column'>
+              <view class='row'>
+                <text class='font-14 black padRig-10 font-bold'>18新品质感绒面韩版时尚拼接百搭舒适……</text>
+              </view>
+              <text class='font-16 red padTop-20'>抢购价99元</text>
+              <view class='row row-between padTop-20'>
+
+                <view class='row' style='align-items:flex-start;'>
+                  <view class='col-left'>
+                    <view class='row'>
+                      <text class='font-10 low'>识买精选 | 2018-12-12</text>
+                    </view>
+                  </view>
+                </view>
+
+                <view class='row'>
+                  <image class="icon-watch" src='../../assets/icon/icon_browse@2x.png' mode="aspectFill"></image>
+                  <text class='padLef-5 font-10' style='color:rgba(0,0,0,0.60);'>15621</text>
+                </view>
+              </view>
+            </view>
+
+          </view>
+        </view>
+
+        <view class='h-140 bg-white padLef-16 padRig-16 topline padTop-13'>
+          <view class='row bg-white' style='align-items:flex-start;'>
+            <view class='row padRig-10'>
+              <image class='goods-item' mode="aspectFill" src='https://img.sm.afxclub.top/essays20181203b36421f12649ebe0852c670fd8f387ab.jpg'></image>
+            </view>
+
+            <view class='flex flex-column'>
+              <view class='row'>
+                <text class='font-14 black padRig-10 font-bold'>18新品质感绒面韩版时尚拼接百搭舒适……</text>
+              </view>
+              <text class='font-16 red padTop-20'>抢购价99元</text>
+              <view class='row row-between padTop-20'>
+
+                <view class='row' style='align-items:flex-start;'>
+                  <view class='col-left'>
+                    <view class='row'>
+                      <text class='font-10 low'>识买精选 | 2018-12-12</text>
+                    </view>
+                  </view>
+                </view>
+
+                <view class='row'>
+                  <image class="icon-watch" src='../../assets/icon/icon_browse@2x.png' mode="aspectFill"></image>
+                  <text class='padLef-5 font-10' style='color:rgba(0,0,0,0.60);'>15621</text>
+                </view>
+              </view>
+            </view>
+
+          </view>
+        </view>
+
+      </view>
+
+
+
+      <!-- 底部 -->
+      <view class="padRig-16 padLef-16 bg-white h-50 magTop-70 row align-center">
+        <view class='row'>
+          <image catchtap="Likebtn" wx:if="{{!isLike}}" class="icon-use" src='../../assets/icon/icon_like_gray@2x.png'></image>
+          <image catchtap="Likebtn" wx:if="{{isLike}}" class="icon-use" src='../../assets/icon/icon_like_red@2x.png'></image>
+          <text class='font-10 low padLef-10'>{{item.id}}</text>
+
+
+          <!-- 收藏  -->
+          <image catchtap='handleCollection' wx:if="{{!isCollected}}" class='icon-use padLef-40' src='../../assets/icon/icon_Collection_gray@2x.png'></image>
+          <image catchtap='UnhandleCollection' wx:if="{{isCollected}}" class='icon-use padLef-40' src='../../assets/icon/icon_Collection_red@2x.png'></image>
+
+          <image class='icon-use padLef-41' src='../../assets/icon/icon_Reply_gray@2x.png'></image>
+
+        </view>
+        <view class='row'>
+          <button class='buy-btn magLef-90' bindtap='buyGoods'>立即购买</button>
+        </view>
+
+        <view class='commodity_screen' wx:if="{{showModalStatus}}"></view>
+        <view animation="{{animationData}}" class="commodity_attr_box" wx:if="{{showModalStatus}}">
+          <view class='flex flex-row item-group'>
+            <image class='list-img' src='https://img.sm.afxclub.top/essays20181203b36421f12649ebe0852c670fd8f387ab.jpg'></image>
+            <view class='list-info flex-item flex flex-column justify-between padLef-10'>
+              <view class='row justify-between'>
+                <text class='font-18 red'>￥{{item.good_price}}</text>
+                <image class='icon-close padRig-16' bindtap="hideModal" src='../../assets/icon/icon_cancel01@2x.png'></image>
+              </view>
+              <text class='font-12' style='color:rgba(102,102,102,1);'>{{item.essay_title}}</text>
+              <view class='font-12' style='color:rgba(153,153,153,1);'>已选{{list.name}}</view>
+            </view>
+          </view>
+          <view class='flex flex-column padLef-16 padTop-30'>
+            <text class='font-16 font-bold black'>规格</text>
+            <view class='type'>
+              <text wx:for="{{item.good_attributes}}" wx:key="{{index}}" wx:for-item="list" class="{{list.isChoose ?'active':'text'}}" data-index="{{index}}" data-id="{{item.id}}" data-gg='{{list.id}}'  bindtap="filter">{{list.name}}</text>
+            </view>
+          </view>
+
+          <view class='row row-between padLef-16 padRig-16 padTop-40 padBot-10 padRig-10 bgWhite'>
+            <text class='font-16 font-bold black'>购买数量</text>
+            <view class='row padTop-40'>
+              <view bindtap='bindMinus'  class='row row-center rect {{minusStatus}}'>
+                <view class='sub-sign'></view>
+              </view>
+
+              <input bindinput="bindManual" maxlength='1' value="{{amount}}" class='amount-input' type="number"></input>
+
+              <view bindtap='bindPlus' class='row row-center rect'>
+                <image class='icon-add' src='https://buyer.sm.afxclub.top/icon_delete@2x.png' style='transform:rotate(45deg);'></image>
+              </view>
+            </view>
+          </view>
+          <view class='row'>
+            <button class='confirm-btn magTop-30' data-index="{{index}}" bindtap='confirm_buy'>确定</button>
+          </view>
+        </view>
+      </view>
+    </view>
+
+
+
+
+  </block>
+  <image src='https://buyer.sm.afxclub.top/icon_top@2x.png' mode='aspectFill' class='goTop' hidden='{{!floorstatus}}' bindtap="goTop"></image>
+</scroll-view>

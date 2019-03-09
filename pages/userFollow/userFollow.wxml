@@ -14,10 +14,8 @@
         </view>
 
         <view class='flex flex-column justify-around'>
-          <!-- <view wx:if="{{is_followed}}" data-id="{{item.id}}" bindtap='onUnfollowBtnClick' class='font-12 low'>已关注</view>
-          <view wx:else  data-id="{{item.id}}" bindtap='onFollowBtnClick'>关注</view> -->
-          <view wx:if="{{is_followed}}" bindtap='onUnfollowBtnClick' data-id='{{item.id}}' class='font-12 low'>已关注</view>
-          <view wx:else bindtap='onFollowBtnClick' data-id='{{item.id}}' class='font-12 red'>关注</view>
+          <view wx:if="{{item.is_followed}}" data-id="{{item.id}}" bindtap='onUnfollowBtnClick' class='font-12 low'>已关注</view>
+          <view wx:else  data-id="{{item.id}}" bindtap='onFollowBtnClick'>关注</view>
         </view>
 
       </view>
