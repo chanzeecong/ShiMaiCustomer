@@ -11,15 +11,27 @@ Page({
     manageActive: false,
     isShowMask: false,
     currentPage: 1,
+    scrollHeight: 0,
     activeCheckBox: '',
     goodList: [],
+    hasMoreData: true,
+    foot_id: ``,
+    is_recommend: 1,
+    pageSize: 2,
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-
+    let self = this;
+    wx.getSystemInfo({
+      success: function(res) {
+        self.setData({
+          scrollHeight: res.windowHeight
+        })
+      }
+    })
   },
 
   /**
@@ -38,13 +50,16 @@ Page({
 
   async initPageData() {
     let goodList = await this.goodList();
+
     console.log(goodList);
 
     this.setData({
       goodList: goodList,
     });
   },
+
   goodList(page = '') {
+    var that = this;
     return new Promise(resolve => {
       wx.request({
         url: `${app.hostName}getFootPrintList`,
@@ -58,6 +73,23 @@ Page({
         dataType: 'json',
         success: (res) => {
           resolve(res.data.data);
+          var list = res.data.data;
+          if (res.data.data.length < this.data.pageSize) {
+            wx.showToast({
+              icon: "none",
+              title: '没有更多数据'
+            });
+            that.setData({
+              hasMoreData: false
+            })
+          } else {
+            that.setData({
+              goodList: that.data.goodList.concat(list),
+              hasMoreData: true,
+              currentPage: that.data.currentPage + 1
+            })
+          }
+          wx.hideLoading();
         }
       })
     })
@@ -134,5 +166,18 @@ Page({
    */
   onShareAppMessage: function() {
 
-  }
+  },
+  loadMore() {
+    if (this.data.hasMoreData) {
+      this.goodList()
+      wx.showLoading({
+        title: '在加载啦',
+      })
+    } else {
+      wx.showToast({
+        icon: "none",
+        title: '都没有了你还想咋地'
+      })
+    }
+  },
 })

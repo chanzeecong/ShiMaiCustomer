@@ -1,4 +1,6 @@
 <!--pages/buyer/buyer.wxml-->
+<scroll-view scroll-y="{{isScroll}}" scroll-top='{{topNum}}' bindscroll="scrolltoupper" style='height:{{scrollHeight}}px;'>
+
 <view class='wrapper'>
 
   <navigator open-type='navigate' url='../search_buyer/search_buyer' class='search-wrapper bg-white'>
@@ -12,23 +14,25 @@
 
   <scroll-view class='bg-white' scroll-into-view="{{toView}}" scroll-x scroll-with-animation="true" bindscroll="scroll"  bindscrolltoupper='toUpper' bindscrolltolower='toLower' upper-threshold='50' lower-threshold='50' style='white-space:nowrap;'>
 
-    <view id='{{list.id}}' class='buyer-item' wx:for="{{hotList}}" wx:for-item="list" wx:for-index="listidx"  wx:key="{{listidx}}">
+    <view  class='buyer-item' wx:for="{{hotList}}" wx:for-item="list" wx:for-index="listidx" wx:key="{{listidx}}">
       <view class='item-sign'>HOT</view>
       <view class='item-content'>
         <view class='flex flex-row'>
-          <image class='buyer_img' mode='aspectFill' src='{{list.img}}'></image>
+          <image class='buyer_img' mode='aspectFill' src='{{list.img_link}}'></image>
           <view class='buyer_info'>
             <text class='buyer_title'>{{list.name}}</text>
-            <text>地区：{{list.area}}</text>
+            <text>地区：{{list.region_name}}</text>
+            
           </view>
         </view>
         <view class='flex flex-row buyer-badges'>
-          <view class='badges-item' wx:for='{{list.badge}}' wx:for-index="cidx" wx:key="{{cidx}}" wx:for-item="child">
+          <view class='badges-item' wx:for='{{list.tag}}' wx:for-index="cidx" wx:key="{{cidx}}" wx:for-item="child">
             {{child}}
           </view>
         </view>
-        <view class='buyer-action padBot-20'>
-          <button class='buyer-focus'>关注Ta</button>
+        <view class='buyer-action padBot-20' >
+          <view wx:if="{{is_followed}}" bindtap='onUnfollowBtnClick' class='buyer-focus' style='background:rgba(0,0,0,.4);box-shadow:none;'>已关注</view>
+          <view wx:else bindtap='OnfollowBtnClick' class='buyer-focus' data-id="{{list.id}}">关注ta</view>
         </view>
       </view>
     </view>
@@ -41,3 +45,6 @@
     </navigator>
   </view>
 </view>
+
+<image src='https://buyer.sm.afxclub.top/icon_top@2x.png' mode='aspectFill' class='goTop' hidden='{{!floorstatus}}' bindtap="goTop"></image>
+</scroll-view>

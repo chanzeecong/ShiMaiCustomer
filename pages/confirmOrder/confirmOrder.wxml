@@ -1,0 +1,101 @@
+<navigator url='../addrList/addrList?attrId={{attrId}}&currentAddr={{addrId}}' class="row row-between padLef-16 padRig-16 padBot-20 padTop-20 bgWhite">
+  <block wx:if="{{defaultAddr}}">
+    <view class='col-left'>
+      <view class="row">
+        <text class='font-14 black font-bold'>{{defaultAddr.receiver_name}}</text>
+        <text class='font-14 black font-bold padLef-5'>{{defaultAddr.phone}}</text>
+      </view>
+      <text class='font-12 grey padTop-10'>收货地址：{{defaultAddr.region}} {{defaultAddr.address}}</text>
+    </view>
+  </block>
+  <block wx:else>
+    <text class='font-16 black'>未设置默认地址，请选择一个收货地址</text>
+  </block>
+
+  <image class='arrow-icon' src='https://buyer.sm.afxclub.top/icon_arrow_right@2x.png'></image>
+</navigator>
+
+<view class='row bgWhite'>
+  <image src='https://buyer.sm.afxclub.top/icon_line@2x.png' style='width:110%;height:20rpx;margin-left:-10rpx;'></image>
+</view>
+
+<view class='row padTop-10 padBot-10 padLef-16 padRig-16 magTop-10 bgWhite underline'>
+  <image class='icon' src='https://buyer.sm.afxclub.top/icon_store@2x.png'></image>
+  <text class='font-16 black font-bold padLef-10'>{{goodDetail.buyer_name}}</text>
+</view>
+
+<view class='row row-between padLef-16 padRig-16 padTop-20 padBot-20 bgWhite underline'>
+  <view class='row' style='align-items:flex-start;'>
+    <view class='row'>
+      <image class='production-img' mode='aspectFill' src='{{goodDetail.good_img}}'></image>
+    </view>
+    <view class='col-left padLef-10' >
+      <text class='text-ellipsis font-14 black'>{{goodDetail.good_name}}</text>
+      <text class='font-12 grey' >{{goodDetail.good_attr_name}}</text>
+    </view>
+  </view>
+  
+  <view class='col-right padLef-10' style='align-self:flex-end;'>
+    <view class='row row-between' style='width:100%;'>
+      <view></view>
+      <text class='font-12 grey'>X{{amount}}</text>
+    </view>
+    <text class='font-14 grey'>￥{{goodDetail.price}}</text>
+  </view>
+</view>
+
+<view class='row row-between padLef-16 padRig-16 padTop-10 padBot-10 padRig-10 underline bgWhite'>
+  <text class='font-14 black'>数量</text>
+  <view class='row'>
+    <view bindtap='onCutCountBtnClick' class='row row-center rect'>
+      <view class='sub-sign'></view>
+    </view>
+
+    <input bindinput="onOrderAmounctInput" maxlength='1' value="{{amount}}" class='amount-input' type="number"></input>
+
+    <view bindtap='onAddCountBtnClick' class='row row-center rect'>
+      <image class='icon' src='https://buyer.sm.afxclub.top/icon_delete@2x.png' style='transform:rotate(45deg);'></image>
+    </view>
+  </view>
+</view>
+
+<view class='row row-between padLef-16 padRig-16 padTop-10 padBot-10 padRig-10 underline bgWhite'>
+  <text class='font-14 black'>运费</text>
+  <text class='font-14 grey'>￥{{goodDetail.transportation_costs}}</text>
+</view>
+
+<view class='row row-between padLef-16 padRig-16 padTop-10 padBot-10 padRig-10 underline bgWhite'>
+  <text class='font-14 black'>税费</text>
+  <text class='font-14 grey'>￥{{goodDetail.tax_fee}}</text>
+</view>
+
+<!-- <view class='row row-between padLef-16 padRig-16 padTop-10 padBot-10 padRig-10 underline bgWhite'>
+  <text class='font-14 black'>使用红包</text>
+  <view class='row'>
+    <text class='font-14 red'>￥{{packageInfo.name}}</text>
+    <image class='arrow-icon padLef-5' src='https://buyer.sm.afxclub.top/icon_arrow_right@2x.png'></image>
+  </view>
+</view> -->
+
+<view class='row padLef-16 padRig-16 padTop-10 padBot-10 padRig-10 underline bgWhite'>
+  <text class='font-14 black' style='white-space:nowrap;'>买家留言</text>
+  <input bindinput='onCommentInput' class='font-14 black magLef-10' placeholder='选填，可填写对卖家的要求，最多50个字符' placeholder-class='font-12 grey' style='width:100%;' maxlength='50'></input>
+</view>
+
+<view class='row row-between padLef-16 padRig-16 padTop-10 padBot-10 padRig-10 underline bgWhite'>
+  <view></view>
+  <view class='row'>
+    <text class='font-16 black font-bold'>共{{amount}}件商品 合计</text>
+    <text class='font-16 red font-bold'>￥{{totalPrice}}元</text>
+  </view>
+</view>
+
+<view class='fixed row row-between h-50 bgWhite'>
+  <view class='row padLef-16'>
+    <text class='font-14 black font-bold'>实付款：</text>
+    <text class='font-14 red font-bold'>￥{{totalPrice}}元</text>
+  </view>
+
+  <button bindtap='onPaidBtnClick' class='btn' plain>确认支付</button>
+
+</view>

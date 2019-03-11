@@ -1,41 +1,35 @@
 <!--pages/userFollow/userFollow.wxml-->
-<block>
-  <view class='follow-list magTop-10 bg-white magRig-16 magLef-16'>
-    <view class='flex flex-row p-v-10pt section-padding'>
-      <view class='buyer_avatar' style='background-image:url(https://buyer.sm.afxclub.top/4.png)'></view>
-      <view class='flex flex-column justify-between flex-item'>
-        <text class='font-14pt font-bold'>Janglingking</text>
-        <view class='flex flex-row'>
-          <image class="follow-pos" src='https://buyer.sm.afxclub.top/icon_position@2x.png'></image>
-          <text class='font-11 socolor'>韩国Suwon</text>
+<block wx:if="{{followList.length !== 0}}">
+  <view wx:for="{{followList}}" wx:for-index="listidx" wx:key="{{listidx}}">
+    <view class='follow-list magTop-10 bg-white magRig-16 magLef-16'>
+      <view class='flex flex-row p-v-10pt section-padding'>
+        <!-- <view class='buyer_avatar' style='background-image:url({{list.img_link}})'></view> -->
+        <image class='buyer_avatar' src='{{item.img_link}}'></image>
+        <view class='flex flex-column justify-between flex-item'>
+          <text class='font-14pt font-bold'>{{item.name}}</text>
+          <view class='flex flex-row'>
+            <image class="follow-pos" src='https://buyer.sm.afxclub.top/icon_position@2x.png'></image>
+            <text class='font-11 socolor'>{{item.region_name}}</text>
+          </view>
         </view>
-      </view>
-      <view class='flex flex-column justify-around'>
-        <view class='font-12 low'>已关注</view>
+
+        <view class='flex flex-column justify-around'>
+          <view wx:if="{{item.is_followed}}" data-id="{{item.id}}" bindtap='onUnfollowBtnClick' class='font-12 low'>已关注</view>
+          <view wx:else  data-id="{{item.id}}" bindtap='onFollowBtnClick'>关注</view>
+        </view>
+
       </view>
     </view>
-  </view>
 
-  <view class='follow-list magTop-10 bg-white magRig-16 magLef-16'>
-    <view class='flex flex-row p-v-10pt section-padding'>
-      <view class='buyer_avatar' style='background-image:url(https://buyer.sm.afxclub.top/4.png)'></view>
-      <view class='flex flex-column justify-between flex-item'>
-        <text class='font-14pt font-bold'>Janglingking</text>
-        <view class='flex flex-row'>
-          <image class="follow-pos" src='https://buyer.sm.afxclub.top/icon_position@2x.png'></image>
-          <text class='font-11 socolor'>韩国Suwon</text>
-        </view>
-      </view>
-      <view class='flex flex-column justify-around'>
-        <view class='font-12 low'>已关注</view>
-      </view>
-    </view>
-  </view>
 
+  </view>
 </block>
 
-
-<block>
-
-
+<block wx:else>
+  <view class='row row-center magTop-100'>
+    <image src='../../assets/icon/img_No-message@2x.png' style='width:400rpx;height:340rpx;'></image>
+  </view>
+  <view class='row row-center padTop-20'>
+    <text class='font-16' style='color:rgba(0,0,0,0.40);'>您还没有关注任何人哦</text>
+  </view>
 </block>

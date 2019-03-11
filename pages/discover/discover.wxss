@@ -290,7 +290,7 @@
 
 
 .content{
-  margin: 60rpx 20rpx;
+  margin: 20rpx 20rpx;
   text-align: justify; 
 }  
 .item{

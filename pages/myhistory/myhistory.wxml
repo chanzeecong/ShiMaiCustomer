@@ -1,5 +1,5 @@
 <!--pages/myhistory/myhistory.wxml-->
-<scroll-view scroll-y="true">
+<scroll-view scroll-y="true" bindscrolltolower="loadMore" style='height:{{scrollHeight}}px;'>
   <block wx:if='{{goodList.length !== 0}}'>
     <view class='wrapper'>
       <view class='p-h-20pt font-14pt sub_text_color2 p-v-10pt bg-white' wx:if='{{!manageActive}}' bindtap='toggleManage' style='text-align:right'>管理</view>
@@ -27,14 +27,14 @@
           </block>
 
           <block wx:elif="{{type === 2}}">
-            <video class="good-items" autoplay='' poster='{{video_url}}' src='{{video_url}}' style='border-radius:12rpx 12rpx 0px 0px;'></video>
-            <!-- <image class="item-img" src="{{cover_img_link}}" mode="widthFix" style='border-radius:12rpx 12rpx 0px 0px;'></image> -->
+            <!-- <video class="good-items" autoplay='' poster='{{video_url}}' src='{{video_url}}' style='border-radius:12rpx 12rpx 0px 0px;'></video> -->
+            <image class="item-img" src="{{cover_img_link}}" mode="widthFix" style='border-radius:12rpx 12rpx 0px 0px;'></image>
           </block>
 
           <view class="item-title-box bg-white">
 
             <view class='row padRig-4 padLef-4 padTop-10'>
-              <text class='font-14 black line-ellipsis'>18新品质感绒面韩版时尚拼接百搭舒适……</text>
+              <text class='font-14 black line-ellipsis'>{{essay_title}}</text>
             </view>
 
 
@@ -62,6 +62,7 @@
               </view>
             </view>
 
+            <image class='icon-check' src='../../assets/icon/icon_choose@2x.png'></image>
           </view>
         </view>
       </template>

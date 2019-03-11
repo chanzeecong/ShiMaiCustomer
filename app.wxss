@@ -553,6 +553,9 @@ page{
 .padLef-6 {
   padding-left: 12rpx;
 }
+.padLef-8 {
+  padding-left: 16rpx;
+}
 .padLef-10 {
   padding-left: 20rpx;
 }
@@ -601,7 +604,9 @@ page{
 .padLef-81 {
   padding-left: 162rpx;
 }
-
+.padLef-109 {
+  padding-left: 218rpx;
+}
 .padLef-123 {
   padding-left: 220rpx;
 }
@@ -641,6 +646,9 @@ page{
 }
 .magTop-40 {
   margin-top: 80rpx;
+}
+.magTop-50 {
+  margin-top: 100rpx;
 }
 .magTop-70 {
   margin-top: 140rpx;
@@ -714,6 +722,9 @@ page{
 }
 .magLef-70 {
   margin-left: 140rpx;
+}
+.magLef-90 {
+  margin-left: 180rpx;
 }
 .magLef-110 {
   margin-left: 220rpx;
@@ -798,6 +809,13 @@ page{
 	font-weight: normal;
 	font-stretch: normal;
 	letter-spacing: 0rpx;
+	color: transparent;
+}
+.font-26 {
+  font-family: Noto Sans S Chinese;
+	font-size: 52rpx;
+	font-weight: normal;
+	font-stretch: normal;
 	color: transparent;
 }
 .font-28 {

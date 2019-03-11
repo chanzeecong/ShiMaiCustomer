@@ -1,0 +1,64 @@
+page {
+  background-color: #F4F4F4;
+}
+.bgWhite {
+  background-color: #fff;
+}
+.arrow-icon {
+  width: 40rpx;
+  height: 40rpx;
+}
+.icon {
+  width: 32rpx;
+  height: 32rpx;
+}
+.production-img {
+  width: 146rpx;
+  height: 146rpx;
+  
+}
+.text-ellipsis {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
+.rect {
+  width:52rpx;
+  height: 52rpx;
+  background-color: #E5E5E5;
+}
+.sub-sign {
+  width: 24rpx;
+  height:4rpx;
+  background:rgba(103,103,103,1);
+}
+.amount-input {
+  width: 100rpx;
+  height:40rpx;
+  line-height:40rpx;
+  font-size:28rpx;
+  font-family:San Francisco Display;
+  color: #555555;
+  text-align:center;
+}
+.fixed {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+button.btn {
+  width:300rpx;
+  height:100rpx;
+  line-height:100rpx;
+  background:rgba(244,65,104,1);
+  box-shadow:0 2rpx 6rpx rgba(0,0,0,0.2);
+  font-size:32rpx;
+  font-family:Noto Sans S Chinese;
+  font-weight:500;
+  color:rgba(255,255,255,1);
+  border-radius: 0;
+  margin: 0;
+  padding: 0;
+  border: none;
+}

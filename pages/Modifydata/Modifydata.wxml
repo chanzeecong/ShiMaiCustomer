@@ -34,11 +34,6 @@
     <view class='input-wrapper row'>
       <input value='{{userInfo.name}}' placeholder='点击修改' placeholder-class='phcolor' class='input padRig-16 font-16 black' maxlength="16" type="text" bindinput="onNameInput"></input>
        <image wx:if="{{name.length}}" bindtap='onClearNameBtnClick' class="icon" src='https://buyer.sm.afxclub.top/icon_delete@2x.png'></image>
-      <!-- <block wx:else>
-        <input value='{{name}}' placeholder='点击修改' placeholder-class='phcolor' class='input padRig-16 font-16 black' maxlength="16" type="text" bindinput="onNameInput"></input>
-        <image wx:if="{{name.length}}" bindtap='onClearNameBtnClick' class="icon" src='https://buyer.sm.afxclub.top/icon_delete@2x.png'></image>
-      </block> -->
-
     </view>
   </view>
 
