@@ -30,7 +30,7 @@
       <text class='font-12 white padTop-20'>包裹已发货，请耐心等待</text>
     </block>
     <block wx:elif="{{3 === orderDetail.status}}">
-      <text class='font-18 white'>已收货</text>
+      <text class='font-18 white'>已完成</text>
       <text class='font-12 white padTop-20'>交易已完成，期待您的下次光临</text>
     </block>
   </view>
@@ -98,19 +98,21 @@
   </view>
 </block>
 
-<view class='row padLef-16 padRig-16 padTop-10 padBot-10 magTop-10 bgWhite'>
-  <text class='font-14 black'>实物返图</text>
-  <view wx:for="{{orderDetail.good_send_img}}" wx:key="{{index}}" wx:for-item="imgData" data-id="{{item.id}}" data-index="{{index}}" class='row row-center send_img' style='width:{{deminsion}}px;height:{{deminsion}}px;'>
-    <image src="{{imgData}}" mode="aspectFill" style='width:96%;height:96%;'></image>
-  </view>
-</view>
+<block wx:if='{{0 != orderDetail.status && 1 != orderDetail.status}}'>
+	<view class='row padLef-16 padRig-16 padTop-10 padBot-10 magTop-10 bgWhite'>
+		<text class='font-14 black'>实物返图</text>
+		<view wx:for="{{orderDetail.good_send_img}}" wx:key="{{index}}" wx:for-item="imgData" data-id="{{item.id}}" data-index="{{index}}" class='row row-center send_img' style='width:{{deminsion}}px;height:{{deminsion}}px;'>
+			<image src="{{imgData}}" mode="aspectFill" style='width:96%;height:96%;'></image>
+		</view>
+	</view>
 
-<view class='row padLef-16 padRig-16 padTop-10 padBot-10 magTop-10 bgWhite'>
-  <text class='font-14 black'>小票返图</text>
-  <view wx:for="{{orderDetail.receipt_img}}" wx:key="{{index}}" wx:for-item="imgData" data-id="{{item.id}}" data-index="{{index}}" class='row row-center send_img' style='width:{{deminsion}}px;height:{{deminsion}}px;'>
-    <image src="{{imgData}}" mode="aspectFill" style='width:96%;height:96%;'></image>
-  </view>
-</view>
+	<view class='row padLef-16 padRig-16 padTop-10 padBot-10 magTop-10 bgWhite'>
+		<text class='font-14 black'>小票返图</text>
+		<view wx:for="{{orderDetail.receipt_img}}" wx:key="{{index}}" wx:for-item="imgData" data-id="{{item.id}}" data-index="{{index}}" class='row row-center send_img' style='width:{{deminsion}}px;height:{{deminsion}}px;'>
+			<image src="{{imgData}}" mode="aspectFill" style='width:96%;height:96%;'></image>
+		</view>
+	</view>
+</block>
 
 <block>
   <view class='row row-between padLef-16 padRig-16 padTop-20 padBot-20 magTop-10 bgWhite underline'>
@@ -172,14 +174,14 @@
     <text class='font-12 grey'>{{orderDetail.created_at ? orderDetail.created_at : ""}}</text>
   </view>
 
-  <block wx:if="{{0 != orderDetail.status || -1 != orderDetail.status}}">
+  <block wx:if="{{0 != orderDetail.status && -1 != orderDetail.status}}">
     <view class='row row-between  padLef-16 padRig-16 padTop-10 padBot-10 bgWhite'>
       <text class='font-12' style='color:rgba(0,0,0,.6)'>付款日期</text>
       <text class='font-12 grey'>{{orderDetail.order_pay_time ? orderDetail.order_pay_time : ""}}</text>
     </view>
   </block>
 
-  <block wx:if="{{2 === orderDetail.status || 3 === orderDetail.status}}">
+  <block wx:if="0 != orderDetail.status && 1 != orderDetail.status}}">
     <view class='row row-between padLef-16 padRig-16 padTop-10 padBot-10 bgWhite'>
       <text class='font-12' style='color:rgba(0,0,0,.6)'>发货日期</text>
       <text class='font-12 grey'>{{orderDetail.updated_at ? orderDetail.updated_at : ""}}</text>
@@ -218,18 +220,18 @@
   </view>
 </block>
 
-<block wx:if="{{2 === orderDetail.status}}">
+<block wx:elif="{{2 === orderDetail.status}}">
   <view class='row row-between fixed'>
     <view></view>
     <view class='row padRig-16'> 
-      <button bindtap='onExpressBtnClick' class='btnTax magRig-10'>查看物流</button>
+      <button bindtap='' class='btnTax magRig-10'>查看物流</button>
       <button bindtap='' class='btnTax magRig-10'>分享红包</button>
       <button bindtap='onPayBtnClick' class='btn' plain>确认收货</button>
     </view>
   </view>
 </block>
 
-<block wx:if="{{3 === orderDetail.status}}">
+<block wx:elif="{{3 === orderDetail.status}}">
   <view class='row row-between fixed'>
     <view></view>
     <view class='row padRig-16'> 
@@ -240,7 +242,7 @@
   </view>
 </block>
 
-<block wx:if="{{-1 === orderDetail.status}}">
+<block wx:elif="{{-1 === orderDetail.status}}">
   <view class='row row-between fixed'>
     <view></view>
     <view class='row padRig-16'> 
@@ -254,7 +256,7 @@
     <view></view>
     <view class='row padRig-16'> 
       <button bindtap='' class='btnTax magRig-10'>分享红包</button>
-      <button bindtap='onExpressBtnClick' class='btn' plain>查物流</button>
+      <button bindtap='onExpressBtnClick' class='btn' plain>查看物流</button>
     </view>
   </view>
 </block>

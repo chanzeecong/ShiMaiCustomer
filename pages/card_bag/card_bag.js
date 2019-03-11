@@ -200,7 +200,6 @@ Page({
     this.setData({
       currentTab: currentTab,
       scrollToLeft: scrollToLeft,
-      borderTab: [leftTab, rightTab],
       couponList: couponList
     })
   },
@@ -209,6 +208,14 @@ Page({
     let status = this.data.tabList[this.data.currentTab].id;
     let couponList = await this.getCoupon(status);
     console.log(couponList);
+
+		for(let i in couponList)
+		{
+			if(1 == couponList[i].status)
+			{
+				
+			}
+		}
 
     this.setData({
       couponList: couponList
@@ -232,12 +239,5 @@ Page({
         }
       })
     })
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function() {
-
   }
 })

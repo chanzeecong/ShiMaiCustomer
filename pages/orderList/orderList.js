@@ -202,7 +202,7 @@ Page({
       orderList: orderList,
     })
 
-    for (let i in orderList) {
+    /*for (let i in orderList) {
       let orderDetail = orderList[i];
 
       if (0 === orderDetail.status) {
@@ -215,7 +215,7 @@ Page({
 
         this.countDown(arr0[0], arr0[1], Number(arr0[2]) + 5, arr1[0], arr1[1], 0);
       }
-    }    
+    }    */
   },
 
   getOrderList(status) {

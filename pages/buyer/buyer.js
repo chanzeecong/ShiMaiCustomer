@@ -153,11 +153,8 @@ Page({
   },
 
   OnfollowBtnClick(e) {
-    let id = e.currentTarget.dataset.id
-    console.log(id)
-    this.setData({
-      buyer_id: id
-    })
+    let id = e.currentTarget.dataset.id;
+    console.log(id);
 
     return new Promise(resolve => {
       wx.request({

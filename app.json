@@ -27,10 +27,7 @@
     "pages/Articlepage/Articlepage",
     "pages/VideoGoods/VideoGoods",
     "pages/Allcomments/Allcomments",
-<<<<<<< HEAD
     "pages/helpCenter/helpCenter",
-=======
->>>>>>> 778060cd1f1a0e3dddd04fe2da5c1fdbcc4f86b9
     "pages/Modifydata/Modifydata"
   ],
   "window": {
