@@ -251,5 +251,8 @@ button.follow-btn {
   box-shadow:0px 1px 3px rgba(0,0,0,0.2);
   font-size: 32rpx;
   color: #fff;
+  position: fixed;
+  left: 0;
+  right: 0;
   bottom: 0;
 }

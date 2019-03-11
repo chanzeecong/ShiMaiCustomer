@@ -1,112 +1,225 @@
 // pages/buyer_detail/buyer_detail.js
+const regeneratorRuntime = require('../../lib/runtime.js');
+const app = getApp();
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    badge: ['法国代购', '香水', '包'],
-    active: ['active', ''],
-    showList: 
-    {
-      type: 'article',
-      list:[
-        { id: '1', img: 'https://buyer.sm.afxclub.top/text-img.png', title: '一直以来，音乐的加入，都可以让运动的过程变得更加快乐，前提是有一直以来，音乐的加入，都可以让运动的过程变得更加快乐，前提是有', price: '99', tag: '识买精选', time: '2018-10-26', comments: '15621' },
-        { id: '2', img: 'https://buyer.sm.afxclub.top/text-img.png', title: '一直以来，音乐的加入，都可以让运动的过程变得更加快乐，前提是有一直以来，音乐的加入，都可以让运动的过程变得更加快乐，前提是有', price: '99', tag: '识买精选', time: '2018-10-26', comments: '15621' }
-      ]
-    },
-    list:
+    tabList: [{
+        id: 0,
+        label: `文章`
+      },
       {
-        article: [
-          { id: '1', img: 'https://buyer.sm.afxclub.top/text-img.png', title: '一直以来，音乐的加入，都可以让运动的过程变得更加快乐，前提是有一直以来，音乐的加入，都可以让运动的过程变得更加快乐，前提是有', number: '9', time: '2018-10-26'},
-          { id: '2', img: 'https://buyer.sm.afxclub.top/text-img.png', title: '一直以来，音乐的加入，都可以让运动的过程变得更加快乐，前提是有一直以来，音乐的加入，都可以让运动的过程变得更加快乐，前提是有', number: '9', time: '2018-10-26' }
-        ],
-        product: [
-          { id: '1', img: 'https://buyer.sm.afxclub.top/text-img.png', title: '一直以来，音乐的加入，都可以让运动的过程变得更加快乐，前提是有一直以来，音乐的加入，都可以让运动的过程变得更加快乐，前提是有', price: '99', tag: '识买精选', time: '2018-10-26', comments: '15621' },
-          { id: '1', img: 'https://buyer.sm.afxclub.top/text-img.png', title: '一直以来，音乐的加入，都可以让运动的过程变得更加快乐，前提是有一直以来，音乐的加入，都可以让运动的过程变得更加快乐，前提是有', price: '99', tag: '识买精选', time: '2018-10-26', comments: '15621' }
-        ]
-      }
+        id: 1,
+        label: `商品`
+      },
+    ],
+    currentTab: 0,
+    buyer_id: ``,
+    buyerDetail: {},
+    is_followed: false,
+    isCollected: false,
+    buyerCollected: 3,
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  onLoad: function(options) {
+    let buyer_id = options.id;
+    console.log(buyer_id);
+    this.setData({
+      buyer_id: buyer_id
+    })
 
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function () {
+  onReady: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
+  onShow: function() {
+    this.initPageData();
+  },
+
+  onTapClick(e) {
+    let currentTab = Number(e.currentTarget.dataset.index);
+    console.log(currentTab);
+    this.setData({
+      currentTab: currentTab
+    })
+  },
+
+  onFollowBtnClick(e) {
+    return new Promise(resolve => {
+      wx.request({
+        url: `${app.hostName}buyer/${this.data.buyer_id}/follow`,
+        method: 'POST',
+        header: {
+          'Authorization': `Bearer ${app.token}`
+        },
+        data: {
+          id: this.data.buyer_id
+        },
+        dataType: 'json',
+        success: (res) => {
+          let is_followed = !this.data.is_followed;
+          this.setData({
+            is_followed
+          })
+          wx.showToast({
+            title: '关注买手成功！',
+          })
+          resolve(res.data.data);
+        }
+      })
+    })
+  },
+
+  onUnfollowBtnClick(e) {
+    return new Promise(resolve => {
+      wx.request({
+        url: `${app.hostName}buyer/${this.data.buyer_id}/unFollow`,
+        method: 'DELETE',
+        header: {
+          'Authorization': `Bearer ${app.token}`
+        },
+        dataType: 'json',
+        success: (res) => {
+          let is_followed = !this.data.is_followed;
+          this.setData({
+            is_followed
+          })
+          wx.showToast({
+            title: '取消关注成功！',
+          })
+          resolve(res.data.data);
+        }
+      })
+    })
+  },
+
+  // 小星星收藏
+  handleCollection() {
+    return new Promise(resolve => {
+      wx.request({
+        url: `${app.hostName}clickCollection`,
+        method: 'GET',
+        header: {
+          'Authorization': `Bearer ${app.token}`
+        },
+        data: {
+          collection_id: this.data.buyer_id,
+          collection: this.data.buyerCollected,
+        },
+        dataType: 'json',
+        success: (res) => {
+          let isCollected = !this.data.isCollected;
+          this.setData({
+            isCollected
+          })
+          wx.showToast({
+            title: '收藏文章成功！',
+          })
+          resolve(res.data.data);
+        }
+      })
+    })
 
   },
 
-  changeTab(e){
-     // console.log(e.target.dataset);
-    let idx = Number(e.target.dataset.idx);
-    let flag = e.target.dataset.type;
-    let list = this.data.list;
-    let obj = {};
-    obj.type = flag;
-    obj.list = list[flag];
-
-    switch (idx){
-      case 0:
-        this.setData({
-          active: ['active', ''],
-          showList: obj
-        })
-      break;
-      case 1:
-        this.setData({
-          active: ['', 'active'],
-          showList: obj
-        })
-      break;
-      default:
-      break;
-    }
+  // 小星星收藏
+  UnhandleCollection() {
+    return new Promise(resolve => {
+      wx.request({
+        url: `${app.hostName}clickCollection`,
+        method: 'GET',
+        header: {
+          'Authorization': `Bearer ${app.token}`
+        },
+        data: {
+          collection_id: this.data.buyer_id,
+          collection: this.data.buyerCollected,
+        },
+        dataType: 'json',
+        success: (res) => {
+          let isCollected = !this.data.isCollected;
+          this.setData({
+            isCollected
+          })
+          wx.showToast({
+            title: '取消收藏成功！',
+          })
+          resolve(res.data.data);
+        }
+      })
+    })
   },
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function () {
+  onHide: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function () {
+  onUnload: function() {
 
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function () {
+  onPullDownRefresh: function() {
 
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function () {
+  onReachBottom: function() {
 
   },
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
+  onShareAppMessage: function() {
 
+  },
+
+  async initPageData() {
+    let buyerDetail = await this.getbuyerDetail();
+    console.log(buyerDetail);
+
+    this.setData({
+      buyerDetail: buyerDetail,
+    })
+  },
+
+  getbuyerDetail() {
+    return new Promise(resolve => {
+      wx.request({
+        url: `${app.hostName}buyer/${this.data.buyer_id}`,
+        method: 'GET',
+        header: {
+          'Authorization': `Bearer ${app.token}`
+        },
+        dataType: 'json',
+        success: (res) => {
+          resolve(res.data.data);
+        }
+      })
+    })
   }
 })

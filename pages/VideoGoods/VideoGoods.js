@@ -381,7 +381,9 @@ Page({
 
   confirm_buy(e) {
     let good_attr_id = this.data.gg_id;
-    console.log(good_attr_id)
+    this.setData({
+      good_attr_id: good_attr_id
+    })
     let index = e.currentTarget.dataset.index;
     let home = this.data.detailList[index];
     let sizeList = home.good_attributes;
@@ -396,34 +398,33 @@ Page({
       }
     }
     if (isChoose) {
-      wx.navigateTo({
-        url: ``,
+      return new Promise(resolve => {
+        wx.request({
+          url: `${app.hostName}order`,
+          method: 'POST',
+          header: {
+            'Authorization': `Bearer ${app.token}`
+          },
+          data: {
+            good_attr_id: this.data.good_attr_id,
+            amount: this.data.amount.toString(),
+          },
+          dataType: 'json',
+          success: (res) => {
+            resolve(res.data.data);
+            wx.navigateTo({
+              url: `../confirmOrder/confirmOrder?attrId=${attrId}`,
+            })
+          }
+        })
       })
+      
     } else {
       wx.showToast({
         title: '你不选买个锤子',
         icon: `none`
       })
     }
-
-    return new Promise(resolve => {
-      wx.request({
-        url: `${app.hostName}order`,
-        method: 'POST',
-        header: {
-          'Authorization': `Bearer ${app.token}`
-        },
-        data: {
-          id: this.data.good_attr_id,
-          amount: this.data.amount.toString(),
-        },
-        dataType: 'json',
-        success: (res) => {
-          resolve(res.data.data);
-        }
-      })
-    })
-
   },
 
 

@@ -610,6 +610,9 @@ page{
 .padLef-123 {
   padding-left: 220rpx;
 }
+.padLef-140 {
+  padding-left: 280rpx;
+}
 .padLef-166 {
   padding-left: 332rpx;
 }
@@ -628,6 +631,9 @@ page{
 }
 .magTop-15 {
   margin-top: 30rpx;
+}
+.magTop-17 {
+  margin-top: 34rpx;
 }
 .magTop-20 {
   margin-top: 40rpx;
