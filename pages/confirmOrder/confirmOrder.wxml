@@ -19,32 +19,36 @@
   <image src='https://buyer.sm.afxclub.top/icon_line@2x.png' style='width:110%;height:20rpx;margin-left:-10rpx;'></image>
 </view>
 
-<view class='row padTop-10 padBot-10 padLef-16 padRig-16 magTop-10 bgWhite underline'>
-  <image class='icon' src='https://buyer.sm.afxclub.top/icon_store@2x.png'></image>
-  <text class='font-16 black font-bold padLef-10'>{{goodDetail.buyer_name}}</text>
+<view class='row padLef-16 padRig-16 padTop-10 padBot-10 magTop-10 bgWhite underline'>
+  <image src='https://buyer.sm.afxclub.top/4.png' class='user_avartor' mode='aspectFill'></image>
+  <text class='font-14 black padLef-10'>{{goodDetail.buyer_name}}</text>
 </view>
 
 <view class='row row-between padLef-16 padRig-16 padTop-20 padBot-20 bgWhite underline'>
+  <!-- 商品 -->
   <view class='row' style='align-items:flex-start;'>
     <view class='row'>
-      <image class='production-img' mode='aspectFill' src='{{goodDetail.good_img}}'></image>
+      <image class='production' src='{{goodDetail.good_img ? goodDetail.good_img: "https://buyer.sm.afxclub.top/nonimg@2x.png"}}' mode='aspectFill'></image>
     </view>
-    <view class='col-left padLef-10' >
-      <text class='text-ellipsis font-14 black'>{{goodDetail.good_name}}</text>
-      <text class='font-12 grey' >{{goodDetail.good_attr_name}}</text>
+    <view class='row padLef-10'>
+      <view class='col-left'>
+        <text class='text-ellipsis font-14 black'>{{goodDetail.good_name}}</text>
+        <text class='font-12 grey padTop-8'>规格:{{goodDetail.good_attr_name}}</text>
+      </view>
     </view>
   </view>
-  
-  <view class='col-right padLef-10' style='align-self:flex-end;'>
-    <view class='row row-between' style='width:100%;'>
-      <view></view>
-      <text class='font-12 grey'>X{{amount}}</text>
+  <view class='row padLef-20'>
+    <view class='col-left'>
+      <text class='font-14 black text-ellipses'>￥{{goodDetail.price}}</text>
+      <view class='row row-between' style='width:100%;'>
+        <view></view>
+        <text class='font-12 grey padTop-28 font-bold' style='text-align:left'>X{{amount}}</text>
+      </view>
     </view>
-    <text class='font-14 grey'>￥{{goodDetail.price}}</text>
   </view>
 </view>
 
-<view class='row row-between padLef-16 padRig-16 padTop-10 padBot-10 padRig-10 underline bgWhite'>
+<view class='row row-between padLef-16 padRig-16 padTop-10 padBot-10 padRig-10 bgWhite'>
   <text class='font-14 black'>数量</text>
   <view class='row'>
     <view bindtap='onCutCountBtnClick' class='row row-center rect'>
@@ -59,7 +63,12 @@
   </view>
 </view>
 
-<view class='row row-between padLef-16 padRig-16 padTop-10 padBot-10 padRig-10 underline bgWhite'>
+<view class='row padLef-16 padRig-16 padTop-10 padBot-10 padRig-10 underline bgWhite'>
+  <text class='font-14 black' style='white-space:nowrap;'>备注留言：</text>
+  <input bindinput='onCommentInput' class='font-14 black magLef-10' placeholder='选填，可填写对卖家的要求，最多50个字符' placeholder-class='font-12 grey' style='width:100%;' maxlength='50'></input>
+</view>
+
+<!-- <view class='row row-between padLef-16 padRig-16 padTop-10 padBot-10 padRig-10 underline bgWhite'>
   <text class='font-14 black'>运费</text>
   <text class='font-14 grey'>￥{{goodDetail.transportation_costs}}</text>
 </view>
@@ -67,35 +76,144 @@
 <view class='row row-between padLef-16 padRig-16 padTop-10 padBot-10 padRig-10 underline bgWhite'>
   <text class='font-14 black'>税费</text>
   <text class='font-14 grey'>￥{{goodDetail.tax_fee}}</text>
-</view>
-
-<!-- <view class='row row-between padLef-16 padRig-16 padTop-10 padBot-10 padRig-10 underline bgWhite'>
-  <text class='font-14 black'>使用红包</text>
-  <view class='row'>
-    <text class='font-14 red'>￥{{packageInfo.name}}</text>
-    <image class='arrow-icon padLef-5' src='https://buyer.sm.afxclub.top/icon_arrow_right@2x.png'></image>
-  </view>
 </view> -->
 
-<view class='row padLef-16 padRig-16 padTop-10 padBot-10 padRig-10 underline bgWhite'>
-  <text class='font-14 black' style='white-space:nowrap;'>买家留言</text>
-  <input bindinput='onCommentInput' class='font-14 black magLef-10' placeholder='选填，可填写对卖家的要求，最多50个字符' placeholder-class='font-12 grey' style='width:100%;' maxlength='50'></input>
+<view class='row row-between padLef-16 padRig-16 padTop-15 padBot-15 padRig-10 underline bgWhite magTop-10' bindtap='usecoupon'>
+  <text class='font-14 black'>使用红包</text>
+  <view class='row'>
+    <text class='font-14 gray'>无红包可用</text>
+    <image class='arrow-icon padLef-5' src='https://buyer.sm.afxclub.top/icon_arrow_right@2x.png'></image>
+  </view>
 </view>
 
+<!-- 弹出框 -->
+<view class='commodity_screen' wx:if="{{showModalStatus}}"></view>
+<view animation="{{animationData}}" class="commodity_attr_box" wx:if="{{showModalStatus}}">
+  <view class='flex flex-row'>
+    <view class='list-info flex-item flex flex-column justify-between padLef-10'>
+      <view class='row justify-between padLef-140 padTop-17'>
+        <text class='font-16 gray'>红包选择</text>
+        <image class='icon-close padRig-20' bindtap="hideModal" src='../../assets/icon/icon_delete@2x.png'></image>
+      </view>
+    </view>
+  </view>
+  <!-- 红包切换 -->
+  <scroll-view scroll-x="true" scroll-left="{{scrollToLeft}}rpx" scroll-with-animation="true" class='magTop-17'>
+    <view class="row row-center bgWhite" style='justify-content:space-around;'>
+      <view bindtap="onTapClick" data-index='{{index}}' wx:for="{{tabList}}" wx:key="{{index}}" style='width:220rpx;' class='row row-center'>
+        <view class='tab-wrapper row row-center {{index === currentTab? "active red" : "black"}}'>
+          <text class='{{index === currentTab? "red font-16" : "black font-16"}}'>{{item.label}}</text>
+        </view>
+      </view>
+    </view>
+  </scroll-view>
+  <!-- 红包列表 -->
+  <block wx:if="{{currentTab === 0}}">
+    <block wx:if="{{couponList.length}}">
+    <view class='card-box flex flex-row {{allitem.status}}' wx:for='{{couponList}}' wx:for-item='allitem' wx:for-index='allidx' wx:key='{{allidx}}' bindtap='useValue' data-id='{{allitem.id}}'>
+      <view class='flex-item card-status-box' style='background-color:#F5396E;'>
+        <view class='font-14pt'>{{allitem.coupon.coupon_type_name}}</view>
+        <view>
+          <text class='font-12pt'>¥</text>{{allitem.coupon.coupon_amount}}
+          <text class='font-12pt'>{{allitem.coupon.coupon_title}}</text>
+        </view>
+      </view>
+
+      <view class='card-time-box sub_text_color font-12pt flex flex-column justify-center align-center'>
+        <view class='card-side' style='background-image:url(https://buyer.sm.afxclub.top/circle_side.png)'></view>
+        <view>使用期限</view>
+        <view>{{allitem.coupon.coupon_start_time}}</view>
+        <view>{{allitem.coupon.coupon_end_time}}</view>
+      </view>
+    </view>
+
+    </block>
+  </block>
+  <!-- 不可用 -->
+  <block wx:elif="{{currentTab === 1}}">
+    <block wx:if="{{couponList.length}}">
+      <view class='card-box flex flex-row {{allitem.status}}' wx:for='{{couponList}}' wx:for-item='allitem' wx:for-index='allidx' wx:key='{{allidx}}'>
+      <view class='flex-item card-status-box' style='background-color:#aaaaaa;'>
+        <view class='font-14pt'>{{allitem.coupon.coupon_type_name}}</view>
+        <view>
+          <text class='font-12pt'>¥</text>{{allitem.coupon.coupon_amount}}
+          <text class='font-12pt'>{{allitem.coupon.coupon_title}}</text>
+        </view>
+      </view>
+
+      <view class='card-time-box-disable sub_text_color font-12pt flex flex-column justify-center align-center'>
+        <view class='card-side' style='background-image:url(https://buyer.sm.afxclub.top/circle_side.png)'></view>
+        <view>使用期限</view>
+        <view>{{allitem.coupon.coupon_start_time}}</view>
+        <view>{{allitem.coupon.coupon_end_time}}</view>
+      </view>
+    </view>
+    </block>
+  </block>
+
+  <block wx:else>
+    <view class='flex flex-column justify-center align-center nodata'>
+      <image class='no-card' src='../../assets/icon/img_no_coupon@2x.png'></image>
+      <view class='font-16pt font-bold sub_text_color' style='margin: 40rpx 0;'>无可用优惠券</view>
+    </view>
+  </block>
+</view>
+
+<block>
+  <view class='row row-between padLef-16 padRig-16 padTop-20 padBot-20 magTop-10 bgWhite underline'>
+    <view class='row' style='align-items:flex-start;'>
+      <text class='font-14 black'>商品总件数:</text>
+    </view>
+
+    <view class='col-left'>
+      <text class='font-14 black' style='text-align:left'>{{amount}}件</text>
+    </view>
+  </view>
+
+  <view class='row row-between padLef-16 padRig-16 padTop-20 bgWhite'>
+    <text class='font-14 grey'>商品总额:</text>
+    <text class='font-14 grey'>￥{{goodDetail.price ? goodDetail.price: 0}}</text>
+  </view>
+
+  <view class='row row-between padLef-16 padRig-16 padTop-15 bgWhite'>
+    <text class='font-14 grey'>运费:</text>
+    <text class='font-14 grey'>+￥{{goodDetail.transportation_costs ? goodDetail.transportation_costs: 0}}</text>
+  </view>
+
+  <view class='row row-between padLef-16 padRig-16 padTop-15 bgWhite'>
+    <text class='font-14 grey'>税额:</text>
+    <text class='font-14 grey'>+￥{{goodDetail.tax_fee ? goodDetail.tax_fee: 0}}</text>
+  </view>
+
+  <view class='row row-between padLef-16 padRig-16 padTop-15 padBot-20 bgWhite underline'>
+    <text class='font-14 grey'>红包:</text>
+    <text class='font-14 grey'>-￥{{couponList.coupon.coupon_amount ? couponList.coupon.coupon_amount: 0}}</text>
+  </view>
+
+  <view class='row row-between padLef-16 padRig-16 padTop-15 padBot-15 bgWhite'>
+    <view class='row' style='align-items:flex-start;'>
+    </view>
+
+    <view style='text-align:left'>
+      <text class='font-12 black'>共{{amount}}件商品   合计:</text>
+      <text class='font-20 font-bold red padRig-10'>￥{{totalPrice}}元</text>
+    </view>
+  </view>
+</block>
+
 <view class='row row-between padLef-16 padRig-16 padTop-10 padBot-10 padRig-10 underline bgWhite'>
-  <view></view>
   <view class='row'>
     <text class='font-16 black font-bold'>共{{amount}}件商品 合计</text>
-    <text class='font-16 red font-bold'>￥{{totalPrice}}元</text>
+    <text class='font-20 red font-bold'>￥{{totalPrice}}元</text>
   </view>
 </view>
 
 <view class='fixed row row-between h-50 bgWhite'>
   <view class='row padLef-16'>
-    <text class='font-14 black font-bold'>实付款：</text>
-    <text class='font-14 red font-bold'>￥{{totalPrice}}元</text>
+    <text class='font-16 black'>应付金额：</text>
+    <text class='font-16 red font-bold'>￥{{totalPrice}}元</text>
   </view>
 
-  <button bindtap='onPaidBtnClick' class='btn' plain>确认支付</button>
+  <button bindtap='onPaidBtnClick' class='btn' plain>微信支付</button>
 
 </view>

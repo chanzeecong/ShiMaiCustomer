@@ -111,7 +111,7 @@
                 <text class='font-14 black padRig-10 font-bold'>18新品质感绒面韩版时尚拼接百搭舒适……</text>
               </view>
               <text class='font-16 red padTop-20'>抢购价99元</text>
-              <view class='row row-between padTop-20'>
+              <view class='row row-between padTop-10'>
                 <view class='row' style='align-items:flex-start;'>
                   <view class='col-left'>
                     <view class='row'>
@@ -142,7 +142,7 @@
                 <text class='font-14 black padRig-10 font-bold'>18新品质感绒面韩版时尚拼接百搭舒适……</text>
               </view>
               <text class='font-16 red padTop-20'>抢购价99元</text>
-              <view class='row row-between padTop-20'>
+              <view class='row row-between padTop-10'>
 
                 <view class='row' style='align-items:flex-start;'>
                   <view class='col-left'>
@@ -173,7 +173,7 @@
                 <text class='font-14 black padRig-10 font-bold'>18新品质感绒面韩版时尚拼接百搭舒适……</text>
               </view>
               <text class='font-16 red padTop-20'>抢购价99元</text>
-              <view class='row row-between padTop-20'>
+              <view class='row row-between padTop-10'>
 
                 <view class='row' style='align-items:flex-start;'>
                   <view class='col-left'>
@@ -235,30 +235,24 @@
               <text wx:for="{{item.good_attributes}}" wx:key="{{index}}" wx:for-item="list" class="{{list.isChoose ?'active':'text'}}" data-index="{{index}}" data-id="{{item.id}}" data-gg='{{list.id}}'  bindtap="filter">{{list.name}}</text>
             </view>
           </view>
-
-          <view class='row row-between padLef-16 padRig-16 padTop-40 padBot-10 padRig-10 bgWhite'>
+          <view class='row row-between padLef-16 padRig-16 padTop-50 padBot-10 padRig-10 bgWhite'>
             <text class='font-16 font-bold black'>购买数量</text>
             <view class='row padTop-40'>
               <view bindtap='bindMinus'  class='row row-center rect {{minusStatus}}'>
                 <view class='sub-sign'></view>
               </view>
-
               <input bindinput="bindManual" maxlength='1' value="{{amount}}" class='amount-input' type="number"></input>
-
               <view bindtap='bindPlus' class='row row-center rect'>
                 <image class='icon-add' src='https://buyer.sm.afxclub.top/icon_delete@2x.png' style='transform:rotate(45deg);'></image>
               </view>
             </view>
           </view>
           <view class='row'>
-            <button class='confirm-btn magTop-30' data-index="{{index}}" bindtap='confirm_buy'>确定</button>
+            <button class='confirm-btn' data-index="{{index}}" bindtap='confirm_buy'>确定</button>
           </view>
         </view>
       </view>
     </view>
-
-
-
 
   </block>
   <image src='https://buyer.sm.afxclub.top/icon_top@2x.png' mode='aspectFill' class='goTop' hidden='{{!floorstatus}}' bindtap="goTop"></image>

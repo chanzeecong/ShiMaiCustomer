@@ -1,6 +1,6 @@
 /* pages/buyer_detail/buyer_detail.wxss */
 .buyer_info_box{
-  padding: 40rpx 32rpx;
+  padding: 40rpx 32rpx 0rpx 32rpx;
 }
 .buyer_img{
   width: 160rpx;
@@ -109,4 +109,41 @@
   height: 30rpx;
   top: 6rpx;
   margin-right: 6rpx;
+}
+.icon-watch {
+  width:32rpx;
+  height:20rpx;
+}
+.no-card{
+  width:100rpx;
+  height:100rpx;
+}
+.nodata{
+  padding: 200rpx 0;
+}
+button.follow-btn {
+  width: 100rpx;
+  height:40rpx;
+  line-height:40rpx;
+  background:rgba(244,65,104,1);
+  border-radius:20rpx;
+  font-size:24rpx;
+  font-family:Noto Sans S Chinese;
+  padding: 0 20rpx;
+  border:none;
+  background:rgba(244,65,104,1);
+  color:#fff;
+}
+.follow-btn{
+  width: 100rpx;
+  height:40rpx;
+  line-height:40rpx;
+  background:rgba(244,65,104,1);
+  border-radius:20rpx;
+  font-size:24rpx;
+  font-family:Noto Sans S Chinese;
+  border:none;
+  background:rgba(244,65,104,1);
+  color:#fff;
+  text-align: center;
 }

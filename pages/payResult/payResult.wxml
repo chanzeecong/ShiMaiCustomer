@@ -1,0 +1,48 @@
+<block wx:if="{{result}}">
+
+  <view class="row row-center padTop-30 padBot-20">
+    <image class='img' src='https://buyer.sm.afxclub.top/img_Success@2x.png'></image>
+  </view>
+
+  <view class='row row-center padBot-10'>
+    <text class='font-22 black font-bold'>订单支付成功</text>
+  </view>
+
+  <view class='row row-center padBot-20'>
+    <text class='font-12 grey'>买手正在为您备货中</text>
+  </view>
+
+  <view class='row row-center padBot-40'>
+    <view class='col-left'>
+      <text class='font-12 black padBot-10'>订单金额：{{orderDetail.real_pay}}</text>
+      <text class='font-12 black'>订单号：{{orderDetail.order_no}}</text>
+    </view>
+  </view>
+
+  <view class='row row-center'>
+    <button bindtap='onOrderDetailBtnClick' class='cancel-btn' plain='true' style='border:2rpx solid rgba(0,0,0,0.2)'>查看订单</button>
+    <button bindtap='backDiscover' class='confirm-btn' style='margin-left:40rpx;'>继续购物</button>
+  </view>
+</block>
+
+
+
+<block wx:else>
+  <view class="row row-center padTop-30 padBot-20">
+    <image class='img' src='https://buyer.sm.afxclub.top/img_fail@2x.png'></image>
+  </view>
+
+  <view class='row row-center padBot-10'>
+    <text class='font-22 black font-bold'>订单支付失败</text>
+  </view>
+
+  <view class='row row-center padBot-40'>
+    <text class='font-12 grey'>最后一步出了点问题，重新支付</text>
+  </view>
+
+</block>
+
+<view class='row row-center'>
+  <button bindtap='onOrderDetailBtnClick' class='cancel-btn' plain='true' style='border:2rpx solid rgba(0,0,0,0.2)'>查看订单</button>
+  <button bindtap='onConfirmOrderBtnClick' class='confirm-btn' style='margin-left:40rpx;'>重新支付</button>
+</view>

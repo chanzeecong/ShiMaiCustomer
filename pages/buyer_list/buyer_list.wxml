@@ -14,7 +14,7 @@
   <view class='buyer_box_list'>
 
     <view class='buyer_box' wx:for="{{buyerList.buyer_data}}" wx:for-item="list" wx:for-index="listidx" wx:key="{{index}}">
-      <navigator open-type='navigate' url='../buyer_detail/buyer_detail' class='flex flex-row buyer_head'>
+      <navigator open-type='navigate' url='../buyer_detail/buyer_detail?id={{list.id}}' class='flex flex-row buyer_head'>
         <image class='buyer_img' mode='aspectFill' src='{{list.img_link}}'></image>
         <view class='flex-item'>
           <view class='buyer_title'>

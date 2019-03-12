@@ -1,0 +1,32 @@
+/* pages/payResult/payResult.wxss */
+page {
+  background-color: #FFF;
+}
+.img {
+  width: 340rpx;
+  height: 340rpx;
+}
+.confirm-btn {
+  width:180rpx;
+  height:60prx;
+  line-height:60rpx;
+  background:rgba(244,65,104,1);
+  box-shadow:2rpx 2rpx 8rpx rgba(245,57,110,0.44);
+  border-radius:4rpx;
+  font-size:28rpx;
+  font-family:Noto Sans S Chinese;
+  font-weight:400;
+  color:rgba(255,255,255,1);
+  margin: 0;
+}
+.cancel-btn {
+  width:180rpx;
+  height:60prx;
+  line-height:60rpx;
+  border-radius:4rpx;
+  font-size:28rpx;
+  font-family:Noto Sans S Chinese;
+  font-weight:400;
+  color:#000;
+  margin: 0;
+}
