@@ -62,8 +62,8 @@
           </view>
           <view class='row padTop-26'>
             <image catchtap="Likebtn" wx:if="{{!isLike}}" class="icon-use" src='../../assets/icon/icon_like_gray@2x.png'></image>
-            <image catchtap="Likebtn" wx:if="{{isLike}}" class="icon-use" src='../../assets/icon/icon_like_red@2x.png'></image>
-            <text class='font-10 low padLef-10'>{{item.id}}</text>
+            <image catchtap="UnLikebtn" wx:if="{{isLike}}" class="icon-use" src='../../assets/icon/icon_like_red@2x.png'></image>
+            <text class='font-10 low padLef-10' catchtap="Likebtn">{{item.like_amount}}</text>
 
 
             <image class='icon-use padLef-41' src='../../assets/icon/icon_Reply_gray@2x.png'></image>

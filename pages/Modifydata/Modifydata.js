@@ -144,7 +144,7 @@ Page({
   },
   onNameInput(e) {
     let name = e.detail.value;
-    // console.log(name);
+    console.log(name);
 
     this.setData({
       name: name

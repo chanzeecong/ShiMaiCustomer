@@ -1,7 +1,6 @@
 const regeneratorRuntime = require('../../lib/runtime.js');
 const app = getApp();
 Page({
-
   /**
    * 页面的初始数据
    */
@@ -13,7 +12,8 @@ Page({
     defaultAddr: {
       region: ``,
     },
-    couponList: {},
+    couponList: [],
+    couponInfo: {},
     goodDetail: {},
     amount: 1,
     totalPrice: 0,
@@ -90,12 +90,28 @@ Page({
 
   useValue(e) {
     let valueId = e.currentTarget.dataset.id;
-    let couponList = this.data.couponList;
-    console.log(valueId)
-    this.hideModal();
-    this.setData({
-      valueId: valueId,
-      couponList: couponList
+    return new Promise(resolve => {
+      wx.request({
+        url: `${app.hostName}coupon`,
+        method: 'GET',
+        header: {
+          'Authorization': `Bearer ${app.token}`
+        },
+        data: {
+          status: 1
+        },
+        dataType: `json`,
+        success: (res) => {
+          resolve(res.data.data);
+          let couponInfo = res.data.data;
+          this.setData({
+            couponInfo: couponInfo,
+            valueId: valueId
+          })
+          console.log(couponInfo)
+          this.hideModal();
+        }
+      })
     })
   },
 

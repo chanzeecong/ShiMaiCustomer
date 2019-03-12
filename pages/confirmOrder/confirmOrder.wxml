@@ -80,10 +80,15 @@
 
 <view class='row row-between padLef-16 padRig-16 padTop-15 padBot-15 padRig-10 underline bgWhite magTop-10' bindtap='usecoupon'>
   <text class='font-14 black'>使用红包</text>
-  <view class='row'>
-    <text class='font-14 gray'>无红包可用</text>
-    <image class='arrow-icon padLef-5' src='https://buyer.sm.afxclub.top/icon_arrow_right@2x.png'></image>
-  </view>
+  <block wx:if="{{couponInfo.length !== 0}}">
+    <view class='row'>
+      <text class='font-14 gray'>无红包可用</text>
+      <image class='arrow-icon padLef-5' src='https://buyer.sm.afxclub.top/icon_arrow_right@2x.png'></image>
+    </view>
+  </block>
+  <block wx:else>
+    <text>54564564654</text>
+  </block>
 </view>
 
 <!-- 弹出框 -->
@@ -110,22 +115,22 @@
   <!-- 红包列表 -->
   <block wx:if="{{currentTab === 0}}">
     <block wx:if="{{couponList.length}}">
-    <view class='card-box flex flex-row {{allitem.status}}' wx:for='{{couponList}}' wx:for-item='allitem' wx:for-index='allidx' wx:key='{{allidx}}' bindtap='useValue' data-id='{{allitem.id}}'>
-      <view class='flex-item card-status-box' style='background-color:#F5396E;'>
-        <view class='font-14pt'>{{allitem.coupon.coupon_type_name}}</view>
-        <view>
-          <text class='font-12pt'>¥</text>{{allitem.coupon.coupon_amount}}
-          <text class='font-12pt'>{{allitem.coupon.coupon_title}}</text>
+      <view class='card-box flex flex-row {{allitem.status}}' wx:for='{{couponList}}' wx:for-item='allitem' wx:for-index='allidx' wx:key='{{allidx}}' bindtap='useValue' data-id='{{allitem.id}}'>
+        <view class='flex-item card-status-box' style='background-color:#F5396E;'>
+          <view class='font-14pt'>{{allitem.coupon.coupon_type_name}}</view>
+          <view>
+            <text class='font-12pt'>¥</text>{{allitem.coupon.coupon_amount}}
+            <text class='font-12pt'>{{allitem.coupon.coupon_title}}</text>
+          </view>
+        </view>
+
+        <view class='card-time-box sub_text_color font-12pt flex flex-column justify-center align-center'>
+          <view class='card-side' style='background-image:url(https://buyer.sm.afxclub.top/circle_side.png)'></view>
+          <view>使用期限</view>
+          <view>{{allitem.coupon.coupon_start_time}}</view>
+          <view>{{allitem.coupon.coupon_end_time}}</view>
         </view>
       </view>
-
-      <view class='card-time-box sub_text_color font-12pt flex flex-column justify-center align-center'>
-        <view class='card-side' style='background-image:url(https://buyer.sm.afxclub.top/circle_side.png)'></view>
-        <view>使用期限</view>
-        <view>{{allitem.coupon.coupon_start_time}}</view>
-        <view>{{allitem.coupon.coupon_end_time}}</view>
-      </view>
-    </view>
 
     </block>
   </block>
@@ -133,21 +138,21 @@
   <block wx:elif="{{currentTab === 1}}">
     <block wx:if="{{couponList.length}}">
       <view class='card-box flex flex-row {{allitem.status}}' wx:for='{{couponList}}' wx:for-item='allitem' wx:for-index='allidx' wx:key='{{allidx}}'>
-      <view class='flex-item card-status-box' style='background-color:#aaaaaa;'>
-        <view class='font-14pt'>{{allitem.coupon.coupon_type_name}}</view>
-        <view>
-          <text class='font-12pt'>¥</text>{{allitem.coupon.coupon_amount}}
-          <text class='font-12pt'>{{allitem.coupon.coupon_title}}</text>
+        <view class='flex-item card-status-box' style='background-color:#aaaaaa;'>
+          <view class='font-14pt'>{{allitem.coupon.coupon_type_name}}</view>
+          <view>
+            <text class='font-12pt'>¥</text>{{allitem.coupon.coupon_amount}}
+            <text class='font-12pt'>{{allitem.coupon.coupon_title}}</text>
+          </view>
+        </view>
+
+        <view class='card-time-box-disable sub_text_color font-12pt flex flex-column justify-center align-center'>
+          <view class='card-side' style='background-image:url(https://buyer.sm.afxclub.top/circle_side.png)'></view>
+          <view>使用期限</view>
+          <view>{{allitem.coupon.coupon_start_time}}</view>
+          <view>{{allitem.coupon.coupon_end_time}}</view>
         </view>
       </view>
-
-      <view class='card-time-box-disable sub_text_color font-12pt flex flex-column justify-center align-center'>
-        <view class='card-side' style='background-image:url(https://buyer.sm.afxclub.top/circle_side.png)'></view>
-        <view>使用期限</view>
-        <view>{{allitem.coupon.coupon_start_time}}</view>
-        <view>{{allitem.coupon.coupon_end_time}}</view>
-      </view>
-    </view>
     </block>
   </block>
 

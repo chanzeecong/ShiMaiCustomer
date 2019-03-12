@@ -109,14 +109,15 @@
                 </view>
 
                 <view class='flex row padRig-6'>
-                  <view wx:if="{{item.is_followed}}" bindtap='onUnfollowBtnClick' data-index="{{index}}" class='follow-btn'>
+                  <!-- <view wx:if="{{item.is_good}}" bindtap='onUnfollowBtnClick' data-index="{{index}}" class='follow-btn'>
                     <image class='heart padRig-4' src='https://buyer.sm.afxclub.top/icon_like_red@2x.png'></image>
                   </view>
 
                   <view wx:else bindtap='onFollowBtnClick' data-index="{{index}}" class='follow-btn'>
                     <image class="heart padRig-4" src='https://buyer.sm.afxclub.top/icon_like@2x.png'></image>
-                  </view>
-
+                  </view> -->
+                  <image catchtap="Likebtn" wx:if="{{!isLike}}" class="heart padRig-4" src='../../assets/icon/icon_like_gray@2x.png'></image>
+                  <image catchtap="UnLikebtn" wx:if="{{isLike}}" class="heart padRig-4" src='../../assets/icon/icon_like_red@2x.png'></image>
                   <view class='font-10 black'>{{id}}</view>
                 </view>
               </view>

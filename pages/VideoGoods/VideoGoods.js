@@ -202,10 +202,58 @@ Page({
 
   // 点赞功能
   Likebtn() {
-    let isLike = !this.data.isLike;
-    let num = this.data.id;
-    this.setData({
-      isLike
+    return new Promise(resolve => {
+      wx.request({
+        url: `${app.hostName}clickZan`,
+        method: 'GET',
+        header: {
+          'Authorization': `Bearer ${app.token}`
+        },
+        data: {
+          buyer_id: this.data.buyer_id,
+          type: this.data.acticeCollected,
+          id: this.data.id,
+        },
+        dataType: 'json',
+        success: (res) => {
+          let isLike = !this.data.isLike;
+          this.setData({
+            isLike
+          })
+          wx.showToast({
+            title: '点赞成功！',
+          })
+          resolve(res.data.data);
+        }
+      })
+    })
+  },
+
+  UnLikebtn() {
+    return new Promise(resolve => {
+      wx.request({
+        url: `${app.hostName}cancelZan`,
+        method: 'GET',
+        header: {
+          'Authorization': `Bearer ${app.token}`
+        },
+        data: {
+          buyer_id: this.data.buyer_id,
+          type: this.data.acticeCollected,
+          id: this.data.id,
+        },
+        dataType: 'json',
+        success: (res) => {
+          let isLike = !this.data.isLike;
+          this.setData({
+            isLike
+          })
+          wx.showToast({
+            title: '取消点赞成功！',
+          })
+          resolve(res.data.data);
+        }
+      })
     })
   },
 

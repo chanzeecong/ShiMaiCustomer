@@ -58,10 +58,13 @@
   </view>
 
   <view class="row bgWhite">
-    <view class='input-wrapper row'>
+    <!-- <view class='input-wrapper row'>
       <input value='{{userInfo.gender}}' placeholder='点击修改' placeholder-class='phcolor' class='input padRig-16 font-16 black' maxlength="1" type="text" bindinput="onSexInput"></input>
       <image wx:if="{{sex.length}}" bindtap='onClearSexBtnClick' class="icon" src='https://buyer.sm.afxclub.top/icon_delete@2x.png'></image>
-    </view>
+    </view> -->
+    <radio-group>
+      
+    </radio-group>
   </view>
 
   <view class="row bgWhite">
