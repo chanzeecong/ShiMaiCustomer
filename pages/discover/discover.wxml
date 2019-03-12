@@ -17,10 +17,10 @@
     </view>
 
     <view class='nav-content magTop-10'>
-      <navigator open-type='navigate' url='../search_buyer/search_buyer' class='search-wrapper bg-white magTop-10 underline'>
+      <navigator open-type='navigate' url='../search_buyer/search_buyer?entrance=1' class='search-wrapper bg-white magTop-10 underline'>
         <view class='search-box'>
           <view class='icon icon-search'>
-            <image src='https://buyer.sm.afxclub.top/icon_search@2x.png'></image>
+            <image src='https://buyer.sm.afxclub.top/icon_search_big@2x.png'></image>
           </view>
           <text bindinput='onSearchInput' class='search-place-text'>大家都在搜：卫衣</text>
         </view>

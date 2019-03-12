@@ -24,16 +24,21 @@ Page({
       }
     ],
     checkedValue: '买手',
-    Hotkeys: [],
+		type: 1,
+    Hotkeys: []
   },
 
-  onLoad: function() {
+  onLoad: function(options) {
+			this.setData({
+					status: options.entrance
+			})
+
     // 2 搜索栏初始化
     var that = this;
     WxSearch.init(
       that, // 本页面一个引用
-      ['家居', '数码', '户外'], // 热点搜索推荐，[]表示不使用
-      ['家居', '数码', '户外'], // 搜索匹配，[]表示不使用
+			[], // 热点搜索推荐，[]表示不使用
+			[],// 搜索匹配，[]表示不使用
       that.mySearchFunction, // 提供一个搜索回调函数
       that.myGobackFunction //提供一个返回回调函数
     );
@@ -48,11 +53,25 @@ Page({
 
   // 4 搜索回调函数  
   mySearchFunction: function(value) {
+		let type = this.data.type;
     // do your job here
     // 示例：跳转
-    wx.redirectTo({
-      url: '../search_list/search_list?searchValue=' + value
-    })
+		if(type == 1)
+		{
+			wx.redirectTo({
+				url: '../search_buyerList/search_buyerList?type=1&search_word=' + value
+			})
+		}	
+		else if (type == 2) {
+			wx.redirectTo({
+				url: '../search_buyerList/search_buyerList?type=2&search_word=' + value
+			})
+		}	
+		else{
+			wx.redirectTo({
+				url: '../search_buyerList/search_buyerList?type=3&search_word=' + value
+			})
+		}	
   },
 
   // 5 返回回调函数
@@ -83,36 +102,25 @@ Page({
   radioChange(e) {
     let value = e.detail.value;
     let name = '';
+		let type = 1;
+
     switch (value) {
       case 'buyer':
         name = '买手';
+				type = 1;
         break;
       case 'tag':
         name = '标签';
+				type = 2;
         break;
       case 'area':
         name = '地区';
+				type = 3;
         break;
     }
     this.setData({
-      checkedValue: name
-    })
-  },
-
-  // 大家都在搜
-  getUserHistory() {
-    return new Promise(resolve => {
-      wx.request({
-        url: `${app.hostName}getUserHistory`,
-        method: 'GET',
-        header: {
-          'Authorization': `Bearer ${app.token}`
-        },
-        dataType: 'json',
-        success: (res) => {
-          resolve(res.data.data.searching);
-        }
-      })
+      checkedValue: name,
+			type: type
     })
   },
 
@@ -127,17 +135,9 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
-    this.initPageData();
+    this.initDataPage();
   },
 
-  async initPageData() {
-    let userHistory = await this.getUserHistory();
-    console.log(userHistory);
-
-    this.setData({
-      Hotkeys: userHistory,
-    });
-  },
   /**
    * 生命周期函数--监听页面隐藏
    */
@@ -166,10 +166,28 @@ Page({
 
   },
 
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function() {
+	async initDataPage() {
+		let hotKeys = await this.getUserHistory();
 
-  }
+		this.setData({
+			hotKeys: hotKeys
+		})
+	},
+
+	getUserHistory() {
+		return new Promise(resolve => {
+			wx.request({
+				url: `${app.hostName}getUserHistory`,
+				method: 'GET',
+				header: {
+					'Authorization': `Bearer ${app.token}`
+				},
+				dataType: 'json',
+				success: (res) => {
+					console.log(res)
+					resolve(res.data.data)
+				}
+			})
+		})
+	}
 })

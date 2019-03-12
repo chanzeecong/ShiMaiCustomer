@@ -207,18 +207,11 @@ Page({
   async initPageData() {
     let status = this.data.tabList[this.data.currentTab].id;
     let couponList = await this.getCoupon(status);
-    console.log(couponList);
-
-		for(let i in couponList)
-		{
-			if(1 == couponList[i].status)
-			{
-				
-			}
-		}
+		let couponNum = await this.getCoupon(-1);
 
     this.setData({
-      couponList: couponList
+      couponList: couponList,
+			couponNum: couponNum
     })
   },
 

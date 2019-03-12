@@ -47,7 +47,7 @@
 
   display: inline-block;
   min-width: 100rpx;
-  background-color: rgba(0, 0, 0, .05);
+  border:1px solid rgba(213,213,213,1);
   color: #000;
   font-size: 20rpx;
   margin-right: 40rpx;
@@ -121,27 +121,35 @@
 }
 
 .weui-search-bar__form {
+	width:303px;
+	height:36px;
   position: relative;
   -webkit-box-flex: 1;
   -webkit-flex: auto;
   flex: auto;
-  border-radius: 10rpx;
+  border-radius: 100rpx;
   background: rgba(0,0,0,.05);
 }
 
 .weui-search-bar__box {
+	width:303px;
+	height:36px;
   position: relative;
-  padding-left: 30px;
+  padding-left: 5px;
   padding-right: 30px;
   width: 100%;
   box-sizing: border-box;
   z-index: 1;
+	border-radius:36rpx;
 }
 
 .weui-search-bar__input {
   height: 28px;
   line-height: 28px;
   font-size: 14px;
+	position:absolute;
+	top:10rpx;
+	left:100rpx;
 }
 
 .weui-icon-clear {

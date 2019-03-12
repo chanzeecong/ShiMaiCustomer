@@ -6,16 +6,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    innerHeight: '667px',
-    wrapperHeight: '667px',
     sortActive: '',
     sortActiveState: '',
-    buyerList: [
-      { id: 'b_1', name: 'Jane', area: '法国', badge: ['法国代购', '香水', '包'], state: true, img: 'https://buyer.sm.afxclub.top/4.png' },
-      { id: 'b_2', name: 'Jane2', area: '美国', badge: ['美国代购', '香水', '包'], state: true, img: 'https://buyer.sm.afxclub.top/4.png' },
-      { id: 'b_3', name: 'Jane3', area: '英国', badge: ['英国代购', '香水', '包'], state: true, img: 'https://buyer.sm.afxclub.top/4.png' },
-      { id: 'b_4', name: 'Jane4', area: '日本', badge: ['日本代购', '香水', '包'], state: true, img: 'https://buyer.sm.afxclub.top/4.png' },
-    ],
     sortItems: [
       { name: 'USA', value: '综合排序', checked: 'true' },
       { name: 'CHN', value: '按时间排序' },
@@ -27,11 +19,20 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    if (options && options.searchValue) {
+    if (options) {
+
       this.setData({
-        searchValue: options.searchValue
+				search_word: options.search_word
       });
     }
+
+		let search_word = options.search_word;
+		let type = options.type;
+
+		let data = {};
+		data.search_word = search_word;
+		data.type = type;
+		let searchRes = this.startToRequest(data); 
 
     this.setData({
       innerHeight: `${app.windowHeight - 80}px`,
@@ -42,7 +43,7 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    console.log(this.data.innerHeight);
+    
   },
 
   /**
@@ -108,10 +109,44 @@ Page({
 
   },
 
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
+	startToRequest(data) {
+		let _this = this;
 
-  }
+		return new Promise((resolve, rejected) => {
+			wx.showLoading({
+				title: '正在搜索中',
+			})
+			wx.request({
+				url: `${app.hostName}getAllCountryBuyers`,
+				data: data,
+				method: 'GET',
+				header: {
+					'Authorization': `Bearer ${app.token}`
+				},
+				dataType: 'json',
+				responseType: 'text',
+				success: function (res) {
+					wx.hideLoading();
+					res.flag = true;
+					resolve(res);
+
+					let showList = res.data.data;
+
+					_this.setData({
+						showList: showList
+					})
+				},
+				fail: function (res) {
+					wx.hideLoading();
+					wx.showToast({
+						title: '搜索失败',
+					})
+				},
+				complete: function (res) {
+					wx.hideLoading();
+				},
+			})
+		})
+	}
+
 })

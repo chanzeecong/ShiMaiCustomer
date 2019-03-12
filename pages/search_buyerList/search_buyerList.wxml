@@ -1,0 +1,85 @@
+
+<view style='margin-bottom: 10rpx;'>
+	<view style='position: relative;z-index: 4;'>
+		<navigator open-type='navigate' url='../search_buyer/search_buyer' class='search-wrapper bg-white'>
+			<view class='search-box'>
+				<view class='icon icon-search'>
+					<image src='https://buyer.sm.afxclub.top/icon_search_big@2x.png'></image>
+				</view>
+				<text class='search-place-text'>{{search_word}}</text>
+			</view>
+			<text class='search_btn'>搜索</text>
+		</navigator>
+		<view class='flex flex-row bg-white search-tools'>
+			<view class='search_info flex-item flex -flex-row'>
+				<text>{{showList.length}}个结果</text>
+				<!-- <view bindtap='showSort' class='flex-item sort_btn padLef-123'>
+					综合排序
+					<view class='icon_arrow'></view>
+				</view> -->
+			</view>
+
+			<view class='pull-down-sort {{sortActive}} {{sortActiveState}}'>
+				<view class='sort-box'>
+					<radio-group class="radio-group" bindchange="sortChange">
+						<label class="radio" wx:for="{{sortItems}}" wx:key='{{index}}'>
+							<radio class='radio-input' value="{{item.name}}" checked="{{item.checked}}" />
+							{{item.value}}
+						</label>
+					</radio-group>
+				</view>
+			</view>
+		</view>
+	</view>
+	<view class='sort-mask {{sortActive}} {{sortActiveState}}' bindtap='hideSort'></view>
+</view>
+
+<block wx:if='{{showList.length != 0}}'>
+	<view class='buyer_box_list'>
+		<view class='buyer_box' wx:for='{{showList}}' wx:key='{{index}}'>
+			<navigator open-type='navigate' url='../buyer_detail/buyer_detail' class='flex flex-row buyer_head'>
+					<image class='buyer_img' mode='aspectFill' src='{{item.img_link}}'></image>
+					<view class='flex-item'>
+						<view class='buyer_title'>
+							<text>{{item.name}}</text>
+							<view class='title_location padTop-2'>
+								<image class='icon icon_location' src='https://buyer.sm.afxclub.top/icon_locate_big@2x.png'></image>
+								{{item.region_name}}
+							</view>
+						</view>
+
+						<view class='flex flex-row buyer-badges'>
+							<view class='badges-item' wx:for='{{item.tag}}' wx:for-index="cidx" wx:key="{{cidx}}" wx:for-item="child">
+								{{child}}
+							</view>
+						</view>
+					</view>
+			</navigator>
+
+			<view class='buyer_middle_info'>
+				<text class='info_sub_title'>{{item.introduction}}自从腾讯把酷我、酷狗收购以后， 音乐正式迎来收费时代。现在随便下载一首普通的歌曲都要钱了。而且随着</text>
+			</view>
+
+			<scroll-view style='white-space:nowrap;' scroll-x scroll-with-animation>
+				<block wx:for='{{item.goods_imgs}}' wx:key="{{essay_img}}" wx:for-item="item">
+					<view class='product_item' style='background-image: url({{item}})'></view>
+				</block>
+			</scroll-view>
+
+			<view class='buyer-action'>
+					<button class='buyer-focus'>进店逛逛</button>
+			</view>
+
+		</view>        
+	</view>
+</block>
+
+<block wx:else>
+	<view class='row row-center magTop-50'>
+		<image src='https://buyer.sm.afxclub.top/img_no_result@2x.png' style='width:300rpx;height:260rpx;'></image>
+	</view>
+	<view class='row row-center padTop-20'>
+		<text class='font-16 grey'>抱歉，未找到相关结果</text>
+	</view>
+</block>
+

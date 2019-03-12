@@ -11,7 +11,7 @@
     "pages/myscore/myscore",
     "pages/usercenter/usercenter",
     "pages/sale/sale",
-    "pages/search_list/search_list",
+    "pages/search_buyerList/search_buyerList",
     "pages/buyer_list/buyer_list",
     "pages/search_buyer/search_buyer",
     "pages/orderList/orderList",
