@@ -198,7 +198,7 @@ Page({
   },
 
   // 点赞功能
-  Likebtn() {
+  getLikeBtn() {
     return new Promise(resolve => {
       wx.request({
         url: `${app.hostName}clickZan`,
@@ -213,22 +213,26 @@ Page({
         },
         dataType: 'json',
         success: (res) => {
-          let isLike = !this.data.isLike;
-          let likeMount = this.data.likeMount;
-          this.likeMount + 1
-          this.setData({
-            isLike,
-          })
+					for (let i in this.data.detailList) {
+						if (this.data.buyer_id == this.data.detailList[i].buyer_id) {
+							this.data.detailList[i].is_zan = 1;
+							this.data.detailList[i].like_amount++;
+						}
+					}
+
+					this.setData({
+						detailList: this.data.detailList
+					})
+
           wx.showToast({
             title: '点赞成功！',
           })
-          resolve(res.data.data);
         }
       })
     })
   },
 
-  UnLikebtn() {
+	getUnLikeBtn() {
     return new Promise(resolve => {
       wx.request({
         url: `${app.hostName}cancelZan`,
@@ -243,14 +247,20 @@ Page({
         },
         dataType: 'json',
         success: (res) => {
-          let isLike = !this.data.isLike;
-          this.setData({
-            isLike
-          })
+					for (let i in this.data.detailList) {
+						if (this.data.buyer_id == this.data.detailList[i].buyer_id) {
+							this.data.detailList[i].is_zan = 2;
+							this.data.detailList[i].like_amount--;
+						}
+					}
+
+					this.setData({
+						detailList: this.data.detailList
+					})
+
           wx.showToast({
             title: '取消点赞成功！',
           })
-          resolve(res.data.data);
         }
       })
     })
@@ -291,12 +301,13 @@ Page({
     this.initPageData();
     this.saveFootList();
   },
+	
   async initPageData() {
     let detailList = await this.getDetail();
     console.log(detailList);
 
     this.setData({
-      detailList: detailList,
+      detailList: detailList
     });
   },
   /**

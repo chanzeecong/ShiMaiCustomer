@@ -109,16 +109,16 @@
                 </view>
 
                 <view class='flex row padRig-6'>
-                  <!-- <view wx:if="{{item.is_good}}" bindtap='onUnfollowBtnClick' data-index="{{index}}" class='follow-btn'>
+                  <!-- <view wx:if="{{item.is_zan}}" bindtap='onUnfollowBtnClick' data-index="{{index}}" class='follow-btn'>
                     <image class='heart padRig-4' src='https://buyer.sm.afxclub.top/icon_like_red@2x.png'></image>
                   </view>
 
                   <view wx:else bindtap='onFollowBtnClick' data-index="{{index}}" class='follow-btn'>
                     <image class="heart padRig-4" src='https://buyer.sm.afxclub.top/icon_like@2x.png'></image>
                   </view> -->
-                  <image catchtap="Likebtn" wx:if="{{!isLike}}" class="heart padRig-4" src='../../assets/icon/icon_like_gray@2x.png'></image>
-                  <image catchtap="UnLikebtn" wx:if="{{isLike}}" class="heart padRig-4" src='../../assets/icon/icon_like_red@2x.png'></image>
-                  <view class='font-10 black'>{{id}}</view>
+                  <image catchtap="Likebtn" wx:if="{{is_zan == 2}}" class="heart padRig-4" src='../../assets/icon/icon_like_gray@2x.png'></image>
+                  <image catchtap="UnLikebtn" wx:else class="heart padRig-4" src='../../assets/icon/icon_like_red@2x.png'></image>
+                  <view class='font-10 black'>{{like_amount}}</view>
                 </view>
               </view>
             </view>

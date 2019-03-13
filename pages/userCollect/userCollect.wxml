@@ -91,6 +91,7 @@
 
   <block wx:for="{{collectList}}" wx:key="{{index}}" class="{{item.isShow ?'touch-move-active':''}}">
     <block wx:if="{{1 == item.type}}">
+
       <template name="item">
         <view class="item">
           <block wx:if="{{essay_img}}">
@@ -134,6 +135,7 @@
           </view>
         </view>
       </template>
+			<image wx:if='{{isShow}}' class='choose-icon' src='https://buyer.sm.afxclub.top/icon_choose@2x.png'></image>
     </block>
 
     <block wx:if="{{2 == item.type}}">

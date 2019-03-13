@@ -173,58 +173,63 @@ Page({
     })
   },
 
-  OnfollowBtnClick(e) {
-    let id = e.currentTarget.dataset.id;
-    console.log(id);
+	onFollowBtnClick(e) {
+		let buyerId = e.currentTarget.dataset.id;
+		console.log(buyerId)
 
-    return new Promise(resolve => {
-      wx.request({
-        url: `${app.hostName}buyer/${this.data.buyer_id}/follow`,
-        method: 'POST',
-        header: {
-          'Authorization': `Bearer ${app.token}`
-        },
-        data: {
-          id: this.data.buyer_id
-        },
-        dataType: 'json',
-        success: (res) => {
-          let is_followed = !this.data.is_followed;
-          this.setData({
-            is_followed
-          })
-          wx.showToast({
-            title: '关注买手成功！',
-          })
-          resolve(res.data.data);
-        }
-      })
-    })
-  },
+		wx.request({
+			url: `${app.hostName}buyer/${e.currentTarget.dataset.id}/follow`,
+			method: 'POST',
+			header: {
+				'Authorization': `Bearer ${app.token}`
+			},
+			dataType: 'json',
+			success: (res) => {
+				for (let i in this.data.hotList) {
+					if (buyerId == this.data.hotList[i].id) {
+						this.data.hotList[i].is_follow = true;
+					}
+				}
 
+				this.setData({
+					hotList: this.data.hotList
+				})
+				
+				wx.showToast({
+					title: '关注买手成功！',
+				})
+			}
+		})
+	},
 
-  onUnfollowBtnClick(e) {
-    return new Promise(resolve => {
-      wx.request({
-        url: `${app.hostName}buyer/${this.data.buyer_id}/unFollow`,
-        method: 'DELETE',
-        header: {
-          'Authorization': `Bearer ${app.token}`
-        },
-        dataType: 'json',
-        success: (res) => {
-          let is_followed = 0;
-          this.setData({
-            is_followed
-          })
-          wx.showToast({
-            title: '取消关注成功！',
-          })
-          resolve(res.data.data);
-        }
-      })
-    })
-  },
+	onUnfollowBtnClick(e) {
+		let buyerId = e.currentTarget.dataset.id;
+		console.log(e.currentTarget.dataset.id)
+
+		wx.request({
+			url: `${app.hostName}buyer/${e.currentTarget.dataset.id}/unFollow`,
+			method: 'DELETE',
+			header: {
+				'Authorization': `Bearer ${app.token}`
+			},
+			dataType: 'json',
+			success: (res) => {
+				for (let i in this.data.hotList) {
+					if (buyerId == this.data.hotList[i].id) {
+						this.data.hotList[i].is_follow = false;
+					}
+				}
+
+				this.setData({
+					hotList: this.data.hotList
+				})
+
+				wx.showToast({
+					title: '取消关注成功！',
+				})
+			}
+		})
+	},
 
   loadMore() {
     if (this.data.hasMoreData) {

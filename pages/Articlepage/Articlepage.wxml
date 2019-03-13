@@ -61,9 +61,9 @@
             <text class='font-11 magRig-5' style='color:rgba(245,57,110,1);'>{{item.browse_number}}人浏览</text>
           </view>
           <view class='row padTop-26'>
-            <image catchtap="Likebtn" wx:if="{{!isLike}}" class="icon-use" src='../../assets/icon/icon_like_gray@2x.png'></image>
-            <image catchtap="UnLikebtn" wx:if="{{isLike}}" class="icon-use" src='../../assets/icon/icon_like_red@2x.png'></image>
-            <text class='font-10 low padLef-10' catchtap="Likebtn">{{item.like_amount}}</text>
+            <image catchtap="getLikeBtn" wx:if="{{item.is_zan == 2}}" class="icon-use" src='../../assets/icon/icon_like_gray@2x.png'></image>
+            <image catchtap="getUnLikeBtn" wx:else class="icon-use" src='../../assets/icon/icon_like_red@2x.png'></image>
+            <text class='font-10 low padLef-10'>{{item.like_amount}}</text>
 
 
             <image class='icon-use padLef-41' src='../../assets/icon/icon_Reply_gray@2x.png'></image>
