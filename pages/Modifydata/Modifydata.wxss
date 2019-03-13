@@ -51,11 +51,12 @@
   background-color: rgba(0, 0, 0, 0.6);
   z-index: 50;
 }
+
 .modal {
-  width:560rpx;
-  height:408rpx;
-  background:rgba(255,255,255,1);
-  border-radius:16rpx;
+  width: 560rpx;
+  height: 408rpx;
+  background: rgba(255, 255, 255, 1);
+  border-radius: 16rpx;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -63,4 +64,41 @@
   margin-left: -280rpx;
   box-sizing: border-box;
   z-index: 99;
+}
+
+/* 单选框 */
+
+.radio-box {
+  display: inline-block;
+  position: relative;
+  height: 15px;
+  line-height: 15px;
+  margin-right: 5px;
+  font-size: 26rpx;
+}
+
+.input-radio {
+  display: inline-block;
+  position: absolute;
+  opacity: 0;
+  width: 15px;
+  height: 15px;
+  cursor: pointer;
+  left: 0px;
+  outline: none;
+  -webkit-appearance: none;
+}
+
+.radio {
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  vertical-align: middle;
+  cursor: pointer;
+  background: #d7d7d9;
+}
+
+.on {
+  background: #F5396E;
 }

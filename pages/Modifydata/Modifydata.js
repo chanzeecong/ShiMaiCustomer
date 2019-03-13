@@ -12,6 +12,17 @@ Page({
     sex: ``,
     sign: ``,
     avatar: ``,
+    sex: 0,
+    radios: [
+      {
+        label: '男',
+        value: '男',
+      },
+      {
+        label: '女',
+        value: '女',
+      },
+    ],
     isShowMask: false,
     isShowAvatarModal: false,
   },
@@ -230,6 +241,14 @@ Page({
         icon: `none`
       });
     })
-  }
+  },
+  check(e) {
+    console.log(e)
+    var that = this;
+    var sex = e.currentTarget.dataset.index
+    that.setData({
+      sex: sex
+    })
+  },
 
 })

@@ -13,6 +13,8 @@ Page({
     isScroll: true,
     commentList: [],
     content: ``,
+    parent_id: ``,
+    newList: ``,
   },
 
   /**
@@ -26,15 +28,30 @@ Page({
     })
     this.getComments();
   },
-  showInputBox: function () {
-    this.setData({ inputBoxShow: true });
-    this.setData({ isScroll: false });
+  showInputBox: function() {
+    this.setData({
+      inputBoxShow: true
+    });
+    this.setData({
+      isScroll: false
+    });
   },
-  invisible: function () {
-    this.setData({ inputBoxShow: false });
-    this.setData({ isScroll: true });
+  invisible: function() {
+    this.setData({
+      inputBoxShow: false
+    });
+    this.setData({
+      isScroll: true
+    });
   },
 
+  async initPageData() {
+    let newList = await this.bindTextAreaBlur();
+    this.setData({
+      newList: commentList,
+      commentList: commentList,
+    });
+  },
   getComments() {
     return new Promise(resolve => {
       wx.request({
@@ -57,10 +74,9 @@ Page({
   },
 
   bindTextAreaBlur(e) {
-    console.log(e);
-    this.setData({
-      content: e.detail.value
-    })
+    console.log('1111111:', e.detail.value)
+    bindblur = e.detail.value;
+
     return new Promise(resolve => {
       wx.request({
         url: `${app.hostName}essay/${this.data.id}/comment`,
@@ -74,18 +90,24 @@ Page({
         dataType: 'json',
         success: (res) => {
           resolve(res.data.data);
-          console.log(res.data.data)
-          let commentList = res.data.data;
+          let newList = res.data.data
           this.setData({
-            commentList
+            commentList: this.data.commentList.concat(newList),
+          })
+          wx.showToast({
+            title: '评论成功！',
           })
         }
       })
     })
   },
-  
-  reply_comment() {
-    console.log(465465465)
+
+  reply_comment(e) {
+    console.log(e.currentTarget.dataset.idx);
+    this.setData({
+      parent_id: e.currentTarget.dataset.idx
+    })
+
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -94,11 +116,12 @@ Page({
 
   },
 
+  
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
-
+    this.initPageData()
   },
 
   /**
@@ -135,4 +158,5 @@ Page({
   onShareAppMessage: function() {
 
   },
+  
 })
