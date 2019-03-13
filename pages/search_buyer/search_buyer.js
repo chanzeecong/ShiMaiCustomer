@@ -54,24 +54,31 @@ Page({
   // 4 搜索回调函数  
   mySearchFunction: function(value) {
 		let type = this.data.type;
+		let status = this.data.status;
     // do your job here
-    // 示例：跳转
-		if(type == 1)
+		if(status == 2)
 		{
-			wx.redirectTo({
-				url: '../search_buyerList/search_buyerList?type=1&search_word=' + value
-			})
-		}	
-		else if (type == 2) {
-			wx.redirectTo({
-				url: '../search_buyerList/search_buyerList?type=2&search_word=' + value
-			})
-		}	
+			if (type == 1) {
+				wx.redirectTo({
+					url: '../search_buyerList/search_buyerList?type=1&search_word=' + value
+				})
+			}
+			else if (type == 2) {
+				wx.redirectTo({
+					url: '../search_buyerList/search_buyerList?type=2&search_word=' + value
+				})
+			}
+			else {
+				wx.redirectTo({
+					url: '../search_buyerList/search_buyerList?type=3&search_word=' + value
+				})
+			}	
+		}
 		else{
 			wx.redirectTo({
-				url: '../search_buyerList/search_buyerList?type=3&search_word=' + value
+				url: '../search_list/search_list?search_word=' + value
 			})
-		}	
+		}
   },
 
   // 5 返回回调函数

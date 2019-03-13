@@ -1,7 +1,7 @@
 <!--pages/buyer_list/buyer_list.wxml-->
 <view class='wrapper'>
   <view class='buyer_area_bg' style='background-image:url({{buyerList.bg_img}});margin-bottom: 20rpx;'></view>
-  <navigator open-type='navigate' url='../search_buyer/search_buyer' class='search-wrapper bg-white' style='margin-bottom: 10rpx;'>
+  <navigator open-type='navigate' url='../search_buyer/search_buyer?entrance=2' class='search-wrapper bg-white' style='margin-bottom: 10rpx;'>
     <view class='search-box'>
       <view class='icon icon-search'>
         <image src='https://buyer.sm.afxclub.top/icon_search_big@2x.png'></image>

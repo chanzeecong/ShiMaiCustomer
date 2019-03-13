@@ -1,69 +1,70 @@
 {
-  "pages": [
-    "pages/register/register",
-    "pages/discover/discover",
-    "pages/buyer/buyer",
-    "pages/index/index",
-    "pages/myhistory/myhistory",
-    "pages/buyer_detail/buyer_detail",
-    "pages/myreply_list/myreply_list",
-    "pages/card_bag/card_bag",
-    "pages/myscore/myscore",
-    "pages/usercenter/usercenter",
-    "pages/sale/sale",
-    "pages/search_buyerList/search_buyerList",
-    "pages/buyer_list/buyer_list",
-    "pages/search_buyer/search_buyer",
-    "pages/orderList/orderList",
-    "pages/addrList/addrList",
-    "pages/editAddr/editAddr",
-    "pages/expressDetail/expressDetail",
-    "pages/orderDetail/orderDetail",
-    "pages/myShop/myShop",
-    "pages/userFollow/userFollow",
-    "pages/mynotice/mynotice",
-    "pages/userCollect/userCollect",
-    "pages/myordernotice/myordernotice",
-    "pages/Articlepage/Articlepage",
-    "pages/VideoGoods/VideoGoods",
-    "pages/Allcomments/Allcomments",
-    "pages/helpCenter/helpCenter",
-    "pages/Modifydata/Modifydata"
-  ],
-  "window": {
-    "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "WeChat",
-    "navigationBarTextStyle": "black"
-  },
-  "tabBar": {
-    "color": "#666",
-    "selectedColor": "#F44168",
-    "list": [
-      {
-        "iconPath": "assets/icon/Tab_icon_Sale_Default@2x.png",
-        "selectedIconPath": "assets/icon/Tab_icon_Sale_Selected@2x.png",
-        "pagePath": "pages/sale/sale",
-        "text": "特卖"
-      },
-      {
-        "iconPath": "assets/icon/Tab_icon_buyer_Default@2x.png",
-        "selectedIconPath": "assets/icon/Tab_icon_buyer_Selected@2x.png",
-        "pagePath": "pages/buyer/buyer",
-        "text": "买手"
-      },
-      {
-        "iconPath": "assets/icon/Tab_icon_Find_Default@2x.png",
-        "selectedIconPath": "assets/icon/Tab_icon_Find_Selected@2x.png",
-        "pagePath": "pages/discover/discover",
-        "text": "发现"
-      },
-      {
-        "iconPath": "assets/icon/Tab_icon_my_Default@2x.png",
-        "selectedIconPath": "assets/icon/Tab_icon_my_Selected@2x.png",
-        "pagePath": "pages/usercenter/usercenter",
-        "text": "我的"
-      }
-    ]
-  }
+	"pages": [
+		"pages/register/register",
+		"pages/discover/discover",
+		"pages/buyer/buyer",
+		"pages/index/index",
+		"pages/myhistory/myhistory",
+		"pages/buyer_detail/buyer_detail",
+		"pages/myreply_list/myreply_list",
+		"pages/card_bag/card_bag",
+		"pages/myscore/myscore",
+		"pages/usercenter/usercenter",
+		"pages/sale/sale",
+		"pages/search_buyerList/search_buyerList",
+		"pages/buyer_list/buyer_list",
+		"pages/search_buyer/search_buyer",
+		"pages/orderList/orderList",
+		"pages/addrList/addrList",
+		"pages/editAddr/editAddr",
+		"pages/expressDetail/expressDetail",
+		"pages/orderDetail/orderDetail",
+		"pages/myShop/myShop",
+		"pages/userFollow/userFollow",
+		"pages/mynotice/mynotice",
+		"pages/userCollect/userCollect",
+		"pages/myordernotice/myordernotice",
+		"pages/Articlepage/Articlepage",
+		"pages/VideoGoods/VideoGoods",
+		"pages/Allcomments/Allcomments",
+		"pages/helpCenter/helpCenter",
+		"pages/Modifydata/Modifydata",
+		"pages/search_list/search_list"
+	],
+	"window": {
+		"backgroundTextStyle": "light",
+		"navigationBarBackgroundColor": "#fff",
+		"navigationBarTitleText": "WeChat",
+		"navigationBarTextStyle": "black"
+	},
+	"tabBar": {
+		"color": "#666",
+		"selectedColor": "#F44168",
+		"list": [
+			{
+				"iconPath": "assets/icon/Tab_icon_Sale_Default@2x.png",
+				"selectedIconPath": "assets/icon/Tab_icon_Sale_Selected@2x.png",
+				"pagePath": "pages/sale/sale",
+				"text": "特卖"
+			},
+			{
+				"iconPath": "assets/icon/Tab_icon_buyer_Default@2x.png",
+				"selectedIconPath": "assets/icon/Tab_icon_buyer_Selected@2x.png",
+				"pagePath": "pages/buyer/buyer",
+				"text": "买手"
+			},
+			{
+				"iconPath": "assets/icon/Tab_icon_Find_Default@2x.png",
+				"selectedIconPath": "assets/icon/Tab_icon_Find_Selected@2x.png",
+				"pagePath": "pages/discover/discover",
+				"text": "发现"
+			},
+			{
+				"iconPath": "assets/icon/Tab_icon_my_Default@2x.png",
+				"selectedIconPath": "assets/icon/Tab_icon_my_Selected@2x.png",
+				"pagePath": "pages/usercenter/usercenter",
+				"text": "我的"
+			}
+		]
+	}
 }

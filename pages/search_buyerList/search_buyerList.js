@@ -19,12 +19,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    if (options) {
-
       this.setData({
 				search_word: options.search_word
       });
-    }
 
 		let search_word = options.search_word;
 		let type = options.type;

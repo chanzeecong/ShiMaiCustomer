@@ -43,6 +43,7 @@ Page({
       attrId: Number(options.attrId),
       addrId: Number(options.addrId),
       id: Number(options.id),
+			amount: Number(options.amount)
     })
   },
 
@@ -91,7 +92,23 @@ Page({
   useValue(e) {
     let valueId = e.currentTarget.dataset.id;
     let couponList = this.data.couponList;
-    console.log(valueId)
+
+		for(let i in couponList)
+		{
+			if (valueId == couponList[i].id)
+			{
+				console.log(couponList[i].id)
+				let couponNum = couponList[i].coupon.coupon_amount;
+				console.log(couponNum)
+
+				this.setData({
+					couponNum: couponNum
+				})
+
+				break;
+			}
+		}
+
     this.hideModal();
     this.setData({
       valueId: valueId,
@@ -200,7 +217,7 @@ Page({
         paySign: data.paySign,
         success: (res) => {
           wx.navigateTo({
-            url: `../payResult/payResult?result=1&id=${goodDetail.id}`,
+            url: `../payResult/payResult?result=1&id=${goodDetail.id}&`,
           })
         },
         fail: (res) => {

@@ -1,6 +1,6 @@
 <!--pages/orderList/orderList.wxml-->
 <scroll-view scroll-x="true" scroll-left="{{scrollToLeft}}rpx" scroll-with-animation="true">
-  <view class="row row-center underline bgWhite" style='width:150%;justify-content:center;'>
+  <view class="row row-center underline bgWhite" style='width:100%;justify-content:center;'>
     <view bindtap="onTapClick" data-index='{{index}}' wx:for="{{tabList}}" wx:key="{{index}}" style='width:220rpx;' class='row row-center'>
       <view class='tab-wrapper row row-center {{index === currentTab? "active red" : "black"}}'>
         <text class='{{index === currentTab? "red font-16" : "black font-14"}}'>{{item.label}}</text>
