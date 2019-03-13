@@ -17,6 +17,9 @@ Page({
     is_followed: ``,
     topNum: 0,
     scrollHeight: 0,
+    currentPage: 1, //当前页
+    pageSize: 2, // 每页条数
+    hasMoreData: true,
   },
 
   /**
@@ -31,6 +34,7 @@ Page({
         })
       })
     })
+    this.initPageData();
   },
 
 
@@ -64,7 +68,6 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
-    this.initPageData();
   },
 
   scroll(e) {
@@ -121,6 +124,7 @@ Page({
   },
 
   getCountry() {
+    var that = this;
     return new Promise(resolve => {
       wx.request({
         url: `${app.hostName}getAllCountryBuyers`,
@@ -128,9 +132,26 @@ Page({
         header: {
           'Authorization': `Bearer ${app.token}`
         },
+        data: {
+          page: this.data.currentPage
+        },
         dataType: 'json',
         success: (res) => {
           resolve(res.data.data);
+          var list = res.data.data;
+          if(list.length < this.data.pageSize) {
+            wx.showToast({
+              icon: "none",
+              title: '没有更多数据'
+            });
+          } else {
+            that.setData({
+              countryList: that.data.countryList.concat(list),
+              hasMoreData: true,
+              currentPage: that.data.currentPage + 1,
+            })
+          }
+          wx.hideLoading();
         }
       })
     })
@@ -205,4 +226,17 @@ Page({
     })
   },
 
+  loadMore() {
+    if (this.data.hasMoreData) {
+      this.getCountry()
+      wx.showLoading({
+        title: '在加载啦',
+      })
+    } else {
+      wx.showToast({
+        icon: "none",
+        title: '都没有了你还想咋地'
+      })
+    }
+  }
 })

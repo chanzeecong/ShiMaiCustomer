@@ -17,7 +17,7 @@
               <text class='font-10 low'>{{item.created_at}}</text>
               <view class='row justify-around'>
                 <image class="icon-com" src='../../assets/icon/icon_Reply@2x.png'></image>
-                <text class='padLef-5 font-10' style='color:rgba(0,0,0,0.60);'>回复</text>
+                <text class='padLef-5 font-10' style='color:rgba(0,0,0,0.60);' bindtap='reply_comment'>回复</text>
               </view>
             </view>
           </view>
@@ -44,6 +44,12 @@
 
 
 </scroll-view>
-<view class='comment-view'>
-  <input placeholder='你长的这么好看，也来评论一下吧~' placeholder-class='place-holder'></input>
+<view class="comment_release">
+  <view class="left">
+    <textarea class="text" placeholder-class="weui-input" fixed="true" value='{{content}}' bindblur='bindTextAreaBlur' maxlength="-1" show-confirm-bar="false" cursor-spacing="15" auto-height="true" placeholder="你长的这么好看，也来评论一下吧~" />
+    <view class="line" />
+  </view>
+  <view class='padRig-18'>
+    <image class='icon-submit'  src='../../assets/icon/icon_aircraft@2x.png'></image>
+  </view>
 </view>

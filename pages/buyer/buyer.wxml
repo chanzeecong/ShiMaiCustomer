@@ -1,5 +1,5 @@
 <!--pages/buyer/buyer.wxml-->
-<scroll-view scroll-y="{{isScroll}}" scroll-top='{{topNum}}' bindscroll="scrolltoupper" style='height:{{scrollHeight}}px;'>
+<scroll-view scroll-y="{{isScroll}}" scroll-top='{{topNum}}' bindscroll="scrolltoupper" bindscrolltolower="loadMore" style='height:{{scrollHeight}}px;'>
 
 <view class='wrapper'>
 

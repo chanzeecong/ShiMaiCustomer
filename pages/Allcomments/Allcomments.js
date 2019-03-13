@@ -12,6 +12,7 @@ Page({
     inputBoxShow: false,
     isScroll: true,
     commentList: [],
+    content: ``,
   },
 
   /**
@@ -55,9 +56,37 @@ Page({
     })
   },
 
-
+  bindTextAreaBlur(e) {
+    console.log(e);
+    this.setData({
+      content: e.detail.value
+    })
+    return new Promise(resolve => {
+      wx.request({
+        url: `${app.hostName}essay/${this.data.id}/comment`,
+        method: 'POST',
+        data: {
+          content: this.data.content
+        },
+        header: {
+          'Authorization': `Bearer ${app.token}`
+        },
+        dataType: 'json',
+        success: (res) => {
+          resolve(res.data.data);
+          console.log(res.data.data)
+          let commentList = res.data.data;
+          this.setData({
+            commentList
+          })
+        }
+      })
+    })
+  },
   
-
+  reply_comment() {
+    console.log(465465465)
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -105,5 +134,5 @@ Page({
    */
   onShareAppMessage: function() {
 
-  }
+  },
 })

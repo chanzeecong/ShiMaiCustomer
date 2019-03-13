@@ -66,6 +66,7 @@ Page({
     isScroll: true,
     isShowMask: false,
     isShowLesson: false,
+    isLike: false,
     showList: [],
     homeList: [],
     eassyList: [],
@@ -78,11 +79,6 @@ Page({
     pageSize: 2, // 每页条数
     hasMoreData: true,
     iscollected: false,
-    job: [],
-    jobList: [],
-    id: '',
-    jobStorage: [],
-    jobId: ''
   },
 
   scrollTabStart(e) {
@@ -165,12 +161,6 @@ Page({
       showList: showList
     })
   },
-
-  // scrollTopFun(e) {
-  //   let that = this;
-  //   that.top = e.detail.scrollTop;
-  //   that.$apply();
-  // },
 
   scrolltoupper(e) {
     // console.log(e)
@@ -299,14 +289,16 @@ Page({
         success: (res) => {
           resolve(res.data.data);
           var list = res.data.data;
-          if (res.data.data.length < this.data.pageSize) {
+          if (list.length < this.data.pageSize) {
             wx.showToast({
               icon: "none",
               title: '没有更多数据'
             });
           } else {
             that.setData({
-              eassyList: that.data.eassyList.concat(list)
+              eassyList: that.data.eassyList.concat(list),
+              hasMoreData: true,
+              currentPage: that.data.currentPage + 1
             })
           }
           wx.hideLoading();

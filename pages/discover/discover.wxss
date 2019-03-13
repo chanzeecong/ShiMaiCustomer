@@ -364,3 +364,7 @@
 .right{
   float: right;
 }
+.follow-btn {
+  width:20rpx;
+  height:18rpx;
+}

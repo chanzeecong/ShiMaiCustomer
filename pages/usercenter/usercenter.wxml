@@ -104,11 +104,11 @@
           <view class='icon-btn' style='background-image:url(https://buyer.sm.afxclub.top/icon_address@2x.png);'></view>
           <view class='padTop-15'>收货地址</view>
         </navigator>
-
+<!-- 
         <navigator open-type='navigate' url='../mynotice/mynotice' class='tools-item font-14 deep'>
           <view class='icon-btn' style='background-image:url(https://buyer.sm.afxclub.top/icon_Message@2x.png);'></view>
           <view class='padTop-15'>我的消息</view>
-        </navigator>
+        </navigator> -->
         <navigator open-type='navigate' url='../myscore/myscore' class='tools-item font-14 deep'>
           <view class='icon-btn' style='background-image:url(https://buyer.sm.afxclub.top/icon_integral@2x.png);'></view>
           <view class='padTop-15'>我的积分</view>
