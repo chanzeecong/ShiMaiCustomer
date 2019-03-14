@@ -80,6 +80,12 @@
 
 <view class='row row-between padLef-16 padRig-16 padTop-15 padBot-15 padRig-10 underline bgWhite magTop-10' bindtap='usecoupon'>
   <text class='font-14 black'>使用红包</text>
+<<<<<<< HEAD
+  <view class='row'>
+    <text class='font-14 gray'>{{couponNum? couponNum: '无可用红包'}}</text>
+    <image class='arrow-icon padLef-5' src='https://buyer.sm.afxclub.top/icon_arrow_right@2x.png'></image>
+  </view>
+=======
   <block wx:if="{{couponInfo.length !== 0}}">
     <view class='row'>
       <text class='font-14 gray'>无红包可用</text>
@@ -89,6 +95,7 @@
   <block wx:else>
     <text>54564564654</text>
   </block>
+>>>>>>> 162b6715e9bd36175bea75a2385b84f106dd6877
 </view>
 
 <!-- 弹出框 -->
@@ -115,6 +122,14 @@
   <!-- 红包列表 -->
   <block wx:if="{{currentTab === 0}}">
     <block wx:if="{{couponList.length}}">
+<<<<<<< HEAD
+    <view class='card-box flex flex-row {{allitem.status}}' wx:for='{{couponList}}' wx:for-item='allitem' wx:for-index='allidx' wx:key='{{allidx}}' data-id='{{allitem.id}}' bindtap='useValue'>
+      <view class='flex-item card-status-box' style='background-color:#F5396E;'>
+        <view class='font-14pt'>{{allitem.coupon.coupon_type_name}}</view>
+        <view>
+          <text class='font-12pt'>¥</text>{{allitem.coupon.coupon_amount}}
+          <text class='font-12pt'>{{allitem.coupon.coupon_title}}</text>
+=======
       <view class='card-box flex flex-row {{allitem.status}}' wx:for='{{couponList}}' wx:for-item='allitem' wx:for-index='allidx' wx:key='{{allidx}}' bindtap='useValue' data-id='{{allitem.id}}'>
         <view class='flex-item card-status-box' style='background-color:#F5396E;'>
           <view class='font-14pt'>{{allitem.coupon.coupon_type_name}}</view>
@@ -122,6 +137,7 @@
             <text class='font-12pt'>¥</text>{{allitem.coupon.coupon_amount}}
             <text class='font-12pt'>{{allitem.coupon.coupon_title}}</text>
           </view>
+>>>>>>> 162b6715e9bd36175bea75a2385b84f106dd6877
         </view>
 
         <view class='card-time-box sub_text_color font-12pt flex flex-column justify-center align-center'>
@@ -177,7 +193,7 @@
 
   <view class='row row-between padLef-16 padRig-16 padTop-20 bgWhite'>
     <text class='font-14 grey'>商品总额:</text>
-    <text class='font-14 grey'>￥{{goodDetail.price ? goodDetail.price: 0}}</text>
+    <text class='font-14 grey'>￥{{totalPrice ? totalPrice: 0}}</text>
   </view>
 
   <view class='row row-between padLef-16 padRig-16 padTop-15 bgWhite'>
@@ -192,7 +208,7 @@
 
   <view class='row row-between padLef-16 padRig-16 padTop-15 padBot-20 bgWhite underline'>
     <text class='font-14 grey'>红包:</text>
-    <text class='font-14 grey'>-￥{{couponList.coupon.coupon_amount ? couponList.coupon.coupon_amount: 0}}</text>
+    <text class='font-14 grey'>-￥{{couponNum ? couponNum: 0}}</text>
   </view>
 
   <view class='row row-between padLef-16 padRig-16 padTop-15 padBot-15 bgWhite'>
@@ -201,7 +217,14 @@
 
     <view style='text-align:left'>
       <text class='font-12 black'>共{{amount}}件商品   合计:</text>
-      <text class='font-20 font-bold red padRig-10'>￥{{totalPrice}}元</text>
+			
+      <block wx:if='{{couponNum}}'>
+				<text class='font-16 red font-bold'>￥{{totalPrice-couponNum}}元</text>
+			</block>
+
+			<block wx:else>
+				<text class='font-16 red font-bold'>￥{{totalPrice}}元</text>
+			</block>
     </view>
   </view>
 </block>
@@ -209,14 +232,28 @@
 <view class='row row-between padLef-16 padRig-16 padTop-10 padBot-10 padRig-10 underline bgWhite'>
   <view class='row'>
     <text class='font-16 black font-bold'>共{{amount}}件商品 合计</text>
-    <text class='font-20 red font-bold'>￥{{totalPrice}}元</text>
+
+    <block wx:if='{{couponNum}}'>
+    	<text class='font-16 red font-bold'>￥{{totalPrice-couponNum}}元</text>
+		</block>
+
+		<block wx:else>
+			<text class='font-16 red font-bold'>￥{{totalPrice}}元</text>
+		</block>
   </view>
 </view>
 
 <view class='fixed row row-between h-50 bgWhite'>
   <view class='row padLef-16'>
     <text class='font-16 black'>应付金额：</text>
-    <text class='font-16 red font-bold'>￥{{totalPrice}}元</text>
+
+		<block wx:if='{{couponNum}}'>
+    	<text class='font-16 red font-bold'>￥{{totalPrice-couponNum}}元</text>
+		</block>
+
+		<block wx:else>
+			<text class='font-16 red font-bold'>￥{{totalPrice}}元</text>
+		</block>
   </view>
 
   <button bindtap='onPaidBtnClick' class='btn' plain>微信支付</button>

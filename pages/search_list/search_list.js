@@ -1,117 +1,109 @@
 // pages/search_list/search_list.js
 const app = getApp();
+const regeneratorRuntime = require('../../lib/runtime.js');
+
 Page({
 
-  /**
-   * 页面的初始数据
-   */
-  data: {
-    innerHeight: '667px',
-    wrapperHeight: '667px',
-    sortActive: '',
-    sortActiveState: '',
-    buyerList: [
-      { id: 'b_1', name: 'Jane', area: '法国', badge: ['法国代购', '香水', '包'], state: true, img: 'https://buyer.sm.afxclub.top/4.png' },
-      { id: 'b_2', name: 'Jane2', area: '美国', badge: ['美国代购', '香水', '包'], state: true, img: 'https://buyer.sm.afxclub.top/4.png' },
-      { id: 'b_3', name: 'Jane3', area: '英国', badge: ['英国代购', '香水', '包'], state: true, img: 'https://buyer.sm.afxclub.top/4.png' },
-      { id: 'b_4', name: 'Jane4', area: '日本', badge: ['日本代购', '香水', '包'], state: true, img: 'https://buyer.sm.afxclub.top/4.png' },
-    ],
-    sortItems: [
-      { name: 'USA', value: '综合排序', checked: 'true' },
-      { name: 'CHN', value: '按时间排序' },
-      { name: 'BRA', value: '按热度排序' },
-    ]
-  },
+	/**
+	 * 页面的初始数据
+	 */
+	data: {
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-    if (options && options.searchValue) {
-      this.setData({
-        searchValue: options.searchValue
-      });
-    }
+	},
 
-    this.setData({
-      innerHeight: `${app.windowHeight - 80}px`,
-    })
-  },
+	/**
+	 * 生命周期函数--监听页面加载
+	 */
+	onLoad: function (options) {
+		let search_word = options.search_word;
+		let data = {};
+		data.search_word = search_word;
+		let searchRes = this.startToRequest(data); 
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-    console.log(this.data.innerHeight);
-  },
+		this.setData({
+			search_word: options.search_word
+		});
+	},
 
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
+	/**
+	 * 生命周期函数--监听页面初次渲染完成
+	 */
+	onReady: function () {
 
-  },
+	},
 
-  showSort(){
-    this.setData({
-      sortActive: 'active',
-      sortActiveState: 'in',
-      wrapperHeight: `${app.windowHeight}px`
-    })
-  },
-  hideSort(){
-    let timeout;
-    clearTimeout(timeout);
+	/**
+	 * 生命周期函数--监听页面显示
+	 */
+	onShow: function () {
 
-    this.setData({
-      sortActive: 'active',
-      sortActiveState: 'out'
-    })
+	},
 
-    timeout = setTimeout(() => {
-      this.setData({
-        sortActive: '',
-        sortActiveState: '',
-        wrapperHeight: `auto`
-      })
-    }, 500)
-  },
-  sortChange(e){
-    console.log(e);
-    this.hideSort();
-  },
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
+	/**
+	 * 生命周期函数--监听页面隐藏
+	 */
+	onHide: function () {
 
-  },
+	},
 
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
+	/**
+	 * 生命周期函数--监听页面卸载
+	 */
+	onUnload: function () {
 
-  },
+	},
 
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
+	/**
+	 * 页面相关事件处理函数--监听用户下拉动作
+	 */
+	onPullDownRefresh: function () {
 
-  },
+	},
 
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
+	/**
+	 * 页面上拉触底事件的处理函数
+	 */
+	onReachBottom: function () {
 
-  },
+	},
 
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
+	startToRequest(data) {
+		let _this = this;
 
-  }
+		return new Promise((resolve, rejected) => {
+			wx.showLoading({
+				title: '正在搜索中',
+			})
+			wx.request({
+				url: `${app.hostName}essayList`,
+				data: data,
+				method: 'GET',
+				header: {
+					'Authorization': `Bearer ${app.token}`
+				},
+				dataType: 'json',
+				responseType: 'text',
+				success: function (res) {
+					wx.hideLoading();
+					res.flag = true;
+					resolve(res);
+
+					let showList = res.data.data;
+
+					_this.setData({
+						showList: showList
+					})
+				},
+				fail: function (res) {
+					wx.hideLoading();
+					wx.showToast({
+						title: '搜索失败',
+					})
+				},
+				complete: function (res) {
+					wx.hideLoading();
+				},
+			})
+		})
+	}
 })

@@ -437,6 +437,7 @@ Page({
     let sizeList = home.good_attributes;
     let isChoose = false;
     let attrId = 0;
+		let amount = this.data.amount.toString();
 
     for (let size of sizeList) {
       if (size.isChoose) {
@@ -461,7 +462,7 @@ Page({
           success: (res) => {
             resolve(res.data.data);
             wx.navigateTo({
-              url: `../confirmOrder/confirmOrder?attrId=${attrId}`,
+							url: `../confirmOrder/confirmOrder?amount=${amount}&attrId=${attrId}`,
             })
           }
         })

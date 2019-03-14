@@ -6,9 +6,10 @@ page{
 }
 
 .search_options{
+	width: 120rpx;
   position: relative;
+	left: -9rpx;
   font-size: 28rpx;
-  line-height:1.8;
   padding:16rpx 40rpx 16rpx 16rpx;
 }
 
@@ -17,8 +18,8 @@ page{
   height: 20rpx;
   overflow: hidden;
   position: absolute;
-  right: 6rpx;
-  top: 25rpx;
+  top: 20rpx;
+	left: 78rpx;
   transform: rotateZ(-45deg);
 }
 .icon_arrow::after{
@@ -32,7 +33,7 @@ page{
 .selection-wrapper{
   display: none;
   top: 96rpx;
-  left: 0;
+  left: -20rpx;
   position: absolute;
   font-size: 28rpx;
   color: #fff;

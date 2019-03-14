@@ -4,7 +4,23 @@
     <view class="row row-center underline bgWhite" style='justify-content:center;'>
       <view bindtap="onTapClick" data-index='{{index}}' wx:for="{{tabList}}" wx:key="{{index}}" style='width:220rpx;' class='row row-center'>
         <view class='tab-wrapper row row-center {{index === currentTab? "active red" : "black"}}'>
-          <text class='{{index === currentTab? "black font-14 font-bold" : "grey font-14"}}'>{{item.label}}({{couponList.length}})</text>
+          <text class='{{index === currentTab? "black font-14 font-bold" : "grey font-14"}}'>{{item.label}}</text>
+
+					<block wx:if='{{index == 0}}'>
+						<text class='{{index === currentTab? "black font-14 font-bold" : "grey font-14"}}'>({{couponNum.all_coupon}})</text>
+					</block>
+
+					<block wx:elif='{{index == 1}}'>
+						<text class='{{index === currentTab? "black font-14 font-bold" : "grey font-14"}}'>({{couponNum.useable_coupon}})</text>
+					</block>
+
+					<block wx:elif='{{index == 2}}'>
+						<text class='{{index === currentTab? "black font-14 font-bold" : "grey font-14"}}'>({{couponNum.used_coupon}})</text>
+					</block>
+
+					<block wx:else>
+						<text class='{{index === currentTab? "black font-14 font-bold" : "grey font-14"}}'>({{couponNum.expired_coupon}})</text>
+					</block>
         </view>
       </view>
     </view>
@@ -20,7 +36,7 @@
     </block>
     <block wx:else>
       <view class='card-box flex flex-row' wx:for='{{couponList}}' wx:key='{{allidx}}'>
-				<block wx:if='{{currentTab === 1}}'>
+				<block wx:if='{{item.status === 1}}'>
 					<view class='flex-item card-status-box'>
 						<view class='font-14pt'>{{item.coupon.coupon_type_name}}</view>
 						<view>
@@ -44,7 +60,15 @@
 
         <view class='card-time-box sub_text_color font-12pt flex flex-column justify-center align-center'>
           <view class='card-side' style='background-image:url(https://buyer.sm.afxclub.top/circle_side.png)'></view>
-					<image lazy-load='true' src='https://buyer.sm.afxclub.top/img_Expired@2x.png' class='icon-expired'></image>
+
+					<block wx:if='{{item.status == 2}}'>
+						<image lazy-load='true' src='https://buyer.sm.afxclub.top/img_use@2x.png' class='icon-expired'></image>
+					</block>
+
+					<block wx:if='{{item.status == 3}}'>
+						<image lazy-load='true' src='https://buyer.sm.afxclub.top/img_Expired@2x.png' class='icon-expired'></image>
+					</block>
+
           <view>使用期限</view>
           <view>{{item.coupon.coupon_start_time}}</view>
           <view>{{item.coupon.coupon_end_time}}</view>

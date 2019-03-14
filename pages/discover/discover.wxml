@@ -17,10 +17,10 @@
     </view>
 
     <view class='nav-content magTop-10'>
-      <navigator open-type='navigate' url='../search_buyer/search_buyer' class='search-wrapper bg-white magTop-10 underline'>
+      <navigator open-type='navigate' url='../search_buyer/search_buyer?entrance=1' class='search-wrapper bg-white magTop-10 underline'>
         <view class='search-box'>
           <view class='icon icon-search'>
-            <image src='https://buyer.sm.afxclub.top/icon_search@2x.png'></image>
+            <image src='https://buyer.sm.afxclub.top/icon_search_big@2x.png'></image>
           </view>
           <text bindinput='onSearchInput' class='search-place-text'>大家都在搜：卫衣</text>
         </view>
@@ -80,7 +80,7 @@
       <view class="item">
         <block wx:if="{{type == 'essay'}}">
           <navigator open-type='navigate' url="../Articlepage/Articlepage?type={{type}}&id={{id}}&buyer_id={{buyer_id}}">
-            <image class="item-img" src="{{cover_img_link}}" mode="widthFix" style='border-radius:12rpx 12rpx 0px 0px;'></image>
+            <image class="item-img" src="{{essay_img_link}}" mode="widthFix" style='border-radius:12rpx 12rpx 0px 0px;'></image>
           </navigator>
         </block>
 

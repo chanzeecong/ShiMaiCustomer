@@ -13,8 +13,6 @@
  *  value
  * }
  */
-const regeneratorRuntime = require('../../lib/runtime.js');
-const app = getApp();
 
 // 提示集合
 var __tipKeys = [];
@@ -200,3 +198,7 @@ module.exports = {
   wxSearchConfirm: wxSearchConfirm, // 搜索函数
   wxSearchClear: wxSearchClear,  // 清空函数
 }
+
+
+
+

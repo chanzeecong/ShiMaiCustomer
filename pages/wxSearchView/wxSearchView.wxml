@@ -2,21 +2,36 @@
   <view class="weui-search-bar__form">
     <view class="weui-search-bar__box">
       
-      <!--<view class='search_options' bindtap='showSelection'>
-        {{checkedValue}}
-        <view class='icon_arrow'></view>
-        <view class='selection-wrapper {{show}}'>
-          <view class='selection_arrow'></view>
-          <radio-group class="radio-group" bindchange="radioChange">
-            <label class="radio_label" wx:for="{{array}}" wx:key="{{index}}">
-              <radio class='radio_seletions' value="{{item.name}}" checked="{{item.checked}}" />
-              <image class='icon' src='{{item.icon}}'></image>{{item.value}}
-            </label>
-          </radio-group>
-        </view>
-      </view>-->
+			<block wx:if='{{status == 2}}'>
+				<view class='search_options' bindtap='showSelection'>
+					{{checkedValue}}
+					<view class='icon_arrow'></view>
+					<view class='selection-wrapper {{show}}'>
+						<view class='selection_arrow'></view>
+						<radio-group class="radio-group" bindchange="radioChange">
+							<label class="radio_label" wx:for="{{array}}" wx:key="{{index}}">
+								<radio class='radio_seletions' value="{{item.name}}" checked="{{item.checked}}" />
+								<image class='icon' src='{{item.icon}}'></image>{{item.value}}
+							</label>
+						</radio-group>
+					</view>
+				</view>
+			</block>
 
-      <input type="text" class="weui-search-bar__input h-25 font-14 black" placeholder="请输入你想要搜索的{{item.value}}" value="{{wxSearchData.value}}" bindinput="wxSearchInput" bindconfirm="wxSearchConfirm" placeholder-class='font-14 grey' name="searchKey"/>
+			<block wx:else>
+				<view class='icon icon-search'>
+          <image src='https://buyer.sm.afxclub.top/icon_search_big@2x.png'></image>
+        </view>
+			</block>
+
+			<block wx:if='{{status == 1}}'>
+      	<input type="text" class="weui-search-bar__input h-25 font-14 black" placeholder="大家都在搜：卫衣" value="{{wxSearchData.value}}" bindinput="wxSearchInput" bindconfirm="wxSearchConfirm" placeholder-class='font-14 grey' name="searchKey"/>
+			</block>
+
+			<block wx:if='{{status == 2}}'>
+      	<input type="text" class="weui-search-bar__input h-25 font-14 black" placeholder="请输入你想要搜索的{{checkedValue}}" value="{{wxSearchData.value}}" bindinput="wxSearchInput" bindconfirm="wxSearchConfirm" placeholder-class='font-14 grey' name="searchKey"/>
+			</block>
+
       <view class="weui-icon-clear" wx:if="{{wxSearchData.value.length > 0}}" bindtap="wxSearchClear">
         <icon type="clear" size="14"></icon>
       </view>
@@ -61,19 +76,19 @@
       </view>
     </view>
 
-    <view class="wxSearchKey" style="display:{{wxSearchData.value.length>0 ? 'none':'block'}}">
-      <text wx:if="{{wxSearchData.hotKeys[0]}}" class="wxSearchTitle font-14 grey">大家都在搜</text>
+    <view class="wxSearchKey" style="display:{{hotKeys.length>0 ? 'none':'block'}}">
+      <text wx:if="{{hotKeys}}" class="wxSearchTitle font-14 grey">大家都在搜</text>
       <view class="wxSearchKeyList">
-        <block wx:for="{{wxSearchData.hotKeys}}" wx:key="hotKeys">
+        <block wx:for="{{hotKeys.searching}}" wx:key="hotKeys">
           <view class="wxSearchKeyItem font-10 black" bindtap="wxSearchKeyTap" data-key="{{item}}">{{item}}</view>
         </block>
       </view>
     </view>
 
-    <view class="wxSearchKey" style="display:{{wxSearchData.value.length>0 ? 'none':'block'}}">
-      <text wx:if="{{wxSearchData.hotKeys[0]}}" class="wxSearchTitle font-14 grey">猜你喜欢</text>
+    <view class="wxSearchKey" style="display:{{hotKeys.length>0 ? 'none':'block'}}">
+      <text wx:if="{{hotKeys}}" class="wxSearchTitle font-14 grey">猜你喜欢</text>
       <view class="wxSearchKeyList">
-        <block wx:for="{{wxSearchData.hotKeys}}" wx:key="hotKeys">
+        <block wx:for="{{hotKeys.searching}}" wx:key="hotKeys">
           <view class="wxSearchKeyItem font-10 black" bindtap="wxSearchKeyTap" data-key="{{item}}">{{item}}</view>
         </block>
       </view>
