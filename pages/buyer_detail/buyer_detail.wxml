@@ -10,7 +10,7 @@
           <view class='buyer_name'>
             <text>{{list.buyer_name}}</text>
             <view>
-              <view wx:if="{{is_followed}}" bindtap='onUnfollowBtnClick' class='follow-btn' style='background:rgba(0,0,0,.4);'>已关注</view>
+              <view wx:if="{{list.is_followed}}" bindtap='onUnfollowBtnClick' class='follow-btn' style='background:rgba(0,0,0,.4);'>已关注</view>
               <view wx:else bindtap='onFollowBtnClick' class='follow-btn'>+关注</view>
             </view>
           </view>
@@ -54,8 +54,8 @@
     <view class='flex flex-row justify-around p-v-10pt underline'>
       <view style='padding: 10rpx 0;'>
         <!-- <image class='icon_btn' src='../../assets/icon/icon_Collection_gray@2x.png'></image> -->
-         <image catchtap='handleCollection' wx:if="{{!isCollected}}" class='icon_btn' src='../../assets/icon/icon_Collection_gray@2x.png'></image>
-            <image catchtap='UnhandleCollection' wx:if="{{isCollected}}" class='icon_btn' src='../../assets/icon/icon_Collection_red@2x.png'></image>
+         <image catchtap='handleCollection' wx:if="{{list.is_collect == 2}}" class='icon_btn' src='../../assets/icon/icon_Collection_gray@2x.png'></image>
+            <image catchtap='UnhandleCollection' wx:else class='icon_btn' src='../../assets/icon/icon_Collection_red@2x.png'></image>
       </view>
       <view>
         <view class='flex-item primary_bg btn contact_btn'>立即联系</view>

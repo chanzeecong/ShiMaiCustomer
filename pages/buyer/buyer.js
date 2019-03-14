@@ -173,63 +173,63 @@ Page({
     })
   },
 
-  onFollowBtnClick(e) {
-    let buyerId = e.currentTarget.dataset.id;
-    console.log(buyerId)
+	onFollowBtnClick(e) {
+		let buyerId = e.currentTarget.dataset.id;
+		console.log(buyerId)
 
-    wx.request({
-      url: `${app.hostName}buyer/${e.currentTarget.dataset.id}/follow`,
-      method: 'POST',
-      header: {
-        'Authorization': `Bearer ${app.token}`
-      },
-      dataType: 'json',
-      success: (res) => {
-        for (let i in this.data.hotList) {
-          if (buyerId == this.data.hotList[i].id) {
-            this.data.hotList[i].is_follow = true;
-          }
-        }
+		wx.request({
+			url: `${app.hostName}buyer/${e.currentTarget.dataset.id}/follow`,
+			method: 'POST',
+			header: {
+				'Authorization': `Bearer ${app.token}`
+			},
+			dataType: 'json',
+			success: (res) => {
+				for (let i in this.data.hotList) {
+					if (buyerId == this.data.hotList[i].id) {
+						this.data.hotList[i].is_follow = true;
+					}
+				}
 
-        this.setData({
-          hotList: this.data.hotList
-        })
+				this.setData({
+					hotList: this.data.hotList
+				})
+				
+				wx.showToast({
+					title: '关注买手成功！',
+				})
+			}
+		})
+	},
 
-        wx.showToast({
-          title: '关注买手成功！',
-        })
-      }
-    })
-  },
+	onUnfollowBtnClick(e) {
+		let buyerId = e.currentTarget.dataset.id;
+		console.log(e.currentTarget.dataset.id)
 
-  onUnfollowBtnClick(e) {
-    let buyerId = e.currentTarget.dataset.id;
-    console.log(e.currentTarget.dataset.id)
+		wx.request({
+			url: `${app.hostName}buyer/${e.currentTarget.dataset.id}/unFollow`,
+			method: 'DELETE',
+			header: {
+				'Authorization': `Bearer ${app.token}`
+			},
+			dataType: 'json',
+			success: (res) => {
+				for (let i in this.data.hotList) {
+					if (buyerId == this.data.hotList[i].id) {
+						this.data.hotList[i].is_follow = false;
+					}
+				}
 
-    wx.request({
-      url: `${app.hostName}buyer/${e.currentTarget.dataset.id}/unFollow`,
-      method: 'DELETE',
-      header: {
-        'Authorization': `Bearer ${app.token}`
-      },
-      dataType: 'json',
-      success: (res) => {
-        for (let i in this.data.hotList) {
-          if (buyerId == this.data.hotList[i].id) {
-            this.data.hotList[i].is_follow = false;
-          }
-        }
+				this.setData({
+					hotList: this.data.hotList
+				})
 
-        this.setData({
-          hotList: this.data.hotList
-        })
-
-        wx.showToast({
-          title: '取消关注成功！',
-        })
-      }
-    })
-  },
+				wx.showToast({
+					title: '取消关注成功！',
+				})
+			}
+		})
+	},
 
   loadMore() {
     if (this.data.hasMoreData) {

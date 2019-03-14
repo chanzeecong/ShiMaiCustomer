@@ -20,7 +20,6 @@ Page({
     isScroll: true,
     isShowMask: false,
     isShowLesson: false,
-    isLike: false,
     showList: [],
     homeList: [],
     eassyList: [],
@@ -141,6 +140,10 @@ Page({
       wx.showLoading({
         title: '在加载啦',
       })
+
+			setTimeout(function () {
+				wx.hideLoading()
+			}, 2000)
     } else {
       wx.showToast({
         icon: "none",
@@ -160,11 +163,14 @@ Page({
   async initPageData() {
     let tagsList = await this.getTags();
     let eassyList = await this.getEssay();
+
     console.log(tagsList);
     console.log(eassyList);
+
     this.setData({
       tagsList: tagsList,
       eassyList: eassyList,
+			showList: eassyList
     });
     
     let self = this;
@@ -224,7 +230,7 @@ Page({
   },
 
   // 数据请求
-  getEssay(tag = 0, page = '', key = ' ') {
+  getEssay(tag_id = 0, page = '', key = ' ') {
     var that = this;
     return new Promise(resolve => {
       wx.request({
@@ -234,7 +240,7 @@ Page({
           'Authorization': `Bearer ${app.token}`
         },
         data: {
-          tag: tag,
+					tag_id: tag_id,
           page: this.data.currentPage,
           search_word: key
         },
@@ -258,40 +264,6 @@ Page({
           wx.hideLoading();
         }
       })
-    })
-  },
-
-
-  // 点击收藏
-  onFollowBtnClick(e) {
-    let index = e.currentTarget.dataset.index;
-    let buyerId = this.data.homeList[index].buyer_id;
-    console.log(this.data.homeList[index])
-
-    wx.request({
-      url: `${app.hostName}buyer/${this.data.homeList[index].buyer_id}/follow`,
-      method: 'POST',
-      header: {
-        'Authorization': `Bearer ${app.token}`
-      },
-      dataType: 'json',
-      success: (res) => {
-
-        for (let i in this.data.showList) {
-          if (buyerId === this.data.showList[i].buyer_id) {
-            this.data.showList[i].is_followed = true;
-          }
-        }
-        for (let i in this.data.homeList) {
-          if (buyerId === this.data.homeList[i].buyer_id) {
-            this.data.homeList[i].is_followed = true;
-          }
-        }
-        this.setData({
-          showList: this.data.showList,
-          homeList: this.data.homeList,
-        })
-      }
     })
   },
 
@@ -376,6 +348,84 @@ Page({
 
 
   },
+
+	// 点赞功能
+	getLikeBtn() {
+		return new Promise(resolve => {
+			wx.request({
+				url: `${app.hostName}clickZan`,
+				method: 'GET',
+				header: {
+					'Authorization': `Bearer ${app.token}`
+				},
+				data: {
+					buyer_id: this.data.buyer_id,
+					type: this.data.acticeCollected,
+					id: this.data.id,
+				},
+				dataType: 'json',
+				success: (res) => {
+					for (let i in this.data.showList) {
+						if (buyerId === this.data.showList[i].buyer_id) {
+							this.data.showList[i].is_zan = 1;
+							this.data.eassyList[i].like_amount++;
+							console.log(this.data.showList[i].is_zan)
+						}
+					}
+					for (let i in this.data.eassyList) {
+						if (buyerId === this.data.eassyList[i].buyer_id) {
+							this.data.eassyList[i].is_zan = 1;
+							this.data.eassyList[i].like_amount++;
+							console.log(this.data.eassyList[i].is_zan)
+						}
+					}
+
+					this.setData({
+						eassyList: this.data.eassyList,
+						showList: this.data.showList
+					})
+
+					wx.showToast({
+						title: '点赞成功！',
+					})
+				}
+			})
+		})
+	},
+
+	getUnLikeBtn() {
+		return new Promise(resolve => {
+			wx.request({
+				url: `${app.hostName}cancelZan`,
+				method: 'GET',
+				header: {
+					'Authorization': `Bearer ${app.token}`
+				},
+				data: {
+					buyer_id: this.data.buyer_id,
+					type: this.data.acticeCollected,
+					id: this.data.id,
+				},
+				dataType: 'json',
+				success: (res) => {
+					for (let i in this.data.eassyList) {
+						if (this.data.buyer_id == this.data.eassyList[i].buyer_id) {
+							this.data.eassyList[i].is_zan = 2;
+							this.data.eassyList[i].like_amount--;
+						}
+					}
+
+					this.setData({
+						eassyList: this.data.eassyList
+					})
+
+					wx.showToast({
+						title: '取消点赞成功！',
+					})
+				}
+			})
+		})
+	},
 
 
   /**

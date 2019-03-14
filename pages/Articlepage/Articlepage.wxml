@@ -23,7 +23,7 @@
 
           </view>
           <!-- 关注 -->
-          <view wx:if="{{is_followed}}" bindtap='onUnfollowBtnClick' class='follow-btn' style='background:rgba(0,0,0,.4);'>已关注</view>
+          <view wx:if="{{item.is_follow}}" bindtap='onUnfollowBtnClick' class='follow-btn' style='background:rgba(0,0,0,.4);'>已关注</view>
           <view wx:else bindtap='onFollowBtnClick' class='follow-btn'>+关注</view>
         </view>
 
@@ -61,16 +61,16 @@
             <text class='font-11 magRig-5' style='color:rgba(245,57,110,1);'>{{item.browse_number}}人浏览</text>
           </view>
           <view class='row padTop-26'>
-            <image catchtap="Likebtn" wx:if="{{!isLike}}" class="icon-use" src='../../assets/icon/icon_like_gray@2x.png'></image>
-            <image catchtap="UnLikebtn" wx:if="{{isLike}}" class="icon-use" src='../../assets/icon/icon_like_red@2x.png'></image>
-            <text class='font-10 low padLef-10' catchtap="Likebtn">{{item.like_amount}}</text>
+            <image catchtap="getLikeBtn" wx:if="{{item.is_zan == 2}}" class="icon-use" src='../../assets/icon/icon_like_gray@2x.png'></image>
+            <image catchtap="getUnLikeBtn" wx:else class="icon-use" src='../../assets/icon/icon_like_red@2x.png'></image>
+            <text class='font-10 low padLef-10'>{{item.like_amount}}</text>
 
 
             <image class='icon-use padLef-41' src='../../assets/icon/icon_Reply_gray@2x.png'></image>
 
             <!-- 收藏  -->
-            <image catchtap='handleCollection' wx:if="{{!isCollected}}" class='icon-use padLef-40' src='../../assets/icon/icon_Collection_gray@2x.png'></image>
-            <image catchtap='UnhandleCollection' wx:if="{{isCollected}}" class='icon-use padLef-40' src='../../assets/icon/icon_Collection_red@2x.png'></image>
+            <image catchtap='handleCollection' wx:if="{{item.is_collect == 2}}" class='icon-use padLef-40' src='../../assets/icon/icon_Collection_gray@2x.png'></image>
+            <image catchtap='UnhandleCollection' wx:else class='icon-use padLef-40' src='../../assets/icon/icon_Collection_red@2x.png'></image>
 
             <image class='icon-use padLef-166' src='../../assets/icon/icon_share@2x.png'></image>
           </view>
