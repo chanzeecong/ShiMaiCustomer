@@ -1,4 +1,4 @@
-<import src="../../wxParse/wxParse.wxml"/> 
+<import src="../../wxParse/wxParse.wxml" />
 
 <view class="row padLef-16 padRig-16 padTop-10 padBot-10 underline bgWhite" style='border-top:2rpx solid #f4f4f4;'>
   <view class='row flex1'>
@@ -12,15 +12,15 @@
 </view>
 
 
-  <view class="row padLef-16 padRig-16 padTop-10 padBot-10 underline bgWhite">
-    <view class='row flex1'>
-      <text class='font-14 black'>手机号码</text>
-    </view>
-    <view class='row flex4'>
-      <input bindinput='onPhoneInput' value='{{addrDetail.phone}}' class='font-14 black padLef-5 padRig-5' type='number' maxlength='20' placeholder='请填写' placeholder-class='font-12 grey' style='width:100%;'></input>
-    </view>
+<view class="row padLef-16 padRig-16 padTop-10 padBot-10 underline bgWhite">
+  <view class='row flex1'>
+    <text class='font-14 black'>手机号码</text>
+  </view>
+  <view class='row flex4'>
+    <input bindinput='onPhoneInput' value='{{addrDetail.phone}}' class='font-14 black padLef-5 padRig-5' type='number' maxlength='20' placeholder='请填写' placeholder-class='font-12 grey' style='width:100%;'></input>
+  </view>
 
-    <!-- <picker bindchange='onCountryChanged' range='{{countryList}}' range-key='cn'>
+  <!-- <picker bindchange='onCountryChanged' range='{{countryList}}' range-key='cn'>
       <view class='row row-between flex1'>
         <view></view>
         <view class='row'>
@@ -30,7 +30,7 @@
         </view>
       </view>
     </picker> -->
-  </view>
+</view>
 
 
 <view class="row padLef-16 padRig-16 padTop-10 padBot-10 underline bgWhite">
@@ -48,8 +48,78 @@
     </view>
   </view>
 </view>
+<view class='row padTop-10 padBot-10 padLef-16 padRig-16 underline bgWhite' style='align-items:flex-start;'>
+  <text class='font-14 black'>详细地址：</text>
+  <textarea value='{{addrDetail.address}}' bindinput='onAddrTextArea' class='textarea font-14 black' placeholder='请填写详细地址（如道路、门牌号、小区、楼栋号、 单元室等）' placeholder-class='font-12 grey'></textarea>
+</view>
 
-<view class="row padLef-16 padRig-16 padTop-10 padBot-10 underline bgWhite">
+<view class='row padTop-10 padBot-10 padLef-16 padRig-16 bgWhite'>
+  <view class='row flex1'>
+    <text class='font-14 black'>地址标签</text>
+  </view>
+  <view class='row flex3 padLef-20 padRig-20' style='flex-wrap:wrap'>
+
+    <block wx:for="{{tagList}}" wx:key="{{index}}">
+      <view class='row flex1'>
+        <view bindtap='onSysAddrLabelBtnClick' data-index="{{index}}" class='row row-center {{currentTagIndex === index? "label-wrapper-active" : "label-wrapper"}}'>
+          <text class='font-12 {{currentTagIndex === index? "red" : "black"}}'>{{item}}</text>
+        </view>
+      </view>
+    </block>
+
+  </view>
+</view>
+
+<block wx:if="{{0 === customStep}}">
+
+  <view class='row padTop-5 padBot-10 padLef-16 padRig-16 bgWhite' style='align-items:flex-start;'>
+    <view class='row flex1'></view>
+    <view class='row flex3 padLef-20 padRig-20'>
+      <view class='row flex1'>
+        <view bindtap='addAddrLabelBtnClick' class='row row-center label-wrapper'>
+          <image class='position-icon' src='https://buyer.sm.afxclub.top/icon_delete@2x.png' style='transform:rotate(45deg);'></image>
+        </view>
+      </view>
+      <view class='flex1'></view>
+      <view class='flex1'></view>
+    </view>
+  </view>
+
+</block>
+
+<block wx:elif="{{1 === customStep}}">
+
+  <view class='row padTop-5 padBot-10 padLef-16 padRig-16 bgWhite' style='align-items:flex-start;'>
+    <view class='row flex1'></view>
+    <view class='row flex3 padLef-20 padRig-20'>
+      <view class='row row-center label-input'>
+        <input bindinput='onCustomLabelInput' value='{{customTag}}' class='font-12 black padLef-10 padRig-5' maxlength='10' style='width:100%;'></input>
+      </view>
+      <view bindtap='onConfirmAddrLabelBtnClick' class='row row-center labet-btn'>
+        <text class='font-12 white'>确定</text>
+      </view>
+    </view>
+  </view>
+
+</block>
+
+<block wx:elif="{{2 === customStep}}">
+
+  <view class='row padTop-5 padBot-10 padLef-16 padRig-16 bgWhite' style='align-items:flex-start;'>
+    <view class='row flex1'></view>
+    <view class='row flex3 padLef-20 padRig-20'>
+      <view class='row row-center label-text'>
+        <text class='font-12 white'>{{customTag}}</text>
+      </view>
+      <view bindtap='onEditAddrLabelBtnClick' class='row row-center labet-btn' style='background: rgb(37,140,241);border-left:2rpx solid #fff;'>
+        <text class='font-12 white'>编辑</text>
+      </view>
+    </view>
+  </view>
+
+</block>
+
+<view class="row magTop-10 padLef-16 padRig-16 padTop-10 padBot-10 underline bgWhite">
   <view class='row flex1'>
     <text class='font-14 black'>身份证号</text>
   </view>
@@ -129,87 +199,20 @@
 
 </view>
 
-<view class='row magTop-10 padTop-10 padBot-10 padLef-16 padRig-16 underline bgWhite' style='align-items:flex-start;'>
-  <text class='font-14 black'>详细地址：</text>
-  <textarea value='{{addrDetail.address}}' bindinput='onAddrTextArea' class='textarea font-14 black' placeholder='请填写详细地址（如道路、门牌号、小区、楼栋号、 单元室等）' placeholder-class='font-12 grey'></textarea>
-</view>
 
-<view class='row padTop-10 padBot-10 padLef-16 padRig-16 bgWhite'>
-  <view class='row flex1'>
-    <text class='font-14 black'>地址标签</text>
-  </view>
-  <view class='row flex3 padLef-20 padRig-20' style='flex-wrap:wrap'>
 
-    <block wx:for="{{tagList}}" wx:key="{{index}}">
-      <view class='row flex1'>
-        <view bindtap='onSysAddrLabelBtnClick' data-index="{{index}}" class='row row-center {{currentTagIndex === index? "label-wrapper-active" : "label-wrapper"}}'>
-          <text class='font-12 {{currentTagIndex === index? "red" : "black"}}'>{{item}}</text>
-        </view>
-      </view>
-    </block>
 
-  </view>
-</view>
-
-<block wx:if="{{0 === customStep}}">
-
-  <view class='row padTop-5 padBot-10 padLef-16 padRig-16 bgWhite' style='align-items:flex-start;'>
-    <view class='row flex1'></view>
-    <view class='row flex3 padLef-20 padRig-20'>
-      <view class='row flex1'>
-        <view bindtap='addAddrLabelBtnClick' class='row row-center label-wrapper'>
-          <image class='position-icon' src='https://buyer.sm.afxclub.top/icon_delete@2x.png' style='transform:rotate(45deg);'></image>
-        </view>
-      </view>
-      <view class='flex1'></view>
-      <view class='flex1'></view>
-    </view>
-  </view>
-
-</block>
-
-<block wx:elif="{{1 === customStep}}">
-
-  <view class='row padTop-5 padBot-10 padLef-16 padRig-16 bgWhite' style='align-items:flex-start;'>
-    <view class='row flex1'></view>
-    <view class='row flex3 padLef-20 padRig-20'>
-      <view class='row row-center label-input'>
-        <input bindinput='onCustomLabelInput' value='{{customTag}}' class='font-12 black padLef-10 padRig-5' maxlength='10' style='width:100%;'></input>
-      </view>
-      <view bindtap='onConfirmAddrLabelBtnClick' class='row row-center labet-btn'>
-        <text class='font-12 white'>确定</text>
-      </view>
-    </view>
-  </view>
-
-</block>
-
-<block wx:elif="{{2 === customStep}}">
-
-  <view class='row padTop-5 padBot-10 padLef-16 padRig-16 bgWhite' style='align-items:flex-start;'>
-    <view class='row flex1'></view>
-    <view class='row flex3 padLef-20 padRig-20'>
-      <view class='row row-center label-text'>
-        <text class='font-12 white'>{{customTag}}</text>
-      </view>
-      <view bindtap='onEditAddrLabelBtnClick' class='row row-center labet-btn' style='background: rgb(37,140,241);border-left:2rpx solid #fff;'>
-        <text class='font-12 white'>编辑</text>
-      </view>
-    </view>
-  </view>
-
-</block>
 
 <view class='row magTop-10 row-between padTop-10 padBot-10 padLef-16 bgWhite'>
   <text class='font-14 font-bold black'>设为默认地址</text>
-  <switch bindchange="onSetDefaultBtnClick" disabled="{{isDefaultAddrDisabled}}" checked="{{addrDetail.is_default? true: ''}}" color="#F44168" style='transform:scale(.5);'/>
+  <switch bindchange="onSetDefaultBtnClick" disabled="{{isDefaultAddrDisabled}}" checked="{{addrDetail.is_default? true: ''}}" color="#F44168" style='transform:scale(.5);' />
 </view>
 
 <view class='row padBot-20 padLef-16 padRig-16 bgWhite'>
   <view class='col-left'>
     <text class='font-12 grey padBot-5'>为什么要填写身份证号码？</text>
     <!-- <text class='font-12 grey' style='white-space:normal;'>由于货物在海关清关的时候有可能需要提供购买方的身份证号码，所以我们需要用户提供收货人的身份证号码，以对应货物在清关时需要查验身份证号的情况。</text> -->
-    <template is="wxParse" data="{{wxParseData:checkContent.nodes}}"/>
+    <template is="wxParse" data="{{wxParseData:checkContent.nodes}}" />
   </view>
 </view>
 
@@ -226,7 +229,3 @@
     <button bindtap='onAddBtnClick' class='btn btn-shadow'>保存收货地址</button>
   </view>
 </block>
-
-
-
-

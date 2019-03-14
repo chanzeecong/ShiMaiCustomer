@@ -1,23 +1,23 @@
 <!--pages/Allcomments/Allcomments.wxml-->
 <scroll-view scroll-y="true">
-  <block wx:for="{{commentList}}" wx:key="{{index}}">
+  <block wx:for="{{commentList}}" wx:for-item="list" wx:key="{{index}}">
     <view class='padLef-16 padRig-16  bg-white'>
       <view class='bg-white underline topline'>
         <view class='row bg-white' style='align-items:flex-start;'>
           <view class='row padRig-10 magTop-20'>
-            <image class='comment-avatar' mode="aspectFill" src='{{item.from_user_avatar}}'></image>
+            <image class='comment-avatar' mode="aspectFill" src='{{list.from_user_avatar}}'></image>
           </view>
 
           <view class='col-left magTop-20'>
             <view class='row'>
-              <text class='font-14 black padRig-10 font-bold'>{{item.from_user_name}}</text>
+              <text class='font-14 black padRig-10 font-bold'>{{list.from_user_name}}</text>
             </view>
-            <text class='font-14 black padTop-5'>{{item.content}}</text>
+            <text class='font-14 black padTop-5'>{{list.content}}</text>
             <view class='row padTop-20 justify-between'>
-              <text class='font-10 low'>{{item.created_at}}</text>
+              <text class='font-10 low'>{{list.created_at}}</text>
               <view class='row justify-around'>
                 <image class="icon-com" src='../../assets/icon/icon_Reply@2x.png'></image>
-                <text class='padLef-5 font-10' style='color:rgba(0,0,0,0.60);' data-idx='{{item.id}}' bindtap='reply_comment'>回复</text>
+                <text class='padLef-5 font-10' style='color:rgba(0,0,0,0.60);' bindtap='reply_comment' data-idx='{{list.id}}'>回复</text>
               </view>
             </view>
           </view>
@@ -30,10 +30,10 @@
             <text class='font-12 blue'>小浪\n</text>
             <text class='font-12 black padTop-10'>这个还不错，上次在小红书里也看到了推荐。</text>
             <view class='row padTop-5 justify-between'>
-              <text class='font-10 low'>{{item.created_at}}</text>
+              <text class='font-10 low'>{{list.created_at}}</text>
               <view class='row justify-around'>
                 <image class="icon-com" src='../../assets/icon/icon_Reply@2x.png'></image>
-                <text class='padLef-5 font-10' style='color:rgba(0,0,0,0.60);'>回复</text>
+                <text class='padLef-5 font-10' style='color:rgba(0,0,0,0.60);' bindtap='to_user' data-iidx='{{list.reply[0].from_uid}}'>回复</text>
               </view>
             </view>
           </view>
@@ -41,14 +41,34 @@
       </view>
     </view>
   </block>
-
-
 </scroll-view>
+
+
+
 <view class="comment_release">
-  <form class="left">
-    <textarea class="text"  fixed="true" bindblur='bindTextAreaBlur' maxlength="-1" show-confirm-bar="false" cursor-spacing="15" auto-height="true" placeholder="你长的这么好看，也来评论一下吧~" />
-    <view class="line"/>
-  </form>
+  <view wx:if="{{parent_id == 0}}">
+    <view class="left">
+      <textarea class="text" fixed="true" value='{{content}}' bindblur='bindTextAreaBlur' maxlength="-1" show-confirm-bar="{{false}}" cursor-spacing="15" auto-height="true" placeholder="你长的这么好看，也来评论一下吧~" />
+      <view class="line" />
+    </view>
+  </view>
+  
+   <!-- <view wx:elif="{{to_uid !== 0}}">
+    <view class="left">
+      <textarea class="text" fixed="true" value='{{reply_content}}' bindblur='bindTextReply' maxlength="-1" show-confirm-bar="{{false}}" cursor-spacing="15" auto-height="true" placeholder="回复:小浪" />
+      <view class="line" />
+    </view>
+  </view>
+  <view class='padRig-18'>
+    <image class='icon-submit' src='../../assets/icon/icon_aircraft@2x.png'></image>
+  </view> -->
+
+  <view wx:else>
+    <view class="left">
+      <textarea class="text" fixed="true" value='{{reply_content}}' bindblur='bindTextReply' maxlength="-1" show-confirm-bar="{{false}}" cursor-spacing="15" auto-height="true" placeholder="回复:层主" />
+      <view class="line" />
+    </view>
+  </view>
   <view class='padRig-18'>
     <image class='icon-submit' src='../../assets/icon/icon_aircraft@2x.png'></image>
   </view>

@@ -25,7 +25,7 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function(options) {
+  onLoad: function (options) {
     let self = this;
     wx.getSystemInfo({
       success: (res => {
@@ -60,14 +60,14 @@ Page({
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function() {
+  onReady: function () {
 
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function() {
+  onShow: function () {
   },
 
   scroll(e) {
@@ -87,28 +87,28 @@ Page({
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function() {
+  onHide: function () {
 
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function() {
+  onUnload: function () {
 
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function() {
+  onPullDownRefresh: function () {
 
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function() {
+  onReachBottom: function () {
 
   },
 
@@ -139,7 +139,7 @@ Page({
         success: (res) => {
           resolve(res.data.data);
           var list = res.data.data;
-          if(list.length < this.data.pageSize) {
+          if (list.length < this.data.pageSize) {
             wx.showToast({
               icon: "none",
               title: '没有更多数据'
@@ -173,56 +173,61 @@ Page({
     })
   },
 
-  OnfollowBtnClick(e) {
-    let id = e.currentTarget.dataset.id;
-    console.log(id);
+  onFollowBtnClick(e) {
+    let buyerId = e.currentTarget.dataset.id;
+    console.log(buyerId)
 
-    return new Promise(resolve => {
-      wx.request({
-        url: `${app.hostName}buyer/${this.data.buyer_id}/follow`,
-        method: 'POST',
-        header: {
-          'Authorization': `Bearer ${app.token}`
-        },
-        data: {
-          id: this.data.buyer_id
-        },
-        dataType: 'json',
-        success: (res) => {
-          let is_followed = !this.data.is_followed;
-          this.setData({
-            is_followed
-          })
-          wx.showToast({
-            title: '关注买手成功！',
-          })
-          resolve(res.data.data);
+    wx.request({
+      url: `${app.hostName}buyer/${e.currentTarget.dataset.id}/follow`,
+      method: 'POST',
+      header: {
+        'Authorization': `Bearer ${app.token}`
+      },
+      dataType: 'json',
+      success: (res) => {
+        for (let i in this.data.hotList) {
+          if (buyerId == this.data.hotList[i].id) {
+            this.data.hotList[i].is_follow = true;
+          }
         }
-      })
+
+        this.setData({
+          hotList: this.data.hotList
+        })
+
+        wx.showToast({
+          title: '关注买手成功！',
+        })
+      }
     })
   },
 
-
   onUnfollowBtnClick(e) {
-    return new Promise(resolve => {
-      wx.request({
-        url: `${app.hostName}buyer/${this.data.buyer_id}/unFollow`,
-        method: 'DELETE',
-        header: {
-          'Authorization': `Bearer ${app.token}`
-        },
-        dataType: 'json',
-        success: (res) => {
-          let is_followed = 0;
-          this.setData({
-            is_followed
-          })
-          wx.showToast({
-            title: '取消关注成功！',
-          })
-          resolve(res.data.data);
+    let buyerId = e.currentTarget.dataset.id;
+    console.log(e.currentTarget.dataset.id)
+
+    wx.request({
+      url: `${app.hostName}buyer/${e.currentTarget.dataset.id}/unFollow`,
+      method: 'DELETE',
+      header: {
+        'Authorization': `Bearer ${app.token}`
+      },
+      dataType: 'json',
+      success: (res) => {
+        for (let i in this.data.hotList) {
+          if (buyerId == this.data.hotList[i].id) {
+            this.data.hotList[i].is_follow = false;
+          }
         }
-      })
+
+        this.setData({
+          hotList: this.data.hotList
+        })
+
+        wx.showToast({
+          title: '取消关注成功！',
+        })
+      }
     })
   },
 

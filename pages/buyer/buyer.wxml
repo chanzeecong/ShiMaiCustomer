@@ -21,7 +21,7 @@
           <image class='buyer_img' mode='aspectFill' src='{{list.img_link}}'></image>
           <view class='buyer_info'>
             <text class='buyer_title'>{{list.name}}</text>
-            <text>地区：{{list.region_name}}</text>
+            <text style='max-width:100rpx;'>地区：{{list.region_name}}</text>
             
           </view>
         </view>
@@ -31,8 +31,8 @@
           </view>
         </view>
         <view class='buyer-action padBot-20' >
-          <view wx:if="{{is_followed}}" bindtap='onUnfollowBtnClick' class='buyer-focus' style='background:rgba(0,0,0,.4);box-shadow:none;'>已关注</view>
-          <view wx:else bindtap='OnfollowBtnClick' class='buyer-focus' data-id="{{list.id}}">关注ta</view>
+          <view wx:if="{{list.is_follow}}" bindtap='onUnfollowBtnClick' class='buyer-focus' style='background:rgba(0,0,0,.4);box-shadow:none;' data-id="{{list.id}}">已关注</view>
+          <view wx:else bindtap='onFollowBtnClick' class='buyer-focus' data-id="{{list.id}}">关注ta</view>
         </view>
       </view>
     </view>

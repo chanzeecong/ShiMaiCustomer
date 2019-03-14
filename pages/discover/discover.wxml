@@ -78,7 +78,7 @@
     <!--  下面是一个模块 -->
     <template name="item">
       <view class="item">
-        <block wx:if="{{type == 'essay'}}">
+        <block wx:if="{{type == 2}}">
           <navigator open-type='navigate' url="../Articlepage/Articlepage?type={{type}}&id={{id}}&buyer_id={{buyer_id}}">
             <image class="item-img" src="{{essay_img_link}}" mode="widthFix" style='border-radius:12rpx 12rpx 0px 0px;'></image>
           </navigator>

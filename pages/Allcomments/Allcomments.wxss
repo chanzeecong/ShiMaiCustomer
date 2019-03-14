@@ -1,5 +1,4 @@
 /* pages/Allcomments/Allcomments.wxss */
-
 page {
   background-color: #fff;
 }
@@ -31,7 +30,7 @@ page {
   font-size: 12px;
   z-index: 999;
 }
-/*输入框*/
+
 .comment_release .text{
   width: 640rpx;
   min-height: 17px;
@@ -41,14 +40,14 @@ page {
   margin-bottom: 4px;
   margin-left: 10px;
 }
-/*线*/
+
 .comment_release .line{
   margin-bottom: 0 ;
   width: 640rpx;
   height: 2rpx;
   background-color: rgba(220, 220, 220, 1);
 }
-/*发送按钮*/
+
 .comment_release .icon-submit{ 
   width:46rpx;
   height:46rpx;

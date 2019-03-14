@@ -14,52 +14,6 @@ Page({
     scrollHeight: 0,
     borderTab: [0, 4],
     selectionActive: '',
-    tabList: [{
-      id: -1,
-      label: `推荐`,
-      src: `https://buyer.sm.afxclub.top/icon_recommendation@2x.png`
-    },
-    {
-      id: -2,
-      label: `关注`,
-      src: `https://buyer.sm.afxclub.top/icon_attention@2x.png`
-    },
-    {
-      id: 1,
-      label: `母婴`,
-      src: `https://buyer.sm.afxclub.top/icon_Baby-Products@2x.png`
-    },
-    {
-      id: 2,
-      label: `鞋包`,
-      src: `https://buyer.sm.afxclub.top/icon_Shoe-bag@2x.png`
-    },
-    {
-      id: 3,
-      label: `家居`,
-      src: `https://buyer.sm.afxclub.top/icon_household-products@2x.png`
-    },
-    {
-      id: 4,
-      label: `生活`,
-      src: `https://buyer.sm.afxclub.top/icon_life@2x.png`
-    },
-    {
-      id: 5,
-      label: `家电`,
-      src: `https://buyer.sm.afxclub.top/icon_Home-appliance@2x.png`
-    },
-    {
-      id: 6,
-      label: `美妆`,
-      src: `https://buyer.sm.afxclub.top/icon_makeups@2x.png`
-    },
-    {
-      id: 7,
-      label: `护肤`,
-      src: `https://buyer.sm.afxclub.top/icon_Skin-care@2x.png`
-    },
-    ],
     currentTab: 0,
     productionCount: 1,
     isShowAllTab: false,
@@ -123,7 +77,7 @@ Page({
     let rightTab = this.data.borderTab[1];
     let borderTab = this.data.borderTab;
     let scrollToLeft = this.data.scrollToLeft;
-    let tabLen = this.data.tabList.length;
+    let tabLen = this.data.tagsList.length;
     let showTabCount = 5;
 
 
