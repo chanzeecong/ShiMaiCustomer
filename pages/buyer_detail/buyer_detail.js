@@ -29,7 +29,7 @@ Page({
    */
   onLoad: function(options) {
     let buyer_id = options.id;
-    console.log(buyer_id);
+    
     this.setData({
       buyer_id: buyer_id
     })
@@ -58,111 +58,137 @@ Page({
     })
   },
 
-  onFollowBtnClick(e) {
-    return new Promise(resolve => {
-      wx.request({
-        url: `${app.hostName}buyer/${this.data.buyer_id}/follow`,
-        method: 'POST',
-        header: {
-          'Authorization': `Bearer ${app.token}`
-        },
-        data: {
-          id: this.data.buyer_id
-        },
-        dataType: 'json',
-        success: (res) => {
-          let is_followed = !this.data.is_followed;
-          this.setData({
-            is_followed
-          })
-          wx.showToast({
-            title: '关注买手成功！',
-          })
-          resolve(res.data.data);
-        }
-      })
-    })
-  },
+	onFollowBtnClick(e) {
+		return new Promise(resolve => {
+			wx.request({
+				url: `${app.hostName}buyer/${this.data.buyer_id}/follow`,
+				method: 'POST',
+				header: {
+					'Authorization': `Bearer ${app.token}`
+				},
+				data: {
+					id: this.data.buyer_id
+				},
+				dataType: 'json',
+				success: (res) => {
+					for (let i in this.data.buyerDetail.buyer) {
+						if (this.data.buyer_id == this.data.buyerDetail.buyer[i].buyer_id) {
+							this.data.buyerDetail.buyer[i].is_followed = 1;
+						}
+					}
 
-  onUnfollowBtnClick(e) {
-    return new Promise(resolve => {
-      wx.request({
-        url: `${app.hostName}buyer/${this.data.buyer_id}/unFollow`,
-        method: 'DELETE',
-        header: {
-          'Authorization': `Bearer ${app.token}`
-        },
-        dataType: 'json',
-        success: (res) => {
-          let is_followed = !this.data.is_followed;
-          this.setData({
-            is_followed
-          })
-          wx.showToast({
-            title: '取消关注成功！',
-          })
-          resolve(res.data.data);
-        }
-      })
-    })
-  },
+					this.setData({
+						buyerDetail: this.data.buyerDetail
+					})
 
-  // 小星星收藏
-  handleCollection() {
-    return new Promise(resolve => {
-      wx.request({
-        url: `${app.hostName}clickCollection`,
-        method: 'GET',
-        header: {
-          'Authorization': `Bearer ${app.token}`
-        },
-        data: {
-          collection_id: this.data.buyer_id,
-          collection: this.data.buyerCollected,
-        },
-        dataType: 'json',
-        success: (res) => {
-          let isCollected = !this.data.isCollected;
-          this.setData({
-            isCollected
-          })
-          wx.showToast({
-            title: '收藏文章成功！',
-          })
-          resolve(res.data.data);
-        }
-      })
-    })
+					wx.showToast({
+						title: '关注买手成功！',
+					})
+					resolve(res.data.data);
+				}
+			})
+		})
+	},
 
-  },
+	onUnfollowBtnClick(e) {
+		return new Promise(resolve => {
+			wx.request({
+				url: `${app.hostName}buyer/${this.data.buyer_id}/unFollow`,
+				method: 'DELETE',
+				header: {
+					'Authorization': `Bearer ${app.token}`
+				},
+				dataType: 'json',
+				success: (res) => {
+					for (let i in this.data.buyerDetail.buyer) {
+						if (this.data.buyer_id == this.data.buyerDetail.buyer[i].buyer_id) {
+							this.data.buyerDetail.buyer[i].is_followed = 0;
+						}
+					}
 
-  // 小星星收藏
-  UnhandleCollection() {
-    return new Promise(resolve => {
-      wx.request({
-        url: `${app.hostName}clickCollection`,
-        method: 'GET',
-        header: {
-          'Authorization': `Bearer ${app.token}`
-        },
-        data: {
-          collection_id: this.data.buyer_id,
-          collection: this.data.buyerCollected,
-        },
-        dataType: 'json',
-        success: (res) => {
-          let isCollected = !this.data.isCollected;
-          this.setData({
-            isCollected
-          })
-          wx.showToast({
-            title: '取消收藏成功！',
-          })
-          resolve(res.data.data);
-        }
-      })
-    })
-  },
+					this.setData({
+						buyerDetail: this.data.buyerDetail
+					})
+
+					wx.showToast({
+						title: '取消关注成功！',
+					})
+					resolve(res.data.data);
+				}
+			})
+		})
+	},
+
+	// 小星星收藏
+	handleCollection() {
+		console.log(this.data)
+
+		return new Promise(resolve => {
+			wx.request({
+				url: `${app.hostName}clickCollection`,
+				method: 'GET',
+				header: {
+					'Authorization': `Bearer ${app.token}`
+				},
+				data: {
+					collection_id: this.data.buyer_id,
+					collection: this.data.buyerCollected,
+				},
+				dataType: 'json',
+				success: (res) => {
+					for (let i in this.data.buyerDetail.buyer) {
+						if (this.data.buyer_id == this.data.buyerDetail.buyer[i].buyer_id) {
+							this.data.buyerDetail.buyer[i].is_collect = 1;
+						}
+					}
+
+					this.setData({
+						buyerDetail: this.data.buyerDetail
+					})
+
+					wx.showToast({
+						title: '收藏文章成功！',
+					})
+					resolve(res.data.data);
+				}
+			})
+		})
+
+	},
+
+	// 小星星收藏
+	UnhandleCollection() {
+		return new Promise(resolve => {
+			wx.request({
+				url: `${app.hostName}cancelCollection`,
+				method: 'GET',
+				header: {
+					'Authorization': `Bearer ${app.token}`
+				},
+				data: {
+					collection_id: this.data.buyer_id,
+					collection: this.data.buyerCollected,
+				},
+				dataType: 'json',
+				success: (res) => {
+					for (let i in this.data.buyerDetail.buyer) {
+						if (this.data.buyer_id == this.data.buyerDetail.buyer[i].buyer_id) {
+							this.data.buyerDetail.buyer[i].is_collect = 2;
+						}
+					}
+
+					this.setData({
+						buyerDetail: this.data.buyerDetail
+					})
+
+					wx.showToast({
+						title: '取消收藏成功！',
+					})
+					resolve(res.data.data);
+				}
+			})
+		})
+	},
   /**
    * 生命周期函数--监听页面隐藏
    */

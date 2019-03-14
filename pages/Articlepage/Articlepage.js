@@ -18,10 +18,7 @@ Page({
     scrollHeight: 0,
     topNum: 0,
     acticeCollected: 2,
-    followBuyer: 3,
-    is_followed: false,
-    isCollected: false,
-    isLike: false,
+    followBuyer: 3
   },
 
   /**
@@ -31,9 +28,7 @@ Page({
     let id = options.id;
     let type = options.type;
     let buyer_id = options.buyer_id
-    console.log(id)
-    console.log(type)
-    console.log(buyer_id)
+
     this.setData({
       id,
       type,
@@ -104,10 +99,16 @@ Page({
         },
         dataType: 'json',
         success: (res) => {
-          let is_followed = !this.data.is_followed;
-          this.setData({
-            is_followed
-          })
+					for (let i in this.data.detailList) {
+						if (this.data.buyer_id == this.data.detailList[i].buyer_id) {
+							this.data.detailList[i].is_follow = true;
+						}
+					}
+
+					this.setData({
+						detailList: this.data.detailList
+					})
+				 
           wx.showToast({
             title: '关注买手成功！',
           })
@@ -127,10 +128,16 @@ Page({
         },
         dataType: 'json',
         success: (res) => {
-          let is_followed = !this.data.is_followed;
-          this.setData({
-            is_followed
-          })
+					for (let i in this.data.detailList) {
+						if (this.data.buyer_id == this.data.detailList[i].buyer_id) {
+							this.data.detailList[i].is_follow = false;
+						}
+					}
+
+					this.setData({
+						detailList: this.data.detailList
+					})
+					
           wx.showToast({
             title: '取消关注成功！',
           })
@@ -155,10 +162,16 @@ Page({
         },
         dataType: 'json',
         success: (res) => {
-          let isCollected = !this.data.isCollected;
-          this.setData({
-            isCollected
-          })
+					for (let i in this.data.detailList) {
+						if (this.data.buyer_id == this.data.detailList[i].buyer_id) {
+							this.data.detailList[i].is_collect = 1;
+						}
+					}
+
+					this.setData({
+						detailList: this.data.detailList
+					})
+					
           wx.showToast({
             title: '收藏文章成功！',
           })
@@ -173,7 +186,7 @@ Page({
   UnhandleCollection() {
     return new Promise(resolve => {
       wx.request({
-        url: `${app.hostName}clickCollection`,
+				url: `${app.hostName}cancelCollection`,
         method: 'GET',
         header: {
           'Authorization': `Bearer ${app.token}`
@@ -184,10 +197,16 @@ Page({
         },
         dataType: 'json',
         success: (res) => {
-          let isCollected = !this.data.isCollected;
-          this.setData({
-            isCollected
-          })
+					for (let i in this.data.detailList) {
+						if (this.data.buyer_id == this.data.detailList[i].buyer_id) {
+							this.data.detailList[i].is_collect = 2;
+						}
+					}
+
+					this.setData({
+						detailList: this.data.detailList
+					})
+				 
           wx.showToast({
             title: '取消收藏成功！',
           })

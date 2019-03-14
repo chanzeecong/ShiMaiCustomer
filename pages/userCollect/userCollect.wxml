@@ -94,14 +94,16 @@
 
       <template name="item">
         <view class="item">
-          <block wx:if="{{essay_img}}">
+          <block wx:if="{{!video_url}}">
             <navigator open-type='navigate' url="../Articlepage/Articlepage?type={{type}}&id={{id}}&buyer_id={{buyer_id}}">
               <image class="item-img" src="{{essay_img}}" mode="widthFix" style='border-radius:12rpx 12rpx 0px 0px;'></image>
             </navigator>
           </block>
 
           <block wx:else>
-            <video class="good-items" autoplay='' poster='{{video_url}}' src='{{video_url}}' style='border-radius:12rpx 12rpx 0px 0px;'></video>
+						<navigator open-type='navigate' url="../VideoGoods/VideoGoods?type={{type}}&id={{id}}&buyer_id={{buyer_id}}">
+            	<video class="good-items" autoplay='' poster='{{video_url}}' src='{{video_url}}' style='border-radius:12rpx 12rpx 0px 0px;'></video>
+						</navigator>
           </block>            
 
           <view class='bg-white' style='border-radius:0px 0px 12rpx 6px;'>
@@ -141,14 +143,16 @@
     <block wx:if="{{2 == item.type}}">
       <template name="item">
         <view class="item">
-          <block wx:if="{{cover_img_link}}">
+          <block wx:if="{{!video_url}}">
             <navigator open-type='navigate' url="../Articlepage/Articlepage?type={{type}}&id={{id}}&buyer_id={{buyer_id}}">
               <image class="item-img" src="{{cover_img_link}}" mode="widthFix" style='border-radius:12rpx 12rpx 0px 0px;'></image>
             </navigator>
           </block>
 
           <block wx:else>
-            <video class="good-items" autoplay='' poster='{{video_url}}' src='{{video_url}}' style='border-radius:12rpx 12rpx 0px 0px;                '></video>
+						<navigator open-type='navigate' url="../VideoGoods/VideoGoods?type={{type}}&id={{id}}&buyer_id={{buyer_id}}">
+							<video class="good-items" autoplay='' poster='{{video_url}}' src='{{video_url}}' style='border-radius:12rpx 12rpx 0px 0px;'></video>
+						</navigator>
           </block>
 
           <view class='bg-white' style='border-radius:0px 0px 12rpx 6px;'>
@@ -187,7 +191,7 @@
     <block wx:elif="{{3 == item.type}}">
       <view class='buyer_box_list'>
         <view class='buyer_box'>
-          <navigator open-type='navigate' url='../buyer_detail/buyer_detail' class='flex flex-row buyer_head'>
+          <navigator open-type='navigate' url='../buyer_detail/buyer_detail?id={{item.id}}' class='flex flex-row buyer_head'>
               <image class='buyer_img' mode='aspectFill' src='{{item.img_link}}'></image>
               <view class='flex-item'>
                 <view class='buyer_title'>

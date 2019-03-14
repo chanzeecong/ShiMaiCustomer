@@ -61,7 +61,7 @@
 			</view>
 
 			<scroll-view style='white-space:nowrap;' scroll-x scroll-with-animation>
-				<block wx:for='{{item.goods_imgs}}' wx:key="{{essay_img}}" wx:for-item="item">
+				<block wx:for='{{item.goods_imgs}}' wx:key="{{essay_img_link}}" wx:for-item="item">
 					<view class='product_item' style='background-image: url({{item}})'></view>
 				</block>
 			</scroll-view>

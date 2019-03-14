@@ -65,12 +65,12 @@
 
     <view class="content" style='z-index:-1'>
       <view class="left">
-        <block wx:for="{{eassyList}}" wx:key="">
+        <block wx:for="{{showList}}" wx:key="">
           <template is="item" data="{{...item}}" wx:if="{{index%2==0}}"></template>
         </block>
       </view>
       <view class="right">
-        <block wx:for="{{eassyList}}" wx:key="">
+        <block wx:for="{{showList}}" wx:key="">
           <template is="item" data="{{...item}}" wx:if="{{index%2==1}}"></template>
         </block>
       </view>
@@ -78,7 +78,7 @@
     <!--  下面是一个模块 -->
     <template name="item">
       <view class="item">
-        <block wx:if="{{type == 'essay'}}">
+        <block wx:if="{{!video_url}}">
           <navigator open-type='navigate' url="../Articlepage/Articlepage?type={{type}}&id={{id}}&buyer_id={{buyer_id}}">
             <image class="item-img" src="{{essay_img_link}}" mode="widthFix" style='border-radius:12rpx 12rpx 0px 0px;'></image>
           </navigator>
@@ -109,15 +109,8 @@
                 </view>
 
                 <view class='flex row padRig-6'>
-                  <!-- <view wx:if="{{item.is_zan}}" bindtap='onUnfollowBtnClick' data-index="{{index}}" class='follow-btn'>
-                    <image class='heart padRig-4' src='https://buyer.sm.afxclub.top/icon_like_red@2x.png'></image>
-                  </view>
-
-                  <view wx:else bindtap='onFollowBtnClick' data-index="{{index}}" class='follow-btn'>
-                    <image class="heart padRig-4" src='https://buyer.sm.afxclub.top/icon_like@2x.png'></image>
-                  </view> -->
-                  <image catchtap="Likebtn" wx:if="{{is_zan == 2}}" class="heart padRig-4" src='../../assets/icon/icon_like_gray@2x.png'></image>
-                  <image catchtap="UnLikebtn" wx:else class="heart padRig-4" src='../../assets/icon/icon_like_red@2x.png'></image>
+                  <image catchtap="getLikeBtn" wx:if="{{is_zan == 2}}" class="heart padRig-4" src='../../assets/icon/icon_like_gray@2x.png'></image>
+                  <image catchtap="getUnLikeBtn" wx:else class="heart padRig-4" src='../../assets/icon/icon_like_red@2x.png'></image>
                   <view class='font-10 black'>{{like_amount}}</view>
                 </view>
               </view>
