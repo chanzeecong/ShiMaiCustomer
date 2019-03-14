@@ -45,7 +45,7 @@ Page({
 
     if (current >= 0 && scrollDirection === 1) {
       let nextTab = current + 1;
-      (this.data.tabList.length - 1 < nextTab) ? nextTab = this.data.tabList.length - 1 : nextTab
+      (this.data.tabList.length - 1 < nextTab) ? nextTab = this.data.tabList.length - 1: nextTab
       // console.log(nextTab);
       this.setData({
         currentTab: nextTab,
@@ -67,7 +67,7 @@ Page({
 
   onTabClick(e) {
     // console.log(e);
-    if (typeof (e.target.dataset.index) === 'undefined') {
+    if (typeof(e.target.dataset.index) === 'undefined') {
       return false;
     }
     let currentTab = Number(e.target.dataset.index);
@@ -128,34 +128,34 @@ Page({
     }
   },
 
-  goTop(e) {  // 一键回到顶部
+  goTop(e) { // 一键回到顶部
     this.setData({
       topNum: this.data.topNum = 0
     });
   },
 
   loadMore() {
-    if (this.data.hasMoreData) {
-      this.getEssay()
-      wx.showLoading({
-        title: '在加载啦',
-      })
-
-			setTimeout(function () {
-				wx.hideLoading()
-			}, 2000)
-    } else {
-      wx.showToast({
-        icon: "none",
-        title: '都没有了你还想咋地'
-      })
-    }
+    // var that = this;
+    // if (this.data.hasMoreData) {
+    //   this.setData({
+    //     currentPage: that.data.currentPage+1
+    //   })
+    //   this.getEssay();
+    //   wx.showLoading({
+    //     title: '在加载啦',
+    //   })
+    // } else {
+    //   wx.showToast({
+    //     icon: "none",
+    //     title: '都没有了你还想咋地'
+    //   })
+    // }
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  onLoad: function(options) {
     this.initPageData();
     var postId = options.id;
     console.log(postId);
@@ -170,12 +170,12 @@ Page({
     this.setData({
       tagsList: tagsList,
       eassyList: eassyList,
-			showList: eassyList
+      showList: eassyList
     });
-    
+
     let self = this;
     wx.getSystemInfo({
-      success: function (res) {
+      success: function(res) {
         self.setData({
           scrollHeight: res.windowHeight
         })
@@ -186,16 +186,13 @@ Page({
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function () { },
+  onReady: function() {},
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
-
+  onShow: function() {
   },
-
-
 
   onShowTabBtnClick() {
     this.setData({
@@ -240,7 +237,7 @@ Page({
           'Authorization': `Bearer ${app.token}`
         },
         data: {
-					tag_id: tag_id,
+          tag_id: tag_id,
           page: this.data.currentPage,
           search_word: key
         },
@@ -256,9 +253,8 @@ Page({
             });
           } else {
             that.setData({
-              eassyList: that.data.eassyList.concat(list),
+              eassyList: this.data.eassyList.concat(list),
               hasMoreData: true,
-              currentPage: that.data.currentPage + 1
             })
           }
           wx.hideLoading();
@@ -280,64 +276,64 @@ Page({
     })
   },
 
-  chooseItem(e) {
-    let idx = e.currentTarget.dataset.index;
-    console.log(idx);
-    let cateList = this.data.cate;
-    let scroll_id = `item_${idx}`;
+  // chooseItem(e) {
+  //   let idx = e.currentTarget.dataset.index;
+  //   console.log(idx);
+  //   let cateList = this.data.cate;
+  //   let scroll_id = `item_${idx}`;
 
-    cateList.forEach((item, i) => {
-      cateList[i].active = '';
-    })
+  //   cateList.forEach((item, i) => {
+  //     cateList[i].active = '';
+  //   })
 
-    cateList[idx].active = 'active';
-    this.setData({
-      cate: cateList,
-      scrollID: scroll_id,
-      selectionActive: ''
-    })
-  },
+  //   cateList[idx].active = 'active';
+  //   this.setData({
+  //     cate: cateList,
+  //     scrollID: scroll_id,
+  //     selectionActive: ''
+  //   })
+  // },
 
-  chooseCategory(e) {
-    // console.log(e.target);
-    let currentIdx = e.target.dataset.index;
-    let offsetLeft = e.target.offsetLeft;
-    let cateList = this.data.cate;
-    let left = offsetLeft - 60;
-    (left < 0) ? left = 0 : '';
+  // chooseCategory(e) {
+  //   // console.log(e.target);
+  //   let currentIdx = e.target.dataset.index;
+  //   let offsetLeft = e.target.offsetLeft;
+  //   let cateList = this.data.cate;
+  //   let left = offsetLeft - 60;
+  //   (left < 0) ? left = 0 : '';
 
-    cateList.forEach((item, i) => {
-      if (i === currentIdx) {
-        cateList[i].active = 'active';
-      } else {
-        cateList[i].active = '';
-      }
-    })
+  //   cateList.forEach((item, i) => {
+  //     if (i === currentIdx) {
+  //       cateList[i].active = 'active';
+  //     } else {
+  //       cateList[i].active = '';
+  //     }
+  //   })
 
-    this.setData({
-      cate: cateList,
-      scrollLeft: left
-    })
-  },
+  //   this.setData({
+  //     cate: cateList,
+  //     scrollLeft: left
+  //   })
+  // },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function () {
+  onHide: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function () {
+  onUnload: function() {
 
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function () {
+  onPullDownRefresh: function() {
 
   },
 
@@ -349,89 +345,89 @@ Page({
 
   },
 
-	// 点赞功能
-	getLikeBtn() {
-		return new Promise(resolve => {
-			wx.request({
-				url: `${app.hostName}clickZan`,
-				method: 'GET',
-				header: {
-					'Authorization': `Bearer ${app.token}`
-				},
-				data: {
-					buyer_id: this.data.buyer_id,
-					type: this.data.acticeCollected,
-					id: this.data.id,
-				},
-				dataType: 'json',
-				success: (res) => {
-					for (let i in this.data.showList) {
-						if (buyerId === this.data.showList[i].buyer_id) {
-							this.data.showList[i].is_zan = 1;
-							this.data.eassyList[i].like_amount++;
-							console.log(this.data.showList[i].is_zan)
-						}
-					}
-					for (let i in this.data.eassyList) {
-						if (buyerId === this.data.eassyList[i].buyer_id) {
-							this.data.eassyList[i].is_zan = 1;
-							this.data.eassyList[i].like_amount++;
-							console.log(this.data.eassyList[i].is_zan)
-						}
-					}
+  // 点赞功能
+  getLikeBtn() {
+    return new Promise(resolve => {
+      wx.request({
+        url: `${app.hostName}clickZan`,
+        method: 'GET',
+        header: {
+          'Authorization': `Bearer ${app.token}`
+        },
+        data: {
+          buyer_id: this.data.buyer_id,
+          type: this.data.acticeCollected,
+          id: this.data.id,
+        },
+        dataType: 'json',
+        success: (res) => {
+          for (let i in this.data.showList) {
+            if (buyerId === this.data.showList[i].buyer_id) {
+              this.data.showList[i].is_zan = 1;
+              this.data.eassyList[i].like_amount++;
+              console.log(this.data.showList[i].is_zan)
+            }
+          }
+          for (let i in this.data.eassyList) {
+            if (buyerId === this.data.eassyList[i].buyer_id) {
+              this.data.eassyList[i].is_zan = 1;
+              this.data.eassyList[i].like_amount++;
+              console.log(this.data.eassyList[i].is_zan)
+            }
+          }
 
-					this.setData({
-						eassyList: this.data.eassyList,
-						showList: this.data.showList
-					})
+          this.setData({
+            eassyList: this.data.eassyList,
+            showList: this.data.showList
+          })
 
-					wx.showToast({
-						title: '点赞成功！',
-					})
-				}
-			})
-		})
-	},
+          wx.showToast({
+            title: '点赞成功！',
+          })
+        }
+      })
+    })
+  },
 
-	getUnLikeBtn() {
-		return new Promise(resolve => {
-			wx.request({
-				url: `${app.hostName}cancelZan`,
-				method: 'GET',
-				header: {
-					'Authorization': `Bearer ${app.token}`
-				},
-				data: {
-					buyer_id: this.data.buyer_id,
-					type: this.data.acticeCollected,
-					id: this.data.id,
-				},
-				dataType: 'json',
-				success: (res) => {
-					for (let i in this.data.eassyList) {
-						if (this.data.buyer_id == this.data.eassyList[i].buyer_id) {
-							this.data.eassyList[i].is_zan = 2;
-							this.data.eassyList[i].like_amount--;
-						}
-					}
+  getUnLikeBtn() {
+    return new Promise(resolve => {
+      wx.request({
+        url: `${app.hostName}cancelZan`,
+        method: 'GET',
+        header: {
+          'Authorization': `Bearer ${app.token}`
+        },
+        data: {
+          buyer_id: this.data.buyer_id,
+          type: this.data.acticeCollected,
+          id: this.data.id,
+        },
+        dataType: 'json',
+        success: (res) => {
+          for (let i in this.data.eassyList) {
+            if (this.data.buyer_id == this.data.eassyList[i].buyer_id) {
+              this.data.eassyList[i].is_zan = 2;
+              this.data.eassyList[i].like_amount--;
+            }
+          }
 
-					this.setData({
-						eassyList: this.data.eassyList
-					})
+          this.setData({
+            eassyList: this.data.eassyList
+          })
 
-					wx.showToast({
-						title: '取消点赞成功！',
-					})
-				}
-			})
-		})
-	},
+          wx.showToast({
+            title: '取消点赞成功！',
+          })
+        }
+      })
+    })
+  },
 
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
+  onShareAppMessage: function() {
 
   }
 })
