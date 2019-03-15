@@ -462,9 +462,11 @@ Page({
 
   confirm_buy(e) {
     let good_attr_id = this.data.gg_id;
+
     this.setData({
       good_attr_id: good_attr_id
     })
+
     let index = e.currentTarget.dataset.index;
     let home = this.data.detailList[index];
     let sizeList = home.good_attributes;
@@ -489,13 +491,14 @@ Page({
           },
           data: {
             good_attr_id: this.data.good_attr_id,
-            amount: this.data.amount.toString(),
+            amount: this.data.amount.toString()
           },
           dataType: 'json',
           success: (res) => {
             resolve(res.data.data);
+						console.log(res)
             wx.navigateTo({
-							url: `../confirmOrder/confirmOrder?amount=${amount}&attrId=${attrId}`,
+							url: `../confirmOrder/confirmOrder?amount=${amount}&attrId=${attrId}&id=${res.data.data.id}`,
             })
           }
         })

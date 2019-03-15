@@ -200,8 +200,8 @@
       <!-- 底部 -->
       <view class="padRig-16 padLef-16 bg-white h-50 magTop-70 row align-center">
         <view class='row'>
-          <image catchtap="getLikeBtn" wx:if="{{item.is_zan == 2}}" class="icon-use" src='../../assets/icon/icon_like_gray@2x.png'></image>
-          <image catchtap="getUnLikeBtn" wx:else class="icon-use" src='../../assets/icon/icon_like_red@2x.png'></image>
+          <image catchtap="getLikeBtn" wx:if="{{item.is_zan == 2}}" class="icon-use" src='https://buyer.sm.afxclub.top/icon_like@2x.png'></image>
+          <image catchtap="getUnLikeBtn" wx:else class="icon-use" src='https://buyer.sm.afxclub.top/icon_like_red@2x.png'></image>
           <text class='font-10 low padLef-10'>{{item.like_amount}}</text>
 
 

@@ -121,7 +121,7 @@ Page({
 
     let amount = Math.max(this.data.amount - 1, 1);
 
-    let totalPrice = (goodDetail.price * amount) + Number(goodDetail.transportation_costs) + Number(goodDetail.tax_fee);
+		let totalPrice = (goodDetail.good_price * amount) + Number(goodDetail.transportation_costs) + Number(goodDetail.tax_fee);
 
     totalPrice = totalPrice.toFixed(2)
 
@@ -135,7 +135,7 @@ Page({
     let goodDetail = this.data.goodDetail;
     let amount = Math.min(this.data.amount + 1, 9)
 
-    let totalPrice = (goodDetail.price * amount) + Number(goodDetail.transportation_costs) + Number(goodDetail.tax_fee);
+		let totalPrice = (goodDetail.good_price * amount) + Number(goodDetail.transportation_costs) + Number(goodDetail.tax_fee);
 
     totalPrice = totalPrice.toFixed(2)
 
@@ -159,7 +159,7 @@ Page({
       amount = Math.min(amount, 9)
       amount = Math.max(amount, 1)
 
-      let totalPrice = (goodDetail.price * amount) + Number(goodDetail.transportation_costs) + Number(goodDetail.tax_fee);
+			let totalPrice = (goodDetail.good_price * amount) + Number(goodDetail.transportation_costs) + Number(goodDetail.tax_fee);
 
       totalPrice = totalPrice.toFixed(2)
 
@@ -198,7 +198,7 @@ Page({
           address_id: this.data.defaultAddr.id.toString(),
           amount: this.data.amount.toString(),
           comment: this.data.comment,
-          valueId:this.data.valueId,
+					coupon_relation_id:this.data.valueId,
         },
         dataType: 'json',
         success: (res) => {
@@ -298,7 +298,7 @@ Page({
     let couponList = await this.getCoupon(status);
     console.log(couponList);
     let goodDetail = await this.getGoodDetail();
-    let totalPrice = (goodDetail.price * this.data.amount) + Number(goodDetail.transportation_costs) + Number(goodDetail.tax_fee);
+		let totalPrice = (goodDetail.good_price * this.data.amount) + Number(goodDetail.transportation_costs) + Number(goodDetail.tax_fee);
     
     totalPrice = totalPrice.toFixed(2)
     wx.hideLoading();
@@ -380,15 +380,11 @@ Page({
   getGoodDetail() {
     return new Promise(resolve => {
       wx.request({
-        // url: `${app.hostName}customerOrder`,
-        url: `${app.hostName}order`,
+        url: `${app.hostName}order/${this.data.id}`,
 
-        method: 'POST',
+        method: 'GET',
         header: {
           'Authorization': `Bearer ${app.token}`
-        },
-        data: {
-          good_attr_id: this.data.attrId
         },
         dataType: 'json',
         success: (res) => {

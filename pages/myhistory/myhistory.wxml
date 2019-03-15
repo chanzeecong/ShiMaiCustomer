@@ -56,7 +56,7 @@
 
                 <view class='flex row padRig-6'>
                   <image class="heart padRig-4" wx:if="{{!iscollected}}" catchtap='hascollected' src='https://buyer.sm.afxclub.top/icon_like@2x.png' mode='aspectFill'></image>
-                  <image class='heart padRig-4' wx:if="{{iscollected}}" catchtap='hascollected' src='../../assets/icon/icon_like_red@2x.png' mode='aspectFill'></image>
+                  <image class='heart padRig-4' wx:if="{{iscollected}}" catchtap='hascollected' src='https://buyer.sm.afxclub.top/icon_like_red@2x.png' mode='aspectFill'></image>
                   <view class='font-10 black'>{{id}}</view>
                 </view>
               </view>

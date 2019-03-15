@@ -144,6 +144,83 @@ Page({
     })
   },
 
+	// 点赞功能
+	getLikeBtn(e) {
+		let id = e.currentTarget.dataset.id;
+		let buyer_id = e.currentTarget.dataset.buyerid;
+		let type = e.currentTarget.dataset.type;
+
+		return new Promise(resolve => {
+			wx.request({
+				url: `${app.hostName}clickZan`,
+				method: 'GET',
+				header: {
+					'Authorization': `Bearer ${app.token}`
+				},
+				data: {
+					buyer_id: buyer_id,
+					type: type,
+					id: id,
+				},
+				dataType: 'json',
+				success: (res) => {
+					for (let i in this.data.showList) {
+						if (id == this.data.showList[i].id) {
+							this.data.showList[i].is_zan = 1;
+							this.data.showList[i].like_amount++;
+						}
+					}
+
+					this.setData({
+						showList: this.data.showList
+					})
+
+					wx.showToast({
+						title: '点赞成功！',
+					})
+				}
+			})
+		})
+	},
+
+	getUnLikeBtn(e) {
+		let id = e.currentTarget.dataset.id;
+		let buyer_id = e.currentTarget.dataset.buyerid;
+		let type = e.currentTarget.dataset.type;
+
+		return new Promise(resolve => {
+			wx.request({
+				url: `${app.hostName}cancelZan`,
+				method: 'GET',
+				header: {
+					'Authorization': `Bearer ${app.token}`
+				},
+				data: {
+					buyer_id: buyer_id,
+					type: type,
+					id: id,
+				},
+				dataType: 'json',
+				success: (res) => {
+					for (let i in this.data.showList) {
+						if (id == this.data.showList[i].id) {
+							this.data.showList[i].is_zan = 2;
+							this.data.showList[i].like_amount--;
+						}
+					}
+
+					this.setData({
+						showList: this.data.showList
+					})
+
+					wx.showToast({
+						title: '取消点赞成功！',
+					})
+				}
+			})
+		})
+	},
+
   loadMore() {
     if (this.data.hasMoreData) {
       this.startToRequest()

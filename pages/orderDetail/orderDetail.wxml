@@ -127,7 +127,7 @@
 
   <view class='row row-between padLef-16 padRig-16 padTop-20 bgWhite'>
     <text class='font-14 grey'>商品总额:</text>
-    <text class='font-14 grey'>￥{{orderDetail.good_price ? orderDetail.good_price: 0}}</text>
+    <text class='font-14 grey'>￥{{orderDetail.real_pay ? orderDetail.real_pay: 0}}</text>
   </view>
 
   <view class='row row-between padLef-16 padRig-16 padTop-15 bgWhite'>
@@ -151,7 +151,7 @@
 
     <view style='text-align:left'>
       <text class='font-12 black'>共{{orderDetail.amount}}件商品   合计:</text>
-      <text class='font-20 font-bold red padRig-10' >￥{{orderDetail.good_price ? orderDetail.good_price: 0}}</text>
+      <text class='font-20 font-bold red padRig-10' >￥{{orderDetail.real_pay ? orderDetail.real_pay: 0}}</text>
     </view>
   </view>
 </block>

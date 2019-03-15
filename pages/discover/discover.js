@@ -350,7 +350,11 @@ Page({
   },
 
 	// 点赞功能
-	getLikeBtn() {
+	getLikeBtn(e) {
+		let id = e.currentTarget.dataset.id;
+		let buyer_id = e.currentTarget.dataset.buyerid;
+		let type = e.currentTarget.dataset.type;
+
 		return new Promise(resolve => {
 			wx.request({
 				url: `${app.hostName}clickZan`,
@@ -359,29 +363,20 @@ Page({
 					'Authorization': `Bearer ${app.token}`
 				},
 				data: {
-					buyer_id: this.data.buyer_id,
-					type: this.data.acticeCollected,
-					id: this.data.id,
+					buyer_id: buyer_id,
+					type: type,
+					id: id,
 				},
 				dataType: 'json',
 				success: (res) => {
 					for (let i in this.data.showList) {
-						if (buyerId === this.data.showList[i].buyer_id) {
+						if (id === this.data.showList[i].id) {
 							this.data.showList[i].is_zan = 1;
-							this.data.eassyList[i].like_amount++;
-							console.log(this.data.showList[i].is_zan)
-						}
-					}
-					for (let i in this.data.eassyList) {
-						if (buyerId === this.data.eassyList[i].buyer_id) {
-							this.data.eassyList[i].is_zan = 1;
-							this.data.eassyList[i].like_amount++;
-							console.log(this.data.eassyList[i].is_zan)
+							this.data.showList[i].like_amount++;
 						}
 					}
 
 					this.setData({
-						eassyList: this.data.eassyList,
 						showList: this.data.showList
 					})
 
@@ -393,7 +388,11 @@ Page({
 		})
 	},
 
-	getUnLikeBtn() {
+	getUnLikeBtn(e) {
+		let id = e.currentTarget.dataset.id;
+		let buyer_id = e.currentTarget.dataset.buyerid;
+		let type = e.currentTarget.dataset.type;
+
 		return new Promise(resolve => {
 			wx.request({
 				url: `${app.hostName}cancelZan`,
@@ -402,21 +401,21 @@ Page({
 					'Authorization': `Bearer ${app.token}`
 				},
 				data: {
-					buyer_id: this.data.buyer_id,
-					type: this.data.acticeCollected,
-					id: this.data.id,
+					buyer_id: buyer_id,
+					type: type,
+					id: id,
 				},
 				dataType: 'json',
 				success: (res) => {
-					for (let i in this.data.eassyList) {
-						if (this.data.buyer_id == this.data.eassyList[i].buyer_id) {
-							this.data.eassyList[i].is_zan = 2;
-							this.data.eassyList[i].like_amount--;
+					for (let i in this.data.showList) {
+						if (id === this.data.showList[i].id) {
+							this.data.showList[i].is_zan = 2;
+							this.data.showList[i].like_amount--;
 						}
 					}
 
 					this.setData({
-						eassyList: this.data.eassyList
+						showList: this.data.showList
 					})
 
 					wx.showToast({

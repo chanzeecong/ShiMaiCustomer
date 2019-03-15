@@ -78,7 +78,7 @@ Page({
   getOrderDetail() {
     return new Promise(resolve => {
       wx.request({
-        url: `${app.hostName}customerOrder/${this.data.id}`,
+        url: `${app.hostName}order/${this.data.id}`,
         method: 'GET',
         header: {
           'Authorization': `Bearer ${app.token}`

@@ -323,10 +323,12 @@ Page({
 	
   async initPageData() {
     let detailList = await this.getDetail();
+		let comment = await this.getComment();
     console.log(detailList);
 
     this.setData({
-      detailList: detailList
+      detailList: detailList,
+			comment: comment
     });
   },
   /**
@@ -356,6 +358,22 @@ Page({
   onReachBottom: function() {
 
   },
+
+	getComment() {
+		return new Promise(resolve => {
+			wx.request({
+				url: `${app.hostName}essay/${this.data.id}/comment`,
+				method: 'GET',
+				header: {
+					'Authorization': `Bearer ${app.token}`
+				},
+				dataType: 'json',
+				success: (res) => {
+					resolve(res.data.data);
+				}
+			})
+		})
+	},
 
   /**
    * 用户点击右上角分享

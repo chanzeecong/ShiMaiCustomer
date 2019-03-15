@@ -28,7 +28,7 @@
   <!-- 商品 -->
   <view class='row' style='align-items:flex-start;'>
     <view class='row'>
-      <image class='production' src='{{goodDetail.good_img ? goodDetail.good_img: "https://buyer.sm.afxclub.top/nonimg@2x.png"}}' mode='aspectFill'></image>
+      <image class='production' src='{{goodDetail.good_cover_img ? goodDetail.good_cover_img: "https://buyer.sm.afxclub.top/nonimg@2x.png"}}' mode='aspectFill'></image>
     </view>
     <view class='row padLef-10'>
       <view class='col-left'>

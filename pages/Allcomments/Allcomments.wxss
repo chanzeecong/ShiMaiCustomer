@@ -55,4 +55,21 @@ page {
   text-align: center;
   opacity:1;
 }
+
+.reply-content {
+  width: 596rpx;
+  background-color: #f4f4f4;
+  margin-left: 90rpx;
+}
+
+.reply-btn{
+	height: 84rpx;
+	text-align: center;
+	background-color: #f4f4f4;
+	border-top: 1px solid rgba(236,236,236,1);
+}
  
+.show-icon{
+	width: 36rpx;
+	height: 24rpx;
+}

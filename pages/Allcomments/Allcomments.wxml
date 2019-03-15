@@ -1,23 +1,30 @@
 <!--pages/Allcomments/Allcomments.wxml-->
 <scroll-view scroll-y="true">
-  <block wx:for="{{commentList}}" wx:for-item="list" wx:key="{{index}}">
-    <view class='padLef-16 padRig-16  bg-white'>
-      <view class='bg-white underline topline'>
-        <view class='row bg-white' style='align-items:flex-start;'>
-          <view class='row padRig-10 magTop-20'>
-            <image class='comment-avatar' mode="aspectFill" src='{{list.from_user_avatar}}'></image>
+  <block wx:for='{{commentList}}' wx:key='{{item}}' wx:for-index="index">
+    <view class='bg-white underline padBot-20 padTop-20 padLef-16'>
+        <view class='row bg-white padBot-20' style='align-items:flex-start;'>
+          <view class='row padRig-10'>
+            <image class='comment-avatar' mode="aspectFill" src='{{item.from_user_avatar}}'></image>
           </view>
 
-          <view class='col-left magTop-20'>
+          <view class='flex flex-column'>
             <view class='row'>
-              <text class='font-14 black padRig-10 font-bold'>{{list.from_user_name}}</text>
+              <text class='font-14 black padRig-10 font-bold'>{{item.from_user_name}}</text>
             </view>
-            <text class='font-14 black padTop-5'>{{list.content}}</text>
-            <view class='row padTop-20 justify-between'>
-              <text class='font-10 low'>{{list.created_at}}</text>
-              <view class='row justify-around'>
-                <image class="icon-com" src='../../assets/icon/icon_Reply@2x.png'></image>
-                <text class='padLef-5 font-10' style='color:rgba(0,0,0,0.60);' bindtap='reply_comment' data-idx='{{list.id}}'>回复</text>
+            <text class='font-14 black padTop-5'>{{item.content}}</text>
+            <view class='row row-between padTop-20'>
+
+              <view class='row' style='align-items:flex-start;'>
+                <view class='col-left'>
+                  <view class='row'>
+                    <text class='font-10 low'>{{item.created_at}}</text>
+                  </view>
+                </view>
+              </view>
+
+              <view class='row' style='padding-left:150px;' bindtap='onReplyBtn' data-id='{{item.id}}'>
+                <image class="icon-com" src='../../assets/icon/icon_Reply@2x.png' mode="aspectFill"></image>
+                <text class='padLef-5 font-10' style='color:rgba(0,0,0,0.60);'>回复</text>
               </view>
             </view>
           </view>
@@ -25,51 +32,79 @@
         </view>
 
         <!-- 灰色部分 -->
-        <view class='reply-content bg-gray magLef-45 magTop-20'>
-          <view class='padLef-10 padRig-10 magBot-20'>
-            <text class='font-12 blue'>小浪\n</text>
-            <text class='font-12 black padTop-10'>这个还不错，上次在小红书里也看到了推荐。</text>
-            <view class='row padTop-5 justify-between'>
-              <text class='font-10 low'>{{list.created_at}}</text>
-              <view class='row justify-around'>
-                <image class="icon-com" src='../../assets/icon/icon_Reply@2x.png'></image>
-                <text class='padLef-5 font-10' style='color:rgba(0,0,0,0.60);' bindtap='to_user' data-iidx='{{list.reply[0].from_uid}}'>回复</text>
-              </view>
-            </view>
+        <block wx:if='{{item.reply.length > 0}}'>
+          <view class='reply-content' wx:for='{{item.reply}}' wx:key='{{index}}' wx:for-item='list' wx:for-index="index">
+						<block wx:if='{{index <= 3}}'>
+							<view class='padTop-10 padLef-10 padRig-10 lh'>
+								<text class='font-12 blue padBot-10'>{{list.from_user_name}}</text>
+							</view>
+
+							<view class='padTop-10 padLef-10 padRig-10 lh'>
+								<text class='font-12 black padBot-10'>{{list.content}}</text>
+							</view>
+
+							<view class='row padLef-10 padTop-10 padRig-10 padBot-15 justify-between'>
+								<text class='font-10 low'>{{list.created_at}}</text>
+								<view class='row justify-around'  bindtap='onReplyBtnTo' data-id='{{list.id}}'>
+									<image class="icon-com" src='../../assets/icon/icon_Reply@2x.png'></image>
+									<text class='padLef-5 font-10' style='color:rgba(0,0,0,0.60);'>回复</text>
+								</view>
+							</view>
+						</block>
+
+						<block wx:if='{{index > 3}}'>
+							<view class='reply-btn' bindtap='onShowBtn' wx:if='{{!isShow}}'>
+								<text class='font-12 grey'>还有{{index - 3}}条回复</text>
+								<image class='show-icon' src='https://buyer.sm.afxclub.top/icon_drop_down@2x.png'></image>
+							</view>
+
+							<block wx:else>
+								<view class='padTop-10 padLef-10 padRig-10 lh'>
+									<text class='font-12 blue padBot-10'>{{list.from_user_name}}</text>
+								</view>
+
+								<view class='padTop-10 padLef-10 padRig-10 lh'>
+									<text class='font-12 black padBot-10'>{{list.content}}</text>
+								</view>
+
+								<view class='row padLef-10 padTop-10 padRig-10 padBot-15 justify-between'>
+									<text class='font-10 low'>{{list.created_at}}</text>
+									<view class='row justify-around'  bindtap='onReplyBtnTo' data-id='{{list.id}}'>
+										<image class="icon-com" src='../../assets/icon/icon_Reply@2x.png'></image>
+										<text class='padLef-5 font-10' style='color:rgba(0,0,0,0.60);'>回复</text>
+									</view>
+								</view>
+							</block>
+						</block>
           </view>
-        </view>
-      </view>
+        </block>
     </view>
   </block>
 </scroll-view>
 
-
-
 <view class="comment_release">
-  <view wx:if="{{parent_id == 0}}">
+  <block wx:if='{{status == 0}}'>
     <view class="left">
-      <textarea class="text" fixed="true" value='{{content}}' bindblur='bindTextAreaBlur' maxlength="-1" show-confirm-bar="{{false}}" cursor-spacing="15" auto-height="true" placeholder="你长的这么好看，也来评论一下吧~" />
+      <textarea class="text" fixed="true" value='{{content}}' bindinput='bindTextAreaBlur' maxlength="-1" cursor-spacing="15" auto-height="true" placeholder="你长的这么好看，也来评论一下吧~" />
       <view class="line" />
     </view>
-  </view>
-  
-   <!-- <view wx:elif="{{to_uid !== 0}}">
-    <view class="left">
-      <textarea class="text" fixed="true" value='{{reply_content}}' bindblur='bindTextReply' maxlength="-1" show-confirm-bar="{{false}}" cursor-spacing="15" auto-height="true" placeholder="回复:小浪" />
-      <view class="line" />
-    </view>
-  </view>
-  <view class='padRig-18'>
-    <image class='icon-submit' src='../../assets/icon/icon_aircraft@2x.png'></image>
-  </view> -->
+  </block>
 
-  <view wx:else>
+  <block wx:elif='{{status == 1}}'>
     <view class="left">
-      <textarea class="text" fixed="true" value='{{reply_content}}' bindblur='bindTextReply' maxlength="-1" show-confirm-bar="{{false}}" cursor-spacing="15" auto-height="true" placeholder="回复:层主" />
+      <textarea class="text" fixed="true" value='{{content}}' bindinput='bindTextAreaBlur' maxlength="-1" cursor-spacing="15" auto-height="true" placeholder="评论层主" />
       <view class="line" />
     </view>
-  </view>
+  </block>
+
+  <block wx:elif='{{status == 2}}'>
+    <view class="left">
+      <textarea class="text" fixed="true" value='{{content}}' bindinput='bindTextAreaBlur' maxlength="-1" cursor-spacing="15" auto-height="true" placeholder="回复给{{name}}" />
+      <view class="line" />
+    </view>
+  </block>
+  
   <view class='padRig-18'>
-    <image class='icon-submit' src='../../assets/icon/icon_aircraft@2x.png'></image>
+    <image bindtap='onSendReplyBtn' class='icon-submit' src='../../assets/icon/icon_aircraft@2x.png'></image>
   </view>
 </view>

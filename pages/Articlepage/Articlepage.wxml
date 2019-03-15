@@ -61,8 +61,8 @@
             <text class='font-11 magRig-5' style='color:rgba(245,57,110,1);'>{{item.browse_number}}人浏览</text>
           </view>
           <view class='row padTop-26'>
-            <image catchtap="getLikeBtn" wx:if="{{item.is_zan == 2}}" class="icon-use" src='../../assets/icon/icon_like_gray@2x.png'></image>
-            <image catchtap="getUnLikeBtn" wx:else class="icon-use" src='../../assets/icon/icon_like_red@2x.png'></image>
+            <image catchtap="getLikeBtn" wx:if="{{item.is_zan == 2}}" class="icon-use" src='https://buyer.sm.afxclub.top/icon_like@2x.png'></image>
+            <image catchtap="getUnLikeBtn" wx:else class="icon-use" src='https://buyer.sm.afxclub.top/icon_like_red@2x.png'></image>
             <text class='font-10 low padLef-10'>{{item.like_amount}}</text>
 
 
@@ -81,86 +81,61 @@
           <view class='bg-white h-46 padTop-20'>
             <text class='font-16 black'>相关评论</text>
           </view>
-          <view class='h-360 bg-white underline'>
-            <view class='row bg-white' style='align-items:flex-start;'>
-              <view class='row padRig-10'>
-                <image class='comment-avatar' mode="aspectFill" src='{{item.img_link}}'></image>
-              </view>
 
-              <view class='flex flex-column'>
-                <view class='row'>
-                  <text class='font-14 black padRig-10 font-bold'>陈京味</text>
-                </view>
-                <text class='font-14 black padTop-5'>这个还不错，上次在小红书里也看到了推荐。这个还不错，上次在小红书里也看到了推荐。</text>
-                <view class='row row-between padTop-20'>
+					<block wx:for='{{comment}}' wx:key='{{item}}' wx:for-index="index">
+						<block wx:if="{{index < 2}}">
+							<view class='bg-white underline padBot-20 padTop-10'>
+									<view class='row bg-white padBot-20' style='align-items:flex-start;'>
+										<view class='row padRig-10'>
+											<image class='comment-avatar' mode="aspectFill" src='{{item.from_user_avatar}}'></image>
+										</view>
 
-                  <view class='row' style='align-items:flex-start;'>
-                    <view class='col-left'>
-                      <view class='row'>
-                        <text class='font-10 low'>{{item.created_at}}</text>
-                      </view>
-                    </view>
-                  </view>
+										<view class='flex flex-column'>
+											<view class='row'>
+												<text class='font-14 black padRig-10 font-bold'>{{item.from_user_name}}</text>
+											</view>
+											<text class='font-14 black padTop-5'>{{item.content}}</text>
+											<view class='row row-between padTop-20'>
 
-                  <view class='row'>
-                    <image class="icon-com" src='../../assets/icon/icon_Reply@2x.png' mode="aspectFill"></image>
-                    <text class='padLef-5 font-10' style='color:rgba(0,0,0,0.60);'>回复</text>
-                  </view>
-                </view>
-              </view>
+												<view class='row' style='align-items:flex-start;'>
+													<view class='col-left'>
+														<view class='row'>
+															<text class='font-10 low'>{{item.created_at}}</text>
+														</view>
+													</view>
+												</view>
 
-            </view>
+												<view class='row' style='padding-left:150px;'>
+													<image class="icon-com" src='../../assets/icon/icon_Reply@2x.png' mode="aspectFill"></image>
+													<text class='padLef-5 font-10' style='color:rgba(0,0,0,0.60);'>回复</text>
+												</view>
+											</view>
+										</view>
 
-            <!-- 灰色部分 -->
-            <view class='reply-content'>
-              <view class='padTop-10 padLef-10 padRig-10 lh'>
-                <text class='font-12 black'><text class='font-12 blue'>小浪：</text>这个还不错，上次在小红书里也看到了推荐。这个还不错，上次在小红书里也看到了推荐。这个还不错，上次在小红书里也看到了推荐。这个还不错，上次在小红书里也看到了推荐。上次在小红书里也看到了推荐。</text>
-              </view>
-              <view class='padLef-10 padRig-10 lh'>
-                <text class='font-12 black'><text class='font-12 blue'>小浪：</text>这个还不错，上次在小红书里也看到了推荐。这个还不错，上次在小红书里也看到了推荐。这个还不错，上次在小红书里也看到了推荐。这个还不错，上次在小红书里也看到了推荐。上次在小红书里也看到了推荐。</text>
-              </view>
-              <navigator open-type='navigate'>
-                <view class='padTop-10 padLef-10 padBot-10 lh'>
-                  <text class='font-12 blue font-bold'>共11条评论></text>
-                </view>
-              </navigator>
-            </view>
-          </view>
+									</view>
 
-          <!-- <view class='h-360 bg-white underline magTop-20'>
-            <view class='row bg-white' style='align-items:flex-start;'>
-              <view class='row padRig-10'>
-                <image class='comment-avatar' mode="aspectFill" src='{{item.img_link}}'></image>
-              </view>
+									<!-- 灰色部分 -->
+									<block wx:if='{{item.reply.length > 0}}'>
+										<view class='reply-content' wx:for='{{item.reply}}' wx:key='{{index}}' wx:for-item='list' wx:for-index='index'>
+											<block wx:if='{{index <= 3}}'>
+												<view class='padTop-10 padLef-10 padRig-10 lh'>
+													<text class='font-12 black'>
+													<text class='font-12 blue'>{{list.from_user_name}}：</text>{{list.content}}</text>
+												</view>
+											</block>
 
-              <view class='col-left'>
-                <view class='row'>
-                  <text class='font-14 black padRig-10 font-bold'>陈京味</text>
-                </view>
-                <text class='font-14 black padTop-5'>这个还不错，上次在小红书里也看到了推荐。这个还不错，上次在小红书里也看到了推荐。</text>
-                <view class='row padTop-20'>
-                  <text class='font-10 low'>2018-10-26 08:24</text>
-                  <image class="icon-com padLef-177" src='../../assets/icon/icon_Reply@2x.png'></image>
-                  <text class='padLef-5 font-10' style='color:rgba(0,0,0,0.60);'>回复</text>
-                </view>
-              </view>
-
-            </view>
-
-            <view class='reply-content'>
-              <view class='padTop-10 padLef-10 padRig-10 lh'>
-                <text class='font-12 black'><text class='font-12 blue'>小浪：</text>这个还不错，上次在小红书里也看到了推荐。这个还不错，上次在小红书里也看到了推荐。这个还不错，上次在小红书里也看到了推荐。这个还不错，上次在小红书里也看到了推荐。上次在小红书里也看到了推荐。</text>
-              </view>
-              <view class='padLef-10 padRig-10 lh'>
-                <text class='font-12 black'><text class='font-12 blue'>小浪：</text>这个还不错，上次在小红书里也看到了推荐。这个还不错，上次在小红书里也看到了推荐。这个还不错，上次在小红书里也看到了推荐。这个还不错，上次在小红书里也看到了推荐。上次在小红书里也看到了推荐。</text>
-              </view>
-              <navigator open-type='navigate'>
-                <view class='padTop-10 padLef-10 padBot-10 lh'>
-                  <text class='font-12 blue font-bold'>共11条评论></text>
-                </view>
-              </navigator>
-            </view>
-          </view> -->
+											<block wx:if='{{index > 3}}'>
+												<navigator open-type='navigate' url='../Allcomments/Allcomments?id={{list.essay_id}}'>
+													<view class='padTop-10 padLef-10 padBot-10 lh'>
+														<text class='font-12 blue font-bold'>共{{index - 3}}条评论></text>
+													</view>
+												</navigator>
+											</block>
+										</view>
+									</block>
+							</view>
+						</block>
+					</block>
 
           <!-- 查看全部评论 -->
           <view wx:for="{{detailList}}" wx:key="{{index}}">

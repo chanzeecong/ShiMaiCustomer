@@ -97,10 +97,7 @@
               <text class='font-14 black line-ellipsis'>18新品质感绒面韩版时尚拼接百搭舒适……</text>
             </view>
 
-
             <view class="name">
-
-
               <view class='flex flex-row'>
                 <image class="avartor-img" src='{{img_link}}'></image>
                 <view class='flex flex-column justify-between flex-item padLef-6'>
@@ -109,8 +106,8 @@
                 </view>
 
                 <view class='flex row padRig-6'>
-                  <image catchtap="getLikeBtn" wx:if="{{is_zan == 2}}" class="heart padRig-4" src='../../assets/icon/icon_like_gray@2x.png'></image>
-                  <image catchtap="getUnLikeBtn" wx:else class="heart padRig-4" src='../../assets/icon/icon_like_red@2x.png'></image>
+                  <image catchtap="getLikeBtn" wx:if="{{is_zan == 2}}" class="heart padRig-4" src='https://buyer.sm.afxclub.top/icon_like@2x.png' data-id='{{id}}' data-type='{{type}}' data-buyerid='{{buyer_id}}'></image>
+                  <image catchtap="getUnLikeBtn" wx:else class="heart padRig-4" src='https://buyer.sm.afxclub.top/icon_like_red@2x.png' data-id='{{id}}' data-type='{{type}}' data-buyerid='{{buyer_id}}'></image>
                   <view class='font-10 black'>{{like_amount}}</view>
                 </view>
               </view>

@@ -76,15 +76,9 @@
                 </view>
 
                 <view class='flex row padRig-6'>
-                  <view wx:if="{{item.is_followed}}" bindtap='onUnfollowBtnClick' data-index="{{index}}" class='follow-btn'>
-                    <image class='heart padRig-4' src='https://buyer.sm.afxclub.top/icon_like_red@2x.png'></image>
-                  </view>
-
-                  <view wx:else bindtap='onFollowBtnClick' data-index="{{index}}" class='follow-btn'>
-                    <image class="heart padRig-4" src='https://buyer.sm.afxclub.top/icon_like@2x.png'></image>
-                  </view>
-
-                  <view class='font-10 black'>{{id}}</view>
+                   <image catchtap="getLikeBtn" wx:if="{{is_zan == 2}}" class="heart padRig-4" src='https://buyer.sm.afxclub.top/icon_like@2x.png' data-id='{{id}}' data-type='{{type}}' data-buyerid='{{buyer_id}}'></image>
+                  <image catchtap="getUnLikeBtn" wx:else class="heart padRig-4" src='https://buyer.sm.afxclub.top/icon_like_red@2x.png' data-id='{{id}}' data-type='{{type}}' data-buyerid='{{buyer_id}}'></image>
+                  <view class='font-10 black'>{{like_amount}}</view>
                 </view>
               </view>
             </view>

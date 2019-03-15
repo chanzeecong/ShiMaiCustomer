@@ -79,10 +79,8 @@ button.follow-btn {
 
 .reply-content {
   width: 596rpx;
-  height: 416rpx;
   background-color: #f4f4f4;
   margin-left: 90rpx;
-  margin-top: 20rpx;
 }
 .goTop {
   width: 100rpx;

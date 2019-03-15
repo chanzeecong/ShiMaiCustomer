@@ -1,6 +1,7 @@
 // pages/Allcomments/Allcomments.js
 const regeneratorRuntime = require('../../lib/runtime.js');
 const app = getApp();
+
 Page({
 
   /**
@@ -10,13 +11,11 @@ Page({
     id: ``,
     isScroll: true,
     inputBoxShow: false,
-    isScroll: true,
     commentList: {},
     content: ``,
-    reply_content: ``,
-    user_content: ``,
     parent_id: ``,
     to_uid: ``,
+		status: 0
   },
 
   /**
@@ -24,115 +23,22 @@ Page({
    */
   onLoad: function (options) {
     let id = options.id;
-    // console.log(id)
+
     this.setData({
       id
     })
-    this.getComments();
   },
-  getComments() {
-    return new Promise(resolve => {
-      wx.request({
-        url: `${app.hostName}essay/${this.data.id}/comment`,
-        method: 'GET',
-        header: {
-          'Authorization': `Bearer ${app.token}`
-        },
-        dataType: 'json',
-        success: (res) => {
-          resolve(res.data.data);
-          console.log(res.data.data)
-          let commentList = res.data.data;
-          this.setData({
-            commentList
-          })
-        }
-      })
-    })
-  },
+  
 
   // 评论
   bindTextAreaBlur(e) {
-    console.log(e);
+		let content = e.detail.value;
+
     this.setData({
-      content: e.detail.value
-    })
-    return new Promise(resolve => {
-      wx.request({
-        url: `${app.hostName}essay/${this.data.id}/comment`,
-        method: 'POST',
-        data: {
-          content: this.data.content
-        },
-        header: {
-          'Authorization': `Bearer ${app.token}`
-        },
-        dataType: 'json',
-        success: (res) => {
-          resolve(res.data.data);
-          let newList = res.data.data;
-          this.setData({
-            commentList: this.data.commentList.concat(newList),
-            content: ``,
-          })
-        }
-      })
+      content: content
     })
   },
 
-  // 回复层主的品论
-  bindTextReply(e) {
-    // console.log(e);
-    this.setData({
-      reply_content: e.detail.value
-    })
-    return new Promise(resolve => {
-      wx.request({
-        url: `${app.hostName}essay/${this.data.id}/comment`,
-        method: 'POST',
-        data: {
-          content: this.data.reply_content,
-          parent_id: this.data.parent_id
-        },
-        header: {
-          'Authorization': `Bearer ${app.token}`
-        },
-        dataType: 'json',
-        success:(res) => {
-          resolve(res.data.data);
-          this.setData({
-            reply_content: ``
-          })
-        }
-      })
-    })
-  },
-  
-  // 回复拿到的id
-  reply_comment(e) {
-    console.log(e.currentTarget.dataset.idx);
-    let parent_id = e.currentTarget.dataset.idx;
-    this.setData({
-      parent_id: parent_id
-    })
-  },
-
-  // 灰色部分回复的id
-  to_user(e) {
-    console.log(e);
-    console.log(e.currentTarget.dataset.iidx);
-    let to_uid = e.currentTarget.dataset.iidx;
-    this.setData({
-      to_uid: to_uid,
-    })
-  },
-
-  // bindTextuser(e) {
-  //   console.log(e);
-  //   this.setData({
-  //     user_content: e.detail.value
-  //   })
-  // },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -144,7 +50,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+		this.initPageData();
   },
 
   /**
@@ -174,6 +80,133 @@ Page({
   onReachBottom: function () {
 
   },
+
+	onReplyBtn(e){
+		let parent_id = e.currentTarget.dataset.id;
+		let status = 1;
+
+		for (let i in this.data.commentList)
+		{
+			if (parent_id == this.data.commentList[i].id)
+				{
+					let to_uid = this.data.commentList[i].from_uid;
+
+					this.setData({
+						status: status,
+						parent_id: parent_id,
+						to_uid: to_uid
+					})
+
+					break
+				}
+		}
+	},
+
+	onReplyBtnTo(e){
+		let parent_reply_id = e.currentTarget.dataset.id;
+		let status = 2;
+
+		for (let i in this.data.commentList) {
+			for(let a in this.data.commentList[i].reply)
+				if (parent_reply_id == this.data.commentList[i].reply[a].id) {
+					let parent_id = this.data.commentList[i].reply[a].parent_id;
+					let to_uid = this.data.commentList[i].reply[a].from_uid;
+					let name = this.data.commentList[i].reply[a].from_user_name;
+
+					this.setData({
+						status: status,
+						parent_id: parent_id,
+						to_uid: to_uid,
+						name: name
+					})
+
+					break
+			}
+		}
+	},
+
+	onShowBtn(){
+		let isShow = true;
+
+		this.setData({
+			isShow: isShow
+		})
+	},
+
+	onSendReplyBtn(){
+		console.log(this.data.content)
+		console.log(this.data.parent_id)
+		console.log(this.data.to_uid)
+
+		if(!this.data.parent_id)
+		{
+			return new Promise(resolve => {
+				wx.request({
+					url: `${app.hostName}essay/${this.data.id}/comment`,
+					method: 'POST',
+					header: {
+						'Authorization': `Bearer ${app.token}`
+					},
+					data: {
+						content: this.data.content
+					},
+					dataType: 'json',
+					success: (res) => {
+						resolve(res.data.data);
+						this.initPageData();
+					}
+				})
+			})
+		}
+		else
+		{
+			return new Promise(resolve => {
+				wx.request({
+					url: `${app.hostName}essay/${this.data.id}/comment`,
+					method: 'POST',
+					header: {
+						'Authorization': `Bearer ${app.token}`
+					},
+					data: {
+						content: this.data.content,
+						parent_id: this.data.parent_id,
+						to_uid: this.data.to_uid
+					},
+					dataType: 'json',
+					success: (res) => {
+						resolve(res.data.data);
+						this.initPageData();
+					}
+				})
+			})
+		}
+	},
+
+	async initPageData(){
+		let comment = await this.getComments();
+		let status = 0;
+		console.log(comment)
+
+		this.setData({
+			commentList: comment
+		})
+	},
+
+	getComments() {
+		return new Promise(resolve => {
+			wx.request({
+				url: `${app.hostName}essay/${this.data.id}/comment`,
+				method: 'GET',
+				header: {
+					'Authorization': `Bearer ${app.token}`
+				},
+				dataType: 'json',
+				success: (res) => {
+					resolve(res.data.data);
+				}
+			})
+		})
+	},
 
   /**
    * 用户点击右上角分享

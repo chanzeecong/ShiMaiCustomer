@@ -58,7 +58,7 @@ Page{
 }
 
 .heart{
-  width: 20rpx;
+  width: 50rpx;
   height: 18rpx;
   margin-right: 8rpx;
 }
@@ -385,4 +385,8 @@ radio .wx-radio-input.wx-radio-input-checked::before{
   position: relative;
   bottom: 40rpx;
   left: 240rpx;
+}
+
+.mask{
+	background: rgba(0, 0, 0, .4);
 }

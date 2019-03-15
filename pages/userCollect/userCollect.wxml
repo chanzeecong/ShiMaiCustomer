@@ -91,7 +91,8 @@
     <block wx:if="{{1 == item.type}}">
 
       <template name="item">
-        <view class="item">
+				<view wx:if='{{isShowMask}}' class='mask'></view>
+        <view class="item" bindtap='onChooseBtn'>
           <block wx:if="{{!video_url}}">
             <navigator open-type='navigate' url="../Articlepage/Articlepage?type={{type}}&id={{id}}&buyer_id={{buyer_id}}">
               <image class="item-img" src="{{essay_img}}" mode="widthFix" style='border-radius:12rpx 12rpx 0px 0px;'></image>
@@ -119,15 +120,9 @@
                   </view>
 
                   <view class='flex row padRig-6'>
-                    <view wx:if="{{item.is_followed}}" bindtap='onUnfollowBtnClick' data-index="{{index}}" class='follow-btn'>
-                      <image class='heart padRig-4' src='https://buyer.sm.afxclub.top/icon_like_red@2x.png'></image>
-                    </view>
-
-                    <view wx:else bindtap='onFollowBtnClick' data-index="{{index}}" class='follow-btn'>
-                      <image class="heart padRig-4" src='https://buyer.sm.afxclub.top/icon_like@2x.png'></image>
-                    </view>
-
-                    <view class='font-10 black'>{{id}}</view>
+                    <image catchtap="getLikeBtn" wx:if="{{is_zan == 2}}" class="heart padLef-4" src='https://buyer.sm.afxclub.top/icon_like@2x.png' data-id='{{id}}' data-type='{{type}}' data-buyerid='{{buyer_id}}'></image>
+                  <image catchtap="getUnLikeBtn" wx:else class="heart padLef-4" src='https://buyer.sm.afxclub.top/icon_like_red@2x.png' data-id='{{id}}' data-type='{{type}}' data-buyerid='{{buyer_id}}'></image>
+            				<text class='font-10 low padLef-10'>{{item.like_amount}}</text>
                   </view>
                 </view>
               </view>
@@ -135,7 +130,7 @@
           </view>
         </view>
       </template>
-			<image wx:if='{{isShow}}' class='choose-icon' src='https://buyer.sm.afxclub.top/icon_choose@2x.png'></image>
+			<!-- <image wx:if='{{isShow}}' class='choose-icon' src='https://buyer.sm.afxclub.top/icon_choose@2x.png'></image> -->
     </block>
 
     <block wx:if="{{2 == item.type}}">
@@ -168,15 +163,9 @@
                   </view>
 
                   <view class='flex row padRig-6'>
-                    <view wx:if="{{item.is_followed}}" bindtap='onUnfollowBtnClick' data-index="{{index}}" class='follow-btn'>
-                      <image class='heart padRig-4' src='https://buyer.sm.afxclub.top/icon_like_red@2x.png'></image>
-                    </view>
-
-                    <view wx:else bindtap='onFollowBtnClick' data-index="{{index}}" class='follow-btn'>
-                      <image class="heart padRig-4" src='https://buyer.sm.afxclub.top/icon_like@2x.png'></image>
-                    </view>
-
-                    <view class='font-10 black'>{{id}}</view>
+                    <image catchtap="getLikeBtn" wx:if="{{is_zan == 2}}" class="heart padRig-4" src='https://buyer.sm.afxclub.top/icon_like@2x.png' data-id='{{id}}' data-type='{{type}}' data-buyerid='{{buyer_id}}'></image>
+                  <image catchtap="getUnLikeBtn" wx:else class="heart padRig-4" src='https://buyer.sm.afxclub.top/icon_like_red@2x.png' data-id='{{id}}' data-type='{{type}}' data-buyerid='{{buyer_id}}'></image>
+            				<text class='font-10 black'>{{item.like_amount}}</text>
                   </view>
                 </view>
               </view>
@@ -199,12 +188,12 @@
                     {{item.region_name}}
                   </view>
                 </view>
-              </view>
 
-              <view class='flex flex-row buyer-badges'>
-                <view class='badges-item' wx:for='{{item.tag}}' wx:for-index="cidx" wx:key="{{cidx}}" wx:for-item="child">
-                  {{child}}
-                </view>
+								<view class='flex flex-row buyer-badges'>
+									<view class='badges-item' wx:for='{{item.tag}}' wx:for-index="cidx" wx:key="{{cidx}}" wx:for-item="child">
+										{{child}}
+									</view>
+								</view>
               </view>
        
           </navigator>
