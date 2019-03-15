@@ -86,7 +86,12 @@
 
         <block wx:else>
           <navigator open-type='navigate' url="../VideoGoods/VideoGoods?type={{type}}&id={{id}}&buyer_id={{buyer_id}}">
-            <video class="good-items" autoplay='' poster='{{video_url}}' src='{{video_url}}' style='border-radius:12rpx 12rpx 0px 0px;'></video>
+            <block wx:if="{{video_url}}">
+              <video class="good-items" autoplay='' controls='{{true}}' poster='{{video_url}}?vframe/jpg/offset/0' src='{{video_url}}' mode="widthFix" style='border-radius:12rpx 12rpx 0px 0px;'></video>
+            </block>
+            <block wx:else>
+               <image class="item-img" src="{{essay_img_link}}" mode="widthFix" style='border-radius:12rpx 12rpx 0px 0px;'></image>
+            </block>
           </navigator>
         </block>
 

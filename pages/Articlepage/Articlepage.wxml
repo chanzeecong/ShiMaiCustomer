@@ -40,7 +40,7 @@
         </block>
         <block wx:elif="{{item.video_url !== 0}}">
           <!-- 视频 -->
-          <video class='video-item' autoplay='' poster='{{item.video_url}}' src='{{item.video_url}}' objectFit='cover'></video>
+          <video class='video-item' autoplay='' poster='{{item.video_url}}?vframe/jpg/offset/0/' src='{{item.video_url}}' objectFit='cover'></video>
         </block>
         <block wx:else>
           <view></view>

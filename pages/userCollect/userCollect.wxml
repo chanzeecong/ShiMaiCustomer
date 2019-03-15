@@ -1,5 +1,4 @@
 <!--pages/userCollect/userCollect.wxml-->
-<!--pages/orderList/orderList.wxml-->
 <block wx:if="{{collectList.length}}">
   <scroll-view scroll-x="true" scroll-left="{{scrollToLeft}}rpx" scroll-with-animation="true">
     <view class="row row-center underline bgWhite" style='justify-content:center;'>
@@ -100,8 +99,13 @@
           </block>
 
           <block wx:else>
-           <navigator open-type='navigate' url="../VideoGoods/VideoGoods?type={{type}}&id={{id}}&buyer_id={{buyer_id}}">
-              <video class="good-items" autoplay='' poster='{{video_url}}' src='{{video_url}}' style='border-radius:12rpx 12rpx 0px 0px;'></video>
+            <navigator open-type='navigate' url="../VideoGoods/VideoGoods?type={{type}}&id={{id}}&buyer_id={{buyer_id}}">
+              <block wx:if="{{video_url}}">
+                <video class="good-items" autoplay='' controls='{{true}}' poster='{{video_url}}?vframe/jpg/offset/0' src='{{video_url}}' mode="widthFix" style='border-radius:12rpx 12rpx 0px 0px;'></video>
+              </block>
+              <block wx:else>
+                <image class="item-img" src="{{essay_img_link}}" mode="widthFix" style='border-radius:12rpx 12rpx 0px 0px;'></image>
+              </block>
             </navigator>
           </block>
 
@@ -130,7 +134,11 @@
           </view>
         </view>
       </template>
+<<<<<<< HEAD
 			<!-- <image wx:if='{{isShow}}' class='choose-icon' src='https://buyer.sm.afxclub.top/icon_choose@2x.png'></image> -->
+=======
+      <image wx:if='{{isShow}}' class='choose-icon' src='https://buyer.sm.afxclub.top/icon_choose@2x.png'></image>
+>>>>>>> 73efb0c1bbb2cae8f920f7c64b2174d5c8f9f156
     </block>
 
     <block wx:if="{{2 == item.type}}">
@@ -143,9 +151,9 @@
           </block>
 
           <block wx:else>
-						<navigator open-type='navigate' url="../VideoGoods/VideoGoods?type={{type}}&id={{id}}&buyer_id={{buyer_id}}">
-							<video class="good-items" autoplay='' poster='{{video_url}}' src='{{video_url}}' style='border-radius:12rpx 12rpx 0px 0px;'></video>
-						</navigator>
+            <navigator open-type='navigate' url="../VideoGoods/VideoGoods?type={{type}}&id={{id}}&buyer_id={{buyer_id}}">
+              <video class="good-items" autoplay='' poster='{{video_url}}?vframe/jpg/offset/0/' src='{{video_url}}' style='border-radius:12rpx 12rpx 0px 0px;'></video>
+            </navigator>
           </block>
 
           <view class='bg-white' style='border-radius:0px 0px 12rpx 6px;'>
@@ -179,23 +187,32 @@
       <view class='buyer_box_list'>
         <view class='buyer_box'>
           <navigator open-type='navigate' url='../buyer_detail/buyer_detail?id={{item.id}}' class='flex flex-row buyer_head'>
-              <image class='buyer_img' mode='aspectFill' src='{{item.img_link}}'></image>
-              <view class='flex-item'>
-                <view class='buyer_title'>
-                  <text>{{item.name}}</text>
-                  <view class='title_location padTop-2'>
-                    <image class='icon icon_location' src='https://buyer.sm.afxclub.top/icon_locate_big@2x.png'></image>
-                    {{item.region_name}}
-                  </view>
+            <image class='buyer_img' mode='aspectFill' src='{{item.img_link}}'></image>
+            <view class='flex-item'>
+              <view class='buyer_title'>
+                <text>{{item.name}}</text>
+                <view class='title_location padTop-2'>
+                  <image class='icon icon_location' src='https://buyer.sm.afxclub.top/icon_locate_big@2x.png'></image>
+                  {{item.region_name}}
                 </view>
+<<<<<<< HEAD
 
 								<view class='flex flex-row buyer-badges'>
 									<view class='badges-item' wx:for='{{item.tag}}' wx:for-index="cidx" wx:key="{{cidx}}" wx:for-item="child">
 										{{child}}
 									</view>
 								</view>
+=======
               </view>
-       
+            </view>
+
+            <view class='flex flex-row buyer-badges'>
+              <view class='badges-item' wx:for='{{item.tag}}' wx:for-index="cidx" wx:key="{{cidx}}" wx:for-item="child">
+                {{child}}
+>>>>>>> 73efb0c1bbb2cae8f920f7c64b2174d5c8f9f156
+              </view>
+            </view>
+
           </navigator>
 
           <view class='buyer_middle_info'>

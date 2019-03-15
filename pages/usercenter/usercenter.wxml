@@ -5,7 +5,12 @@
 
     <view class='row daily_btn padLef-5' bindtap='onDailySign'>
       <image class="dail_icon" src='https://buyer.sm.afxclub.top/icon_sign@2x.png'></image>
-      <text class='daily_text'>签到赚积分</text>
+      <block wx:if="{{user_info.is_sign == 0}}">
+        <text class='daily_text'>签到赚积分</text>
+      </block>
+      <block wx:else>
+        <text class='daily_text'>已连续签到{{userInfo.sign_days}}天</text>
+      </block>
     </view>
     <view class='user_info flex flex-column justify-center align-center'>
       <navigator open-type='navigate' url="../Modifydata/Modifydata">

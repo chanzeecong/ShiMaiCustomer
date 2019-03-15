@@ -26,18 +26,19 @@
         <view wx:else bindtap='onFollowBtnClick' class='follow-btn'>+关注</view>
       </view>
 
-      <block wx:if="{{item.video_url !== 0}}">
-        <video class='video-item' autoplay='' poster='{{item.video_url}}' src='{{item.video_url}}' objectFit='cover'></video>
+      <block wx:if="{{item.video_url}}">
+        <video class='video-item' autoplay='' poster='{{item.video_url}}?vframe/jpg/offset/0/' src='{{item.video_url}}' objectFit='cover'></video>
       </block>
-      <block wx:elif="{{item.essay_img_link !== 0}}">
+      <block wx:else>
         <!-- 轮播 -->
-        <swiper indicator-dots="{{indicatorDots}}" circular="{{circular}}" class='slide-image'>
+        <!-- <swiper indicator-dots="{{indicatorDots}}" circular="{{circular}}" class='slide-image'>
           <block wx:for="{{detailList[0].essay_img_link}}" wx:key="{{index}}">
             <swiper-item>
               <image src="{{item}}" mode="aspectFill" style='width:100%;height:750rpx;' />
             </swiper-item>
           </block>
-        </swiper>
+        </swiper> -->
+        <image src='{{item.essay_img}}' class='video-item'></image>
       </block>
 
       <!-- 抢购 -->
@@ -81,7 +82,8 @@
         </view>
         <view class='magTop-20'>
           <view class='padTop-15 topline'>
-            <text class='fz-18 black font-bold'>{{item.essay_title}}</text>
+            <text class='fz-18 black font-black'>{{item.good_barcode}}</text>
+            <text class='fz-18 black font-bold'> {{item.essay_title}}</text>
           </view>
           <view class='padTop-18'>
             <text class='fz-14 ' style='color:rgba(0,0,0,0.60);line-height:48rpx;'>一直以来，音乐的加入，都可以让运动的过程变得更加快乐，前提是有一款好用的耳机，而要达到无拘无束的体验，传统的有线耳机当然是直接淘汰的，那么蓝牙运动耳机自然是更受欢迎了，这其中，真无线耳机由于彻底摆脱了线材的束缚，在使用中相对普通蓝牙耳机来说就更加方便了，专注于运动耳机领域的缤特力最近就发布了这么一款蓝牙真无线运动耳机，不仅颜值高，而且功能齐全，还可以通过APP进行自定义设置，可玩性也是提高了不少。</text>
