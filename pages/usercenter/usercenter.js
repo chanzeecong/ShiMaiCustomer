@@ -33,7 +33,7 @@ Page({
     this.initPageData();
   },
 
-  async onDailySign() {
+  async onDailySign () {
     let message = await this.getUserInfo();
 
     console.log(message.is_sign)
@@ -45,7 +45,6 @@ Page({
       })
     } else {
 			let status = await this.getDailySign();
-
       this.setData({
         showMask: 'show',
         maskState: 'in'

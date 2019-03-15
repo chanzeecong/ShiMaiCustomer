@@ -18,53 +18,49 @@
         </view>
       </view>
       <!--  下面是一个模块 -->
-      <template name="item" wx:if="{{!isShowMask}}">
-        <view class="item">
-          <block wx:if="{{type === 1}}">
-            <navigator open-type='navigate' url="../Articlepage/Articlepage?type={{type}}&id={{id}}&buyer_id={{buyer_id}}">
-              <image class="item-img" src="{{essay_img_link}}" mode="widthFix" style='border-radius:12rpx 12rpx 0px 0px;'></image>
-            </navigator>
-          </block>
+      <template name="item">
+          <view class="item">
+              <checkbox-group class="check-group {{activeCheckBox}}" bindchange="listSelection"> 
+              <label class='radio'>
+               <checkbox class='check_selection' name="{{goodList.id}}" value="{{showidx}}" checked="{{goodList.checked}}"/> 
+               <block wx:if="{{type === 1}}">
+              <navigator open-type='navigate' url="../Articlepage/Articlepage?type={{type}}&id={{id}}&buyer_id={{buyer_id}}">
+                <image class="item-img" src="{{essay_img_link}}" mode="widthFix" style='border-radius:12rpx 12rpx 0px 0px;'></image>
+              </navigator>
+            </block>
 
-          <block wx:elif="{{type === 2}}">
-            <!-- <video class="good-items" autoplay='' poster='{{video_url}}' src='{{video_url}}' style='border-radius:12rpx 12rpx 0px 0px;'></video> -->
-            <image class="item-img" src="{{cover_img_link}}" mode="widthFix" style='border-radius:12rpx 12rpx 0px 0px;'></image>
-          </block>
+            <block wx:elif="{{type === 2}}">
+              <!-- <video class="good-items" autoplay='' poster='{{video_url}}' src='{{video_url}}' style='border-radius:12rpx 12rpx 0px 0px;'></video> -->
+              <image class="item-img" src="{{cover_img_link}}" mode="widthFix" style='border-radius:12rpx 12rpx 0px 0px;'></image>
+            </block>
 
-          <view class="item-title-box bg-white">
+            <view class="item-title-box bg-white">
 
-            <view class='row padRig-4 padLef-4 padTop-10'>
-              <text class='font-14 black line-ellipsis'>{{essay_title}}</text>
-            </view>
-
-
-            <!-- <view class='row padTop-10'>
-        <text class='font-10 white'>抢购价</text>
-        <text class='font-16 black'>{{good_price}}</text>
-          </view> -->
-          </view>
-
-          <view class="name bg-white" style='border-radius:0px 0px 12rpx 12rpx;'>
-
-            <view class='padTop-10 h-32'>
-              <view class='flex flex-row padLef-4'>
-                <image class="avartor-img" src='{{img_link}}'></image>
-                <view class='flex flex-column justify-between flex-item padLef-6'>
-                  <text class='font-10 black'>{{name}}</text>
-                  <text class='font-6 black'>{{region_name}} {{created_at}}</text>
-                </view>
-
-                <view class='flex row padRig-6'>
-                  <image class="heart padRig-4" wx:if="{{!iscollected}}" catchtap='hascollected' src='https://buyer.sm.afxclub.top/icon_like@2x.png' mode='aspectFill'></image>
-                  <image class='heart padRig-4' wx:if="{{iscollected}}" catchtap='hascollected' src='../../assets/icon/icon_like_red@2x.png' mode='aspectFill'></image>
-                  <view class='font-10 black'>{{id}}</view>
-                </view>
+              <view class='row padRig-4 padLef-4 padTop-10'>
+                <text class='font-14 black line-ellipsis'>{{essay_title}}</text>
               </view>
             </view>
 
-            <image class='icon-check' src='../../assets/icon/icon_choose@2x.png'></image>
+            <view class="name bg-white" style='border-radius:0px 0px 12rpx 12rpx;'>
+              <view class='padTop-10 h-32'>
+                <view class='flex flex-row padLef-4'>
+                  <image class="avartor-img" src='{{img_link}}'></image>
+                  <view class='flex flex-column justify-between flex-item padLef-6'>
+                    <text class='font-10 black'>{{name}}</text>
+                    <text class='font-6 black'>{{region_name}} {{created_at}}</text>
+                  </view>
+
+                  <view class='flex row padRig-6'>
+                    <image class="heart padRig-4" wx:if="{{!iscollected}}" catchtap='hascollected' src='https://buyer.sm.afxclub.top/icon_like@2x.png' mode='aspectFill'></image>
+                    <image class='heart padRig-4' wx:if="{{iscollected}}" catchtap='hascollected' src='../../assets/icon/icon_like_red@2x.png' mode='aspectFill'></image>
+                    <view class='font-10 black'>{{id}}</view>
+                  </view>
+                </view>
+              </view>
+            </view>
+              </label>
+            </checkbox-group>
           </view>
-        </view>
       </template>
 
       <view class='manage_box bg-white flex-row justify-between {{activeCheckBox}}'>
@@ -72,7 +68,7 @@
           <checkbox-group bindchange="selectAll">
             <label class='font-12pt' style='padding-left: 32rpx;'>
               <checkbox value="all" checked="{{selectAll}}" />
-              <text class='font-14 black padLef-10'>全选</text>
+              全选
             </label>
           </checkbox-group>
         </view>
@@ -99,8 +95,6 @@
     </view>
   </block>
 
-  <block wx:if="{{isShowMask}}">
-    <view class='mask'></view>
-  </block>
+
 
 </scroll-view>

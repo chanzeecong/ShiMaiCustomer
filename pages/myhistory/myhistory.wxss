@@ -73,13 +73,13 @@ page {
   padding: 16rpx 0;
 }
 
-.check-group .check_selection {
-  display: none;
-}
-
-.check-group.active .check_selection {
-  display: block;
-}
+.check-group .check_selection{ 
+  display: none; 
+} 
+.check-group.active .check_selection{ 
+  display: block; 
+} 
+ 
 
 .checkbox_label {
   display: inline-block;
@@ -87,7 +87,7 @@ page {
   margin-bottom: 20rpx;
   padding-right: 10rpx;
   padding-left: 10rpx;
-  overflow: hidden;
+  /* overflow: hidden; */
 }
 
 checkbox .wx-checkbox-input.wx-checkbox-input-checked::before {

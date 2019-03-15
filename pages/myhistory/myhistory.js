@@ -9,10 +9,9 @@ Page({
   data: {
     selectAll: false,
     manageActive: false,
-    isShowMask: false,
     currentPage: 1,
     scrollHeight: 0,
-    activeCheckBox: '',
+    activeCheckBox: ``,
     goodList: [],
     hasMoreData: true,
     foot_id: ``,
@@ -110,26 +109,28 @@ Page({
     })
   },
 
-  listSelection(e) {},
+  listSelection(e) {
+
+  },
 
   selectAll(e) {
+    // console.log(e);
     let selectAll = e.detail.value[0];
-    let allList = this.data.showList;
+    let allList = this.data.goodList;
     if (selectAll) {
       allList.forEach(item => {
         item.checked = 'true'
       })
 
       this.setData({
-        showList: allList
+        goodList: allList
       })
     } else {
       allList.forEach(item => {
         item.checked = ''
       })
-
       this.setData({
-        showList: allList
+        goodList: allList
       })
     }
   },

@@ -28,7 +28,7 @@ Page({
     tagsList: ``,
     userInfo: {},
     nextTab: '',
-    currentPage: 1, //当前页
+    currentPage: 0, //当前页
     pageSize: 2, // 每页条数
     hasMoreData: true,
     iscollected: false,
@@ -135,21 +135,17 @@ Page({
   },
 
   loadMore() {
-    // var that = this;
-    // if (this.data.hasMoreData) {
-    //   this.setData({
-    //     currentPage: that.data.currentPage+1
-    //   })
-    //   this.getEssay();
-    //   wx.showLoading({
-    //     title: '在加载啦',
-    //   })
-    // } else {
-    //   wx.showToast({
-    //     icon: "none",
-    //     title: '都没有了你还想咋地'
-    //   })
-    // }
+    if (this.data.hasMoreData) {
+      this.getEssay()
+      wx.showLoading({
+        title: '在加载啦',
+      })
+    } else {
+      wx.showToast({
+        icon: "none",
+        title: '都没有了你还想咋地'
+      })
+    }
   },
 
   /**
@@ -170,7 +166,7 @@ Page({
     this.setData({
       tagsList: tagsList,
       eassyList: eassyList,
-      showList: eassyList
+      showList: eassyList,
     });
 
     let self = this;
@@ -191,8 +187,7 @@ Page({
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function() {
-  },
+  onShow: function() {},
 
   onShowTabBtnClick() {
     this.setData({
@@ -227,7 +222,7 @@ Page({
   },
 
   // 数据请求
-  getEssay(tag_id = 0, page = '', key = ' ') {
+  getEssay(tag_id = 0, page = ``, key = ' ') {
     var that = this;
     return new Promise(resolve => {
       wx.request({
@@ -239,7 +234,7 @@ Page({
         data: {
           tag_id: tag_id,
           page: this.data.currentPage,
-          search_word: key
+          search_word: key,
         },
         contentType: `application/x-www-form-urlencoded`,
         dataType: `json`,
@@ -248,13 +243,14 @@ Page({
           var list = res.data.data;
           if (list.length < this.data.pageSize) {
             wx.showToast({
-              icon: "none",
-              title: '没有更多数据'
-            });
+              icon: 'none',
+              title: '没有更多数据',
+            })
           } else {
             that.setData({
-              eassyList: this.data.eassyList.concat(list),
+              eassyList: that.data.showList.concat(list),
               hasMoreData: true,
+              currentPage: that.data.currentPage + 1
             })
           }
           wx.hideLoading();
@@ -276,45 +272,45 @@ Page({
     })
   },
 
-  // chooseItem(e) {
-  //   let idx = e.currentTarget.dataset.index;
-  //   console.log(idx);
-  //   let cateList = this.data.cate;
-  //   let scroll_id = `item_${idx}`;
+  chooseItem(e) {
+    let idx = e.currentTarget.dataset.index;
+    console.log(idx);
+    let cateList = this.data.cate;
+    let scroll_id = `item_${idx}`;
 
-  //   cateList.forEach((item, i) => {
-  //     cateList[i].active = '';
-  //   })
+    cateList.forEach((item, i) => {
+      cateList[i].active = '';
+    })
 
-  //   cateList[idx].active = 'active';
-  //   this.setData({
-  //     cate: cateList,
-  //     scrollID: scroll_id,
-  //     selectionActive: ''
-  //   })
-  // },
+    cateList[idx].active = 'active';
+    this.setData({
+      cate: cateList,
+      scrollID: scroll_id,
+      selectionActive: ''
+    })
+  },
 
-  // chooseCategory(e) {
-  //   // console.log(e.target);
-  //   let currentIdx = e.target.dataset.index;
-  //   let offsetLeft = e.target.offsetLeft;
-  //   let cateList = this.data.cate;
-  //   let left = offsetLeft - 60;
-  //   (left < 0) ? left = 0 : '';
+  chooseCategory(e) {
+    // console.log(e.target);
+    let currentIdx = e.target.dataset.index;
+    let offsetLeft = e.target.offsetLeft;
+    let cateList = this.data.cate;
+    let left = offsetLeft - 60;
+    (left < 0) ? left = 0: '';
 
-  //   cateList.forEach((item, i) => {
-  //     if (i === currentIdx) {
-  //       cateList[i].active = 'active';
-  //     } else {
-  //       cateList[i].active = '';
-  //     }
-  //   })
+    cateList.forEach((item, i) => {
+      if (i === currentIdx) {
+        cateList[i].active = 'active';
+      } else {
+        cateList[i].active = '';
+      }
+    })
 
-  //   this.setData({
-  //     cate: cateList,
-  //     scrollLeft: left
-  //   })
-  // },
+    this.setData({
+      cate: cateList,
+      scrollLeft: left
+    })
+  },
 
   /**
    * 生命周期函数--监听页面隐藏
