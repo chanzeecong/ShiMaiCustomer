@@ -142,7 +142,7 @@
 
   <view class='row row-between padLef-16 padRig-16 padTop-15 padBot-20 bgWhite underline'>
     <text class='font-14 grey'>红包:</text>
-    <text class='font-14 grey'>-￥{{orderDetail.tax_fee ? orderDetail.tax_fee: 0}}</text>
+    <text class='font-14 grey'>-￥{{orderDetail.coupon_money ? orderDetail.coupon_money: 0}}</text>
   </view>
 
   <view class='row row-between padLef-16 padRig-16 padTop-15 padBot-15 bgWhite'>

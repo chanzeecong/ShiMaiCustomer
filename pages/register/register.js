@@ -356,7 +356,6 @@ Page({
         },
         dataType: 'json',
         success: (res) => {
-          console.log(res)
           resolve(res.data.data)
         }
       })

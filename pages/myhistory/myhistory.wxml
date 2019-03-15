@@ -41,29 +41,6 @@
               </view>
             </view>
 
-<<<<<<< HEAD
-
-            <!-- <view class='row padTop-10'>
-        <text class='font-10 white'>抢购价</text>
-        <text class='font-16 black'>{{good_price}}</text>
-          </view> -->
-          </view>
-
-          <view class="name bg-white" style='border-radius:0px 0px 12rpx 12rpx;'>
-
-            <view class='padTop-10 h-32'>
-              <view class='flex flex-row padLef-4'>
-                <image class="avartor-img" src='{{img_link}}'></image>
-                <view class='flex flex-column justify-between flex-item padLef-6'>
-                  <text class='font-10 black'>{{name}}</text>
-                  <text class='font-6 black'>{{region_name}} {{created_at}}</text>
-                </view>
-
-                <view class='flex row padRig-6'>
-                  <image class="heart padRig-4" wx:if="{{!iscollected}}" catchtap='hascollected' src='https://buyer.sm.afxclub.top/icon_like@2x.png' mode='aspectFill'></image>
-                  <image class='heart padRig-4' wx:if="{{iscollected}}" catchtap='hascollected' src='https://buyer.sm.afxclub.top/icon_like_red@2x.png' mode='aspectFill'></image>
-                  <view class='font-10 black'>{{id}}</view>
-=======
             <view class="name bg-white" style='border-radius:0px 0px 12rpx 12rpx;'>
               <view class='padTop-10 h-32'>
                 <view class='flex flex-row padLef-4'>
@@ -78,7 +55,6 @@
                     <image class='heart padRig-4' wx:if="{{iscollected}}" catchtap='hascollected' src='../../assets/icon/icon_like_red@2x.png' mode='aspectFill'></image>
                     <view class='font-10 black'>{{id}}</view>
                   </view>
->>>>>>> 73efb0c1bbb2cae8f920f7c64b2174d5c8f9f156
                 </view>
               </view>
             </view>
@@ -104,8 +80,6 @@
     </view>
   </block>
 
-
-
   <block wx:else>
     <view class='wrapper bg-white' style='height: 100vh'>
       <view class='flex flex-column justify-center align-center' style='height: 100%;'>
@@ -118,7 +92,4 @@
       </view>
     </view>
   </block>
-
-
-
 </scroll-view>

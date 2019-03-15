@@ -134,11 +134,7 @@
           </view>
         </view>
       </template>
-<<<<<<< HEAD
 			<!-- <image wx:if='{{isShow}}' class='choose-icon' src='https://buyer.sm.afxclub.top/icon_choose@2x.png'></image> -->
-=======
-      <image wx:if='{{isShow}}' class='choose-icon' src='https://buyer.sm.afxclub.top/icon_choose@2x.png'></image>
->>>>>>> 73efb0c1bbb2cae8f920f7c64b2174d5c8f9f156
     </block>
 
     <block wx:if="{{2 == item.type}}">
@@ -195,21 +191,12 @@
                   <image class='icon icon_location' src='https://buyer.sm.afxclub.top/icon_locate_big@2x.png'></image>
                   {{item.region_name}}
                 </view>
-<<<<<<< HEAD
 
 								<view class='flex flex-row buyer-badges'>
 									<view class='badges-item' wx:for='{{item.tag}}' wx:for-index="cidx" wx:key="{{cidx}}" wx:for-item="child">
 										{{child}}
 									</view>
 								</view>
-=======
-              </view>
-            </view>
-
-            <view class='flex flex-row buyer-badges'>
-              <view class='badges-item' wx:for='{{item.tag}}' wx:for-index="cidx" wx:key="{{cidx}}" wx:for-item="child">
-                {{child}}
->>>>>>> 73efb0c1bbb2cae8f920f7c64b2174d5c8f9f156
               </view>
             </view>
 

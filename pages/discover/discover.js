@@ -341,7 +341,6 @@ Page({
 
   },
 
-<<<<<<< HEAD
 	// 点赞功能
 	getLikeBtn(e) {
 		let id = e.currentTarget.dataset.id;
@@ -418,85 +417,6 @@ Page({
 			})
 		})
 	},
-=======
-  // 点赞功能
-  getLikeBtn() {
-    return new Promise(resolve => {
-      wx.request({
-        url: `${app.hostName}clickZan`,
-        method: 'GET',
-        header: {
-          'Authorization': `Bearer ${app.token}`
-        },
-        data: {
-          buyer_id: this.data.buyer_id,
-          type: this.data.acticeCollected,
-          id: this.data.id,
-        },
-        dataType: 'json',
-        success: (res) => {
-          for (let i in this.data.showList) {
-            if (buyerId === this.data.showList[i].buyer_id) {
-              this.data.showList[i].is_zan = 1;
-              this.data.eassyList[i].like_amount++;
-              console.log(this.data.showList[i].is_zan)
-            }
-          }
-          for (let i in this.data.eassyList) {
-            if (buyerId === this.data.eassyList[i].buyer_id) {
-              this.data.eassyList[i].is_zan = 1;
-              this.data.eassyList[i].like_amount++;
-              console.log(this.data.eassyList[i].is_zan)
-            }
-          }
-
-          this.setData({
-            eassyList: this.data.eassyList,
-            showList: this.data.showList
-          })
-
-          wx.showToast({
-            title: '点赞成功！',
-          })
-        }
-      })
-    })
-  },
-
-  getUnLikeBtn() {
-    return new Promise(resolve => {
-      wx.request({
-        url: `${app.hostName}cancelZan`,
-        method: 'GET',
-        header: {
-          'Authorization': `Bearer ${app.token}`
-        },
-        data: {
-          buyer_id: this.data.buyer_id,
-          type: this.data.acticeCollected,
-          id: this.data.id,
-        },
-        dataType: 'json',
-        success: (res) => {
-          for (let i in this.data.eassyList) {
-            if (this.data.buyer_id == this.data.eassyList[i].buyer_id) {
-              this.data.eassyList[i].is_zan = 2;
-              this.data.eassyList[i].like_amount--;
-            }
-          }
-
-          this.setData({
-            eassyList: this.data.eassyList
-          })
-
-          wx.showToast({
-            title: '取消点赞成功！',
-          })
-        }
-      })
-    })
-  },
->>>>>>> 6a80ec757afed56c000d26fd00147407e89a7aec
 
 
   /**

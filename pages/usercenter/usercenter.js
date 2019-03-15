@@ -36,8 +36,6 @@ Page({
   async onDailySign () {
     let message = await this.getUserInfo();
 
-    console.log(message.is_sign)
-
     if (message.is_sign == '1') {
       wx.showToast({
         title: '今日已签到,无法重复签到',
@@ -69,7 +67,6 @@ Page({
         },
         dataType: 'json',
         success: (res) => {
-          console.log(res)
           resolve(res.data.data)
         }
       })
@@ -87,7 +84,6 @@ Page({
         dataType: 'json',
         success: (res) => {
           resolve(res.data.data);
-          console.log(res.data.data)
         }
       })
     })
@@ -143,7 +139,6 @@ Page({
         },
         dataType: 'json',
         success: (res) => {
-          console.log(res)
           resolve(res.data.data)
         }
       })
