@@ -40,12 +40,6 @@
     "selectedColor": "#F44168",
     "list": [
       {
-        "iconPath": "assets/icon/Tab_icon_Sale_Default@2x.png",
-        "selectedIconPath": "assets/icon/Tab_icon_Sale_Selected@2x.png",
-        "pagePath": "pages/sale/sale",
-        "text": "特卖"
-      },
-      {
         "iconPath": "assets/icon/Tab_icon_buyer_Default@2x.png",
         "selectedIconPath": "assets/icon/Tab_icon_buyer_Selected@2x.png",
         "pagePath": "pages/buyer/buyer",

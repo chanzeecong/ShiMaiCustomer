@@ -147,13 +147,6 @@ button.btn {
   font-size: 60rpx;
   color: #fff;
 }
-/* .card-status-box{
-  background-color: #F5396E;
-}
-
-.card-status-box-disabled {
-  background-color: #aaaaaa;
-} */
 .card-time-box{
   position: relative;
   width: 280rpx;
