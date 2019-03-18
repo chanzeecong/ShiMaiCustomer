@@ -18,50 +18,65 @@
         </view>
       </view>
       <!--  下面是一个模块 -->
-      <template name="item">
-          <view class="item">
-              <checkbox-group class="check-group {{activeCheckBox}}" bindchange="listSelection"> 
-              <label class='radio'>
-               <checkbox class='check_selection' name="{{goodList.id}}" value="{{showidx}}" checked="{{goodList.checked}}"/> 
-               <block wx:if="{{type === 1}}">
-              <navigator open-type='navigate' url="../Articlepage/Articlepage?type={{type}}&id={{id}}&buyer_id={{buyer_id}}">
-                <image class="item-img" src="{{essay_img_link}}" mode="widthFix" style='border-radius:12rpx 12rpx 0px 0px;'></image>
-              </navigator>
-            </block>
+			<checkbox-group class="check-group {{activeCheckBox}}">
+				<template name="item">
+						<view class="item">
+							<checkbox class='check_selection' bindtap="listSelection" data-id='{{id}}' data-type='{{type}}' checked="{{checked}}"/> 
+							<block wx:if="{{type === 2}}">
+								<block wx:if='{{cover_img_link}}'>
+									<navigator open-type='navigate' url="../Articlepage/Articlepage?type={{type}}&id={{id}}&buyer_id={{buyer_id}}">
+										<image class="item-img" src="{{cover_img_link}}" mode="widthFix" style='border-radius:12rpx 12rpx 0px 0px;'></image>
+									</navigator>
+								</block>
 
-            <block wx:elif="{{type === 2}}">
-              <!-- <video class="good-items" autoplay='' poster='{{video_url}}' src='{{video_url}}' style='border-radius:12rpx 12rpx 0px 0px;'></video> -->
-              <image class="item-img" src="{{cover_img_link}}" mode="widthFix" style='border-radius:12rpx 12rpx 0px 0px;'></image>
-            </block>
+								<block wx:else>
+									<navigator open-type='navigate' url="../Articlepage/Articlepage?type={{type}}&id={{id}}&buyer_id={{buyer_id}}">
+										<image class="item-img" src="{{essay_img_link}}" mode="widthFix" style='border-radius:12rpx 12rpx 0px 0px;'></image>
+									</navigator>
+								</block>
+							</block>
 
-            <view class="item-title-box bg-white">
+							<block wx:else>
+								<block wx:if='{{video_url}}'>
+									<navigator open-type='navigate' url="../VideoGoods/VideoGoods?type={{type}}&id={{id}}&buyer_id={{buyer_id}}">
+										<video class="good-items" autoplay='' controls='{{true}}' poster='{{video_url}}?vframe/jpg/offset/0' src='{{video_url}}' mode="widthFix" style='border-radius:12rpx 12rpx 0px 0px;'></video>
+									</navigator>
+								</block>
 
-              <view class='row padRig-4 padLef-4 padTop-10'>
-                <text class='font-14 black line-ellipsis'>{{essay_title}}</text>
-              </view>
-            </view>
+								<block wx:else>
+									<navigator open-type='navigate' url="../Articlepage/Articlepage?type={{type}}&id={{id}}&buyer_id={{buyer_id}}">
+										<image class="item-img" src="{{essay_img}}" mode="widthFix" style='border-radius:12rpx 12rpx 0px 0px;'></image>
+									</navigator>
+								</block>
+							</block>
 
-            <view class="name bg-white" style='border-radius:0px 0px 12rpx 12rpx;'>
-              <view class='padTop-10 h-32'>
-                <view class='flex flex-row padLef-4'>
-                  <image class="avartor-img" src='{{img_link}}'></image>
-                  <view class='flex flex-column justify-between flex-item padLef-6'>
-                    <text class='font-10 black'>{{name}}</text>
-                    <text class='font-6 black'>{{region_name}} {{created_at}}</text>
-                  </view>
+							<view class="item-title-box bg-white">
 
-                  <view class='flex row padRig-6'>
-                    <image class="heart padRig-4" wx:if="{{!iscollected}}" catchtap='hascollected' src='https://buyer.sm.afxclub.top/icon_like@2x.png' mode='aspectFill'></image>
-                    <image class='heart padRig-4' wx:if="{{iscollected}}" catchtap='hascollected' src='../../assets/icon/icon_like_red@2x.png' mode='aspectFill'></image>
-                    <view class='font-10 black'>{{id}}</view>
-                  </view>
-                </view>
-              </view>
-            </view>
-              </label>
-            </checkbox-group>
-          </view>
-      </template>
+								<view class='row padRig-4 padLef-4 padTop-10'>
+									<text class='font-14 black line-ellipsis'>{{essay_title}}</text>
+								</view>
+							</view>
+
+							<view class="name bg-white" style='border-radius:0px 0px 12rpx 12rpx;'>
+								<view class='padTop-10 h-32'>
+									<view class='flex flex-row padLef-4'>
+										<image class="avartor-img" src='{{img_link}}'></image>
+										<view class='flex flex-column justify-between flex-item padLef-6'>
+											<text class='font-10 black'>{{name}}</text>
+											<text class='font-6 black'>{{region_name}} {{created_at}}</text>
+										</view>
+
+										<view class='flex row padRig-6'>
+											<image catchtap="getLikeBtn" wx:if="{{is_zan == 2}}" class="heart padRig-4" src='https://buyer.sm.afxclub.top/icon_like@2x.png' data-id='{{id}}' data-type='{{type}}' data-buyerid='{{buyer_id}}'></image>
+											<image catchtap="getUnLikeBtn" wx:else class="heart padRig-4" src='https://buyer.sm.afxclub.top/icon_like_red@2x.png' data-id='{{id}}' data-type='{{type}}' data-buyerid='{{buyer_id}}'></image>
+											<view class='font-10 black'>{{like_amount}}</view>
+										</view>
+									</view>
+								</view>
+							</view>							
+						</view>
+				</template>
+			</checkbox-group>
 
       <view class='manage_box bg-white flex-row justify-between {{activeCheckBox}}'>
         <view class='flex-item flex flex-column justify-center'>
@@ -72,7 +87,7 @@
             </label>
           </checkbox-group>
         </view>
-        <view class='flex flex-column justify-center align-center'>
+        <view class='flex flex-column justify-center align-center' bindtap='onDeleteBtnClick'>
           <image class="icon-delete" src='../../assets/icon/icon_ashcan@2x.png'></image>
         </view>
       </view>

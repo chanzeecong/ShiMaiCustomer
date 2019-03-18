@@ -12,9 +12,6 @@ Page({
     hotList: [],
     countryList: [],
     isScroll: true,
-    is_followed: false,
-    buyer_id: ``,
-    is_followed: ``,
     topNum: 0,
     scrollHeight: 0,
     currentPage: 1, //当前页
@@ -61,7 +58,7 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
+		
   },
 
   /**

@@ -16,7 +16,7 @@
           </view>
           <view class='title_location'>
             <image class='icon icon_location' src='https://buyer.sm.afxclub.top/icon_position1@2x.png'></image>
-            {{list.city}}
+            {{list.region}}
           </view>
         </view>
         <view class='buyer_focus'>
@@ -30,7 +30,7 @@
               <view class='font-12pt'>粉丝</view>
             </view>
             <view class='flex-item'>
-              <view class='font-16pt m-b-10pt'>15</view>
+              <view class='font-16pt m-b-10pt'>{{list.col_nums}}</view>
               <view class='font-12pt'>获赞与收藏</view>
             </view>
           </view>
@@ -54,7 +54,7 @@
     <view class='flex flex-row justify-around p-v-10pt underline'>
       <view style='padding: 10rpx 0;'>
         <!-- <image class='icon_btn' src='../../assets/icon/icon_Collection_gray@2x.png'></image> -->
-         <image catchtap='handleCollection' wx:if="{{list.is_collect == 2}}" class='icon_btn' src='../../assets/icon/icon_Collection_gray@2x.png'></image>
+         <image catchtap='handleCollection' wx:if="{{list.is_collection == 2}}" class='icon_btn' src='../../assets/icon/icon_Collection_gray@2x.png'></image>
             <image catchtap='UnhandleCollection' wx:else class='icon_btn' src='../../assets/icon/icon_Collection_red@2x.png'></image>
       </view>
       <view>

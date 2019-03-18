@@ -4,24 +4,25 @@
     <view class='follow-list magTop-10 bg-white magRig-16 magLef-16'>
       <view class='flex flex-row p-v-10pt section-padding'>
         <!-- <view class='buyer_avatar' style='background-image:url({{list.img_link}})'></view> -->
-        <image class='buyer_avatar' src='{{item.img_link}}'></image>
-        <view class='flex flex-column justify-between flex-item'>
-          <text class='font-14pt font-bold'>{{item.name}}</text>
-          <view class='flex flex-row'>
-            <image class="follow-pos" src='https://buyer.sm.afxclub.top/icon_position@2x.png'></image>
-            <text class='font-11 socolor'>{{item.region_name}}</text>
-          </view>
-        </view>
+				<navigator open-type='navigate' url='../buyer_detail/buyer_detail?id={{item.id}}'>
+					<image class='buyer_avatar' src='{{item.img_link}}'></image>
+				</navigator>
+
+				<view class='flex flex-column justify-between flex-item'>
+					<text class='font-14pt font-bold'>{{item.name}}</text>
+					<view class='flex flex-row'>
+						<image class="follow-pos" src='https://buyer.sm.afxclub.top/icon_position@2x.png'></image>
+						<text class='font-11 socolor'>{{item.region_name}}</text>
+					</view>
+				</view>
 
         <view class='flex flex-column justify-around'>
           <view wx:if="{{item.is_followed}}" data-id="{{item.id}}" bindtap='onUnfollowBtnClick' class='font-12 low'>已关注</view>
-          <view wx:else  data-id="{{item.id}}" bindtap='onFollowBtnClick'>关注</view>
+          <view wx:else  data-id="{{item.id}}" bindtap='onFollowBtnClick' class='font-12 low'>关注</view>
         </view>
 
       </view>
     </view>
-
-
   </view>
 </block>
 

@@ -126,7 +126,7 @@
                   <view class='flex row padRig-6'>
                     <image catchtap="getLikeBtn" wx:if="{{is_zan == 2}}" class="heart padLef-4" src='https://buyer.sm.afxclub.top/icon_like@2x.png' data-id='{{id}}' data-type='{{type}}' data-buyerid='{{buyer_id}}'></image>
                   <image catchtap="getUnLikeBtn" wx:else class="heart padLef-4" src='https://buyer.sm.afxclub.top/icon_like_red@2x.png' data-id='{{id}}' data-type='{{type}}' data-buyerid='{{buyer_id}}'></image>
-            				<text class='font-10 low padLef-10'>{{item.like_amount}}</text>
+            				<text class='font-10 low padLef-10'>{{like_amount}}</text>
                   </view>
                 </view>
               </view>
@@ -169,7 +169,7 @@
                   <view class='flex row padRig-6'>
                     <image catchtap="getLikeBtn" wx:if="{{is_zan == 2}}" class="heart padRig-4" src='https://buyer.sm.afxclub.top/icon_like@2x.png' data-id='{{id}}' data-type='{{type}}' data-buyerid='{{buyer_id}}'></image>
                   <image catchtap="getUnLikeBtn" wx:else class="heart padRig-4" src='https://buyer.sm.afxclub.top/icon_like_red@2x.png' data-id='{{id}}' data-type='{{type}}' data-buyerid='{{buyer_id}}'></image>
-            				<text class='font-10 black'>{{item.like_amount}}</text>
+            				<text class='font-10 black'>{{like_amount}}</text>
                   </view>
                 </view>
               </view>
@@ -182,11 +182,23 @@
     <block wx:elif="{{3 == item.type}}">
       <view class='buyer_box_list'>
         <view class='buyer_box'>
-          <navigator open-type='navigate' url='../buyer_detail/buyer_detail?id={{item.id}}' class='flex flex-row buyer_head'>
+          <view class='flex flex-row buyer_head'>
             <image class='buyer_img' mode='aspectFill' src='{{item.img_link}}'></image>
             <view class='flex-item'>
               <view class='buyer_title'>
-                <text>{{item.name}}</text>
+								<view class='search_options row-between' bindtap='showSelection' data-id='{{item.id}}'>
+									<text>{{item.name}}</text>...
+									<view class='selection-wrapper {{show}}'>
+										<view class='selection_arrow'></view>
+										<radio-group class="radio-group" bindchange="radioChange">
+											<label class="radio_label" wx:for="{{array}}" wx:key="{{index}}">
+												<radio class='radio_seletions' value="{{item.name}}" checked="{{item.checked}}" />
+												{{item.value}}
+											</label>
+										</radio-group>
+									</view>
+								</view>
+                
                 <view class='title_location padTop-2'>
                   <image class='icon icon_location' src='https://buyer.sm.afxclub.top/icon_locate_big@2x.png'></image>
                   {{item.region_name}}
@@ -199,8 +211,7 @@
 								</view>
               </view>
             </view>
-
-          </navigator>
+          </view>
 
           <view class='buyer_middle_info'>
             <text class='info_sub_title'>{{item.introduction}}自从腾讯把酷我、酷狗收购以后， 音乐正式迎来收费时代。现在随便下载一首普通的歌曲都要钱了。而且随着</text>
@@ -212,9 +223,9 @@
             </block>
           </scroll-view>
 
-          <view class='buyer-action'>
+          <navigator open-type='navigate' url='../buyer_detail/buyer_detail?id={{item.id}}' class='buyer-action'>
             <button class='buyer-focus'>进店逛逛</button>
-          </view>
+          </navigator>
 
         </view>
       </view>

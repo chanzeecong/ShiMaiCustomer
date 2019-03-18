@@ -131,6 +131,7 @@ Page({
 					'Authorization': `Bearer ${app.token}`
 				},
 				data: {
+					buyer_id: this.data.buyer_id,
 					collection_id: this.data.buyer_id,
 					collection: this.data.buyerCollected,
 				},
@@ -138,7 +139,7 @@ Page({
 				success: (res) => {
 					for (let i in this.data.buyerDetail.buyer) {
 						if (this.data.buyer_id == this.data.buyerDetail.buyer[i].buyer_id) {
-							this.data.buyerDetail.buyer[i].is_collect = 1;
+							this.data.buyerDetail.buyer[i].is_collection = 1;
 						}
 					}
 
@@ -166,6 +167,7 @@ Page({
 					'Authorization': `Bearer ${app.token}`
 				},
 				data: {
+					buyer_id: this.data.buyer_id,
 					collection_id: this.data.buyer_id,
 					collection: this.data.buyerCollected,
 				},
@@ -173,7 +175,7 @@ Page({
 				success: (res) => {
 					for (let i in this.data.buyerDetail.buyer) {
 						if (this.data.buyer_id == this.data.buyerDetail.buyer[i].buyer_id) {
-							this.data.buyerDetail.buyer[i].is_collect = 2;
+							this.data.buyerDetail.buyer[i].is_collection = 2;
 						}
 					}
 

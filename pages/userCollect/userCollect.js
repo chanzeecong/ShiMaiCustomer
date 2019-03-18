@@ -39,7 +39,22 @@ Page({
       { id: '', value: '全部', checked: 'true' },
       { id: 1, value: '视频' },
       { id: 0, value: '图文' },
-    ]
+    ],
+		show: '',
+		array: [{
+			name: 'buyer',
+			value: '分享',
+			checked: 'true'
+		},
+		{
+			name: 'tag',
+			value: '取消收藏'
+		},
+		{
+			name: 'area',
+			value: '取消'
+		}
+		],
   },
 
   /**
@@ -325,6 +340,54 @@ Page({
 		})
 	},
   
+	showSelection(e) {
+		let id = e.currentTarget.dataset.id;
+		console.log(id)
+		let showClass = 'show';
+		let flag = this.data.flag;
+
+		for(let i in this.data.collectList)
+		{
+			if(id == this.data.collectList[i].id)
+			{
+				if (!flag) {
+					this.setData({
+						show: showClass,
+						flag: true
+					})
+				} else {
+					this.setData({
+						show: '',
+						flag: false
+					})
+				}
+			}
+		}
+	},
+	radioChange(e) {
+		let value = e.detail.value;
+		let name = '';
+		let type = 1;
+
+		switch (value) {
+			case 'buyer':
+				name = '分享';
+				type = 1;
+				break;
+			case 'tag':
+				name = '取消收藏';
+				type = 2;
+				break;
+			case 'area':
+				name = '取消';
+				type = 3;
+				break;
+		}
+		this.setData({
+			type: type
+		})
+	},
+
   async initPageData() {
     let status = this.data.tabList[this.data.currentTab].id;
     let is_on_sale = '';

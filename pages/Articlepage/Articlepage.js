@@ -17,7 +17,6 @@ Page({
     circular: true,
     scrollHeight: 0,
     topNum: 0,
-    acticeCollected: 2,
     followBuyer: 3
   },
 
@@ -157,13 +156,14 @@ Page({
           'Authorization': `Bearer ${app.token}`
         },
         data: {
+					buyer_id: this.data.buyer_id,
           collection_id: this.data.id,
-          collection: this.data.acticeCollected,
+					collection: this.data.type,
         },
         dataType: 'json',
         success: (res) => {
 					for (let i in this.data.detailList) {
-						if (this.data.buyer_id == this.data.detailList[i].buyer_id) {
+						if (this.data.id == this.data.detailList[i].id) {
 							this.data.detailList[i].is_collect = 1;
 						}
 					}
@@ -192,13 +192,14 @@ Page({
           'Authorization': `Bearer ${app.token}`
         },
         data: {
+					buyer_id: this.data.buyer_id,
           collection_id: this.data.id,
-          collection: this.data.acticeCollected,
+					collection: this.data.type,
         },
         dataType: 'json',
         success: (res) => {
 					for (let i in this.data.detailList) {
-						if (this.data.buyer_id == this.data.detailList[i].buyer_id) {
+						if (this.data.id == this.data.detailList[i].id) {
 							this.data.detailList[i].is_collect = 2;
 						}
 					}
@@ -227,13 +228,13 @@ Page({
         },
         data: {
           buyer_id: this.data.buyer_id,
-          type: this.data.acticeCollected,
+					type: this.data.type,
           id: this.data.id,
         },
         dataType: 'json',
         success: (res) => {
 					for (let i in this.data.detailList) {
-						if (this.data.buyer_id == this.data.detailList[i].buyer_id) {
+						if (this.data.id == this.data.detailList[i].id) {
 							this.data.detailList[i].is_zan = 1;
 							this.data.detailList[i].like_amount++;
 						}
@@ -261,13 +262,13 @@ Page({
         },
         data: {
           buyer_id: this.data.buyer_id,
-          type: this.data.acticeCollected,
+					type: this.data.type,
           id: this.data.id,
         },
         dataType: 'json',
         success: (res) => {
 					for (let i in this.data.detailList) {
-						if (this.data.buyer_id == this.data.detailList[i].buyer_id) {
+						if (this.data.id == this.data.detailList[i].id) {
 							this.data.detailList[i].is_zan = 2;
 							this.data.detailList[i].like_amount--;
 						}
